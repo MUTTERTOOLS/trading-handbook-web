@@ -224,16 +224,17 @@ const navGroups = computed<NavGroup[]>(() => [
         </div>
       </header>
 
+      <!-- 章节组件文件名与 section id（c01~c12）一一对应，按序渲染 -->
       <ChapterOne />
+      <ChapterTwo />
+      <ChapterThree />
+      <ChapterFour />
       <ChapterFive />
       <ChapterSix />
-      <ChapterTwo />
       <ChapterSeven />
       <ChapterEight />
       <ChapterNine />
-      <ChapterThree />
       <ChapterTen />
-      <ChapterFour />
       <ChapterEleven />
       <ChapterTwelve />
 

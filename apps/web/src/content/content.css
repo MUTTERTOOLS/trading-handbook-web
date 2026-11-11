@@ -1,0 +1,219 @@
+/* ============================================
+   内容渲染 · 通用章节 / 目录 / 表格 / 引用
+   由 content/dist 的 AST 驱动，不复制正文
+   ============================================ */
+
+/* === 分册封面 === */
+.volume-header {
+  padding: 24px 0 8px;
+}
+.volume-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-accent);
+}
+.volume-header h1 {
+  font-size: 44px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.volume-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+.volume-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.volume-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+}
+.volume-stat .label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.volume-stat .value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.volume-meta {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+@media (max-width: 640px) {
+  .volume-header h1 { font-size: 34px; }
+  .volume-subtitle { font-size: 16px; }
+  .volume-stats { grid-template-columns: 1fr; }
+}
+
+/* === 章节 === */
+.chapter {
+  margin-bottom: 0;
+}
+.section-block {
+  margin-bottom: 24px;
+}
+h4.sub-sub-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 28px 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--border-accent);
+  scroll-margin-top: 24px;
+}
+
+/* === 引用 / 公式 === */
+.section blockquote,
+.quote-block,
+.formula-block {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  background: var(--bg-card-alt);
+  color: var(--text-secondary);
+  line-height: 1.9;
+  overflow-x: auto;
+}
+.section blockquote p:last-child,
+.quote-block p:last-child,
+.formula-block p:last-child {
+  margin-bottom: 0;
+}
+.section blockquote {
+  font-size: 14.5px;
+}
+.section blockquote.formula-block {
+  font-family: var(--font-mono);
+  font-size: 14.5px;
+  color: var(--text-primary);
+  line-height: 2;
+}
+.quote-block {
+  border-left-color: var(--border-strong);
+  font-size: 14.5px;
+}
+
+/* === 表格横向滚动 === */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+.table-scroll .data-table {
+  margin: 0;
+  min-width: 560px;
+}
+
+/* === 列表 === */
+.md-list ul,
+.md-list ol {
+  margin: 12px 0 16px;
+}
+.links-list {
+  margin: 14px 0 18px;
+  padding-left: 24px;
+}
+.links-list li {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin-bottom: 6px;
+}
+
+/* === 代码块 === */
+.code-block pre {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* === 图示说明（编辑提示，可折叠） === */
+.figure-note {
+  margin: 18px 0;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-alt);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.figure-note summary {
+  padding: 10px 16px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+.figure-note > div {
+  padding: 0 16px 14px;
+  line-height: 1.9;
+}
+
+/* === 待核验 / 交叉引用 === */
+.verify-badge {
+  color: var(--yellow);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  border-radius: var(--radius-xs);
+  padding: 0 4px;
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+a.xref {
+  color: var(--accent);
+  border-bottom: 1px dotted var(--border-accent);
+}
+
+/* === 自测题：题面可包含多段/表格，改为块级布局 === */
+details.quiz summary {
+  display: block;
+  position: relative;
+  padding-left: 42px;
+}
+details.quiz summary::before {
+  position: absolute;
+  left: 18px;
+  top: 15px;
+}
+.quiz-question > :first-child {
+  margin-top: 0;
+}
+.quiz-question p {
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.quiz-question p:last-child {
+  margin-bottom: 0;
+}
+.quiz-question table {
+  margin: 10px 0;
+}
+
+/* === 风险提示中的富文本 === */
+.risk-notice .rn-text p {
+  margin: 0;
+}

@@ -1,0 +1,53 @@
+title: 新手交易系统化入门丛书
+version: 1
+cutoffDate: "2026-11-07"
+riskNotice: 本书内容仅为教育与方法讨论，不构成任何投资建议或证券推荐。市场有风险，投资可能导致本金亏损。书中示例均为虚构或说明性案例，书中数字为"起步参考值"，需结合个人情况校准。交易规则与费率以交易所及券商最新规定为准。
+volumes:
+  - id: B1
+    slug: b1
+    title: 交易入门地图
+    description: 建预期、给框架：三问尺子、钱的来源、期望算术、信息分格、三层分工、体检七问、全书导航。
+    theme: b1
+    expectedChapters: 7
+  - id: B2
+    slug: b2
+    title: 市场规则与下单实务
+    description: 把市场规则、订单类型、费用与除权除息讲清楚：先会下单，再谈方法。
+    theme: b2
+    expectedChapters: 8
+  - id: B3
+    slug: b3
+    title: 风控与资金管理
+    description: 先算亏，再谈赚：亏损非对称、破产结构、仓位公式、回撤与停手线。
+    theme: b3
+    expectedChapters: 12
+  - id: B4
+    slug: b4
+    title: 读盘入门：价量与技术结构
+    description: 读懂价格与成交量：K 线、趋势、支撑阻力、形态、假突破与指标组合。
+    theme: b4
+    expectedChapters: 10
+  - id: B5
+    slug: b5
+    title: 基本面与估值入门
+    description: 从生意到估值：三张报表、体检指标、估值分位、价值陷阱与一页纸研究模板。
+    theme: b5
+    expectedChapters: 8
+  - id: B6
+    slug: b6
+    title: 策略验证与统计常识
+    description: 用样本与统计检验方法：运气与实力、样本量、数据陷阱、参数高原与蒙特卡洛。
+    theme: b6
+    expectedChapters: 12
+  - id: B7
+    slug: b7
+    title: 执行纪律与交易复盘
+    description: 把规则变成执行：盘前快照、影子账户、连败管理、交易记账与违规分级。
+    theme: b7
+    expectedChapters: 9
+  - id: B8
+    slug: b8
+    title: 实战门派图鉴与选择
+    description: 拆解五类实战门派，按九字段横向比较，走完从拆解到上线的完整工作流。
+    theme: b8
+    expectedChapters: 11

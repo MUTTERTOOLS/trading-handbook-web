@@ -1,21 +1,25 @@
 {
-  "name": "trading-handbook-web",
+  "name": "trading-handbook",
   "private": true,
   "version": "0.1.0",
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "echarts": "^5.6.0",
-    "vue": "^3.5.13"
+    "content:build": "tsx tools/content/build.ts",
+    "content:check": "tsx tools/content/check.ts",
+    "typecheck:tools": "tsc -p tools/tsconfig.json --noEmit",
+    "dev": "pnpm content:build && pnpm --filter @trading-handbook/web dev",
+    "build": "pnpm content:build && pnpm --filter @trading-handbook/web build",
+    "check": "pnpm content:check && pnpm typecheck:tools && pnpm --filter @trading-handbook/web check",
+    "preview": "pnpm --filter @trading-handbook/web preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.0",
-    "https-proxy-agent": "^9.1.0",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.0.0",
+    "markdown-it": "^14.1.0",
+    "picocolors": "^1.1.1",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
-    "vite": "^7.0.0",
-    "vue-tsc": "^3.0.0"
+    "yaml": "^2.8.0",
+    "zod": "^3.25.76"
   }
 }

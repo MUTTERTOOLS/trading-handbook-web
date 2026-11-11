@@ -1,0 +1,41 @@
+# 网页版交互编排
+#
+# 这里只决定「组件插在哪」，不复制任何正文。
+# afterText 必须是该章某个顶层区块正文中的一段原句；构建时会校验，
+# 找不到就报错，避免正文改动后组件悄悄漂走。
+#
+# 已实现的组件：
+#   ThreeQuestions      三问归类器（B1-C01）
+#   ExpectancyExplorer  期望收益探索器（B1-C03 / B3-C08）
+#   RecoverCurve        回本曲线（B3-C01）
+#   PositionCalculator  仓位计算器（B3-C04）
+#   GapConstraint       最坏跳空约束（B3-C06）
+#   DrawdownStreak      连亏与回撤（B3-C10）
+
+B1-C01:
+  - id: ThreeQuestions
+    afterText: 按三问归类：玩法一是投资
+
+B1-C03:
+  - id: ExpectancyExplorer
+    afterText: 复算：盈亏比 = 4% ÷ 8% = 0.5
+
+B3-C01:
+  - id: RecoverCurve
+    afterText: 注：11.1%、42.9%、233% 为四舍五入值
+
+B3-C04:
+  - id: PositionCalculator
+    afterText: 在途总风险 3.99% ≤ 5%
+
+B3-C06:
+  - id: GapConstraint
+    afterText: 复算：5,000 × 20% = 1,000 元 = 1R
+
+B3-C08:
+  - id: ExpectancyExplorer
+    afterText: 读这条曲线有三个要点
+
+B3-C10:
+  - id: DrawdownStreak
+    afterText: 同样的连亏 7 笔

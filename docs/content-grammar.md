@@ -22,7 +22,8 @@ L3 渲染层   apps/web/.vitepress/         词汇表 → 组件 / 链接 / 徽�
 | `content/B{1..8}/B{n}-C{xx}.md` | 77 章正文（唯一内容源） |
 | `content/B{n}/{章id}_delivery.md` | 交付说明（编辑侧，不参与站点渲染，校验器要求存在） |
 | `content/series.yaml` | 丛书元数据：分册顺序、slug、期望章数 |
-| `content/index.md`、`content/[volume].md`（+ `.paths.ts`） | 站点首页与 8 个分册落地页 |
+| `content/index.md`、`content/[volume].md` | 站点首页与 8 个分册落地页（文稿侧） |
+| `content/[volume].paths.ts` | 动态路由生成器（**渲染侧架构例外**：框架要求位于 srcDir，归渲染侧） |
 | `content/editorial/**`、`content/dist/**` | 不参与站点，`srcExclude` 排除 |
 
 章路由（目标态）：`/b{册}/c{两位章号}`，如 `/b3/c04`。

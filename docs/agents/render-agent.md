@@ -6,7 +6,9 @@
 ## 角色边界
 
 **负责**：`apps/web/.vitepress/`（config / plugins / theme）、`apps/web/components/`、
-`apps/web/lib/`、`tools/content/` 中校验器与解析器的代码、CI 配置、跳转页输出。
+`apps/web/lib/`、`tools/content/` 中校验器与解析器的代码、CI 配置、跳转页输出，
+以及 **`content/[volume].paths.ts`（架构例外）**——VitePress 动态路由生成器必须位于
+srcDir，虽在内容目录但归渲染侧所有；只改路由/链接等架构事实，不碰任何章正文。
 
 **禁止**：改动 `content/` 下任何 `.md` 正文（内容层转换由文稿 Agent 负责）；改动
 `docs/content-grammar.md`（词汇语义变更走编排者仲裁）；在正文词汇之外自行发明

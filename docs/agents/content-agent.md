@@ -6,7 +6,8 @@
 ## 角色边界
 
 **只操作**：`content/B{1..8}/` 下的章正文 `.md`、`*_delivery.md`、`content/series.yaml`、
-`content/index.md`、`content/[volume].md`。
+`content/index.md`、`content/[volume].md`。注意：`content/[volume].paths.ts` 为
+**渲染侧架构例外**（路由生成器，虽在内容目录但不归文稿侧），不得改动。
 
 **禁止**：改动 `tools/`、`apps/`、`docs/`、`packages/`、根配置；引入词汇表外语法
 （HTML 标签、未注册容器类型、未知槽位 id 都不行）；改写已经 `status: final` 的章节

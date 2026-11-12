@@ -100,6 +100,128 @@ interface Issue {
   message: string;
 }
 
+/**
+ * 容器词汇（契约 §5）：类型白名单 + 槽位冻结清单。
+ * 与 apps/web/.vitepress/slots.ts、plugins/content.ts 三处同步，词汇表变更需同时更新。
+ */
+const CONTAINER_TYPES = ['interactive', 'figure-spec'] as const;
+const SLOT_IDS = [
+  'ThreeQuestions',
+  'ExpectancyExplorer',
+  'RecoverCurve',
+  'PositionCalculator',
+  'GapConstraint',
+  'DrawdownStreak',
+] as const;
+
+/** 可识别 HTML 标签形态；`<` 比较符 / 箭头等不会命中 */
+const HTML_TAG_RE = /<\/?[a-zA-Z][^>]*>/;
+
+interface ContainerIssue {
+  level: 'error';
+  message: string;
+}
+
+/**
+ * 容器词汇校验（契约 §7.9）：
+ * - `:::` 打开行的类型必须在白名单内；未知类型 / 缺类型报错
+ * - interactive 槽位 id 必须在冻结清单内，且容器体为空，同章同槽位至多一次
+ * - figure-spec 不带参数
+ * - 容器不嵌套、必须闭合（代码围栏内的 ::: 不参与解析）
+ */
+function checkContainers(body: string): ContainerIssue[] {
+  const issues: ContainerIssue[] = [];
+  const usedSlots = new Map<string, number>();
+  const openStack: Array<{ line: number; type: string }> = [];
+  let inCodeFence = false;
+
+  const lines = body.split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]!;
+    if (/^\s*(```|~~~)/.test(line)) {
+      inCodeFence = !inCodeFence;
+      continue;
+    }
+    if (inCodeFence) continue;
+    if (!/^:::+/.test(line)) continue;
+    const params = line.replace(/^:::+/, '').trim();
+
+    if (params && openStack.length > 0) {
+      issues.push({
+        level: 'error',
+        message: `容器嵌套（第 ${i + 1} 行）："::: ${params}" 未先闭合 "${openStack[openStack.length - 1]!.type}"`,
+      });
+      break;
+    }
+    if (params) {
+      const [type, ...args] = params.split(/\s+/);
+      if (!CONTAINER_TYPES.includes(type as (typeof CONTAINER_TYPES)[number])) {
+        issues.push({
+          level: 'error',
+          message: `未知容器类型（第 ${i + 1} 行）："${type}"，仅允许 ${CONTAINER_TYPES.join(' / ')}`,
+        });
+        break;
+      }
+      if (type === 'interactive') {
+        const slotId = args[0];
+        if (args.length !== 1 || !(SLOT_IDS as readonly string[]).includes(slotId!)) {
+          issues.push({
+            level: 'error',
+            message: `interactive 槽位 id 非法（第 ${i + 1} 行）："${params}"，冻结清单：${SLOT_IDS.join(' / ')}`,
+          });
+          break;
+        }
+        usedSlots.set(slotId!, (usedSlots.get(slotId!) ?? 0) + 1);
+        if (usedSlots.get(slotId!)! > 1) {
+          issues.push({
+            level: 'error',
+            message: `同一章同一槽位重复：interactive ${slotId}`,
+          });
+        }
+      } else if (args.length) {
+        issues.push({
+          level: 'error',
+          message: `figure-spec 不接受参数（第 ${i + 1} 行）："${params}"`,
+        });
+        break;
+      }
+      openStack.push({ line: i + 1, type: type! });
+      continue;
+    }
+
+    // `:::` 闭合行
+    if (openStack.length > 0) {
+      const open = openStack.pop()!;
+      if (open.type === 'interactive') {
+        // 容器体必须为空：打开行到闭合行之间不能有非空白内容
+        const bodyEnd = lines
+          .slice(open.line, i)
+          .join('\n')
+          .trim();
+        if (bodyEnd) {
+          issues.push({
+            level: 'error',
+            message: `interactive 容器体内必须为空（契约 §5.1）：${open.line + 1} 行起`,
+          });
+        }
+      }
+    } else {
+      issues.push({
+        level: 'error',
+        message: `容器闭合 :::（第 ${i + 1} 行）缺少打开行`,
+      });
+    }
+  }
+
+  if (openStack.length > 0) {
+    issues.push({
+      level: 'error',
+      message: `容器 "${openStack[0]!.type}" 未闭合（第 ${openStack[0]!.line} 行）`,
+    });
+  }
+  return issues;
+}
+
 function countNonSpace(source: string): number {
   return source.replace(/\s/g, '').length;
 }
@@ -209,6 +331,21 @@ function checkChapter(chapter: Chapter, source: string): Issue[] {
       chapterId: chapter.id,
       message: `正文含全角感叹号 ${bang} 个`,
     });
+  }
+
+  // 零 HTML（契约 §6.1 / §7.10）：可识别标签形态才报错，`<` 比较符不误报
+  const htmlTag = source.match(HTML_TAG_RE);
+  if (htmlTag) {
+    const line = source.slice(0, htmlTag.index ?? 0).split('\n').length;
+    issues.push({
+      level: 'error',
+      chapterId: chapter.id,
+      message: `正文含 HTML 标签（第 ${line} 行）：${htmlTag[0]}`,
+    });
+  }
+
+  for (const { message } of checkContainers(body)) {
+    issues.push({ level: 'error', chapterId: chapter.id, message });
   }
 
   issues.push(...checkForbidden(source, chapter.id));

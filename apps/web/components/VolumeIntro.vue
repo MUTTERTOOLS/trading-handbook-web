@@ -28,7 +28,7 @@ const CN_NUM: Record<string, string> = {
   B5: '五', B6: '六', B7: '七', B8: '八',
 };
 const cnNumber = computed(() => CN_NUM[volume.value.id] ?? volume.value.id);
-const firstChapterHref = computed(() => `/${volume.value.slug}/${volume.value.id.toLowerCase()}-c01.html`);
+const firstChapterHref = computed(() => `/${volume.value.slug}/c01.html`);
 </script>
 
 <template>

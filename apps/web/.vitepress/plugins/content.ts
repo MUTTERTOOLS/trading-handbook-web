@@ -1,11 +1,15 @@
 /**
- * 手册内容渲染插件：把原 parse.ts 的章节语义移植成 markdown-it 转换。
+ * 手册内容渲染插件：把内容语法契约（docs/content-grammar.md）转成呈现层标记。
  *
- * 输入约定（由 content:check 保证）：
+ * 输入约定（由 content:check 保证，插件侧再兜底校验，出错即构建失败）：
  * - 章节固定小节 `## 开场问题` / `一句话结论` / `本章学习目标` / `正文` /
  *   `常见误区` / `本章小结` / `自测题` / `速查卡*` / `延伸与链接` / `⚠️ 风险提示`
- * - `〔B?-C??〕` 交叉引用、`【待核验】` 徽标、`绘图说明` 段落
+ * - `〔B?-C??〕` 交叉引用、`【待核验】` 徽标
+ * - `::: interactive <SlotId>` 空容器（槽位清单见 ../slots.ts，未知类型/槽位抛错）
+ * - `::: figure-spec` 容器（可折叠制图说明，体内可含列表/引用块）
  * - 误区组以 `**误区…**` 段落开头，自测题组以 `**题 N.**` 段落开头
+ * - 站点框架页（index.md / [volume].md）含 `<SeriesHome />` / `<VolumeIntro />`：
+ *   `html:false` 下按普通段落进入 token 流，这里转回 html 标签
  *
  * 输出：真实 link token（交叉引用可被静态托管直接访问）+ 少量包裹性
  * html_block，样式全部由 theme/custom.css 按 class / data-section 提供。
@@ -14,13 +18,43 @@
  * 与 VitePress 内置 markdown-it 两套类型，直接引用会产生双源冲突。
  * 这里用最小结构类型描述用到的 token / state 能力。
  */
+import { SLOT_IDS } from '../slots';
+
 interface MdToken {
   type: string;
   tag: string;
   content: string;
   children: MdToken[] | null;
   level: number;
+  info: string;
   attrSet(name: string, value: string): void;
+}
+
+interface MdBlockTokenizer {
+  tokenize(state: MdBlockState, startLine: number, endLine: number): void;
+}
+
+interface MdBlockRuler {
+  ruler: {
+    before(
+      beforeName: string,
+      name: string,
+      rule: (state: MdBlockState, startLine: number, endLine: number, silent: boolean) => boolean,
+      alt?: { alt: string[] }
+    ): void;
+  };
+}
+
+interface MdBlockState extends MdState {
+  src: string;
+  bMarks: number[];
+  tShift: number[];
+  eMarks: number[];
+  sCount: number[];
+  blkIndent: number;
+  lineMax: number;
+  line: number;
+  md: { block: MdBlockTokenizer };
 }
 
 interface MdState {
@@ -36,6 +70,7 @@ interface MdLike {
       push(name: string, rule: (state: MdState) => void): void;
     };
   };
+  block: MdBlockRuler;
 }
 
 export interface ContentPlugin {
@@ -49,6 +84,14 @@ const MISCONCEPTION_RE = /^\*\*误区/;
 const NOTE_RE = /^\*?\*?(注|表注)[：:]/;
 const CHEAT_TITLE_RE = /^\*\*[^*]+\*\*$/;
 const FORMULA_TEST_RE = /[=＝]/;
+const FRAME_COMPONENT_RE = /^<(SeriesHome|VolumeIntro)\s*\/>$/;
+/** 容器类型白名单（契约 §5）；未知类型抛错，不得静默透传 */
+const CONTAINER_TYPES = new Set(['interactive', 'figure-spec']);
+const COLON = 0x3a; // ':'
+
+function envFile(state: MdState): string {
+  return ((state.env?.path as string | undefined) ?? (state.env?.relativePath as string | undefined) ?? '未知文件').replace(/\\/g, '/');
+}
 
 function htmlToken(state: MdState, content: string): MdToken {
   const token = new state.Token('html_block', '', 0);
@@ -60,6 +103,134 @@ function textToken(state: MdState, content: string): MdToken {
   const token = new state.Token('text', '', 0);
   token.content = content;
   return token;
+}
+
+/* ------------------------------------------------------------------ *
+ * 块级容器规则：`::: <type> [args]` … `:::`
+ * 与 markdown-it-container 同构：先把容器边界切成一对 token，
+ * 体内交给常规 block 解析；lineMax 收口防止懒续行越过容器边界。
+ * 类型与参数的合法性校验统一放在 transformContainers（可拿到文件名报错）。
+ * ------------------------------------------------------------------ */
+function containerRule(state: MdBlockState, startLine: number, endLine: number, silent: boolean): boolean {
+  // 缩进超过 3 空格按代码块处理
+  if (state.sCount[startLine] - state.blkIndent >= 4) return false;
+  const startPos = state.bMarks[startLine] + state.tShift[startLine];
+  const maxPos = state.eMarks[startLine];
+  if (startPos + 3 > maxPos) return false;
+  let pos = startPos;
+  while (pos < maxPos && state.src.charCodeAt(pos) === COLON) pos++;
+  const markerLen = pos - startPos;
+  if (markerLen < 3) return false;
+  const params = state.src.slice(pos, maxPos).trim();
+  // 裸 `:::` 只允许作闭合标记；作打开行时（如缺类型）交由 transformContainers 报错
+  const isOpenWithParams = params.length > 0;
+  if (!isOpenWithParams) return false;
+  if (silent) return true;
+
+  // 找闭合行：行首连续不短于打开标记的冒号，且其后只有空白
+  let closeLine = startLine;
+  let autoClosed = false;
+  for (;;) {
+    closeLine++;
+    if (closeLine >= endLine) break;
+    const lineStart = state.bMarks[closeLine] + state.tShift[closeLine];
+    const lineEnd = state.eMarks[closeLine];
+    // 负缩进的非空行终止容器（防止吞掉外层列表/引用的后续内容）
+    if (lineStart < lineEnd && state.sCount[closeLine] < state.blkIndent) break;
+    let p = lineStart;
+    while (p < lineEnd && state.src.charCodeAt(p) === COLON) p++;
+    if (p - lineStart >= markerLen && !state.src.slice(p, lineEnd).trim()) {
+      autoClosed = true;
+      break;
+    }
+  }
+
+  const oldLineMax = state.lineMax;
+  state.lineMax = closeLine;
+  const open = new state.Token('thb_container_open', 'div', 1);
+  open.info = params;
+  state.tokens.push(open);
+  state.md.block.tokenize(state, startLine + 1, closeLine);
+  const close = new state.Token('thb_container_close', 'div', -1);
+  state.tokens.push(close);
+  state.lineMax = oldLineMax;
+  state.line = autoClosed ? closeLine + 1 : endLine;
+  return true;
+}
+
+/** 容器 token → 呈现标记；未知类型 / 未知槽位 / 非法形态抛错（构建期失败） */
+function transformContainers(state: MdState, tokens: MdToken[]): MdToken[] {
+  const result: MdToken[] = [];
+  const opens: Array<{ info: string; inner: MdToken[] }> = [];
+  for (const token of tokens) {
+    if (token.type === 'thb_container_open') {
+      opens.push({ info: token.info, inner: [] });
+      continue;
+    }
+    if (token.type === 'thb_container_close') {
+      const open = opens.pop();
+      if (!open) {
+        throw new Error(`${envFile(state)}：容器闭合 ::: 缺少打开行`);
+      }
+      const parts = open.info.trim().split(/\s+/);
+      const [type, ...args] = parts;
+      if (!CONTAINER_TYPES.has(type!)) {
+        throw new Error(
+          `${envFile(state)}：未知容器类型 "${type}"（仅允许 interactive / figure-spec）`
+        );
+      }
+      if (type === 'interactive') {
+        const slotId = args[0];
+        if (args.length !== 1 || !(SLOT_IDS as readonly string[]).includes(slotId!)) {
+          throw new Error(
+            `${envFile(state)}：interactive 槽位 id 非法 "${open.info.trim()}"（冻结清单：${SLOT_IDS.join(' / ')}）`
+          );
+        }
+        if (open.inner.length) {
+          throw new Error(`${envFile(state)}：interactive 容器体内必须为空（契约 §5.1）`);
+        }
+        // 组件标签由槽位注册表（theme/index.ts）按同一 id 注册后解析
+        result.push(htmlToken(state, `<${slotId} />`));
+        continue;
+      }
+      // figure-spec：可折叠制图说明，体内正常 markdown 渲染
+      if (args.length) {
+        throw new Error(`${envFile(state)}：figure-spec 容器不接受参数`);
+      }
+      result.push(htmlToken(state, `<details class="figure-note"><summary>${FIGURE_SUMMARY}</summary><div>`));
+      result.push(...open.inner);
+      result.push(htmlToken(state, '</div></details>'));
+      continue;
+    }
+    if (opens.length) {
+      opens[opens.length - 1]!.inner.push(token);
+    } else {
+      result.push(token);
+    }
+  }
+  if (opens.length) {
+    throw new Error(`${envFile(state)}：容器 "${opens[0]!.info}" 未闭合`);
+  }
+  return result;
+}
+
+/** 站点框架页组件：`html:false` 下是普通文本段落，这里转回组件标签 */
+function transformFrameComponents(state: MdState, tokens: MdToken[]): MdToken[] {
+  const result: MdToken[] = [];
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i]!;
+    if (isTopParagraph(tokens, i)) {
+      const text = paragraphText(tokens, i);
+      const match = text.match(FRAME_COMPONENT_RE);
+      if (match) {
+        result.push(htmlToken(state, `<${match[1]} />`));
+        i += 2;
+        continue;
+      }
+    }
+    result.push(token);
+  }
+  return result;
 }
 
 /** 跳过 code_inline，防止代码示例里的示例语法被误转换 */
@@ -83,10 +254,11 @@ function transformInline(state: MdState, children: MdToken[]): MdToken[] {
         result.push(textToken(state, content.slice(last, match.index)));
       }
       if (match[1] && match[2]) {
+        // 契约目标路由：/b{n}/c{nn}.html（rewrite 后真实存在，死链检查通过）
         const volumeSlug = match[1].toLowerCase();
-        const chapterId = `${match[1]}-${match[2]}`.toLowerCase();
+        const chapterNo = match[2].slice(1).toLowerCase();
         const open = new state.Token('link_open', 'a', 1);
-        open.attrSet('href', `/${volumeSlug}/${chapterId}.html`);
+        open.attrSet('href', `/${volumeSlug}/c${chapterNo}.html`);
         open.attrSet('class', 'xref');
         result.push(open, textToken(state, match[0]), new state.Token('link_close', 'a', -1));
       } else {
@@ -125,26 +297,6 @@ function findClose(tokens: MdToken[], start: number, closeType: string): number 
     }
   }
   throw new Error(`未闭合的 token：${closeType}`);
-}
-
-/** 绘图说明段落 → 可折叠 details */
-function transformFigures(state: MdState, tokens: MdToken[]): MdToken[] {
-  const result: MdToken[] = [];
-  for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i]!;
-    if (isTopParagraph(tokens, i)) {
-      const text = paragraphText(tokens, i).replace(/^[*_\s]+/, '');
-      if (/^绘图说明/.test(text)) {
-        result.push(htmlToken(state, `<details class="figure-note"><summary>${FIGURE_SUMMARY}</summary>`));
-        result.push(token, tokens[i + 1]!, tokens[i + 2]!);
-        result.push(htmlToken(state, '</details>'));
-        i += 2;
-        continue;
-      }
-    }
-    result.push(token);
-  }
-  return result;
 }
 
 /** 速查卡内纯加粗段落 → 卡片小标题；`注：` 段落 → 表注 */
@@ -269,8 +421,11 @@ function escapeHtml(text: string): string {
 }
 
 export const contentPlugin: ContentPlugin = (md) => {
+  md.block.ruler.before('fence', 'thb_container', containerRule, {
+    alt: ['paragraph', 'reference', 'blockquote', 'list'],
+  });
   md.core.ruler.push('thb_handbook_content', (state) => {
-    const tokens = state.tokens;
+    let tokens = state.tokens;
 
     // 1. 行内转换：交叉引用 → 链接；【待核验】→ 徽标
     for (const token of tokens) {
@@ -279,14 +434,18 @@ export const contentPlugin: ContentPlugin = (md) => {
       }
     }
 
-    // 2. 全局块级 class：h3/h4 小节标题
+    // 2. 容器与站点框架组件 → 呈现标记（未知容器类型 / 槽位在此抛错）
+    tokens = transformContainers(state, tokens);
+    tokens = transformFrameComponents(state, tokens);
+
+    // 3. 全局块级 class：h3/h4 小节标题
     for (const token of tokens) {
       if (token.type !== 'heading_open') continue;
       if (token.tag === 'h3') token.attrSet('class', 'sub-title');
       if (token.tag === 'h4') token.attrSet('class', 'sub-sub-title');
     }
 
-    // 3. 切分 h2 小节
+    // 4. 切分 h2 小节
     const sections: Section[] = [];
     let current: Section | null = null;
     for (let i = 0; i < tokens.length; i++) {
@@ -305,7 +464,7 @@ export const contentPlugin: ContentPlugin = (md) => {
 
     const result: MdToken[] = [];
 
-    // 4. 章节页头（frontmatter 驱动，不进 outline）
+    // 5. 章节页头（frontmatter 驱动，不进 outline）
     const fm = state.env?.frontmatter as Record<string, unknown> | undefined;
     const envPath = ((state.env?.path as string | undefined) ?? '').replace(/\\/g, '/');
     const chapterId = typeof fm?.chapter_id === 'string' ? fm.chapter_id : '';
@@ -325,10 +484,9 @@ export const contentPlugin: ContentPlugin = (md) => {
       );
     }
 
-    // 5. 逐节应用语义转换并包上 data-section 容器
+    // 6. 逐节应用语义转换并包上 data-section 容器
     for (const section of sections) {
       let body = tokens.slice(section.bodyFrom, section.to);
-      body = transformFigures(state, body);
       classifyParagraphs(body);
       if (section.title === '自测题') body = transformQuizzes(state, body);
       if (section.title === '常见误区') body = transformMisconceptions(md, state, body);
@@ -339,7 +497,7 @@ export const contentPlugin: ContentPlugin = (md) => {
       result.push(htmlToken(state, '</div>'));
     }
 
-    // 前导内容（不应有，但保底保留）
+    // 前导内容（章节应有 frontmatter；框架页无 h2 小节，全部原样保留）
     const firstSectionFrom = sections[0]?.headingFrom ?? tokens.length;
     if (firstSectionFrom > 0) {
       result.unshift(...tokens.slice(0, firstSectionFrom));

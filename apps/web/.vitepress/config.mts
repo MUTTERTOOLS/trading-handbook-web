@@ -110,11 +110,13 @@ function cjkTokenize(text: string): string[] {
 }
 
 // rewrites 键与目标值都以 .md 结尾：键匹配 srcDir 下真实文件，
-// 目标值作为 SSR 模块 id（保持 .md），最终产物由 VP 派生为 .html
+// 目标值作为 SSR 模块 id（保持 .md），最终产物由 VP 派生为 .html。
+// 契约目标路由：/b{册}/c{两位章号}
 const rewrites: Record<string, string> = {};
 for (const volume of series.volumes) {
-  for (const chapterId of chapterIds(volume)) {
-    rewrites[`${volume.id}/${chapterId}.md`] = `${volume.slug}/${chapterId.toLowerCase()}.md`;
+  for (const [index, chapterId] of chapterIds(volume).entries()) {
+    const chapterNo = String(index + 1).padStart(2, '0');
+    rewrites[`${volume.id}/${chapterId}.md`] = `${volume.slug}/c${chapterNo}.md`;
   }
 }
 
@@ -126,7 +128,7 @@ const sidebar: Record<string, DefaultTheme.SidebarItem[]> = Object.fromEntries(
         text: `${volume.id} ${volume.title}`,
         items: chapterIds(volume).map((chapterId, index) => ({
           text: `§${index + 1} ${chapterTitle(volume, chapterId)}`,
-          link: `/${volume.slug}/${chapterId.toLowerCase()}.html`,
+          link: `/${volume.slug}/c${String(index + 1).padStart(2, '0')}.html`,
         })),
       },
     ],
@@ -141,10 +143,14 @@ export default defineConfig({
   srcDir: CONTENT_DIR,
   srcExclude: ['editorial/**', '**/*_delivery.md', 'dist/**'],
   rewrites,
-  // 插件生成的绝对章节链接（/b1/b1-c01.html）在产物里真实存在，但 VP 的
-  // 死链检查按源路径比对 rewrite 目标会误报；交叉引用的真实性由
-  // content:check 在源码层校验（checkCrossReferences），这里按路径豁免。
-  ignoreDeadLinks: [(url: string) => /^\/b\d\/b\d-c\d+/.test(url.toLowerCase())],
+  // 契约 §6.1：md 源零 HTML。正文词汇全部经插件转成呈现标记，
+  // 开发者误写标签时 html:false 会原样输出文本，便于构建期发现。
+  markdown: {
+    html: false,
+    config(md) {
+      md.use(contentPlugin);
+    },
+  },
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
@@ -157,11 +163,6 @@ export default defineConfig({
     ],
     ['meta', { name: 'theme-color', content: '#0B0E14' }],
   ],
-  markdown: {
-    config(md) {
-      md.use(contentPlugin);
-    },
-  },
   themeConfig: {
     siteTitle: '新手交易系统化入门丛书',
     nav: [
@@ -204,7 +205,7 @@ export default defineConfig({
     },
   } as DefaultTheme.Config,
   transformPageData(pageData) {
-    // rewrite 后 relativePath 是小写目标路径（b1/b1-c01.md），用不区分大小写匹配
+    // rewrite 后 relativePath 是小写目标路径（b1/c01.md），用不区分大小写匹配
     const relativePath = pageData.relativePath ?? '';
     const volumeMatch = relativePath.match(/^\/?b([1-8])\//i);
     const params = pageData.params as { volume?: string } | undefined;

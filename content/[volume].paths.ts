@@ -33,7 +33,7 @@ function chapterList(volume: SeriesVolumeYaml): string {
     const source = fs.readFileSync(path.join(CONTENT_DIR, volume.id, `${chapterId}.md`), 'utf8');
     const frontmatter = source.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '';
     const title = frontmatter.match(/^title:\s*(.+)$/m)?.[1]?.trim() ?? chapterId;
-    items.push(`- [§${i} ${title}](/${volume.slug}/${chapterId.toLowerCase()}.html)`);
+    items.push(`- [§${i} ${title}](/${volume.slug}/c${String(i).padStart(2, '0')}.html)`);
   }
   return `本册共 ${volume.expectedChapters} 章，按顺序阅读：\n\n${items.join('\n')}\n`;
 }

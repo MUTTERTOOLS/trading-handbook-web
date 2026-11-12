@@ -4,7 +4,7 @@
 **VitePress** 的阅读站，直接渲染 Markdown，不再维护自研渲染器。
 
 - 8 册 / 77 章 / 约 48.7 万字（可读正文）
-- 按章路由：`/b1/b1-c01.html`；每册一个落地页 `/b1.html` ~ `/b8.html`
+- 按章路由：`/b1/c01.html`（`/b{册}/c{两位章号}`）；每册一个落地页 `/b1.html` ~ `/b8.html`
 - 旧地址 `b1-map.html`、`risk-math.html` 保留为跳转页
 
 ## 环境要求
@@ -42,10 +42,11 @@ pnpm content:check   # 只跑内容校验
 │   └── dist/                   # 编辑侧产物，勿手改、不入库
 ├── apps/web/
 │   ├── .vitepress/
-│   │   ├── config.mts          # srcDir / rewrites / 侧栏 / 搜索 / 每册主题色注入
-│   │   ├── plugins/content.ts  # markdown-it 插件：小节卡片、交叉引用、自测题等
-│   │   └── theme/              # 扩展默认主题 + 全站深色样式（custom.css）
-│   ├── components/             # 交互组件（Vue SFC，可直接写在正文里）
+│   │   ├── config.mts          # srcDir / rewrites / 侧栏 / 搜索 / 每册主题色注入 / html:false
+│   │   ├── slots.ts            # 交互槽位冻结清单 + 组件懒加载器（编译期校验缺漏）
+│   │   ├── plugins/content.ts  # markdown-it 插件：小节卡片、容器、交叉引用、自测题等
+│   │   └── theme/              # 默认主题扩展 + 槽位注册表 + 全站深色样式（custom.css）
+│   ├── components/             # 交互组件（Vue SFC，经槽位注册表由 ::: interactive 槽位渲染）
 │   └── lib/                    # echarts 按需封装、图表主题
 ├── packages/content-model/     # zod schema 与共享 TypeScript 类型
 ├── tools/content/              # 内容解析与校验（check.ts 是编辑门禁）
@@ -58,13 +59,15 @@ pnpm content:check   # 只跑内容校验
 ```
 content/series.yaml + content/Bn/*.md
         │
-        ├─ tools/content/check.ts   编辑门禁：结构、字数、禁用词、交叉引用
+        ├─ tools/content/check.ts   编辑门禁：结构、字数、禁用词、交叉引用、
+        │                            容器白名单、槽位 id、零 HTML
         │
         └─ VitePress（apps/web）    直接渲染 Markdown
-                ├─ plugins/content.ts   ## 小节 → 卡片、〔B?-C??〕→ 链接、
-                │                        【待核验】→ 徽标、绘图说明 → 折叠、
-                │                        误区 → callout、自测题 → details
-                └─ config.mts           侧栏/导航（读 series.yaml）、
+                ├─ plugins/content.ts   ## 小节 → 卡片、〔B?-C??〕→ /b{n}/c{nn} 链接、
+                │                        【待核验】→ 徽标、::: interactive → 组件、
+                │                        ::: figure-spec → 折叠、误区 → callout、
+                │                        自测题 → details
+                └─ config.mts           srcDir / rewrites / 侧栏 / 导航（读 series.yaml）、
                                          每册 accent 主题色按页注入、
                                          本地搜索（CJK bigram 分词）
 ```
@@ -92,11 +95,13 @@ status: final
 `开场问题`、`一句话结论`、`本章学习目标`、`正文`、`常见误区`、`本章小结`、
 `自测题`、`速查卡`（允许带括号副标题）、`延伸与链接`、`⚠️ 风险提示`。
 
-渲染插件处理这些约定：
+正文词汇为封闭清单（完整契约见 `docs/content-grammar.md`），渲染插件处理这些约定：
 
-- `〔B3-C04〕` 自动变成指向对应章节页的链接
+- `〔B3-C04〕` 自动变成指向 `/b3/c04.html` 的链接
 - `【待核验】` 自动变成黄色标记
-- 以 `绘图说明` 开头的段落变成可折叠的制作提示
+- `::: interactive <SlotId>` 空容器渲染为交互组件（槽位 id 必须在冻结清单内，同章同槽位至多一次）
+- `::: figure-spec` 容器渲染为可折叠的制作提示（体内可含列表、引用块）
+- md 源不得出现任何 HTML 标签（配置显式 `html: false` + 校验器兜底）
 - 小节标题进入右侧 outline，供页内目录与锚点跳转
 
 `content/editorial/` 下的文件不参与构建，用于保存编辑规范、历史汇编与验收资料。
@@ -114,35 +119,38 @@ status: final
 - `status` 必须为 `final`，`new_terms` 不超过 8 个
 - 每章必须有对应的 `*_delivery.md`
 - 正文字数下限 2400；超过 8000 只警告，不阻塞
-- 正文不得出现全角感叹号
+- 正文不得出现全角感叹号，不得出现任何 HTML 标签
 - 禁用词只有出现在驳斥、引用、防骗等语境中才放行
 - 交叉引用必须指向真实存在的章节
+- 容器类型仅允许 `interactive` / `figure-spec`；`interactive` 槽位 id 必须在
+  冻结清单（6 个）内，同一章同一槽位至多一次
 
 ## 交互组件
 
-组件直接写在正文里，跟随内容版本管理。现有组件：
+正文通过 `::: interactive <SlotId>` 容器声明组件槽位（容器体为空），组件实现与
+槽位 id 的绑定由槽位注册表（`apps/web/.vitepress/theme/index.ts`，配合
+`apps/web/.vitepress/slots.ts` 的冻结清单与懒加载器）决定。现有槽位：
 
-| 组件 | 位置 |
-|---|---|
-| `<ThreeQuestions />` 三问归类器 | B1-C01 |
-| `<ExpectancyExplorer />` 期望值探索器 | B1-C03、B3-C08 |
-| `<RecoverCurve />` 回本曲线 | B3-C01 |
-| `<PositionCalculator />` 仓位计算器 | B3-C04 |
-| `<GapConstraint />` 最坏跳空约束 | B3-C06 |
-| `<DrawdownStreak />` 连亏与回撤 | B3-C10 |
+| 槽位 id | 组件 | 落位 |
+|---|---|---|
+| `ThreeQuestions` | 三问归类器 | B1-C01 |
+| `ExpectancyExplorer` | 期望值探索器 | B1-C03、B3-C08 |
+| `RecoverCurve` | 回本曲线 | B3-C01 |
+| `PositionCalculator` | 仓位计算器 | B3-C04 |
+| `GapConstraint` | 最坏跳空约束 | B3-C06 |
+| `DrawdownStreak` | 连亏与回撤 | B3-C10 |
 
-新增组件只需两步：
+组件按需异步加载（`defineAsyncComponent` 分 chunk），未用到交互组件的页面不下载
+echarts。未知槽位 id 在校验器与渲染插件两侧都会报错。
 
-1. `apps/web/components/` 新建 Vue SFC
-2. 在 `apps/web/.vitepress/theme/index.ts` 注册（重组件用 `defineAsyncComponent`）
-
-然后在任意章节正文里写 `<组件名 />` 并运行 `pnpm content:check`。
+变更槽位清单须四处同步：契约文档、校验器、插件、槽位注册表（见
+`docs/content-grammar.md` §9 变更流程）。
 
 ## 网页结构
 
 - `content/index.md`：丛书总览，数据由 config.mts 读 series.yaml 注入主题
 - `content/[volume].paths.ts`：构建期生成 8 个分册落地页
-- 章节页按章拆分（`/b3/b3-c04.html`），侧栏为分册章节树，右侧 outline 为本页小节
+- 章节页按章拆分（`/b3/c04.html`），侧栏为分册章节树，右侧 outline 为本页小节
 - 每册主题色由 `transformPageData` 向页面 head 注入 accent 变量覆盖
 - 本地搜索开启 CJK 双字分词（`config.mts` 中的 `cjkTokenize`）
 - VitePress `base` 为默认 `/`；如需部署到子路径，改 `base` 并同步跳转页里的链接

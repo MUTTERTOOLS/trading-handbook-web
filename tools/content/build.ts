@@ -9,7 +9,6 @@ import {
   parseAll,
   type ParsedSeries,
 } from './parse.js';
-import { loadEdition } from './edition.js';
 import type {
   Chapter,
   Series,
@@ -48,13 +47,6 @@ function writeJson(file: string, value: unknown): void {
 function cleanDist(): void {
   fs.rmSync(DIST_DIR, { recursive: true, force: true });
   ensureDir(DIST_DIR);
-}
-
-function blockText(chapter: Chapter): string {
-  return chapter.blocks
-    .map((block) => block.text ?? '')
-    .filter(Boolean)
-    .join('\n');
 }
 
 function verifyItems(root: string, chapter: Chapter): Array<{ context: string }> {
@@ -152,16 +144,8 @@ function main(): void {
 
   const parsed: ParsedSeries = parseAll(ROOT);
   const seriesData = buildSeriesData(parsed.series, parsed.volumes, parsed.chapters);
-  const edition = loadEdition(ROOT, parsed.chapters);
-
-  writeJson(path.join(DIST_DIR, 'series.json'), seriesData);
-  writeJson(path.join(DIST_DIR, 'edition.json'), edition);
 
   for (const volume of parsed.volumes) {
-    writeJson(path.join(DIST_DIR, 'volumes', `${volume.volume.id}.json`), volume);
-    for (const chapter of volume.chapters) {
-      writeJson(path.join(DIST_DIR, 'chapters', `${chapter.id}.json`), chapter);
-    }
     writeText(
       path.join(DIST_DIR, 'compiled', `${volume.volume.id}.md`),
       compiledVolume(ROOT, parsed.series, volume)
@@ -172,15 +156,6 @@ function main(): void {
     path.join(DIST_DIR, '00_总索引.md'),
     compiledIndex(seriesData, parsed.volumes)
   );
-
-  const search = parsed.chapters.map((chapter) => ({
-    chapterId: chapter.id,
-    volumeId: chapter.volumeId,
-    title: chapter.title,
-    headings: chapter.toc.map((item) => item.label),
-    text: blockText(chapter),
-  }));
-  writeJson(path.join(DIST_DIR, 'search.json'), search);
 
   const verify = parsed.chapters.map((chapter) => ({
     chapterId: chapter.id,
@@ -195,7 +170,6 @@ function main(): void {
     generatedAt: new Date().toISOString(),
     durationMs: Math.round(performance.now() - started),
     totals: seriesData.totals,
-    widgets: Object.values(edition).reduce((sum, placements) => sum + placements.length, 0),
     volumes: parsed.volumes.map((volume) => ({
       id: volume.volume.id,
       title: volume.volume.title,
@@ -207,7 +181,7 @@ function main(): void {
   const secs = ((performance.now() - started) / 1000).toFixed(2);
   console.log(pc.bold(pc.green('content:build 完成')));
   console.log(
-    `  ${pc.cyan('册')} ${seriesData.totals.volumes}  ${pc.cyan('章')} ${seriesData.totals.chapters}  ${pc.cyan('字数')} ${(seriesData.totals.chars / 10000).toFixed(1)} 万  ${pc.cyan('绘图说明')} ${seriesData.totals.figures}  ${pc.cyan('待核验')} ${seriesData.totals.verify}  ${pc.cyan('交互')} ${report.widgets}`
+    `  ${pc.cyan('册')} ${seriesData.totals.volumes}  ${pc.cyan('章')} ${seriesData.totals.chapters}  ${pc.cyan('字数')} ${(seriesData.totals.chars / 10000).toFixed(1)} 万  ${pc.cyan('绘图说明')} ${seriesData.totals.figures}  ${pc.cyan('待核验')} ${seriesData.totals.verify}`
   );
   console.log(`  ${pc.dim(`输出：content/dist（${secs}s）`)}`);
 }

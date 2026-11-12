@@ -8,7 +8,6 @@ import {
   extractFrontmatter,
   type ParsedSeries,
 } from './parse.js';
-import { readEdition, validateEdition } from './edition.js';
 import type { Chapter } from '@trading-handbook/content-model';
 
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
@@ -289,21 +288,11 @@ function main(): void {
 
   issues.push(...checkCrossReferences(parsed.chapters));
 
-  const edition = readEdition(ROOT);
-  for (const issue of validateEdition(edition, parsed.chapters)) {
-    issues.push({
-      level: 'error',
-      chapterId: issue.chapterId,
-      message: `${issue.widgetId}：${issue.message}`,
-    });
-  }
-
   const errors = issues.filter((issue) => issue.level === 'error');
   const warnings = issues.filter((issue) => issue.level === 'warning');
 
   console.log(
     `  ${pc.cyan('册')} ${parsed.volumes.length}  ${pc.cyan('章')} ${parsed.chapters.length}  ` +
-      `${pc.cyan('交互')} ${Object.values(edition).reduce((sum, list) => sum + list.length, 0)}  ` +
       `${pc.cyan('待核验')} ${parsed.chapters.reduce((sum, chapter) => sum + chapter.stats.verify, 0)}`
   );
 

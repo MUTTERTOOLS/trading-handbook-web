@@ -26,7 +26,7 @@ const md = new MarkdownIt({
   typographer: false,
 });
 
-const FRONTMATTER_RE = /^```yaml\r?\n---\r?\n([\s\S]*?)\r?\n---\r?\n```\r?\n?/;
+const FRONTMATTER_RE = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/;
 
 interface ParseContext {
   chapterId: string;

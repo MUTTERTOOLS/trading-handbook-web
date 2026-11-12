@@ -7,8 +7,8 @@
     "content:build": "tsx tools/content/build.ts",
     "content:check": "tsx tools/content/check.ts",
     "typecheck:tools": "tsc -p tools/tsconfig.json --noEmit",
-    "dev": "pnpm content:build && pnpm --filter @trading-handbook/web dev",
-    "build": "pnpm content:build && pnpm --filter @trading-handbook/web build",
+    "dev": "pnpm --filter @trading-handbook/web dev",
+    "build": "pnpm --filter @trading-handbook/web build",
     "check": "pnpm content:check && pnpm typecheck:tools && pnpm --filter @trading-handbook/web check",
     "preview": "pnpm --filter @trading-handbook/web preview"
   },
@@ -19,6 +19,7 @@
     "picocolors": "^1.1.1",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
+    "vue": "^3.5.13",
     "yaml": "^2.8.0",
     "zod": "^3.25.76"
   }

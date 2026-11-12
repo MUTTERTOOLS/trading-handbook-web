@@ -5,3 +5,5 @@ content/dist/
 .DS_Store
 .workbuddy/
 apps/web/node_modules/
+apps/web/.vitepress/cache/
+.zcode/

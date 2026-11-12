@@ -136,14 +136,3 @@ export interface VolumeContent {
   chapters: Chapter[];
   stats: VolumeStats;
 }
-
-export const WidgetPlacementSchema = z.object({
-  id: z.string().min(1),
-  /** 插入到包含该文本的顶层 block 之后；用正文原句，避免依赖手工维护的序号 */
-  afterText: z.string().min(1),
-  params: z.record(z.unknown()).optional(),
-});
-export type WidgetPlacement = z.infer<typeof WidgetPlacementSchema>;
-
-export const EditionSchema = z.record(z.string(), z.array(WidgetPlacementSchema));
-export type Edition = z.infer<typeof EditionSchema>;

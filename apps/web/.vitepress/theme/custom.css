@@ -550,6 +550,13 @@ a.map-node:hover { opacity: 0.85; }
   font-size: 12.5px;
 }
 .figure-note > div { padding: 0 16px 14px; line-height: 1.9; }
+/* 成品图注入（契约 §5.2）：无成品时不产生 img，此样式不影响现状 */
+.figure-note img {
+  display: block;
+  max-width: 100%;
+  margin: 12px 0 0;
+  border-radius: var(--radius-sm);
+}
 
 /* === 待核验 / 交叉引用 === */
 .verify-badge {

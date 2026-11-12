@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 仓库要求 Node 20.19+ / 22.12+（见 README），取活跃 LTS 22
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # pnpm 版本由根 package.json 的 packageManager（pnpm@12）钉住
+      - name: Enable corepack
+        run: corepack enable pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 阶段 3 门禁：与本地 pnpm check 组成一致（content:check + tools tsc + web vue-tsc）
+      - name: Content check
+        run: pnpm content:check
+
+      - name: Typecheck tools
+        run: pnpm typecheck:tools
+
+      - name: Typecheck web
+        run: pnpm --filter @trading-handbook/web check
+
+      - name: Build
+        run: pnpm build

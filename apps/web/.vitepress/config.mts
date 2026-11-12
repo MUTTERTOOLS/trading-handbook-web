@@ -23,6 +23,16 @@ function findContentDir(): string {
 
 const CONTENT_DIR = findContentDir();
 
+/** 仓库根（CONTENT_DIR = <root>/content） */
+const PROJECT_ROOT = path.dirname(CONTENT_DIR);
+/**
+ * 站点静态资源目录：成品图放 apps/web/public/figures，按契约 §5.2 以
+ * /figures/<章id>-fig<n>.svg 访问。Vite 的 vite root 是 srcDir（content/），
+ * 默认 public 目录会落到 content/public，因此这里显式指到 apps/web/public。
+ */
+const PUBLIC_DIR = path.join(PROJECT_ROOT, 'apps', 'web', 'public');
+const FIGURES_DIR = path.join(PUBLIC_DIR, 'figures');
+
 interface SeriesVolumeYaml {
   id: string;
   slug: string;
@@ -148,8 +158,12 @@ export default defineConfig({
   markdown: {
     html: false,
     config(md) {
-      md.use(contentPlugin);
+      md.use(contentPlugin, { figuresDir: FIGURES_DIR });
     },
+  },
+  // 成品图静态目录（VitePress 1.6.4 无顶层 publicDir 选项，经 vite.publicDir 覆盖）
+  vite: {
+    publicDir: PUBLIC_DIR,
   },
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],

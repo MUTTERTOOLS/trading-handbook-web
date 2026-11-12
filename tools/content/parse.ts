@@ -134,7 +134,9 @@ function transformHtml(html: string): string {
         .replace(
           /〔(B[1-8])-(C\d{2})〕/g,
           (_all, volume: string, chapter: string) =>
-            `<a class="xref" href="./${volume.toLowerCase()}.html#${volume.toLowerCase()}-${chapter.toLowerCase()}">〔${volume}-${chapter}〕</a>`
+            // 编辑侧产物（content/dist）的参考链接：与站点路由（契约 §1 /b{册}/c{nn}）统一语义，
+            // 指向部署后的章节页；本目录内不存在对应 html 文件，仅供 md 预览跳转。
+            `<a class="xref" href="/${volume.toLowerCase()}/c${chapter.slice(1).toLowerCase()}.html">〔${volume}-${chapter}〕</a>`
         )
         .replace(/【待核验】/g, '<span class="verify-badge">【待核验】</span>');
     })

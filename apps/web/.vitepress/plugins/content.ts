@@ -6,7 +6,8 @@
  *   `常见误区` / `本章小结` / `自测题` / `速查卡*` / `延伸与链接` / `⚠️ 风险提示`
  * - `〔B?-C??〕` 交叉引用、`【待核验】` 徽标
  * - `::: interactive <SlotId>` 空容器（槽位清单见 ../slots.ts，未知类型/槽位抛错）
- * - `::: figure-spec` 容器（可折叠制图说明，体内可含列表/引用块）
+ * - `::: figure-spec` 容器（可折叠制图说明，体内可含列表/引用块）；成品图
+ *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时注入折叠区顶部（契约 §5.2）
  * - 误区组以 `**误区…**` 段落开头，自测题组以 `**题 N.**` 段落开头
  * - 站点框架页（index.md / [volume].md）含 `<SeriesHome />` / `<VolumeIntro />`：
  *   `html:false` 下按普通段落进入 token 流，这里转回 html 标签
@@ -18,7 +19,15 @@
  * 与 VitePress 内置 markdown-it 两套类型，直接引用会产生双源冲突。
  * 这里用最小结构类型描述用到的 token / state 能力。
  */
+import fs from 'node:fs';
+import path from 'node:path';
 import { SLOT_IDS } from '../slots';
+
+/** md.use(contentPlugin, options) 的选项 */
+export interface ContentPluginOptions {
+  /** 成品图目录（apps/web/public/figures）；缺省时只渲染折叠说明、不注入 */
+  figuresDir?: string;
+}
 
 interface MdToken {
   type: string;
@@ -74,7 +83,7 @@ interface MdLike {
 }
 
 export interface ContentPlugin {
-  (md: MdLike): void;
+  (md: MdLike, options?: ContentPluginOptions): void;
 }
 
 const XREF_TOKEN_RE = /〔(B[1-8])-(C\d{2})〕|【待核验】/g;
@@ -158,8 +167,22 @@ function containerRule(state: MdBlockState, startLine: number, endLine: number, 
   return true;
 }
 
+/** 成品图探测：`<章id>-fig<n>.svg` 存在才注入（契约 §5.2"有图显图，无图只渲染折叠说明"） */
+function figureToken(state: MdState, figuresDir: string, chapterId: string, figNo: number): MdToken | null {
+  const key = `${chapterId}-fig${figNo}`;
+  if (!fs.existsSync(path.join(figuresDir, `${key}.svg`))) return null;
+  // URL 固定 /figures/<键>.svg：publicDir 指向 apps/web/public（见 config.mts）
+  return htmlToken(state, `<img src="/figures/${key}.svg" alt="${escapeHtml(key)}" />`);
+}
+
+interface FigureScan {
+  figuresDir?: string;
+  chapterId: string;
+  counter: { value: number };
+}
+
 /** 容器 token → 呈现标记；未知类型 / 未知槽位 / 非法形态抛错（构建期失败） */
-function transformContainers(state: MdState, tokens: MdToken[]): MdToken[] {
+function transformContainers(state: MdState, tokens: MdToken[], figures: FigureScan): MdToken[] {
   const result: MdToken[] = [];
   const opens: Array<{ info: string; inner: MdToken[] }> = [];
   for (const token of tokens) {
@@ -197,7 +220,13 @@ function transformContainers(state: MdState, tokens: MdToken[]): MdToken[] {
       if (args.length) {
         throw new Error(`${envFile(state)}：figure-spec 容器不接受参数`);
       }
+      // 编号按章内容器出现顺序从 1 起（契约 §5.2 查找键 <章id>-fig<n>）
+      const figNo = ++figures.counter.value;
       result.push(htmlToken(state, `<details class="figure-note"><summary>${FIGURE_SUMMARY}</summary><div>`));
+      if (figures.figuresDir) {
+        const image = figureToken(state, figures.figuresDir, figures.chapterId, figNo);
+        if (image) result.push(image);
+      }
       result.push(...open.inner);
       result.push(htmlToken(state, '</div></details>'));
       continue;
@@ -420,7 +449,8 @@ function escapeHtml(text: string): string {
     .replace(/"/g, '&quot;');
 }
 
-export const contentPlugin: ContentPlugin = (md) => {
+export const contentPlugin: ContentPlugin = (md, options = {}) => {
+  const figuresDir = options.figuresDir;
   md.block.ruler.before('fence', 'thb_container', containerRule, {
     alt: ['paragraph', 'reference', 'blockquote', 'list'],
   });
@@ -435,7 +465,14 @@ export const contentPlugin: ContentPlugin = (md) => {
     }
 
     // 2. 容器与站点框架组件 → 呈现标记（未知容器类型 / 槽位在此抛错）
-    tokens = transformContainers(state, tokens);
+    //    成品图编号按本章文档顺序从 1 起（契约 §5.2 查找键 <章id>-fig<n>）
+    const fm = state.env?.frontmatter as Record<string, unknown> | undefined;
+    const chapterId = typeof fm?.chapter_id === 'string' ? fm.chapter_id : '';
+    tokens = transformContainers(state, tokens, {
+      figuresDir,
+      chapterId,
+      counter: { value: 0 },
+    });
     tokens = transformFrameComponents(state, tokens);
 
     // 3. 全局块级 class：h3/h4 小节标题
@@ -465,9 +502,7 @@ export const contentPlugin: ContentPlugin = (md) => {
     const result: MdToken[] = [];
 
     // 5. 章节页头（frontmatter 驱动，不进 outline）
-    const fm = state.env?.frontmatter as Record<string, unknown> | undefined;
     const envPath = ((state.env?.path as string | undefined) ?? '').replace(/\\/g, '/');
-    const chapterId = typeof fm?.chapter_id === 'string' ? fm.chapter_id : '';
     const title = typeof fm?.title === 'string' ? fm.title : '';
     // env.path 可能是绝对源文件路径或 rewrite 后的相对路径，统一按路径段匹配 Bn/
     if (/(?:^|\/)b\d\//i.test(envPath) && title) {

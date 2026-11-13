@@ -58,7 +58,9 @@ apps/web/                 L3 呈现层：.vitepress/{config,plugins,theme}、com
 
 ### 2.3 渲染子代理（选此身份后）
 - **立即读**：`docs/agents/render-agent.md` + `docs/content-grammar.md`。
-- 只操作 `apps/web/`、`tools/content/` 代码、CI、README 的架构事实同步。
+- 只操作 `apps/web/`、`tools/content/` 代码、CI、README 的架构事实同步；
+  **配图生产归渲染侧**（成品图：echarts / 手绘 SVG 等，规格为正文绘图说明，
+  详见渲染任务书"配图生产"附录）。
 - 验收：`pnpm check` + `pnpm build`（死链 0）+ 构建产物抽查。
 
 ## 3. 共同纪律（三种身份都遵守）

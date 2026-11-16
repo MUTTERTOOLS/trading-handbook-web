@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="430" fill="var(--fig-canvas)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <!-- 分区底带：1 正和侧 + 4 价差博弈侧 -->
+    <rect x="40" y="64" width="140" height="236" fill="var(--fig-accent)" fill-opacity="0.08"/>
+    <rect x="196" y="64" width="528" height="236" fill="var(--fig-ink)" fill-opacity="0.05"/>
+    <text x="110" y="52" text-anchor="middle" font-size="14" fill="var(--fig-accent)">正和侧</text>
+    <text x="460" y="52" text-anchor="middle" font-size="14" fill="var(--fig-ink-sub)">价差博弈侧</text>
+
+    <!-- 五栏区块 -->
+    <rect x="52" y="76" width="116" height="212" fill="var(--fig-surface)" stroke="var(--fig-ink)" stroke-opacity="0.55" stroke-width="1.5"/>
+    <rect x="210" y="76" width="116" height="212" fill="var(--fig-surface)" stroke="var(--fig-ink)" stroke-opacity="0.55" stroke-width="1.5"/>
+    <rect x="338" y="76" width="116" height="212" fill="var(--fig-surface)" stroke="var(--fig-ink)" stroke-opacity="0.55" stroke-width="1.5"/>
+    <rect x="466" y="76" width="116" height="212" fill="var(--fig-surface)" stroke="var(--fig-ink)" stroke-opacity="0.55" stroke-width="1.5"/>
+    <rect x="594" y="76" width="116" height="212" fill="var(--fig-surface)" stroke="var(--fig-ink)" stroke-opacity="0.55" stroke-width="1.5"/>
+
+    <!-- 栏题 -->
+    <text x="110" y="112" text-anchor="middle" font-size="15" fill="var(--fig-ink)">风险溢价</text>
+    <text x="268" y="112" text-anchor="middle" font-size="15" fill="var(--fig-ink)">行为偏差</text>
+    <text x="396" y="112" text-anchor="middle" font-size="14" fill="var(--fig-ink)">制度与结构约束</text>
+    <text x="524" y="112" text-anchor="middle" font-size="15" fill="var(--fig-ink)">流动性提供</text>
+    <text x="652" y="112" text-anchor="middle" font-size="15" fill="var(--fig-ink)">分析优势</text>
+
+    <line x1="70" y1="126" x2="150" y2="126" stroke="var(--fig-ink)" stroke-opacity="0.3" stroke-width="1"/>
+    <line x1="228" y1="126" x2="308" y2="126" stroke="var(--fig-ink)" stroke-opacity="0.3" stroke-width="1"/>
+    <line x1="356" y1="126" x2="436" y2="126" stroke="var(--fig-ink)" stroke-opacity="0.3" stroke-width="1"/>
+    <line x1="484" y1="126" x2="564" y2="126" stroke="var(--fig-ink)" stroke-opacity="0.3" stroke-width="1"/>
+    <line x1="612" y1="126" x2="692" y2="126" stroke="var(--fig-ink)" stroke-opacity="0.3" stroke-width="1"/>
+
+    <!-- 对手盘小字 -->
+    <text x="110" y="152" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">对面非具体个人<tspan x="110" dy="20">偏好安稳的资金</tspan></text>
+    <text x="268" y="152" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">被情绪推着走的</text>
+    <text x="268" y="172" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">交易者</text>
+    <text x="396" y="152" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">受规则或期限</text>
+    <text x="396" y="172" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">约束的资金</text>
+    <text x="524" y="156" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">需要立即成交的人</text>
+    <text x="652" y="156" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">功课更少的人</text>
+
+    <!-- 地图外侧关卡：每次换手都要付费 -->
+    <line x1="52" y1="336" x2="710" y2="336" stroke="var(--fig-ink)" stroke-opacity="0.4" stroke-width="1.5" stroke-dasharray="6 6"/>
+    <rect x="48" y="324" width="5" height="24" fill="var(--fig-ink)" fill-opacity="0.7"/>
+    <rect x="707" y="324" width="5" height="24" fill="var(--fig-ink)" fill-opacity="0.7"/>
+    <line x1="300" y1="336" x2="300" y2="344" stroke="var(--fig-ink)" stroke-opacity="0.5" stroke-width="1.5"/>
+    <line x1="460" y1="336" x2="460" y2="344" stroke="var(--fig-ink)" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect x="270" y="344" width="220" height="40" rx="5" fill="var(--fig-yellow)" fill-opacity="0.10" stroke="var(--fig-yellow)" stroke-width="1.8"/>
+    <text x="380" y="369" text-anchor="middle" font-size="15" fill="var(--fig-yellow)">每次换手都要付费</text>
+  </g>
+</svg>

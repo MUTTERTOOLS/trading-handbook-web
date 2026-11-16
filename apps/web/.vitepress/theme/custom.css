@@ -70,6 +70,31 @@
   --vp-nav-bg-color: var(--bg-deep);
 }
 
+/* === 成品图色板（契约 §5.2 配图语义色；值已审定冻结，全站复用） ===
+   手绘 SVG 构建期内联进 figure-note，经 var(--fig-*) 随站点主题解析。
+   暗色 = 冻结值（墨 #E7E1D2 / 次级 #A69E8C / 底面 #161A21 / 语义红 #C26A63
+   仅禁止停手 / 语义黄 #C9A35B 仅警示 / B1 accent 蓝 #60A5FA / 画布 #0B0E14）。
+   浅色 = 提案值（纸白画布、深墨线条），语义色加深保证纸面对比度，待编排者目检。 */
+:root,
+:root.dark {
+  --fig-ink: #E7E1D2;
+  --fig-ink-sub: #A69E8C;
+  --fig-surface: #161A21;
+  --fig-red: #C26A63;
+  --fig-yellow: #C9A35B;
+  --fig-accent: #60A5FA;
+  --fig-canvas: #0B0E14;
+}
+:root:not(.dark) {
+  --fig-ink: #3A3629;
+  --fig-ink-sub: #746C59;
+  --fig-surface: #ECE6D7;
+  --fig-red: #A94F46;
+  --fig-yellow: #86682C;
+  --fig-accent: #2E6FB8;
+  --fig-canvas: #F5F1E8;
+}
+
 /* === 基础（原 base.css 的全局部分） === */
 html { scroll-behavior: smooth; }
 body { overflow-x: hidden; line-height: 1.8; }
@@ -550,7 +575,15 @@ a.map-node:hover { opacity: 0.85; }
   font-size: 12.5px;
 }
 .figure-note > div { padding: 0 16px 14px; line-height: 1.9; }
-/* 成品图注入（契约 §5.2）：无成品时不产生 img，此样式不影响现状 */
+/* 成品图注入（契约 §5.2）：默认构建期内联 SVG（随 var(--fig-*) 换肤），
+   校验不过（>60KB / 含脚本或外链 / 结构缺失）时退化为 <img src> */
+.figure-note svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0 0;
+  border-radius: var(--radius-sm);
+}
 .figure-note img {
   display: block;
   max-width: 100%;

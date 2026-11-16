@@ -7,7 +7,8 @@
  * - `〔B?-C??〕` 交叉引用、`【待核验】` 徽标
  * - `::: interactive <SlotId>` 空容器（槽位清单见 ../slots.ts，未知类型/槽位抛错）
  * - `::: figure-spec` 容器（可折叠制图说明，体内可含列表/引用块）；成品图
- *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时注入折叠区顶部（契约 §5.2）
+ *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时构建期内联进折叠区顶部
+ *   （契约 §5.2；SVG 内 var(--fig-*) 随站点主题解析，校验不过退化为 <img src>）
  * - 误区组以 `**误区…**` 段落开头，自测题组以 `**题 N.**` 段落开头
  * - 站点框架页（index.md / [volume].md）含 `<SeriesHome />` / `<VolumeIntro />`：
  *   `html:false` 下按普通段落进入 token 流，这里转回 html 标签
@@ -167,12 +168,48 @@ function containerRule(state: MdBlockState, startLine: number, endLine: number, 
   return true;
 }
 
-/** 成品图探测：`<章id>-fig<n>.svg` 存在才注入（契约 §5.2"有图显图，无图只渲染折叠说明"） */
+/** 成品图内联上限：超过则不内联，退化为 <img>（防止构建产物膨胀） */
+const FIGURE_INLINE_MAX_BYTES = 60 * 1024;
+/**
+ * 内联安全校验：命中任一即退化为 <img>（img 语境下脚本不执行、外链不被加载）。
+ * - 结构缺失：无 `</svg>` 收尾视为截断/损坏文件；
+ * - 危险内容：`<script`、href/src 指向绝对或协议相对地址、url() 外链、@import、
+ *   javascript: 协议（成品图应为自包含手绘 SVG，全部由本角色产出）。
+ */
+const FIGURE_FORBIDDEN_RES: RegExp[] = [
+  /<script[\s>]/i,
+  /\b(?:href|src|xlink:href)\s*=\s*["']?\s*(?:https?:)?\/\//i,
+  /url\(\s*["']?\s*(?:https?:)?\/\//i,
+  /@import/i,
+  /javascript\s*:/i,
+];
+
+/** 成品图探测：`<章id>-fig<n>.svg` 存在才注入（契约 §5.2"有图显图，无图只渲染折叠说明"）。
+ *  默认构建期内联 SVG 标记（使 var(--fig-*) 随站点主题解析，见 theme/custom.css）；
+ *  任一安全校验不过时不内联，退化为 <img src="/figures/…">（原注入通道）并告警。 */
 function figureToken(state: MdState, figuresDir: string, chapterId: string, figNo: number): MdToken | null {
   const key = `${chapterId}-fig${figNo}`;
-  if (!fs.existsSync(path.join(figuresDir, `${key}.svg`))) return null;
-  // URL 固定 /figures/<键>.svg：publicDir 指向 apps/web/public（见 config.mts）
-  return htmlToken(state, `<img src="/figures/${key}.svg" alt="${escapeHtml(key)}" />`);
+  const file = path.join(figuresDir, `${key}.svg`);
+  if (!fs.existsSync(file)) return null;
+  const source = fs.readFileSync(file, 'utf8');
+  const asImage = () =>
+    // URL 固定 /figures/<键>.svg：publicDir 指向 apps/web/public（见 config.mts）
+    htmlToken(state, `<img src="/figures/${key}.svg" alt="${escapeHtml(key)}" />`);
+  const closeIndex = source.lastIndexOf('</svg>');
+  if (closeIndex < 0) {
+    console.warn(`[figures] ${key}.svg 缺少 </svg>，不内联，退化为 <img>`);
+    return asImage();
+  }
+  if (Buffer.byteLength(source, 'utf8') > FIGURE_INLINE_MAX_BYTES) {
+    console.warn(`[figures] ${key}.svg 超过 60KB，不内联，退化为 <img>`);
+    return asImage();
+  }
+  if (FIGURE_FORBIDDEN_RES.some((re) => re.test(source))) {
+    console.warn(`[figures] ${key}.svg 含脚本或外链引用，不内联，退化为 <img>`);
+    return asImage();
+  }
+  // 截到 </svg> 为止，丢弃其后的任何残余内容后内联
+  return htmlToken(state, source.slice(0, closeIndex + '</svg>'.length).trim());
 }
 
 interface FigureScan {

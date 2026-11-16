@@ -149,7 +149,10 @@ export default defineConfig({
   lang: 'zh-CN',
   title: '新手交易系统化入门丛书',
   description: '8 册 77 章新手交易系统化入门丛书的交互阅读版：书稿为唯一内容源，网页直接渲染 Markdown。',
-  appearance: 'dark',
+  // 锁死深色：'dark' 仅设默认深色、导航栏仍渲染切换开关，切浅色后
+  // 外壳令牌（:root 无条件深色）不变而 --fig-* 图形翻浅，页面撕裂。
+  // 'force-dark' 恒挂 html.dark 并隐藏开关（浅色提案值仍留在 theme/custom.css）。
+  appearance: 'force-dark',
   srcDir: CONTENT_DIR,
   srcExclude: ['editorial/**', '**/*_delivery.md', 'dist/**'],
   rewrites,

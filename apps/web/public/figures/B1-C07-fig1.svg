@@ -1,62 +1,62 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
-  <rect width="760" height="520" fill="var(--fig-canvas)"/>
+  <rect width="760" height="520" fill="var(--fig-canvas, #0B0E14)"/>
   <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
     <!-- 册序站点横坐标：B1~B8 -->
     <!-- 路径一：实线全连通 -->
-    <text x="18" y="124" text-anchor="start" font-size="13" fill="var(--fig-ink)">路径一</text>
-    <line x1="110" y1="120" x2="705" y2="120" stroke="var(--fig-ink)" stroke-width="2"/>
-    <circle cx="110" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="195" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="280" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="365" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="450" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="535" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="620" cy="120" r="8" fill="var(--fig-ink)"/><circle cx="705" cy="120" r="8" fill="var(--fig-ink)"/>
-    <text x="110" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B1</text>
-    <text x="195" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B2</text>
-    <text x="280" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B3</text>
-    <text x="365" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B4</text>
-    <text x="450" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B5</text>
-    <text x="535" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B6</text>
-    <text x="620" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B7</text>
-    <text x="705" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink)">B8</text>
+    <text x="18" y="124" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">路径一</text>
+    <line x1="110" y1="120" x2="705" y2="120" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="110" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="195" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="280" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="365" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="450" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="535" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="620" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/><circle cx="705" cy="120" r="8" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="110" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B1</text>
+    <text x="195" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B2</text>
+    <text x="280" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B3</text>
+    <text x="365" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B4</text>
+    <text x="450" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B5</text>
+    <text x="535" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B6</text>
+    <text x="620" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B7</text>
+    <text x="705" y="96" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">B8</text>
 
     <!-- 路径二：停靠 B1 全；B2 的 C01/03/04/05；B3 全；B4、B5 选读；B6~B8 全 -->
-    <text x="18" y="274" text-anchor="start" font-size="13" fill="var(--fig-ink)">路径二</text>
-    <line x1="110" y1="270" x2="705" y2="270" stroke="var(--fig-accent)" stroke-width="2"/>
-    <circle cx="110" cy="270" r="8" fill="var(--fig-accent)"/><circle cx="195" cy="270" r="8" fill="var(--fig-accent)"/><circle cx="280" cy="270" r="8" fill="var(--fig-accent)"/>
-    <circle cx="365" cy="270" r="8" fill="var(--fig-surface)" stroke="var(--fig-accent)" stroke-width="2"/><circle cx="450" cy="270" r="8" fill="var(--fig-surface)" stroke="var(--fig-accent)" stroke-width="2"/>
-    <circle cx="535" cy="270" r="8" fill="var(--fig-accent)"/><circle cx="620" cy="270" r="8" fill="var(--fig-accent)"/><circle cx="705" cy="270" r="8" fill="var(--fig-accent)"/>
-    <text x="110" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B1</text>
-    <text x="195" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B2</text>
-    <text x="280" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B3</text>
-    <text x="365" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B4</text>
-    <text x="450" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B5</text>
-    <text x="535" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B6</text>
-    <text x="620" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B7</text>
-    <text x="705" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B8</text>
-    <text x="110" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">全</text>
-    <text x="195" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">C01 C03</text>
-    <text x="195" y="320" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">C04 C05</text>
-    <text x="280" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">全</text>
-    <text x="365" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">选读</text>
-    <text x="450" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">选读</text>
-    <text x="535" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">全</text>
-    <text x="620" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">全</text>
-    <text x="705" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">全</text>
+    <text x="18" y="274" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">路径二</text>
+    <line x1="110" y1="270" x2="705" y2="270" stroke="var(--fig-accent, #60A5FA)" stroke-width="2"/>
+    <circle cx="110" cy="270" r="8" fill="var(--fig-accent, #60A5FA)"/><circle cx="195" cy="270" r="8" fill="var(--fig-accent, #60A5FA)"/><circle cx="280" cy="270" r="8" fill="var(--fig-accent, #60A5FA)"/>
+    <circle cx="365" cy="270" r="8" fill="var(--fig-surface, #161A21)" stroke="var(--fig-accent, #60A5FA)" stroke-width="2"/><circle cx="450" cy="270" r="8" fill="var(--fig-surface, #161A21)" stroke="var(--fig-accent, #60A5FA)" stroke-width="2"/>
+    <circle cx="535" cy="270" r="8" fill="var(--fig-accent, #60A5FA)"/><circle cx="620" cy="270" r="8" fill="var(--fig-accent, #60A5FA)"/><circle cx="705" cy="270" r="8" fill="var(--fig-accent, #60A5FA)"/>
+    <text x="110" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B1</text>
+    <text x="195" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B2</text>
+    <text x="280" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B3</text>
+    <text x="365" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B4</text>
+    <text x="450" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B5</text>
+    <text x="535" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B6</text>
+    <text x="620" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B7</text>
+    <text x="705" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B8</text>
+    <text x="110" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">全</text>
+    <text x="195" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">C01 C03</text>
+    <text x="195" y="320" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">C04 C05</text>
+    <text x="280" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">全</text>
+    <text x="365" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">选读</text>
+    <text x="450" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">选读</text>
+    <text x="535" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">全</text>
+    <text x="620" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">全</text>
+    <text x="705" y="298" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">全</text>
 
     <!-- 路径三：加粗虚线，只连 B1/B2/B3/B8 指定章 -->
-    <text x="18" y="424" text-anchor="start" font-size="13" fill="var(--fig-ink)">路径三</text>
-    <line x1="110" y1="420" x2="195" y2="420" stroke="var(--fig-ink-sub)" stroke-width="3" stroke-dasharray="9 6"/>
-    <line x1="195" y1="420" x2="280" y2="420" stroke="var(--fig-ink-sub)" stroke-width="3" stroke-dasharray="9 6"/>
-    <line x1="280" y1="420" x2="705" y2="420" stroke="var(--fig-ink-sub)" stroke-width="3" stroke-dasharray="9 6"/>
-    <circle cx="110" cy="420" r="8" fill="var(--fig-ink-sub)"/><circle cx="195" cy="420" r="8" fill="var(--fig-ink-sub)"/><circle cx="280" cy="420" r="8" fill="var(--fig-ink-sub)"/><circle cx="705" cy="420" r="8" fill="var(--fig-ink-sub)"/>
-    <text x="110" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B1</text>
-    <text x="195" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B2</text>
-    <text x="280" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B3</text>
-    <text x="705" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">B8</text>
-    <text x="110" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">C01 02</text>
-    <text x="110" y="470" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">03 06 07</text>
-    <text x="195" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">C01 02</text>
-    <text x="195" y="470" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">05 08</text>
-    <text x="280" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">C01 11 12</text>
-    <text x="705" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub)">C03</text>
+    <text x="18" y="424" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">路径三</text>
+    <line x1="110" y1="420" x2="195" y2="420" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="3" stroke-dasharray="9 6"/>
+    <line x1="195" y1="420" x2="280" y2="420" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="3" stroke-dasharray="9 6"/>
+    <line x1="280" y1="420" x2="705" y2="420" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="3" stroke-dasharray="9 6"/>
+    <circle cx="110" cy="420" r="8" fill="var(--fig-ink-sub, #A69E8C)"/><circle cx="195" cy="420" r="8" fill="var(--fig-ink-sub, #A69E8C)"/><circle cx="280" cy="420" r="8" fill="var(--fig-ink-sub, #A69E8C)"/><circle cx="705" cy="420" r="8" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <text x="110" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B1</text>
+    <text x="195" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B2</text>
+    <text x="280" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B3</text>
+    <text x="705" y="396" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">B8</text>
+    <text x="110" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">C01 02</text>
+    <text x="110" y="470" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">03 06 07</text>
+    <text x="195" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">C01 02</text>
+    <text x="195" y="470" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">05 08</text>
+    <text x="280" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">C01 11 12</text>
+    <text x="705" y="448" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">C03</text>
 
     <!-- 图例 -->
-    <text x="18" y="506" text-anchor="start" font-size="13" fill="var(--fig-ink-sub)">实心＝停靠　空心＝经过不停靠　加粗虚线＝只连指定章</text>
+    <text x="18" y="506" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">实心＝停靠　空心＝经过不停靠　加粗虚线＝只连指定章</text>
   </g>
 </svg>

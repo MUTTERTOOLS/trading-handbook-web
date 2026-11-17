@@ -6,9 +6,10 @@
  *   `常见误区` / `本章小结` / `自测题` / `速查卡*` / `延伸与链接` / `⚠️ 风险提示`
  * - `〔B?-C??〕` 交叉引用、`【待核验】` 徽标
  * - `::: interactive <SlotId>` 空容器（槽位清单见 ../slots.ts，未知类型/槽位抛错）
- * - `::: figure-spec` 容器（可折叠制图说明，体内可含列表/引用块）；成品图
- *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时构建期内联进折叠区顶部
- *   （契约 §5.2；SVG 内 var(--fig-*) 随站点主题解析，校验不过退化为 <img src>）
+ * - `::: figure-spec` 容器（制图说明，体内文字不进渲染输出）；成品图
+ *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时构建期内联为默认可见的
+ *   `<figure class="figure-block">`（SVG 内 var(--fig-*) 随站点主题解析，
+ *   校验不过退化为 <img src>；无成品图整块不渲染）
  * - 误区组以 `**误区…**` 段落开头，自测题组以 `**题 N.**` 段落开头
  * - 站点框架页（index.md / [volume].md）含 `<SeriesHome />` / `<VolumeIntro />`：
  *   `html:false` 下按普通段落进入 token 流，这里转回 html 标签
@@ -88,7 +89,6 @@ export interface ContentPlugin {
 }
 
 const XREF_TOKEN_RE = /〔(B[1-8])-(C\d{2})〕|【待核验】/g;
-const FIGURE_SUMMARY = '图示说明（制作提示，读者可跳过）';
 const QUIZ_RE = /^\*\*题\s*\d+/;
 const MISCONCEPTION_RE = /^\*\*误区/;
 const NOTE_RE = /^\*?\*?(注|表注)[：:]/;
@@ -253,19 +253,25 @@ function transformContainers(state: MdState, tokens: MdToken[], figures: FigureS
         result.push(htmlToken(state, `<${slotId} />`));
         continue;
       }
-      // figure-spec：可折叠制图说明，体内正常 markdown 渲染
+      // figure-spec（D12 裁决）：成品图默认可见（不再置于折叠块内）；
+      // 容器体内的制图说明原文是制图规格，撤出读者视野——渲染输出只保留图本身。
+      // md 源与 L2 校验语义不变（说明文字仍是契约 §5.2 的输入，仅供制图与校验）。
       if (args.length) {
         throw new Error(`${envFile(state)}：figure-spec 容器不接受参数`);
       }
       // 编号按章内容器出现顺序从 1 起（契约 §5.2 查找键 <章id>-fig<n>）
       const figNo = ++figures.counter.value;
-      result.push(htmlToken(state, `<details class="figure-note"><summary>${FIGURE_SUMMARY}</summary><div>`));
       if (figures.figuresDir) {
         const image = figureToken(state, figures.figuresDir, figures.chapterId, figNo);
-        if (image) result.push(image);
+        if (image) {
+          result.push(htmlToken(state, '<figure class="figure-block">'));
+          result.push(image);
+          result.push(htmlToken(state, '</figure>'));
+          continue;
+        }
       }
-      result.push(...open.inner);
-      result.push(htmlToken(state, '</div></details>'));
+      // 无成品图：不渲染任何块（说明文字全文是制图规格提示词，对读者无阅读价值；
+      // 有图注数据需求时再按契约 §9 立项）
       continue;
     }
     if (opens.length) {

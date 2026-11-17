@@ -25,19 +25,12 @@ interface SeriesVolumeYaml {
   expectedChapters: number;
 }
 
-/** 生成分册页正文的章节目录（构建期读 series.yaml 与各章 frontmatter title） */
-function chapterList(volume: SeriesVolumeYaml): string {
-  const items: string[] = [];
-  for (let i = 1; i <= volume.expectedChapters; i++) {
-    const chapterId = `${volume.id}-C${String(i).padStart(2, '0')}`;
-    const source = fs.readFileSync(path.join(CONTENT_DIR, volume.id, `${chapterId}.md`), 'utf8');
-    const frontmatter = source.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '';
-    const title = frontmatter.match(/^title:\s*(.+)$/m)?.[1]?.trim() ?? chapterId;
-    items.push(`- [§${i} ${title}](/${volume.slug}/c${String(i).padStart(2, '0')}.html)`);
-  }
-  return `本册共 ${volume.expectedChapters} 章，按顺序阅读：\n\n${items.join('\n')}\n`;
-}
-
+/**
+ * 分册页正文章目录（D12 起）：编号章目录改由 VolumeIntro 组件渲染
+ * （数据来自 config.mts themeConfig.series.volumes[].chapters，同一
+ * frontmatter title 数据源），本生成器只负责展开动态路由参数，
+ * `<!-- @content -->` 占位以空内容替换。
+ */
 export default {
   watch: ['series.yaml', 'B*/B*.md'],
   paths() {
@@ -46,7 +39,9 @@ export default {
     };
     return series.volumes.map((volume) => ({
       params: { volume: volume.slug },
-      content: chapterList(volume),
+      // 单空格：空字符串是 falsy，VitePress 会跳过 `<!-- @content -->` 占位替换
+      // 并把注释原文当正文文本输出（html:false 下可见）
+      content: ' ',
     }));
   },
 };

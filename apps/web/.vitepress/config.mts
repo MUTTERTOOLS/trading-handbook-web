@@ -51,16 +51,19 @@ interface SeriesYaml {
 
 const series = YAML.parse(fs.readFileSync(path.join(CONTENT_DIR, 'series.yaml'), 'utf8')) as SeriesYaml;
 
-/** 每册主题色（原 themes.css 的 html[data-volume] 值；按页注入 :root 覆盖） */
+/**
+ * 每册主题色：矿物颜料册色（方向 A 书卷纸墨·完整版，负责人审定）。
+ * 按页注入 :root/:root.dark 覆盖（transformPageData）。
+ */
 const ACCENTS: Record<string, { accent: string; rgb: string }> = {
-  b1: { accent: '#60a5fa', rgb: '96, 165, 250' },
-  b2: { accent: '#3cc5d8', rgb: '60, 197, 216' },
-  b3: { accent: '#fb923c', rgb: '251, 146, 60' },
-  b4: { accent: '#c084fc', rgb: '192, 132, 252' },
-  b5: { accent: '#57c78a', rgb: '87, 199, 138' },
-  b6: { accent: '#f472b6', rgb: '244, 114, 182' },
-  b7: { accent: '#e8c268', rgb: '232, 194, 104' },
-  b8: { accent: '#f87171', rgb: '248, 113, 113' },
+  b1: { accent: '#6b9bc9', rgb: '107, 155, 201' }, // 花青
+  b2: { accent: '#5fa8a0', rgb: '95, 168, 160' }, // 青矾
+  b3: { accent: '#d99058', rgb: '217, 144, 88' }, // 赭橙
+  b4: { accent: '#a98bc4', rgb: '169, 139, 196' }, // 青莲
+  b5: { accent: '#6fa385', rgb: '111, 163, 133' }, // 铜绿
+  b6: { accent: '#c97b96', rgb: '201, 123, 150' }, // 胭脂
+  b7: { accent: '#d9b86a', rgb: '217, 184, 106' }, // 秋香
+  b8: { accent: '#a64b55', rgb: '166, 75, 85' }, // 绛
 };
 
 function chapterIds(volume: SeriesVolumeYaml): string[] {
@@ -95,6 +98,16 @@ const totals = {
   chapters: series.volumes.reduce((sum, volume) => sum + volume.expectedChapters, 0),
   chars: countPlainChars(),
 };
+
+/** 分册扉页（VolumeIntro）用：每册编号章目录（章序 + 标题 + 路由），构建期读 frontmatter title */
+const volumesWithChapters = series.volumes.map((volume) => ({
+  ...volume,
+  chapters: chapterIds(volume).map((chapterId, index) => ({
+    no: index + 1,
+    title: chapterTitle(volume, chapterId),
+    href: `/${volume.slug}/c${String(index + 1).padStart(2, '0')}.html`,
+  })),
+}));
 
 /**
  * 本地搜索的 CJK 分词：minisearch 默认按空格/标点切词，中文整句会变成
@@ -175,7 +188,7 @@ export default defineConfig({
       'link',
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap',
       },
     ],
     ['meta', { name: 'theme-color', content: '#0B0E14' }],
@@ -218,7 +231,7 @@ export default defineConfig({
       riskNotice: series.riskNotice,
       cutoffDate: series.cutoffDate,
       totals,
-      volumes: series.volumes,
+      volumes: volumesWithChapters,
     },
   } as DefaultTheme.Config,
   transformPageData(pageData) {

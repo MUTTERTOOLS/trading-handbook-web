@@ -22,16 +22,22 @@ interface ThemeWithSeries {
 const { theme } = useData();
 const { series } = theme.value as unknown as ThemeWithSeries;
 
+const CN_NUM: Record<string, string> = {
+  B1: '一', B2: '二', B3: '三', B4: '四',
+  B5: '五', B6: '六', B7: '七', B8: '八',
+};
+
 const volumes = series.volumes.map((volume) => ({
   id: volume.id,
+  cn: CN_NUM[volume.id] ?? volume.id,
   name: volume.title,
+  description: volume.description,
   chapters: volume.expectedChapters,
   href: `/${volume.slug}.html`,
-  vol: `v-${volume.theme}`,
+  theme: volume.theme,
 }));
 
-const totalWan = (series.totals.chars / 10000).toFixed(1);
-
+/** 读完这套书应具备的能力链（阅读顺序，内容侧既有文案） */
 const abilityChain = [
   { text: '能看懂市场规则', src: '册二' },
   { text: '能算出每笔最多亏多少、买多少', src: '册三' },
@@ -42,68 +48,40 @@ const abilityChain = [
 </script>
 
 <template>
-  <div class="cover">
-    <div class="cover-inner">
-      <div class="badge">新手交易系统化入门丛书 · 交互阅读版</div>
-      <h1 class="accent-gradient-text">风险，先于方法</h1>
-      <p class="subtitle">
-        全书 {{ series.totals.volumes }} 册 {{ series.totals.chapters }} 章的网页化阅读工程 ·
-        全部 {{ series.totals.volumes }} 册已上线
-      </p>
+  <div class="series-home">
+    <span class="sh-badge">丛书 · 交互阅读版</span>
+    <h1 class="sh-hero">风险，先于方法</h1>
+    <p class="sh-sub">
+      全书 {{ series.totals.volumes }} 册 {{ series.totals.chapters }} 章 · 全部上线
+    </p>
 
-      <div class="meta-grid">
-        <div class="meta-card">
-          <div class="label">分册</div>
-          <div class="value tabular">{{ series.totals.volumes }} 册</div>
-        </div>
-        <div class="meta-card">
-          <div class="label">章节</div>
-          <div class="value tabular">{{ series.totals.chapters }} 章</div>
-        </div>
-        <div class="meta-card">
-          <div class="label">正文规模</div>
-          <div class="value tabular">约 {{ totalWan }} 万字</div>
-        </div>
-      </div>
+    <nav class="sh-catalog" aria-label="丛书目录">
+      <a v-for="volume in volumes" :key="volume.id" class="sh-row" :href="volume.href">
+        <span class="sh-row-main">
+          <span class="sh-no">册{{ volume.cn }}</span>
+          <span class="sh-name" :class="`mineral-${volume.theme}`">{{ volume.name }}</span>
+        </span>
+        <span class="sh-meta">{{ volume.chapters }} 章 · {{ volume.description }}</span>
+      </a>
+    </nav>
 
-      <div class="chart-box">
-        <div class="chart-title">丛书地图（点击进入各册主题页）</div>
-        <div class="map-path" role="list">
-          <template v-for="(volume, index) in volumes" :key="volume.id">
-            <a
-              class="map-node current"
-              :class="volume.vol"
-              role="listitem"
-              :href="volume.href"
-              :title="`${volume.id} · ${volume.name} · ${volume.chapters} 章`"
-            >{{ volume.id }} {{ volume.name }}</a>
-            <span v-if="index < volumes.length - 1" class="map-arrow" aria-hidden="true">→</span>
-          </template>
-        </div>
-      </div>
+    <section class="sh-ability">
+      <h2 class="sh-section-title">读完这套书，你应当能</h2>
+      <ol class="sh-ability-list">
+        <li v-for="step in abilityChain" :key="step.text">
+          <strong>{{ step.text }}</strong>（{{ step.src }}）
+        </li>
+      </ol>
+    </section>
 
-      <div class="reading-path chart-box">
-        <div class="chart-title">读完这套书应具备的能力链</div>
-        <div v-for="(step, index) in abilityChain" :key="step.text" class="path-step">
-          <span class="step-num">{{ index + 1 }}</span>
-          <span class="step-text"><strong>{{ step.text }}</strong>（{{ step.src }}）</span>
-        </div>
-      </div>
+    <p class="sh-sema">
+      <span class="sh-chip" style="background: var(--red)"></span>红＝禁止／停手
+      <span class="sh-chip" style="background: var(--yellow)"></span>黄＝警示
+    </p>
 
-      <div class="callout callout-tip">
-        <div class="callout-title">关于网页版</div>
-        <p>
-          本站是纸稿丛书的交互阅读版：<strong>收录全书 {{ series.totals.volumes }} 册
-          {{ series.totals.chapters }} 章全文</strong>，交互图表与计算器是对原文统一算例
-          （EX-A ~ EX-R）和"绘图说明"的实现。网页版不替代原书，全部"起步参考值"
-          均需个人校准；涉及交易规则、费率、税款的数字在原书中以【待核验】标注，发布前须经官方来源核验。
-        </p>
-      </div>
-
-      <div class="risk-notice" role="note">
-        <div class="rn-title">⚠️ 风险提示</div>
-        <p>{{ series.riskNotice }}</p>
-      </div>
-    </div>
+    <footer class="sh-footnote" role="note">
+      <div class="sh-footnote-title">⚠️ 风险提示</div>
+      <p>{{ series.riskNotice }}</p>
+    </footer>
   </div>
 </template>

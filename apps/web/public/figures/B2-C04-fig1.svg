@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 490" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="490" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">止损委托遇上连续一字跌停（示意）</text>
+
+    <!-- 坐标系 -->
+    <text x="130" y="72" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">价格（元）</text>
+    <line x1="130" y1="85" x2="130" y2="400" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="130" y1="400" x2="700" y2="400" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="130" y1="138" x2="700" y2="138" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="130" y1="243" x2="700" y2="243" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="130" y1="348" x2="700" y2="348" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <text x="122" y="142" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">10.00</text>
+    <text x="122" y="247" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">9.00</text>
+    <text x="122" y="352" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">8.00</text>
+    <text x="200" y="424" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">周一</text>
+    <text x="340" y="424" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">周二</text>
+    <text x="480" y="424" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">周三</text>
+    <text x="620" y="424" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">周四</text>
+
+    <!-- 计划止损价 9.50（黄＝警示） -->
+    <line x1="130" y1="190" x2="700" y2="190" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.6" stroke-dasharray="6 4"/>
+    <text x="694" y="183" text-anchor="end" font-size="13" fill="var(--fig-yellow, #C9A35B)">计划止损价</text>
+
+    <!-- 价格折线（示意，语义色规：不红绿暗示盈亏，用册色） -->
+    <polyline points="200,138 340,243 480,337 620,348" fill="none" stroke="var(--fig-accent, #5FA8A0)" stroke-width="2.2"/>
+    <circle cx="200" cy="138" r="4" fill="var(--fig-accent, #5FA8A0)"/>
+    <circle cx="340" cy="243" r="4" fill="var(--fig-accent, #5FA8A0)"/>
+    <circle cx="480" cy="337" r="4" fill="var(--fig-accent, #5FA8A0)"/>
+    <circle cx="620" cy="348" r="4" fill="var(--fig-accent, #5FA8A0)"/>
+
+    <!-- 一字跌停标注（红＝停手） -->
+    <text x="340" y="222" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">一字跌停（示意）</text>
+    <text x="480" y="314" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">一字跌停（示意）</text>
+
+    <!-- 实际卖出价 -->
+    <text x="620" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">实际卖出价（示意）</text>
+
+    <text x="380" y="460" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">数字为示意，规则以最新规定为准</text>
+  </g>
+</svg>

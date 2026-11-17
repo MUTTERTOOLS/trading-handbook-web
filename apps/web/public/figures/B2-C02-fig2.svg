@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 530" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="530" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="34" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">模拟下单界面（示意）</text>
+
+    <!-- 界面外框 -->
+    <rect x="70" y="52" width="620" height="406" rx="8" fill="var(--fig-surface, #161A21)" fill-opacity="0.55" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.8"/>
+
+    <!-- 顶栏 -->
+    <text x="100" y="86" text-anchor="start" font-size="16" fill="var(--fig-ink, #E7E1D2)">Z00001  乙 ETF</text>
+    <text x="100" y="108" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">（虚构示意）</text>
+    <text x="450" y="86" text-anchor="start" font-size="16" fill="var(--fig-ink, #E7E1D2)">当前价 2.00 元</text>
+    <text x="450" y="108" text-anchor="start" font-size="14" fill="var(--fig-ink, #E7E1D2)">涨跌幅 +0.50%（示意）</text>
+    <line x1="70" y1="118" x2="690" y2="118" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.3" stroke-width="1"/>
+
+    <!-- 中部：五档报价 -->
+    <text x="190" y="140" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">档位</text>
+    <text x="330" y="140" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">价格</text>
+    <text x="480" y="140" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">挂单量</text>
+    <text x="190" y="160" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖五</text>
+    <text x="330" y="160" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.003</text>
+    <text x="480" y="160" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">850</text>
+    <text x="190" y="176" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖四</text>
+    <text x="330" y="176" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.003</text>
+    <text x="480" y="176" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">620</text>
+    <text x="190" y="192" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖三</text>
+    <text x="330" y="192" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.002</text>
+    <text x="480" y="192" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">540</text>
+    <text x="190" y="208" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖二</text>
+    <text x="330" y="208" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.002</text>
+    <text x="480" y="208" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">480</text>
+    <text x="190" y="224" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖一</text>
+    <text x="330" y="224" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.001</text>
+    <text x="480" y="224" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">360</text>
+    <line x1="96" y1="233" x2="560" y2="233" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="190" y="245" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买一</text>
+    <text x="330" y="245" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.000</text>
+    <text x="480" y="245" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">320</text>
+    <text x="190" y="261" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买二</text>
+    <text x="330" y="261" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">2.000</text>
+    <text x="480" y="261" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">410</text>
+    <text x="190" y="277" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买三</text>
+    <text x="330" y="277" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">1.999</text>
+    <text x="480" y="277" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">380</text>
+    <text x="190" y="293" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买四</text>
+    <text x="330" y="293" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">1.999</text>
+    <text x="480" y="293" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">450</text>
+    <text x="190" y="309" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买五</text>
+    <text x="330" y="309" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">1.998</text>
+    <text x="480" y="309" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">300</text>
+    <line x1="70" y1="320" x2="690" y2="320" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.3" stroke-width="1"/>
+
+    <!-- 底栏：输入区 -->
+    <text x="100" y="340" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">委托价格（元）</text>
+    <rect x="100" y="348" width="200" height="36" rx="4" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.04" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <text x="110" y="371" text-anchor="start" font-size="15" fill="var(--fig-ink, #E7E1D2)">2.00</text>
+    <text x="340" y="340" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">委托数量（份）</text>
+    <rect x="340" y="348" width="200" height="36" rx="4" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.04" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <text x="350" y="371" text-anchor="start" font-size="15" fill="var(--fig-ink, #E7E1D2)">100</text>
+
+    <text x="100" y="410" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">委托类型</text>
+    <rect x="100" y="418" width="60" height="26" rx="13" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.12" stroke="var(--fig-accent, #5FA8A0)" stroke-width="1.6"/>
+    <text x="130" y="436" text-anchor="middle" font-size="13" fill="var(--fig-accent, #5FA8A0)">限价</text>
+    <rect x="168" y="418" width="60" height="26" rx="13" fill="none" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="198" y="436" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">市价</text>
+    <text x="340" y="436" text-anchor="start" font-size="14" fill="var(--fig-ink, #E7E1D2)">合计金额：约 200 元</text>
+
+    <rect x="560" y="348" width="104" height="64" rx="6" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.14" stroke="var(--fig-accent, #5FA8A0)" stroke-width="2"/>
+    <text x="612" y="386" text-anchor="middle" font-size="18" fill="var(--fig-accent, #5FA8A0)">买入</text>
+
+    <!-- 整图标注 -->
+    <text x="380" y="484" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">模拟示意，非真实账户截图</text>
+    <text x="380" y="508" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">数字为示意，规则以最新规定为准</text>
+  </g>
+</svg>

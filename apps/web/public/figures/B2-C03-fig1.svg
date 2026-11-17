@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 515" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="515" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">盘口阶梯与市价单逐档吃价（示意）</text>
+
+    <!-- 左：盘口阶梯（卖五→买五） -->
+    <text x="68" y="88" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">档位</text>
+    <text x="140" y="88" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">价格</text>
+    <text x="245" y="88" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">挂单量（股）</text>
+    <text x="68" y="112" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖五</text>
+    <text x="140" y="112" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.08</text>
+    <rect x="185" y="100" width="56" height="14" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="247" y="112" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">800</text>
+    <text x="68" y="139" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖四</text>
+    <text x="140" y="139" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.07</text>
+    <rect x="185" y="127" width="77" height="14" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="268" y="139" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1,100</text>
+    <text x="68" y="166" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖三</text>
+    <text x="140" y="166" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.06</text>
+    <rect x="185" y="154" width="63" height="14" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="254" y="166" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">900</text>
+    <text x="68" y="193" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖二</text>
+    <text x="140" y="193" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.05</text>
+    <rect x="185" y="181" width="84" height="14" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="275" y="193" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1,200</text>
+    <text x="68" y="220" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">卖一</text>
+    <text x="140" y="220" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.04</text>
+    <rect x="185" y="208" width="70" height="14" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="261" y="220" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1,000</text>
+    <line x1="55" y1="235" x2="335" y2="235" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="68" y="247" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买一</text>
+    <text x="140" y="247" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.03</text>
+    <rect x="185" y="235" width="63" height="14" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.12" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="254" y="247" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">900</text>
+    <text x="68" y="274" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买二</text>
+    <text x="140" y="274" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.02</text>
+    <rect x="185" y="262" width="49" height="14" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.12" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="240" y="274" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">700</text>
+    <text x="68" y="301" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买三</text>
+    <text x="140" y="301" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.01</text>
+    <rect x="185" y="289" width="56" height="14" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.12" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="247" y="301" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">800</text>
+    <text x="68" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买四</text>
+    <text x="140" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">10.00</text>
+    <rect x="185" y="316" width="42" height="14" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.12" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="233" y="328" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">600</text>
+    <text x="68" y="355" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">买五</text>
+    <text x="140" y="355" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">9.99</text>
+    <rect x="185" y="343" width="35" height="14" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.12" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="226" y="355" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">500</text>
+
+    <!-- 右：市价单五步逐档吃 -->
+    <text x="370" y="88" text-anchor="start" font-size="14" fill="var(--fig-ink, #E7E1D2)">市价买入 5,000 股：逐档成交</text>
+    <circle cx="378" cy="113" r="11" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.4"/>
+    <text x="378" y="117" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">1</text>
+    <text x="398" y="118" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">吃卖一 10.04 × 1,000 股 → 余 4,000 股</text>
+    <line x1="378" y1="126" x2="378" y2="140" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#arr-ink)"/>
+    <circle cx="378" cy="155" r="11" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.4"/>
+    <text x="378" y="159" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">2</text>
+    <text x="398" y="160" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">吃卖二 10.05 × 1,200 股 → 余 2,800 股</text>
+    <line x1="378" y1="168" x2="378" y2="182" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#arr-ink)"/>
+    <circle cx="378" cy="197" r="11" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.4"/>
+    <text x="378" y="201" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">3</text>
+    <text x="398" y="202" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">吃卖三 10.06 × 900 股 → 余 1,900 股</text>
+    <line x1="378" y1="210" x2="378" y2="224" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#arr-ink)"/>
+    <circle cx="378" cy="239" r="11" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.4"/>
+    <text x="378" y="243" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">4</text>
+    <text x="398" y="244" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">吃卖四 10.07 × 1,100 股 → 余 800 股</text>
+    <line x1="378" y1="252" x2="378" y2="266" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#arr-ink)"/>
+    <circle cx="378" cy="281" r="11" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.4"/>
+    <text x="378" y="285" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">5</text>
+    <text x="398" y="286" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">吃卖五 10.08 × 800 股 → 余 0 股</text>
+
+    <text x="370" y="322" text-anchor="start" font-size="15" fill="var(--fig-accent, #5FA8A0)">成交均价 10.059 元</text>
+
+    <!-- 右下：限价对照框 -->
+    <rect x="360" y="348" width="380" height="118" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.04" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="380" y="374" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">对照：限价 10.06 买入 5,000 股</text>
+    <text x="380" y="398" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">只与卖一至卖三成交：3,100 股，金额 31,154 元</text>
+    <text x="380" y="420" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">成交均价约 10.0497 元</text>
+    <text x="380" y="442" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">余 1,900 股挂 10.06 继续排队</text>
+
+    <text x="380" y="505" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">独立示意</text>
+  </g>
+</svg>

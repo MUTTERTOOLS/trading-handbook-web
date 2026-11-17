@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 590" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="590" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="38" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">开户流程（示意）</text>
+
+    <!-- 主链七框 -->
+    <rect x="130" y="70" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="99" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">① 选券商并核验资质</text>
+    <line x1="290" y1="118" x2="290" y2="140" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <rect x="130" y="144" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="173" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">② 准备身份证与银行卡</text>
+    <line x1="290" y1="192" x2="290" y2="214" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <rect x="130" y="218" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="247" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">③ 线上提交申请</text>
+    <line x1="290" y1="266" x2="290" y2="288" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <rect x="130" y="292" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="321" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">④ 视频见证</text>
+    <line x1="290" y1="340" x2="290" y2="362" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <rect x="130" y="366" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="395" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">⑤ 设置密码</text>
+    <line x1="290" y1="414" x2="290" y2="436" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <rect x="130" y="440" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="469" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">⑥ 完成风险测评</text>
+    <line x1="290" y1="488" x2="290" y2="510" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <rect x="130" y="514" width="320" height="46" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="290" y="543" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">⑦ 绑定银行卡，等待账户开通</text>
+
+    <!-- ⑥ 注释框 -->
+    <line x1="450" y1="463" x2="510" y2="463" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="4 4"/>
+    <rect x="510" y="443" width="220" height="40" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.04" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="620" y="468" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">如实填写，见正文</text>
+
+    <!-- ⑦ 注释框 -->
+    <line x1="450" y1="537" x2="510" y2="537" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="4 4"/>
+    <rect x="510" y="517" width="220" height="40" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.04" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="620" y="542" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">银证转账见第三节</text>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="300" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <!-- 左框：上游 -->
+    <rect x="20" y="95" width="195" height="150" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.07" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="117" y="127" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">上游</text>
+    <text x="117" y="155" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">油料收购价上涨 10%</text>
+    <text x="117" y="177" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">（独立示意）</text>
+
+    <!-- 中框：中游榨油厂 -->
+    <rect x="275" y="95" width="195" height="150" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.07" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="372" y="127" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">中游榨油厂</text>
+    <text x="372" y="155" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">成本 70 → 77.00 元</text>
+    <text x="372" y="177" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">毛利率 30% → 23.00%</text>
+
+    <!-- 右框：下游餐饮 -->
+    <rect x="530" y="95" width="205" height="150" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.07" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="632" y="127" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">下游餐饮</text>
+    <text x="632" y="153" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">能提价 10% 则</text>
+    <text x="632" y="175" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">毛利率回到 30.00%</text>
+    <text x="632" y="199" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">不能提价则</text>
+    <text x="632" y="221" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">停在 23.00%</text>
+
+    <!-- 框间箭头 -->
+    <line x1="219" y1="170" x2="270" y2="170" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <text x="244" y="156" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">成本传导</text>
+    <line x1="474" y1="170" x2="525" y2="170" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <text x="499" y="156" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价格转嫁</text>
+  </g>
+</svg>

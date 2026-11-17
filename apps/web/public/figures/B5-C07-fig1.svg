@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="340" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <!-- 时间轴：2024-10 至 2025-06 -->
+    <line x1="60" y1="160" x2="712" y2="160" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2" marker-end="url(#arr-ink)"/>
+    <line x1="60" y1="160" x2="60" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="140" y1="160" x2="140" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="220" y1="160" x2="220" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="300" y1="160" x2="300" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="380" y1="160" x2="380" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="460" y1="160" x2="460" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="540" y1="160" x2="540" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="620" y1="160" x2="620" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <line x1="700" y1="160" x2="700" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="60" y="186" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">2024-10</text>
+    <text x="700" y="186" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">2025-06</text>
+
+    <!-- 节点一：2024-12-31 年报报告期末（空心点） -->
+    <circle cx="299" cy="160" r="7" fill="var(--fig-surface, #161A21)" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="299" y="116" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">2024-12-31</text>
+    <text x="299" y="134" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">年报报告期末</text>
+    <line x1="299" y1="140" x2="299" y2="151" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+
+    <!-- 节点二：2025-01-10 错误使用日（叉号） -->
+    <line x1="318" y1="152" x2="334" y2="168" stroke="var(--fig-red, #C26A63)" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="318" y1="168" x2="334" y2="152" stroke="var(--fig-red, #C26A63)" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="326" y1="172" x2="326" y2="206" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <text x="326" y="220" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">2025-01-10</text>
+    <text x="326" y="238" text-anchor="middle" font-size="12.5" fill="var(--fig-red, #C26A63)">错误使用日</text>
+    <text x="326" y="256" text-anchor="middle" font-size="12" fill="var(--fig-red, #C26A63)">（年报尚不存在）</text>
+
+    <!-- 节点三：2025-04-25 年报披露日（实心点） -->
+    <circle cx="604" cy="160" r="7" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="604" y="116" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">2025-04-25</text>
+    <text x="604" y="134" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">年报披露日</text>
+    <line x1="604" y1="140" x2="604" y2="151" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+
+    <!-- 节点四：2025-05-06 正确使用日（对勾） -->
+    <path d="M625,160 L630.5,166.5 L641,152" fill="none" stroke="var(--fig-accent, #6FA385)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="633" y1="172" x2="633" y2="206" stroke="var(--fig-accent, #6FA385)" stroke-width="1.2"/>
+    <text x="633" y="220" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">2025-05-06</text>
+    <text x="633" y="238" text-anchor="middle" font-size="12.5" fill="var(--fig-accent, #6FA385)">正确使用日</text>
+
+    <!-- 轴下方注 -->
+    <text x="380" y="300" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">数据属于 12-31，可用起点是披露日</text>
+
+    <!-- 角标 -->
+    <text x="735" y="322" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">示意</text>
+  </g>
+</svg>

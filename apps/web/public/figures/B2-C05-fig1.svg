@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 495" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="495" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">交易频率与年损耗率（示意推演）</text>
+
+    <!-- 坐标系 -->
+    <text x="120" y="66" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">年损耗率（%）</text>
+    <line x1="120" y1="80" x2="120" y2="400" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="400" x2="690" y2="400" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="347" x2="690" y2="347" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="120" y1="293" x2="690" y2="293" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="120" y1="240" x2="690" y2="240" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="120" y1="187" x2="690" y2="187" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="120" y1="133" x2="690" y2="133" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="120" y1="80" x2="690" y2="80" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.18" stroke-width="1"/>
+    <text x="112" y="404" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="112" y="351" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <text x="112" y="297" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+    <text x="112" y="244" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">30</text>
+    <text x="112" y="191" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">40</text>
+    <text x="112" y="137" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">50</text>
+    <text x="112" y="84" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">60</text>
+    <text x="120" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="234" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">50</text>
+    <text x="348" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">100</text>
+    <text x="462" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">150</text>
+    <text x="576" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">200</text>
+    <text x="690" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">250</text>
+    <text x="405" y="452" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">年往返次数</text>
+
+    <!-- 过原点直线（斜率 0.2%/次，黄＝警示：损耗） -->
+    <line x1="120" y1="400" x2="690" y2="133" stroke="var(--fig-yellow, #C9A35B)" stroke-width="2.2"/>
+
+    <!-- 四个标注点 -->
+    <line x1="147" y1="387" x2="147" y2="400" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="147" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">12</text>
+    <circle cx="147" cy="387" r="4" fill="var(--fig-yellow, #C9A35B)"/>
+    <text x="160" y="374" text-anchor="start" font-size="13" fill="var(--fig-yellow, #C9A35B)">2.4%</text>
+
+    <line x1="239" y1="345" x2="239" y2="400" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="239" y="424" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">52</text>
+    <circle cx="239" cy="345" r="4" fill="var(--fig-yellow, #C9A35B)"/>
+    <text x="252" y="362" text-anchor="start" font-size="13" fill="var(--fig-yellow, #C9A35B)">10.4%</text>
+
+    <circle cx="348" cy="293" r="4" fill="var(--fig-yellow, #C9A35B)"/>
+    <text x="362" y="300" text-anchor="start" font-size="13" fill="var(--fig-yellow, #C9A35B)">20%</text>
+
+    <circle cx="690" cy="133" r="4" fill="var(--fig-yellow, #C9A35B)"/>
+    <text x="676" y="124" text-anchor="end" font-size="13" fill="var(--fig-yellow, #C9A35B)">50%</text>
+
+    <text x="380" y="478" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">独立示意推演，单次成本率 0.2% 假设</text>
+  </g>
+</svg>

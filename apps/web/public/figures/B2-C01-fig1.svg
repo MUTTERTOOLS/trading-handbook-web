@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 450" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="450" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="38" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">新手品种货架（示意）</text>
+
+    <!-- 顶层：先别碰（红＝禁止/停手） -->
+    <rect x="160" y="70" width="540" height="100" rx="6" fill="var(--fig-red, #C26A63)" fill-opacity="0.05" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <line x1="44" y1="70" x2="44" y2="94" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <line x1="128" y1="70" x2="128" y2="94" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="30" y="94" width="112" height="52" rx="4" fill="var(--fig-red, #C26A63)" fill-opacity="0.10" stroke="var(--fig-red, #C26A63)" stroke-width="2"/>
+    <text x="86" y="126" text-anchor="middle" font-size="16" fill="var(--fig-red, #C26A63)">先别碰</text>
+    <rect x="185" y="106" width="54" height="28" rx="4" fill="var(--fig-red, #C26A63)" fill-opacity="0.08" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="212" y="125" text-anchor="middle" font-size="12" fill="var(--fig-red, #C26A63)">可转债</text>
+    <rect x="249" y="106" width="42" height="28" rx="4" fill="var(--fig-red, #C26A63)" fill-opacity="0.08" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="270" y="125" text-anchor="middle" font-size="12" fill="var(--fig-red, #C26A63)">期货</text>
+    <rect x="301" y="106" width="42" height="28" rx="4" fill="var(--fig-red, #C26A63)" fill-opacity="0.08" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="322" y="125" text-anchor="middle" font-size="12" fill="var(--fig-red, #C26A63)">期权</text>
+    <rect x="353" y="106" width="66" height="28" rx="4" fill="var(--fig-red, #C26A63)" fill-opacity="0.08" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="386" y="125" text-anchor="middle" font-size="12" fill="var(--fig-red, #C26A63)">融资融券</text>
+    <text x="480" y="114" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">杠杆或复杂规则，</text>
+    <text x="480" y="138" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">认识即可</text>
+
+    <!-- 中层：小心（黄＝警示） -->
+    <rect x="160" y="190" width="540" height="100" rx="6" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.05" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <line x1="44" y1="190" x2="44" y2="214" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <line x1="128" y1="190" x2="128" y2="214" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="30" y="214" width="112" height="52" rx="4" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.10" stroke="var(--fig-yellow, #C9A35B)" stroke-width="2"/>
+    <text x="86" y="246" text-anchor="middle" font-size="16" fill="var(--fig-yellow, #C9A35B)">小心</text>
+    <rect x="185" y="204" width="42" height="28" rx="4" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.08" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="206" y="223" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">个股</text>
+    <rect x="237" y="204" width="72" height="28" rx="4" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.08" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="273" y="223" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">行业 ETF</text>
+    <rect x="319" y="204" width="42" height="28" rx="4" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.08" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="340" y="223" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">LOF</text>
+    <rect x="371" y="204" width="90" height="28" rx="4" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.08" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="416" y="223" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">场外主动基金</text>
+    <rect x="185" y="244" width="102" height="28" rx="4" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.08" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="236" y="263" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">记账式国债价差</text>
+    <text x="480" y="245" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">做完功课再碰</text>
+
+    <!-- 底层：可作主力（册色青矾标记级点缀） -->
+    <rect x="160" y="310" width="540" height="100" rx="6" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.05" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <line x1="44" y1="310" x2="44" y2="334" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <line x1="128" y1="310" x2="128" y2="334" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1"/>
+    <rect x="30" y="334" width="112" height="52" rx="4" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.10" stroke="var(--fig-accent, #5FA8A0)" stroke-width="2"/>
+    <text x="86" y="366" text-anchor="middle" font-size="16" fill="var(--fig-accent, #5FA8A0)">可作主力</text>
+    <rect x="185" y="324" width="72" height="28" rx="4" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.08" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="221" y="343" text-anchor="middle" font-size="12" fill="var(--fig-accent, #5FA8A0)">宽基 ETF</text>
+    <rect x="267" y="324" width="114" height="28" rx="4" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.08" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="324" y="343" text-anchor="middle" font-size="12" fill="var(--fig-accent, #5FA8A0)">场外宽基指数基金</text>
+    <rect x="391" y="324" width="66" height="28" rx="4" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.08" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="424" y="343" text-anchor="middle" font-size="12" fill="var(--fig-accent, #5FA8A0)">货币基金</text>
+    <rect x="185" y="364" width="66" height="28" rx="4" fill="var(--fig-accent, #5FA8A0)" fill-opacity="0.08" stroke="var(--fig-accent, #5FA8A0)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="218" y="383" text-anchor="middle" font-size="12" fill="var(--fig-accent, #5FA8A0)">储蓄国债</text>
+    <text x="480" y="352" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">看得懂、规则简单、</text>
+    <text x="480" y="376" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">足够分散，失败也不致命</text>
+  </g>
+</svg>

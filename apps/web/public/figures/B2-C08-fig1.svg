@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 550" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="800" height="550" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="400" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">五周骗局时间线（示意）</text>
+    <text x="400" y="62" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">节点上方＝骗局动作，下方＝命中的红旗（红字）</text>
+
+    <!-- 时间轴 -->
+    <line x1="60" y1="300" x2="720" y2="300" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2" marker-end="url(#arr-ink)"/>
+
+    <!-- 第 1 周 -->
+    <text x="120" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">拉群、晒单、</text>
+    <text x="120" y="268" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">学员附和</text>
+    <circle cx="120" cy="300" r="8" fill="var(--fig-canvas, #0B0E14)" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="120" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">第 1 周</text>
+    <text x="120" y="352" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">拉群晒单、</text>
+    <text x="120" y="374" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">无法核验的收益</text>
+
+    <!-- 第 2 周 -->
+    <text x="265" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">链接下载 App、</text>
+    <text x="265" y="268" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">小额返利</text>
+    <circle cx="265" cy="300" r="8" fill="var(--fig-canvas, #0B0E14)" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="265" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">第 2 周</text>
+    <text x="265" y="352" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">非官方渠道、</text>
+    <text x="265" y="374" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">先给甜头</text>
+
+    <!-- 第 3 周 -->
+    <text x="410" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">一对一“教练”</text>
+    <text x="410" y="268" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">加码</text>
+    <circle cx="410" cy="300" r="8" fill="var(--fig-canvas, #0B0E14)" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="410" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">第 3 周</text>
+    <text x="410" y="352" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">收费带单、</text>
+    <text x="410" y="374" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">催促入金</text>
+
+    <!-- 第 4 周 -->
+    <text x="555" y="268" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">制造紧迫感</text>
+    <circle cx="555" cy="300" r="8" fill="var(--fig-canvas, #0B0E14)" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="555" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">第 4 周</text>
+    <text x="555" y="352" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">催促入金、</text>
+    <text x="555" y="374" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">名额话术</text>
+
+    <!-- 第 5 周（末节点标红） -->
+    <text x="685" y="218" text-anchor="middle" font-size="14" fill="var(--fig-red, #C26A63)">损失 373,000 元（独立示意）</text>
+    <text x="690" y="246" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">出金先交费、</text>
+    <text x="690" y="268" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">拉黑消失</text>
+    <circle cx="690" cy="300" r="8" fill="var(--fig-red, #C26A63)" stroke="var(--fig-red, #C26A63)" stroke-width="2"/>
+    <text x="690" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">第 5 周</text>
+    <text x="690" y="352" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">出金要再交钱、</text>
+    <text x="690" y="374" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">场外转账</text>
+
+    <text x="400" y="525" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">虚构教学案例，不指向任何真实机构或个人</text>
+  </g>
+</svg>

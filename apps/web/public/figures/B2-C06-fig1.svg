@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 650" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="650" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="34" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">不复权与前复权对比（示意）</text>
+    <!-- 图例 -->
+    <line x1="300" y1="54" x2="322" y2="54" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8"/>
+    <text x="328" y="58" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">收盘价</text>
+    <line x1="400" y1="54" x2="422" y2="54" stroke="var(--fig-accent, #5FA8A0)" stroke-width="1.8"/>
+    <text x="428" y="58" text-anchor="start" font-size="12" fill="var(--fig-accent, #5FA8A0)">5 日均线</text>
+
+    <!-- 上：不复权 -->
+    <text x="56" y="190" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">不复权</text>
+    <line x1="150" y1="102" x2="700" y2="102" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="142" y="106" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.00</text>
+    <line x1="150" y1="268" x2="700" y2="268" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="142" y="272" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">5.00</text>
+    <line x1="150" y1="283" x2="700" y2="283" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.4" stroke-width="1.2"/>
+    <polyline points="150,111 205,109 260,107 315,106 370,106 425,106 480,106 535,268 590,265 645,267 700,264" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8"/>
+    <polyline points="370,108 425,107 480,106 535,135 590,169 645,200 700,231" fill="none" stroke="var(--fig-accent, #5FA8A0)" stroke-width="1.8"/>
+    <line x1="535" y1="85" x2="535" y2="285" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="545" y="120" text-anchor="start" font-size="13" fill="var(--fig-yellow, #C9A35B)">除权缺口（10 送 10，示意）</text>
+    <text x="480" y="96" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.00</text>
+    <text x="549" y="276" text-anchor="start" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">5.00</text>
+    <text x="552" y="128" text-anchor="start" font-size="11" fill="var(--fig-accent, #5FA8A0)">9.00</text>
+
+    <!-- 下：前复权 -->
+    <text x="56" y="480" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">前复权</text>
+    <line x1="150" y1="475" x2="700" y2="475" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.2" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="142" y="479" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">5.00</text>
+    <line x1="150" y1="575" x2="700" y2="575" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.4" stroke-width="1.2"/>
+    <line x1="535" y1="375" x2="535" y2="575" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="6 4"/>
+    <polyline points="150,489 205,485 260,480 315,475 370,475 425,475 480,475 535,475 590,456 645,466 700,447" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8"/>
+    <polyline points="370,477 425,474 480,471 535,470 590,466 645,464 700,459" fill="none" stroke="var(--fig-accent, #5FA8A0)" stroke-width="1.8"/>
+    <text x="545" y="396" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">同一交易日，序列连续无缺口</text>
+    <text x="700" y="596" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">交易日（示意）</text>
+
+    <text x="380" y="632" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">独立示意</text>
+  </g>
+</svg>

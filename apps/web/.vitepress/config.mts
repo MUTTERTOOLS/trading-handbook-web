@@ -63,7 +63,7 @@ const ACCENTS: Record<string, { accent: string; rgb: string }> = {
   b5: { accent: '#6fa385', rgb: '111, 163, 133' }, // 铜绿
   b6: { accent: '#c97b96', rgb: '201, 123, 150' }, // 胭脂
   b7: { accent: '#d9b86a', rgb: '217, 184, 106' }, // 秋香
-  b8: { accent: '#a64b55', rgb: '166, 75, 85' }, // 绛
+  b8: { accent: '#b8626e', rgb: '184, 98, 110' }, // 绛·提亮变体（审定原值 #a64b55 于深底 3.46:1 低于 AA，2026-11-17 拍板提亮，深底实测 4.6:1）
 };
 
 function chapterIds(volume: SeriesVolumeYaml): string[] {

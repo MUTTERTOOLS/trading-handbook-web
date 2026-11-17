@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="460" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">切换期磨损与过滤器的作用（独立示意）</text>
+
+    <!-- 坐标系与网格 -->
+    <text x="112" y="74" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">累计盈亏（R）</text>
+    <line x1="120" y1="85" x2="120" y2="375" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="375" x2="700" y2="375" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="121.3" x2="700" y2="121.3" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="157.5" x2="700" y2="157.5" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="193.8" x2="700" y2="193.8" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="230" x2="700" y2="230" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="266.3" x2="700" y2="266.3" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="302.5" x2="700" y2="302.5" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="338.8" x2="700" y2="338.8" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <text x="112" y="89" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="112" y="125" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−1</text>
+    <text x="112" y="162" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−2</text>
+    <text x="112" y="198" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−3</text>
+    <text x="112" y="234" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−4</text>
+    <text x="112" y="270" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−5</text>
+    <text x="112" y="307" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−6</text>
+    <text x="112" y="343" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−7</text>
+    <text x="112" y="379" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">−8</text>
+    <text x="120" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="192.5" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1</text>
+    <text x="265" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">2</text>
+    <text x="337.5" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">3</text>
+    <text x="410" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">4</text>
+    <text x="482.5" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">5</text>
+    <text x="555" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">6</text>
+    <text x="627.5" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">7</text>
+    <text x="700" y="393" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">8</text>
+    <text x="410" y="423" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">切换期交易笔数</text>
+
+    <!-- 无过滤器：每笔 −1R 直线降至 −8R -->
+    <line x1="120" y1="85" x2="700" y2="375" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2.2"/>
+    <!-- 有过滤器：前 3 笔降至 −3R 后走平 -->
+    <polyline points="120,85 337.5,193.8 700,193.8" fill="none" stroke="var(--fig-accent, #D9B86A)" stroke-width="2.4"/>
+    <circle cx="337.5" cy="193.8" r="3.5" fill="var(--fig-accent, #D9B86A)"/>
+
+    <!-- 末端标注 -->
+    <text x="706" y="188" text-anchor="start" font-size="12.5" fill="var(--fig-accent, #D9B86A)">有过滤器</text>
+    <text x="706" y="206" text-anchor="start" font-size="12.5" fill="var(--fig-accent, #D9B86A)">−3R 后走平，回撤 3.0%</text>
+    <text x="706" y="352" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">无过滤器</text>
+    <text x="706" y="370" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">每笔 −1R，回撤 7.7%</text>
+  </g>
+</svg>

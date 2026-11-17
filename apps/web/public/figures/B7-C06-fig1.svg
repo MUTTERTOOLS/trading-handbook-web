@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="800" height="480" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="400" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">回撤三档预案</text>
+
+    <!-- 两条分界竖线 -->
+    <line x1="358" y1="96" x2="358" y2="396" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.7" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="358" y="88" text-anchor="middle" font-size="12.5" fill="var(--fig-yellow, #C9A35B)">预警位（熔断线的 2/3）</text>
+    <line x1="482" y1="96" x2="482" y2="396" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.8" stroke-width="1.4" stroke-dasharray="6 4"/>
+    <text x="482" y="88" text-anchor="middle" font-size="12.5" fill="var(--fig-red, #C26A63)">熔断线</text>
+
+    <!-- 三段色带（阶梯） -->
+    <rect x="110" y="158" width="248" height="232" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1.2"/>
+    <rect x="358" y="256" width="124" height="134" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.18" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.6" stroke-width="1.2"/>
+    <rect x="482" y="338" width="248" height="52" fill="var(--fig-red, #C26A63)" fill-opacity="0.20" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.7" stroke-width="1.2"/>
+
+    <!-- 各段上方：档名 + 一句核心动作 -->
+    <text x="234" y="124" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">档一 · 分布内</text>
+    <text x="234" y="142" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">继续执行、照常记账</text>
+
+    <text x="420" y="216" text-anchor="middle" font-size="14" fill="var(--fig-yellow, #C9A35B)">档二 · 接近熔断线</text>
+    <text x="420" y="238" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">停止开新仓，查在途总风险</text>
+
+    <text x="606" y="306" text-anchor="middle" font-size="14" fill="var(--fig-red, #C26A63)">档三 · 触发熔断</text>
+    <text x="606" y="324" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">立即停手，按规则处置存量</text>
+
+    <!-- 横轴：回撤深度 -->
+    <line x1="100" y1="390" x2="740" y2="390" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <text x="110" y="408" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="234" y="408" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">3</text>
+    <text x="358" y="408" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">6</text>
+    <text x="482" y="408" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">9</text>
+    <text x="606" y="408" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">12</text>
+    <text x="730" y="408" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">15</text>
+    <text x="420" y="436" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">回撤深度（%）</text>
+
+    <!-- 右端：硬上限 -->
+    <text x="756" y="243" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)" transform="rotate(-90 756 243)">硬上限 H=15%（起步参考值）</text>
+
+    <text x="400" y="466" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">数字独立示意，与 EX-K 一致</text>
+  </g>
+</svg>

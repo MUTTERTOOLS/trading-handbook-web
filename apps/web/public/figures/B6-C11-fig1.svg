@@ -45,5 +45,15 @@
     <text x="715" y="456" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">＝最长回撤持续时间 × 1.5</text>
 
     <text x="410" y="486" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">数据虚构，独立示意</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <circle cx="190" cy="150" r="12" data-tip="高点 A：净值约 1.18（阶段新高）"/>
+      <circle cx="300" cy="360" r="12" data-tip="回撤谷底 B：净值约 0.97，较 A 回撤约 18%"/>
+      <circle cx="400" cy="140" r="12" data-tip="创新高 C：净值约 1.19——A→C 的水平跨度即回撤持续时间"/>
+      <line x1="70" y1="395" x2="780" y2="395" stroke="transparent" stroke-width="10" data-tip="熔断线（净值约 0.935）：触线即停手复盘"/>
+      <line x1="190" y1="110" x2="400" y2="110" stroke="transparent" stroke-width="10" data-tip="回撤持续时间：A→B→C 的水平距离"/>
+      <line x1="715" y1="118" x2="715" y2="415" stroke="transparent" stroke-width="10" data-tip="创新高间隔阈值＝最长回撤持续时间 × 1.5，超过即视为策略失效"/>
+    </g>
   </g>
 </svg>

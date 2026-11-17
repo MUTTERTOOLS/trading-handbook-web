@@ -69,5 +69,16 @@
     <circle cx="690" cy="120" r="4.5" fill="var(--fig-ink, #E7E1D2)"/>
     <text x="508" y="256" text-anchor="start" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">233%</text>
     <text x="682" y="114" text-anchor="end" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">900%</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <circle cx="127.8" cy="425.6" r="10" data-tip="亏 10%，需涨 11.1% 才回本"/>
+      <circle cx="165.6" cy="370" r="10" data-tip="亏 20%，需涨 25% 才回本"/>
+      <circle cx="203.3" cy="298.4" r="10" data-tip="亏 30%，需涨 42.9% 才回本"/>
+      <circle cx="278.9" cy="70" r="11" data-tip="亏 50%，需涨 100%（翻倍）才回本"/>
+      <line x1="90" y1="470" x2="430" y2="110" stroke="transparent" stroke-width="10" data-tip="y = x 参考线：实际所需涨幅总是高于亏损本身"/>
+      <circle cx="500" cy="260.8" r="10" data-tip="亏 70%，需涨约 233% 才回本"/>
+      <circle cx="690" cy="120" r="11" data-tip="亏 90%，需涨 900% 才回本"/>
+    </g>
   </g>
 </svg>

@@ -154,5 +154,22 @@
     <text transform="rotate(-90 518 210)" x="518" y="210" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">止损 ATR 倍数</text>
 
     <text x="410" y="434" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">左：邻域同步为山峰；右：邻域崩塌为孤岛（独立示意）</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数（行=止损 ATR 倍数，列=窗口天数） -->
+    <g fill="transparent" stroke="none">
+      <rect x="170" y="100" width="44" height="44" data-tip="山峰图：年化 +1%（止损 3.0×ATR、窗口 10 天）——边缘参数表现平庸"/>
+      <rect x="214" y="188" width="44" height="44" data-tip="山峰图：年化 +12%（窗口 15 天），与峰值相邻、同属高原"/>
+      <rect x="258" y="188" width="44" height="44" data-tip="山峰图：年化 +15%＝峰值（止损 2.0×ATR、窗口 20 天）——参数高原中心（白框）"/>
+      <rect x="302" y="188" width="44" height="44" data-tip="山峰图：年化 +12%（窗口 25 天），与峰值相邻"/>
+      <rect x="258" y="144" width="44" height="44" data-tip="山峰图：年化 +12%（止损 2.5×ATR），邻域同步走高"/>
+      <rect x="258" y="232" width="44" height="44" data-tip="山峰图：年化 +13%（止损 1.5×ATR），邻域同步走高"/>
+      <rect x="214" y="232" width="44" height="44" data-tip="山峰图：年化 +10%：从峰值向外平滑衰减"/>
+      <rect x="346" y="276" width="44" height="44" data-tip="山峰图：年化 +2%（止损 1.0×ATR、窗口 30 天）"/>
+      <rect x="604" y="188" width="44" height="44" data-tip="孤岛图：年化 +14%＝孤岛中心（止损 2.0×ATR、窗口 15 天）——四周邻格只有 3%~6%（红框）"/>
+      <rect x="560" y="188" width="44" height="44" data-tip="孤岛图：年化 +4%：与孤岛仅一列之隔，收益骤降"/>
+      <rect x="648" y="188" width="44" height="44" data-tip="孤岛图：年化 +4%：右侧邻格同样平庸"/>
+      <rect x="604" y="144" width="44" height="44" data-tip="孤岛图：年化 +5%：上方邻格平庸"/>
+      <rect x="604" y="232" width="44" height="44" data-tip="孤岛图：年化 +6%：下方邻格平庸——孤岛多半是运气，不可依赖"/>
+    </g>
   </g>
 </svg>

@@ -53,5 +53,20 @@
 
     <!-- 角标 -->
     <text x="735" y="252" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">示意</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <circle cx="111.3" cy="160" r="10" data-tip="历史 PE 12 倍"/>
+      <circle cx="152.7" cy="160" r="10" data-tip="历史 PE 14 倍"/>
+      <circle cx="235.3" cy="160" r="10" data-tip="历史 PE 18 倍"/>
+      <circle cx="276.7" cy="160" r="10" data-tip="历史 PE 20 倍"/>
+      <circle cx="318" cy="160" r="10" data-tip="历史 PE 22 倍"/>
+      <circle cx="380" cy="160" r="10" data-tip="历史 PE 25 倍（中位附近）"/>
+      <circle cx="442" cy="160" r="10" data-tip="历史 PE 28 倍"/>
+      <circle cx="483.3" cy="160" r="10" data-tip="历史 PE 30 倍"/>
+      <circle cx="545.3" cy="160" r="10" data-tip="历史 PE 33 倍"/>
+      <circle cx="648.7" cy="160" r="10" data-tip="历史 PE 38 倍"/>
+      <polygon points="173.3,148 163.5,172 183.1,172" data-tip="当前 PE 15 倍：高于 10 个历史值中的 3 个（12/14/…），分位约 30%"/>
+    </g>
   </g>
 </svg>

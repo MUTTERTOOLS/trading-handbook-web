@@ -83,5 +83,24 @@
     <polyline points="460,471.3 473.2,412.7 486.5,530 499.8,407.3 513,535.3 526.2,418 539.5,519.3 552.8,423.3 566,514 579.2,460.7 592.5,511.9 605.8,428.7 619,509.7 632.2,430.8 645.5,507.6 658.8,432.9 672,434 685.2,462.8 698.5,415.9 711.8,458.5 725,412.7 738.2,460.7 751.5,418 764.8,437.2 778,398.8" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8"/>
     <line x1="793" y1="418.8" x2="782" y2="403.8" stroke="var(--fig-accent, #A98BC4)" stroke-width="2" marker-end="url(#arr6)"/>
     <text x="400" y="632" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">箭头＝触发日；数据为虚构生成的独立示意，边界与颈线为虚线</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <line x1="70" y1="140.8" x2="388" y2="140.8" stroke="transparent" stroke-width="9" data-tip="箱体上边界 10.60 元"/>
+      <line x1="70" y1="243.2" x2="388" y2="243.2" stroke="transparent" stroke-width="9" data-tip="箱体下边界 9.80 元"/>
+      <circle cx="369.3" cy="117.8" r="10" data-tip="触发日：收盘约 10.7 元，向上突破箱体上边界"/>
+      <line x1="460" y1="139.1" x2="778" y2="139.1" stroke="transparent" stroke-width="9" data-tip="W 底颈线 10.40 元"/>
+      <circle cx="526.9" cy="237.5" r="10" data-tip="W 底第一个低点：约 9.5 元"/>
+      <circle cx="677.6" cy="225.2" r="10" data-tip="W 底第二个低点：约 9.6 元（高于前低，重心抬高）"/>
+      <circle cx="744.5" cy="120.6" r="10" data-tip="触发日：收盘约 10.4 元，向上突破颈线"/>
+      <line x1="70" y1="496" x2="388" y2="496" stroke="transparent" stroke-width="9" data-tip="M 顶颈线 10.90 元"/>
+      <circle cx="120.2" cy="406" r="10" data-tip="M 顶第一个峰：约 11.8 元"/>
+      <circle cx="254.1" cy="396" r="10" data-tip="M 顶第二个峰：约 11.9 元（与前峰接近）"/>
+      <circle cx="321.1" cy="511" r="10" data-tip="触发日：收盘约 10.75 元，跌破颈线"/>
+      <line x1="460" y1="412.7" x2="778" y2="412.7" stroke="transparent" stroke-width="9" data-tip="波动收缩末段上沿 10.55 元"/>
+      <circle cx="486.5" cy="530" r="9" data-tip="前期波幅大：单日振幅约 1 元"/>
+      <circle cx="672" cy="434" r="9" data-tip="后期波幅收窄：日内高低差明显变小"/>
+      <circle cx="778" cy="398.8" r="10" data-tip="触发日：收盘约 10.7 元，向上突破收缩区上沿"/>
+    </g>
   </g>
 </svg>

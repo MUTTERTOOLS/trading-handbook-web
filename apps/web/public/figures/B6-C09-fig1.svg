@@ -58,5 +58,19 @@
     <text x="430" y="422" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">最大回撤（R）</text>
 
     <text x="390" y="478" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">独立示意，读者自跑结果不同</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="120" y="322" width="38" height="58" data-tip="最大回撤 ≤3R：6 次 / 100 次重排"/>
+      <rect x="196" y="206" width="76" height="174" data-tip="最大回撤 4~5R：18 次"/>
+      <rect x="272" y="148" width="76" height="232" data-tip="最大回撤 6~7R：24 次（峰值）"/>
+      <rect x="348" y="186.7" width="76" height="193.3" data-tip="最大回撤 8~9R：20 次"/>
+      <rect x="424" y="244.7" width="76" height="135.3" data-tip="最大回撤 10~11R：14 次"/>
+      <rect x="500" y="283.3" width="76" height="96.7" data-tip="最大回撤 12~13R：10 次"/>
+      <rect x="576" y="302.7" width="114" height="77.3" data-tip="最大回撤 ≥14R：8 次——同一组交易换个顺序也可能回撤翻数倍"/>
+      <line x1="576" y1="90" x2="576" y2="380" stroke="transparent" stroke-width="9" data-tip="95% 分位：约 13R——95% 的重排不会比这更差"/>
+      <line x1="614" y1="90" x2="614" y2="380" stroke="transparent" stroke-width="9" data-tip="99% 分位（示意）：约 14R+——最坏 1% 的重排"/>
+      <line x1="158" y1="374" x2="158" y2="386" stroke="transparent" stroke-width="14" data-tip="原顺序的单条路径只有 3R：单一顺序严重低估风险"/>
+    </g>
   </g>
 </svg>

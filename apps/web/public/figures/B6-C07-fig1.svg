@@ -47,5 +47,14 @@
     <text x="405" y="422" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">交易笔数</text>
 
     <text x="400" y="452" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">简单累加口径（未复利）：每笔毛利 +0.3%、成本 -0.2%、净利 +0.1%</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <line x1="120" y1="255.7" x2="690" y2="131.4" stroke="transparent" stroke-width="10" data-tip="毛利线：50 笔累计 +15%（每笔 +0.3%）"/>
+      <line x1="120" y1="255.7" x2="690" y2="214.3" stroke="transparent" stroke-width="10" data-tip="净利线：50 笔累计 +5%（每笔净 +0.1%）"/>
+      <line x1="120" y1="255.7" x2="690" y2="338.6" stroke="transparent" stroke-width="10" data-tip="成本线：50 笔累计 −10%（每笔 −0.2%）"/>
+      <polygon points="120,255.7 690,131.4 690,214.3" data-tip="被摩擦吃掉的部分：交易成本吃掉三分之二的毛利"/>
+      <line x1="120" y1="255.7" x2="690" y2="255.7" stroke="transparent" stroke-width="12" data-tip="零轴：成本线位于零轴下方，说明每笔交易先亏一份固定成本"/>
+    </g>
   </g>
 </svg>

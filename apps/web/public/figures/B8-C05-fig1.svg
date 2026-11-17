@@ -61,5 +61,14 @@
     <text x="758" y="76" text-anchor="end" font-size="13" fill="var(--fig-accent, #B8626E)">净 +6R</text>
 
     <text x="420" y="515" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：累计路径为教学构造，期望为正不排除磨损与连亏</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="110" y="300" width="265" height="120" data-tip="磨损段：前 12 笔连亏为主，累计最深约 −4.5R——低胜率系统的常态"/>
+      <circle cx="379" cy="297" r="11" data-tip="第 13 笔：单笔约 +3.5R 的大盈，累计由负转正附近"/>
+      <circle cx="558.3" cy="204" r="11" data-tip="第 21 笔：单笔约 +4R 的大盈，累计站上 +2.5R"/>
+      <circle cx="760" cy="90" r="11" data-tip="第 30 笔终点：累计净 +6R（约 30% 胜率 × 3.5 倍盈亏比的教学构造）"/>
+      <line x1="110" y1="270" x2="760" y2="270" stroke="transparent" stroke-width="10" data-tip="零轴：累计盈亏正负分界"/>
+    </g>
   </g>
 </svg>

@@ -49,5 +49,17 @@
     <text x="378" y="332" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">+0.4</text>
 
     <text x="390" y="438" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">负值表示该笔违规偶然多赚</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数（单位 R＝单笔风险） -->
+    <g fill="transparent" stroke="none">
+      <rect x="290" y="90" width="40" height="20" data-tip="扛单：单笔执行成本 +0.2R（该类算例均值）"/>
+      <rect x="290" y="128" width="200" height="20" data-tip="早走：单笔执行成本 +1.0R——提前离场错过趋势延续"/>
+      <rect x="210" y="166" width="80" height="20" data-tip="违规加仓：−0.4R（负值＝这一笔偶然多赚，但纪律仍是错的）"/>
+      <rect x="290" y="204" width="400" height="20" data-tip="漏单：单笔执行成本 +2.0R——错过的往往是最赚钱的信号"/>
+      <rect x="290" y="242" width="40" height="20" data-tip="迟入：单笔执行成本 +0.2R"/>
+      <rect x="290" y="280" width="50" height="20" data-tip="超仓：单笔执行成本 +0.25R"/>
+      <rect x="290" y="318" width="80" height="20" data-tip="无信号交易：单笔执行成本 +0.4R"/>
+      <line x1="290" y1="78" x2="290" y2="362" stroke="transparent" stroke-width="10" data-tip="零轴：不发生偏差时的成本基准"/>
+    </g>
   </g>
 </svg>

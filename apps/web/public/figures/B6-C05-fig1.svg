@@ -37,5 +37,12 @@
     <text x="510" y="414" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">仅存活样本</text>
 
     <text x="390" y="450" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">20 家退市平均 -70%、80 家存活平均 +120%（独立示意）</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="205" y="209.6" width="130" height="180.4" data-tip="全样本（含退市）：十年年化 +82%（退市股平均 −70% 计入后）"/>
+      <rect x="445" y="126" width="130" height="264" data-tip="仅存活样本：十年年化 +120%（剔除了 20 家退市股）"/>
+      <line x1="405" y1="132" x2="405" y2="204" stroke="transparent" stroke-width="12" data-tip="＋38 个百分点：剔除退市股造成的虚高（幸存者偏差）"/>
+    </g>
   </g>
 </svg>

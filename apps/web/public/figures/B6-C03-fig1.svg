@@ -43,5 +43,12 @@
     <text x="405" y="438" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">回测笔数（档位间距示意）</text>
 
     <text x="405" y="460" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">横带为围绕真实胜率的读数晃动范围，宽度取 ±18 / ±10 / ±5（EX-L）</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <polygon points="150,123.4 330,173 330,297 150,346.6" data-tip="样本 30 笔：胜率读数在 50% ±18 之间晃动（32%~68%）"/>
+      <polygon points="330,173 620,204 620,266 330,297" data-tip="样本 100 → 400 笔：晃动范围收窄到 ±10 → ±5"/>
+      <line x1="128" y1="235" x2="655" y2="235" stroke="transparent" stroke-width="12" data-tip="真实胜率 50%：读数围绕它晃动，样本越多越稳"/>
+    </g>
   </g>
 </svg>

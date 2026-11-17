@@ -53,5 +53,20 @@
     <text x="78" y="360.8" text-anchor="middle" font-size="11.5" fill="var(--fig-accent, #A98BC4)">支撑区二（两次触及）</text>
     <text x="726" y="404.6" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">支撑区一（成交密集区）</text>
     <text x="390" y="516" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">走势与数字均为虚构生成的独立示意</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="70" y="208" width="660" height="24" data-tip="阻力区约 11.4~11.6 元：四次触及未能有效突破（黄＝警示区）"/>
+      <rect x="70" y="346" width="660" height="20.4" data-tip="支撑区二约 10.3~10.45 元：两次触及均获承接"/>
+      <rect x="70" y="352" width="660" height="60" data-tip="支撑区一约 9.9~10.4 元：成交密集区，回落两次获承接"/>
+      <circle cx="70" cy="208" r="10" data-tip="起点约 11.6 元，处于阻力区下沿"/>
+      <circle cx="92.8" cy="222.4" r="10" data-tip="第二次触及阻力区（约 11.5 元）后回落"/>
+      <circle cx="115.5" cy="406" r="10" data-tip="回落至约 9.95 元，支撑区一内获承接"/>
+      <circle cx="229.3" cy="402.4" r="10" data-tip="再次回落至约 9.98 元，支撑区一第二次生效"/>
+      <circle cx="388.6" cy="217.6" r="10" data-tip="反弹再入阻力区（约 11.5 元），第三次触及"/>
+      <circle cx="434.1" cy="214" r="10" data-tip="第四次触及阻力区（约 11.5 元），随后转跌"/>
+      <circle cx="547.9" cy="358" r="10" data-tip="跌入支撑区二（约 10.35 元），第一次触及"/>
+      <circle cx="593.4" cy="364" r="10" data-tip="支撑区二第二次触及（约 10.3 元），随后反弹"/>
+    </g>
   </g>
 </svg>

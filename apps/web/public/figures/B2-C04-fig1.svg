@@ -37,5 +37,14 @@
     <text x="620" y="328" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">实际卖出价（示意）</text>
 
     <text x="380" y="460" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">数字为示意，规则以最新规定为准</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <circle cx="200" cy="138" r="10" data-tip="周一收盘 10.00 元（跌停发生前）"/>
+      <circle cx="340" cy="243" r="10" data-tip="周二一字跌停：收盘 9.00 元（较前日 −10%），卖单排队无法成交"/>
+      <circle cx="480" cy="337" r="10" data-tip="周三继续一字跌停：收盘约 8.10 元，止损单仍未成交"/>
+      <circle cx="620" cy="348" r="10" data-tip="周四以约 8.00 元卖出（示意）：低于计划止损价 9.50 元约 16%"/>
+      <line x1="130" y1="190" x2="700" y2="190" stroke="transparent" stroke-width="8" data-tip="计划止损价 9.50 元（黄＝警示线）"/>
+    </g>
   </g>
 </svg>

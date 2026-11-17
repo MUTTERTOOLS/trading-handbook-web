@@ -31,5 +31,14 @@
     <text x="244" y="156" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">成本传导</text>
     <line x1="474" y1="170" x2="525" y2="170" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
     <text x="499" y="156" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价格转嫁</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="20" y="95" width="195" height="150" rx="6" data-tip="上游：油料收购价上涨 10%（输入端成本冲击）"/>
+      <rect x="275" y="95" width="195" height="150" rx="6" data-tip="中游榨油厂：单位成本 70 → 77.00 元，毛利率 30% → 23.00%（售价未动）"/>
+      <rect x="530" y="95" width="205" height="150" rx="6" data-tip="下游餐饮：能提价 10% 则毛利率回到 30.00%；不能提价则停在 23.00%"/>
+      <line x1="219" y1="170" x2="270" y2="170" stroke="transparent" stroke-width="12" data-tip="成本传导：上游涨价沿链条向中游推进"/>
+      <line x1="474" y1="170" x2="525" y2="170" stroke="transparent" stroke-width="12" data-tip="价格转嫁：中游能否把 7 元成本转嫁出去，决定毛利率走向"/>
+    </g>
   </g>
 </svg>

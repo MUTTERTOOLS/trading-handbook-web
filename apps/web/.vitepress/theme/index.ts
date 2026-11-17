@@ -3,6 +3,7 @@ import { defineAsyncComponent, type App, type Component } from 'vue';
 import { SLOT_IDS, type SlotId } from '../slots';
 import SeriesHome from '../../components/SeriesHome.vue';
 import VolumeIntro from '../../components/VolumeIntro.vue';
+import { setupFigureTooltips } from './figureTooltip';
 import './custom.css';
 
 /**
@@ -28,6 +29,11 @@ export default {
     app.component('VolumeIntro', VolumeIntro);
     for (const slotId of SLOT_IDS) {
       app.component(slotId, slotRegistry[slotId]);
+    }
+    // 成品图 data-tip 悬浮提示（派单 D21）：仅浏览器端挂载；
+    // 事件委托在 document 上，客户端换页后的新 SVG 无需重新绑定。
+    if (typeof window !== 'undefined') {
+      setupFigureTooltips();
     }
   },
 };

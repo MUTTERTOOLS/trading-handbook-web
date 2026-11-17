@@ -53,5 +53,15 @@
     <line x1="380" y1="452" x2="410" y2="452" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.6" stroke-dasharray="5 4"/>
     <text x="415" y="456" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">60 日均线</text>
     <text x="400" y="482" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">黄色箭头＝三次假突破（第 7、14、24 日盘中冲高 21.00/21.10/21.05，收盘收回箱体内）</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <line x1="80" y1="205.2" x2="760" y2="205.2" stroke="transparent" stroke-width="9" data-tip="箱体上沿 20.60 元"/>
+      <line x1="80" y1="358.8" x2="760" y2="358.8" stroke="transparent" stroke-width="9" data-tip="箱体下沿 19.40 元"/>
+      <circle cx="220.7" cy="154" r="10" data-tip="第 7 日假突破：盘中冲高 21.00 元，收盘收回箱体内"/>
+      <circle cx="384.8" cy="141.2" r="10" data-tip="第 14 日假突破：盘中冲高 21.10 元，收盘收回箱体内"/>
+      <circle cx="619.3" cy="147.6" r="10" data-tip="第 24 日假突破：盘中冲高 21.05 元，收盘收回箱体内"/>
+      <circle cx="408.3" cy="267.3" r="12" data-tip="均线缠绕：20 日与 60 日均线几乎重叠，方向感缺失"/>
+    </g>
   </g>
 </svg>

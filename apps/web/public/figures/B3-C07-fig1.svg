@@ -33,5 +33,12 @@
     <text x="440" y="126" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">超限</text>
     <text x="440" y="142" text-anchor="middle" font-size="13" fill="var(--fig-red, #C26A63)">6.0%</text>
     <text x="440" y="384" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">合并口径</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="215" y="228.75" width="90" height="131.25" data-tip="计划口径 3.75%：只按计划内止损单计算的在途风险"/>
+      <rect x="395" y="150" width="90" height="210" data-tip="合并口径 6.0%：把未挂止损或滑点扩大的敞口一并计入，超上限"/>
+      <line x1="140" y1="185" x2="560" y2="185" stroke="transparent" stroke-width="9" data-tip="在途总风险上限 5%（起步参考值，需个人校准）"/>
+    </g>
   </g>
 </svg>

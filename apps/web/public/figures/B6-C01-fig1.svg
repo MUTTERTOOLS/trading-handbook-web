@@ -55,5 +55,16 @@
     <text x="687.5" y="522" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">半年 -6.8%</text>
 
     <text x="435" y="556" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：数字为教学推演，实盘值按复利折算年化，非真实策略</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="134.5" y="105.6" width="56" height="218.4" data-tip="回测原始收益：年化 +28%（虚构示意）"/>
+      <rect x="239.5" y="214.8" width="56" height="109.2" data-tip="修过拟合后：+14%（过拟合挤掉约 14 个百分点虚增收益）"/>
+      <rect x="344.5" y="261.6" width="56" height="62.4" data-tip="修数据偏差后：+8%（幸存者偏差等再挤掉 6 个百分点）"/>
+      <rect x="449.5" y="311.5" width="56" height="12.5" data-tip="计入交易成本后：+1.6%（成本吃掉 6.4 个百分点）"/>
+      <rect x="554.5" y="324" width="56" height="4.7" data-tip="计入市场拥挤后：−0.6%（策略同质化后转负）"/>
+      <rect x="659.5" y="324" width="56" height="102.2" data-tip="实盘：约 −13.1%（半年 −6.8% 按年化折算；执行偏差＋方差）"/>
+      <polyline points="162.5,105.6 267.5,214.8 372.5,261.6 477.5,311.5 582.5,324 687.5,426.2" fill="none" stroke="transparent" stroke-width="10" data-tip="各级顶部相连：从回测到实盘的利润损耗路径"/>
+    </g>
   </g>
 </svg>

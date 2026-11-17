@@ -66,5 +66,15 @@
     <text x="100" y="306" text-anchor="start" font-size="11.5" fill="var(--fig-red, #C26A63)">EX-E (0.2, 80%)：线下</text>
     <text x="100" y="326" text-anchor="start" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">EX-F (3, 40%)：线上</text>
     <text x="100" y="346" text-anchor="start" font-size="11.5" fill="var(--fig-red, #C26A63)">EX-G (0.5, 65%)：线下</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="310" y="278" width="110" height="36" data-tip="示意区间：盈亏比 2~3、胜率 35%~45%（非标准区间）"/>
+      <polyline points="90,80 101,112.7 112,140.1 123,163.1 134,182.9 145,199.9 156,215 167,228.2 178,240 189,250.5 200,260 255,296 310,320.1 365,337.1 420,350 475,360.1 530,368 585,374.5 640,379.9" fill="none" stroke="transparent" stroke-width="10" data-tip="不计成本及格线：p＝1/(1+R)，盈亏比越高、对胜率要求越低"/>
+      <polyline points="145,176.1 200,242 255,287.7 310,307.9 365,329.9 420,341 475,353.9 530,362.3 585,369.3 640,374.1" fill="none" stroke="transparent" stroke-width="10" data-tip="含成本及格线：成本把线抬高（平均亏 2%、单笔成本 0.2%，示意设定）"/>
+      <circle cx="112" cy="152" r="10" data-tip="EX-E（盈亏比 0.2，胜率 80%）：在及格线下方，不达标"/>
+      <circle cx="420" cy="296" r="10" data-tip="EX-F（盈亏比 3，胜率 40%）：在及格线上方，达标"/>
+      <circle cx="145" cy="206" r="10" data-tip="EX-G（盈亏比 0.5，胜率 65%）：在及格线下方，不达标"/>
+    </g>
   </g>
 </svg>

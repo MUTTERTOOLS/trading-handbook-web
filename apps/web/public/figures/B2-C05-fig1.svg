@@ -49,5 +49,14 @@
     <text x="676" y="124" text-anchor="end" font-size="13" fill="var(--fig-yellow, #C9A35B)">50%</text>
 
     <text x="380" y="478" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">独立示意推演，单次成本率 0.2% 假设</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <circle cx="147" cy="387" r="10" data-tip="每年约 12 次（月 1 次）：年损耗 2.4%"/>
+      <circle cx="239" cy="345" r="10" data-tip="每年约 52 次（周 1 次）：年损耗 10.4%"/>
+      <circle cx="348" cy="293" r="10" data-tip="每年 100 次（约每 2~3 个交易日 1 次）：年损耗 20%"/>
+      <circle cx="690" cy="133" r="10" data-tip="每年 250 次（约每日 1 次）：年损耗 50%"/>
+      <line x1="120" y1="400" x2="690" y2="133" stroke="transparent" stroke-width="10" data-tip="损耗直线：单次往返成本率 0.2% × 年往返次数（示意推演，黄＝警示）"/>
+    </g>
   </g>
 </svg>

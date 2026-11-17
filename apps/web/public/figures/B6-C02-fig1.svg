@@ -59,5 +59,19 @@
     <text x="400" y="424" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">最长连击（笔）</text>
 
     <text x="400" y="452" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">数据由模拟生成（示意）：每轮 100 次抛硬币，重复约 200 轮</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="117" y="322" width="44" height="58" data-tip="最长连击 3 笔：约 8 轮"/>
+      <rect x="175" y="264" width="44" height="116" data-tip="最长连击 4 笔：约 16 轮"/>
+      <rect x="233" y="177" width="44" height="203" data-tip="最长连击 5 笔：约 28 轮"/>
+      <rect x="291" y="90" width="44" height="290" data-tip="最长连击 6 笔：约 40 轮（峰值区 6~7 笔）"/>
+      <rect x="349" y="119" width="44" height="261" data-tip="最长连击 7 笔：约 36 轮"/>
+      <rect x="407" y="191.5" width="44" height="188.5" data-tip="最长连击 8 笔：约 26 轮"/>
+      <rect x="465" y="249.5" width="44" height="130.5" data-tip="最长连击 9 笔：约 18 轮"/>
+      <rect x="523" y="278.5" width="44" height="101.5" data-tip="最长连击 10 笔：约 14 轮"/>
+      <rect x="581" y="314.75" width="44" height="65.25" data-tip="最长连击 11 笔：约 9 轮（右尾拖长）"/>
+      <rect x="639" y="343.75" width="44" height="36.25" data-tip="最长连击 12 笔：约 5 轮——纯随机也能连错 12 笔"/>
+    </g>
   </g>
 </svg>

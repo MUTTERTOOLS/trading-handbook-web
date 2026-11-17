@@ -53,5 +53,17 @@
     <text x="480" y="190" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">触不到线；触线意味着跑出了分布</text>
 
     <text x="90" y="474" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">（独立示意：模拟 1,000 次的分布形状）</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="94.3" y="320" width="28" height="80" data-tip="回撤 0%~1%：约 6 次"/>
+      <rect x="204.3" y="80" width="28" height="320" data-tip="回撤 3%~4%：约 25 次（峰值区间 2.5%~3.5%）"/>
+      <rect x="241" y="160" width="28" height="240" data-tip="回撤 4%~5%：约 19 次"/>
+      <rect x="314.3" y="320" width="28" height="80" data-tip="回撤 6%~7%：约 6 次（已近 99 分位）"/>
+      <rect x="497.7" y="386.7" width="28" height="13.3" data-tip="回撤 11%~12%：约 1 次（右尾拖长）"/>
+      <line x1="310" y1="80" x2="310" y2="400" stroke="transparent" stroke-width="9" data-tip="99 分位 ≈ 6%：1,000 次模拟中约 10 次回撤超过它"/>
+      <line x1="420" y1="80" x2="420" y2="400" stroke="transparent" stroke-width="9" data-tip="熔断线 9%（红＝停手）：触线即停止交易、复盘归因"/>
+      <line x1="640" y1="80" x2="640" y2="400" stroke="transparent" stroke-width="9" data-tip="硬上限 H＝15%：资金安全的最终约束，不可被熔断线覆盖"/>
+    </g>
   </g>
 </svg>

@@ -423,5 +423,47 @@
     <rect x="784.8" y="1082.7" width="16" height="6.8" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>
     <rect x="784.8" y="1160.2" width="16" height="3.8" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
     <text x="410" y="1206" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)" font-weight="600">A 股配色：红涨绿跌；海外惯例相反，仅配色不同，数据相同</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块覆盖关键 K 线（含影线），悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <!-- 图一 上升趋势 -->
+      <rect x="63.2" y="148.9" width="20" height="20.5" data-tip="图一·第 1 根：小阳线起步，量能平稳"/>
+      <rect x="372.8" y="107" width="20" height="19.6" data-tip="图一·第 10 根：收阳创出新高，重心持续上移（上升趋势）"/>
+      <!-- 图二 下降趋势 -->
+      <rect x="473.2" y="126.9" width="20" height="23.2" data-tip="图二·第 1 根：高位收阴，跌势自此开始"/>
+      <rect x="782.8" y="159.3" width="20" height="21.7" data-tip="图二·第 10 根：连续收阴，低点不断下移（下降趋势）"/>
+      <!-- 图三 震荡 -->
+      <rect x="63.2" y="347.1" width="20" height="26.7" data-tip="图三·第 1 根：区间内回落"/>
+      <rect x="166.4" y="346" width="20" height="24.3" data-tip="图三·第 4 根：反弹至区间上沿附近"/>
+      <rect x="372.8" y="348.3" width="20" height="22" data-tip="图三·第 10 根：仍在箱体内往返，方向未明"/>
+      <!-- 图四 假突破 -->
+      <rect x="542" y="336.4" width="20" height="24.2" data-tip="图四·第 3 根：放量冲高（量比显著放大），但收盘仍在区间上沿附近"/>
+      <rect x="576.4" y="335.3" width="20" height="35.9" data-tip="图四·第 4 根：冲高后收长上影阴线——假突破确认，跌回箱体"/>
+      <rect x="782.8" y="356.4" width="20" height="19" data-tip="图四·第 10 根：缩量反弹，未离开箱体"/>
+      <!-- 图五 放量突破 -->
+      <rect x="269.6" y="578.2" width="20" height="22.3" data-tip="图五·第 7 根：放量长阳突破整理平台（量比约 2.8，明显放大）"/>
+      <rect x="304" y="569.2" width="20" height="20.6" data-tip="图五·第 8 根：突破后量能维持高位，突破有效性增强"/>
+      <rect x="372.8" y="561.2" width="20" height="17" data-tip="图五·第 10 根：高位小阳线，涨势延续"/>
+      <!-- 图六 缩量回调 -->
+      <rect x="542" y="590.7" width="20" height="29.6" data-tip="图六·第 3 根：回调阴线"/>
+      <rect x="576.4" y="606.5" width="20" height="24.3" data-tip="图六·第 4 根：缩量回调低点（量比降至 1 以下）"/>
+      <rect x="782.8" y="564.4" width="20" height="17.9" data-tip="图六·第 10 根：收复回调失地——缩量回调后重拾升势"/>
+      <!-- 图七 高位滞涨 -->
+      <rect x="97.6" y="795" width="20" height="34.8" data-tip="图七·第 2 根：放量冲至高位"/>
+      <rect x="235.2" y="805.4" width="20" height="36" data-tip="图七·第 6 根：再冲高但收盘走弱，上攻开始乏力"/>
+      <rect x="372.8" y="819.4" width="20" height="30.1" data-tip="图七·第 10 根：高位连续小阴线（高位滞涨信号）"/>
+      <!-- 图八 W 底成立 -->
+      <rect x="542" y="847.2" width="20" height="13.1" data-tip="图八·第 3 根：第一个底（低点约 9.9 元），长下影止跌"/>
+      <rect x="576.4" y="835.6" width="20" height="19.3" data-tip="图八·第 4 根：二次探底略高于前低，双底形态确认"/>
+      <rect x="782.8" y="785.3" width="20" height="13.2" data-tip="图八·第 10 根：突破颈线后连阳，W 底成立"/>
+      <!-- 图九 M 顶成立 -->
+      <rect x="132" y="1014.3" width="20" height="15.9" data-tip="图九·第 3 根：冲高至顶部（高点约 11.4 元）"/>
+      <rect x="166.4" y="1019.4" width="20" height="21.7" data-tip="图九·第 4 根：高位转阴，涨势停住"/>
+      <rect x="372.8" y="1073.8" width="20" height="15.9" data-tip="图九·第 10 根：连续收阴走低，顶部形态确立"/>
+      <!-- 图十 无量空跌 -->
+      <rect x="542" y="1028.1" width="20" height="16.4" data-tip="图十·第 3 根起：阴线连跌但量比持续萎缩（约 0.5）"/>
+      <rect x="706" y="1065.6" width="20" height="15.7" data-tip="图十·第 8 根：量能进一步萎缩，仍无承接盘"/>
+      <rect x="782.8" y="1075.9" width="20" height="17" data-tip="图十·第 10 根：无量续跌——没有成交承接的下跌最难止损"/>
+    </g>
   </g>
 </svg>

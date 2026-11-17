@@ -184,9 +184,13 @@ body { overflow-x: hidden; line-height: 1.85; }
   padding: 13px 2px;
   border-bottom: 1px dashed rgba(231, 225, 210, 0.16);
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background 0.15s, padding-left 0.15s;
 }
-.sh-row:hover { background: rgba(231, 225, 210, 0.04); }
+/* D21 任务4：首页行 hover 反馈（底色微亮 + 轻微右移，册名色不变） */
+.sh-row:hover {
+  background: rgba(231, 225, 210, 0.055);
+  padding-left: 8px;
+}
 .sh-row-main { display: flex; gap: 14px; align-items: baseline; flex-shrink: 0; }
 .sh-no { font-size: 12px; color: var(--text-secondary); min-width: 3em; }
 .sh-name { font-size: 15px; font-weight: 600; letter-spacing: 0.5px; }
@@ -291,10 +295,12 @@ body { overflow-x: hidden; line-height: 1.85; }
 }
 .vp-badge {
   display: inline-block;
-  padding: 5px 14px;
+  padding: 6px 16px;
   border: 1px solid var(--border-accent);
   border-radius: 999px;
   color: var(--accent);
+  /* D21 任务4：徽标由纯描边改为册色 ~10% 底色，册色面积适度加大 */
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
   font-size: 12.5px;
   letter-spacing: normal;
 }
@@ -327,8 +333,9 @@ body { overflow-x: hidden; line-height: 1.85; }
   text-decoration: none;
   transition: background 0.15s;
 }
-.vt-row:hover { background: rgba(231, 225, 210, 0.04); }
-.vt-no { font-size: 12.5px; color: var(--text-secondary); min-width: 2.6em; }
+/* D21 任务4：扉页章目录 hover 反馈改册色低透明度底 */
+.vt-row:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.vt-no { font-size: 12.5px; color: var(--accent); font-weight: 600; min-width: 2.6em; }
 .vt-name { font-size: 15px; color: var(--text-primary); line-height: 1.8; }
 .vt-row:hover .vt-name { color: var(--accent); }
 @media (max-width: 640px) {
@@ -367,7 +374,8 @@ body { overflow-x: hidden; line-height: 1.85; }
   padding-top: 0;
   padding-left: 12px;
   border-top: none;
-  border-left: 3px solid var(--border-accent);
+  /* 册色短竖线（D21 任务4：h2 小节标题册色细节，随分册 accent 变色） */
+  border-left: 3px solid var(--accent);
   line-height: 1.4;
   scroll-margin-top: calc(var(--vp-nav-height, 64px) + 24px);
 }
@@ -592,13 +600,35 @@ body { overflow-x: hidden; line-height: 1.85; }
 
 /* === 成品图（契约 §5.2，D12 起图默认可见；制图说明文字不进渲染输出） === */
 .figure-block { margin: 20px 0; }
+/* 册色低透明度描边（D21 任务4）：随分册 accent，仍只做细线级点缀 */
 .figure-block svg {
   display: block;
   max-width: 100%;
   height: auto;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-accent);
   border-radius: var(--radius-sm);
 }
+/* 悬浮提示（D21 任务1）：data-tip 统一机制——带提示的元素可悬停读数 */
+.figure-block [data-tip] { cursor: help; }
+.figure-block [data-tip]:hover { filter: brightness(1.25); }
+.fig-tip {
+  position: fixed;
+  z-index: 999;
+  max-width: min(300px, calc(100vw - 32px));
+  padding: 8px 12px;
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  line-height: 1.7;
+  letter-spacing: normal;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.fig-tip.show { opacity: 1; }
 /* 防退化通道：校验不过（>60KB/脚本/外链/结构缺失）时以 <img> 呈现 */
 .figure-block img {
   display: block;
@@ -955,3 +985,41 @@ input[type='range']:focus-visible { box-shadow: 0 0 0 3px var(--accent-dim); }
   color: var(--text-secondary);
   line-height: 2;
 }
+
+/* ============================================
+   侧栏（D21 任务3/4：可折叠分册分组 · 视觉收紧 · 册色点缀）
+   分册分组标题收紧为小号次级字；当前项与 hover 项用本册 accent
+   （--accent 由 config.mts 按页注入，一处规则全站生效）。
+   ============================================ */
+.VPSidebar .VPSidebarItem.level-0 { padding-bottom: 16px; }
+.VPSidebar .VPSidebarItem.level-0 > .item > .link .text {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.VPSidebar .VPSidebarItem.level-0.has-active > .item > .link .text {
+  color: var(--accent);
+}
+.VPSidebar .VPSidebarItem.level-0 > .item > .link:hover .text {
+  color: var(--accent);
+}
+.VPSidebar .VPSidebarItem.level-0 > .item .caret { width: 26px; height: 26px; }
+.VPSidebar .VPSidebarItem.level-1 > .item > .link .text {
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.VPSidebar .VPSidebarItem.level-1 > .item > .link:hover .text {
+  color: var(--accent);
+}
+.VPSidebar .VPSidebarItem.level-1.is-active > .item > .link .text {
+  color: var(--accent);
+  font-weight: 600;
+}
+.VPSidebar .VPSidebarItem.level-1.is-active > .item > .indicator {
+  background-color: var(--accent);
+}
+/* 本页目录（outline）：hover 项册色点缀（当前项已是 brand=accent） */
+.VPDocAsideOutline .outline-link { transition: color 0.15s; }
+.VPDocAsideOutline .outline-link:hover { color: var(--accent); }

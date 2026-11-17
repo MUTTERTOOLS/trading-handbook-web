@@ -77,5 +77,16 @@
     <text x="560" y="418" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">浮亏 −3,900 元（−17.8%）</text>
 
     <text x="425" y="546" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：格距 0.01 元、路径与浮亏均为教学口径，非真实行情</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <line x1="100" y1="130" x2="770" y2="130" stroke="transparent" stroke-width="9" data-tip="网格上沿 1.20 元：首格买入位附近"/>
+      <line x1="100" y1="330" x2="770" y2="330" stroke="transparent" stroke-width="9" data-tip="网格下沿 1.00 元：最后一格买入位"/>
+      <circle cx="119.7" cy="140" r="10" data-tip="第 1 格买入：约 1.19 元"/>
+      <circle cx="402.3" cy="230" r="10" data-tip="第 10 格买入：约 1.10 元（每跌 0.01 元买一格）"/>
+      <circle cx="590.7" cy="290" r="10" data-tip="第 16 格买入：约 1.05 元，此时全部持仓浮亏约 −1,900 元（−8.7%）"/>
+      <circle cx="716.3" cy="330" r="10" data-tip="第 20 格买入：1.00 元（下沿，资金用尽）"/>
+      <circle cx="763.4" cy="430" r="11" data-tip="跌破下沿至 0.90 元：20 格全部浮亏 −3,900 元（−17.8%），无钱再补"/>
+    </g>
   </g>
 </svg>

@@ -45,5 +45,13 @@
     <text x="706" y="206" text-anchor="start" font-size="12.5" fill="var(--fig-accent, #D9B86A)">−3R 后走平，回撤 3.0%</text>
     <text x="706" y="352" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">无过滤器</text>
     <text x="706" y="370" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">每笔 −1R，回撤 7.7%</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <line x1="120" y1="85" x2="700" y2="375" stroke="transparent" stroke-width="10" data-tip="无过滤器：切换期每笔约 −1R，8 笔累计 −8R（回撤 7.7%）"/>
+      <line x1="120" y1="85" x2="337.5" y2="193.8" stroke="transparent" stroke-width="10" data-tip="有过滤器：前 3 笔同样亏损，累计约 −3R"/>
+      <circle cx="337.5" cy="193.8" r="10" data-tip="第 3 笔后过滤器生效：亏损停止"/>
+      <line x1="337.5" y1="193.8" x2="700" y2="193.8" stroke="transparent" stroke-width="10" data-tip="有过滤器：−3R 后走平（回撤 3.0%），比无过滤器少亏 5R"/>
+    </g>
   </g>
 </svg>

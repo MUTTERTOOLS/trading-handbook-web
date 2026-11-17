@@ -143,20 +143,27 @@ for (const volume of series.volumes) {
   }
 }
 
-const sidebar: Record<string, DefaultTheme.SidebarItem[]> = Object.fromEntries(
-  series.volumes.map((volume) => [
-    `/${volume.slug}/`,
-    [
-      {
-        text: `${volume.id} ${volume.title}`,
-        items: chapterIds(volume).map((chapterId, index) => ({
-          text: `§${index + 1} ${chapterTitle(volume, chapterId)}`,
-          link: `/${volume.slug}/c${String(index + 1).padStart(2, '0')}.html`,
-        })),
-      },
-    ],
-  ])
-);
+/**
+ * 侧栏（D21 任务3）：数组形式全站共用一套，8 个分册各为一组、组内为章目录。
+ * （不能用 Record 路径键形式：那会按路径只解析出当前册一组，见 VitePress
+ *  sidebar 解析规则；数组形式才能让 8 个分组同屏。）
+ * collapsed: true = 可折叠、默认折叠；VitePress 对包含当前页的分组会
+ * 原生自动展开（VPSidebarItem 的 watchPostEffect），于是呈现
+ * "当前册展开、其余册收起"的半折叠形态——77 章不全铺开，新手视线聚焦
+ * 当前册；想总览可一键展开。
+ * 注：VitePress 1.6.4 的 collapsed 仅支持 boolean（无 'depth' 取值），
+ * 本配置即用 boolean + 原生自动展开达成同样的"半折叠"语义。
+ * 分组标题带 link，点击直达分册扉页；折叠/展开点右侧箭头。
+ */
+const sidebar: DefaultTheme.SidebarItem[] = series.volumes.map((volume) => ({
+  text: `${volume.id} ${volume.title}`,
+  link: `/${volume.slug}.html`,
+  collapsed: true,
+  items: chapterIds(volume).map((chapterId, index) => ({
+    text: `§${index + 1} ${chapterTitle(volume, chapterId)}`,
+    link: `/${volume.slug}/c${String(index + 1).padStart(2, '0')}.html`,
+  })),
+}));
 
 export default defineConfig({
   lang: 'zh-CN',

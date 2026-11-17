@@ -45,5 +45,14 @@
     <text x="752" y="352" text-anchor="end" font-size="12.5" fill="var(--fig-yellow, #C9A35B)">胜率 90% 仍亏钱（虚构示意）</text>
 
     <text x="420" y="515" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：前 18 笔各 +0.4%，第 19、20 笔各 −4%，终点 −0.8%</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <polyline points="120,295.4 153.7,285.1 187.4,274.9 221.1,264.6 254.7,254.3 288.4,244 322.1,233.7 355.8,223.4 389.5,213.1 423.2,202.9 456.8,192.6 490.5,182.3 524.2,172 557.9,161.7 591.6,151.4 625.3,141.1 658.9,130.9 692.6,120.6" fill="none" stroke="transparent" stroke-width="10" data-tip="前 18 笔小赢：每笔 +0.4%，缓升至 +7.2%（高胜率的日常体验）"/>
+      <line x1="692.6" y1="120.6" x2="726.3" y2="223.4" stroke="transparent" stroke-width="12" data-tip="第 19 笔：一次 −4%（止损一次抹掉 10 笔小赢）"/>
+      <line x1="726.3" y1="223.4" x2="759" y2="326.3" stroke="transparent" stroke-width="12" data-tip="第 20 笔：又一次 −4%"/>
+      <circle cx="692.6" cy="120.6" r="10" data-tip="18 笔小赢顶点：累计 +7.2%"/>
+      <circle cx="759" cy="326.3" r="11" data-tip="终点：累计 −0.8%——胜率 90% 仍是负期望"/>
+    </g>
   </g>
 </svg>

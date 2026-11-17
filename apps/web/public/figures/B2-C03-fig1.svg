@@ -86,5 +86,26 @@
     <text x="380" y="442" text-anchor="start" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">余 1,900 股挂 10.06 继续排队</text>
 
     <text x="380" y="505" text-anchor="middle" font-size="13" fill="var(--fig-ink-sub, #A69E8C)">独立示意</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="185" y="100" width="56" height="14" data-tip="卖五 10.08 元 × 800 股"/>
+      <rect x="185" y="127" width="77" height="14" data-tip="卖四 10.07 元 × 1,100 股"/>
+      <rect x="185" y="154" width="63" height="14" data-tip="卖三 10.06 元 × 900 股"/>
+      <rect x="185" y="181" width="84" height="14" data-tip="卖二 10.05 元 × 1,200 股"/>
+      <rect x="185" y="208" width="70" height="14" data-tip="卖一 10.04 元 × 1,000 股"/>
+      <rect x="185" y="235" width="63" height="14" data-tip="买一 10.03 元 × 900 股"/>
+      <rect x="185" y="262" width="49" height="14" data-tip="买二 10.02 元 × 700 股"/>
+      <rect x="185" y="289" width="56" height="14" data-tip="买三 10.01 元 × 800 股"/>
+      <rect x="185" y="316" width="42" height="14" data-tip="买四 10.00 元 × 600 股"/>
+      <rect x="185" y="343" width="35" height="14" data-tip="买五 9.99 元 × 500 股"/>
+      <circle cx="378" cy="113" r="13" data-tip="第1步：吃掉卖一 10.04 × 1,000 股，还剩 4,000 股"/>
+      <circle cx="378" cy="155" r="13" data-tip="第2步：吃掉卖二 10.05 × 1,200 股，还剩 2,800 股"/>
+      <circle cx="378" cy="197" r="13" data-tip="第3步：吃掉卖三 10.06 × 900 股，还剩 1,900 股"/>
+      <circle cx="378" cy="239" r="13" data-tip="第4步：吃掉卖四 10.07 × 1,100 股，还剩 800 股"/>
+      <circle cx="378" cy="281" r="13" data-tip="第5步：吃掉卖五 10.08 × 800 股，全部成交"/>
+      <circle cx="437" cy="318" r="12" data-tip="市价买入 5,000 股成交均价 10.059 元（逐档吃价推高成本）"/>
+      <rect x="360" y="348" width="380" height="118" rx="6" data-tip="对照：限价 10.06 买入只成交卖一至卖三共 3,100 股，金额 31,154 元，均价约 10.0497 元，余 1,900 股继续排队"/>
+    </g>
   </g>
 </svg>

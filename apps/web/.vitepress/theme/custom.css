@@ -20,6 +20,11 @@
   --fig-yellow: #C9A35B;
   --fig-accent: #6B9BC9;
   --fig-canvas: #0B0E14;
+  /* 行情数据类图专用惯例对（2026-11-17 拍板）：A股红涨绿跌；
+     涨复用语义红值（语义分区靠图型），仅 K线/热力图/涨跌表可用，
+     示意图与界面图不得引用。 */
+  --fig-up: #C26A63;
+  --fig-down: #5FA379;
 }
 :root:not(.dark) {
   --fig-ink: #3A3629;
@@ -29,6 +34,9 @@
   --fig-yellow: #86682C;
   --fig-accent: #33608F;
   --fig-canvas: #F5F1E8;
+  /* 行情对浅色提案值（纸白画布上需更深以保对比） */
+  --fig-up: #A94F46;
+  --fig-down: #2F6B4F;
 }
 
 /* === 设计令牌（书卷纸墨） === */

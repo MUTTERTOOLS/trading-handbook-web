@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 520" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="780" height="520" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="390" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">支撑与阻力：收盘价折线与三条区域</text>
+    <text x="766" y="32" text-anchor="end" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">示意</text>
+    <rect x="70" y="352" width="660" height="60" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.1"/>
+    <line x1="70" y1="352" x2="730" y2="352" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.5"/>
+    <line x1="70" y1="412" x2="730" y2="412" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.5"/>
+    <rect x="70" y="346" width="660" height="20.4" fill="var(--fig-accent, #A98BC4)" fill-opacity="0.16"/>
+    <rect x="70" y="208" width="660" height="24" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.12"/>
+    <line x1="70" y1="100" x2="70" y2="460" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <line x1="65" y1="460" x2="70" y2="460" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="464" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">9.5</text>
+    <line x1="65" y1="400" x2="70" y2="400" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="404" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">10.0</text>
+    <line x1="65" y1="340" x2="70" y2="340" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="344" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">10.5</text>
+    <line x1="65" y1="280" x2="70" y2="280" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="284" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">11.0</text>
+    <line x1="65" y1="220" x2="70" y2="220" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="224" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">11.5</text>
+    <line x1="65" y1="160" x2="70" y2="160" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="164" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">12.0</text>
+    <line x1="65" y1="100" x2="70" y2="100" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="61" y="104" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">12.5</text>
+    <text x="26" y="92" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">价格（元）</text>
+    <line x1="70" y1="460" x2="730" y2="460" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <line x1="70" y1="460" x2="70" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="70" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">1</text>
+    <line x1="161" y1="460" x2="161" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="161" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">5</text>
+    <line x1="274.8" y1="460" x2="274.8" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="274.8" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <line x1="388.6" y1="460" x2="388.6" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="388.6" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">15</text>
+    <line x1="502.4" y1="460" x2="502.4" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="502.4" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+    <line x1="616.2" y1="460" x2="616.2" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="616.2" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">25</text>
+    <line x1="730" y1="460" x2="730" y2="465" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="730" y="480" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">30</text>
+    <text x="400" y="496" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构交易日</text>
+    <polyline points="70,208 92.8,222.4 115.5,406 138.3,376 161,394 183.8,361.6 206.6,382 229.3,402.4 252.1,366.4 274.8,385.6 297.6,358 320.3,370 343.1,292 365.9,256 388.6,217.6 411.4,241.6 434.1,214 456.9,244 479.7,258.4 502.4,286 525.2,328 547.9,358 570.7,342.4 593.4,364 616.2,322 639,286 661.7,268 684.5,244 707.2,246.4 730,241.6" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="70" cy="208" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="92.8" cy="222.4" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="115.5" cy="406" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="229.3" cy="402.4" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="388.6" cy="217.6" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="434.1" cy="214" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="547.9" cy="358" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <circle cx="593.4" cy="364" r="4.5" fill="var(--fig-accent, #A98BC4)"/>
+    <text x="726" y="227" text-anchor="end" font-size="11.5" fill="var(--fig-yellow, #C9A35B)">阻力区（四次触及）</text>
+    <text x="78" y="360.8" text-anchor="middle" font-size="11.5" fill="var(--fig-accent, #A98BC4)">支撑区二（两次触及）</text>
+    <text x="726" y="404.6" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">支撑区一（成交密集区）</text>
+    <text x="390" y="516" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">走势与数字均为虚构生成的独立示意</text>
+  </g>
+</svg>

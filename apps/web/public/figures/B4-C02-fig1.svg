@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 570" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="570" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ldr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    </marker>
+  </defs>
+    <text x="380" y="34" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">单根K线结构标注</text>
+    <text x="738" y="32" text-anchor="end" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">示意</text>
+    <line x1="130" y1="110" x2="130" y2="470" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.4"/>
+    <text x="130" y="96" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">价格（元）</text>
+    <line x1="124" y1="470" x2="130" y2="470" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="474" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">9.90</text>
+    <line x1="124" y1="418.6" x2="130" y2="418.6" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="422.6" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.10</text>
+    <line x1="124" y1="367.1" x2="130" y2="367.1" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="371.1" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.30</text>
+    <line x1="124" y1="315.7" x2="130" y2="315.7" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="319.7" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.50</text>
+    <line x1="124" y1="264.3" x2="130" y2="264.3" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="268.3" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.70</text>
+    <line x1="124" y1="212.9" x2="130" y2="212.9" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="216.9" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10.90</text>
+    <line x1="124" y1="161.4" x2="130" y2="161.4" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="165.4" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">11.10</text>
+    <line x1="124" y1="110" x2="130" y2="110" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="118" y="114" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">11.30</text>
+    <line x1="260" y1="225.7" x2="260" y2="457.1" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="244" y="238.6" width="32" height="205.7" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <line x1="530" y1="122.9" x2="530" y2="354.3" stroke="var(--fig-down, #5FA379)" stroke-width="2"/>
+    <rect x="514" y="135.7" width="32" height="205.7" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>
+    <line x1="209" y1="225.7" x2="256" y2="225.7" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="205" y="229.7" text-anchor="end" font-size="13" fill="var(--fig-ink, #E7E1D2)">高 10.85</text>
+    <line x1="209" y1="444.3" x2="242" y2="444.3" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="205" y="448.3" text-anchor="end" font-size="13" fill="var(--fig-ink, #E7E1D2)">开 10.00</text>
+    <line x1="278" y1="238.6" x2="323" y2="238.6" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="327" y="242.6" font-size="13" fill="var(--fig-ink, #E7E1D2)">收 10.80</text>
+    <line x1="278" y1="457.1" x2="323" y2="457.1" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="327" y="461.1" font-size="13" fill="var(--fig-ink, #E7E1D2)">低 9.95</text>
+    <line x1="278" y1="341.4" x2="320" y2="341.4" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="324" y="345.4" font-size="13" fill="var(--fig-ink, #E7E1D2)">实体</text>
+    <line x1="260" y1="206" x2="260" y2="222" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#ldr)"/>
+    <text x="260" y="199" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">上影线</text>
+    <line x1="260" y1="461" x2="260" y2="488" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#ldr)"/>
+    <text x="260" y="502" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">下影线</text>
+    <line x1="479" y1="122.9" x2="526" y2="122.9" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="475" y="126.9" text-anchor="end" font-size="13" fill="var(--fig-ink, #E7E1D2)">高 11.25</text>
+    <line x1="479" y1="341.4" x2="512" y2="341.4" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="475" y="345.4" text-anchor="end" font-size="13" fill="var(--fig-ink, #E7E1D2)">收 10.40</text>
+    <line x1="548" y1="135.7" x2="593" y2="135.7" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="597" y="139.7" font-size="13" fill="var(--fig-ink, #E7E1D2)">开 11.20</text>
+    <line x1="548" y1="354.3" x2="593" y2="354.3" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="597" y="358.3" font-size="13" fill="var(--fig-ink, #E7E1D2)">低 10.35</text>
+    <line x1="474" y1="238.6" x2="512" y2="238.6" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="470" y="242.6" text-anchor="end" font-size="13" fill="var(--fig-ink, #E7E1D2)">实体</text>
+    <line x1="530" y1="103" x2="530" y2="118" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#ldr)"/>
+    <text x="530" y="96" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">上影线</text>
+    <line x1="530" y1="357" x2="530" y2="488" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-end="url(#ldr)"/>
+    <text x="530" y="502" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">下影线</text>
+    <text x="260" y="524" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">阳线（A 股默认红色）</text>
+    <text x="530" y="524" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">阴线（A 股默认绿色）</text>
+    <text x="380" y="552" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)" font-weight="600">A 股配色：红涨绿跌；海外惯例相反，仅配色不同，数据相同</text>
+  </g>
+</svg>

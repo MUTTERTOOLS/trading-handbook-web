@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="800" height="470" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="400" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">金叉时点对比：均线金叉与 MACD 金叉</text>
+    <text x="790" y="32" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">示意（虚构生成数据）</text>
+    <line x1="230" y1="150" x2="755" y2="150" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="230" y1="270" x2="755" y2="270" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="230" y1="390" x2="755" y2="390" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.5"/>
+    <text x="222" y="154" text-anchor="end" font-size="12" fill="var(--fig-ink, #E7E1D2)">上轨：MA5/MA20 金叉（5 次）</text>
+    <text x="222" y="274" text-anchor="end" font-size="12" fill="var(--fig-ink, #E7E1D2)">中轨：MACD 金叉（6 次）</text>
+    <text x="222" y="394" text-anchor="end" font-size="12" fill="var(--fig-ink, #E7E1D2)">下轨：同日或相邻一日重合（4 组）</text>
+    <polygon points="292.3,142 284.3,156 300.3,156" fill="var(--fig-ink, #E7E1D2)"/>
+    <polygon points="416.9,142 408.9,156 424.9,156" fill="var(--fig-ink, #E7E1D2)"/>
+    <polygon points="523.6,142 515.6,156 531.6,156" fill="var(--fig-ink, #E7E1D2)"/>
+    <polygon points="639.3,142 631.3,156 647.3,156" fill="var(--fig-ink, #E7E1D2)"/>
+    <polygon points="710.5,142 702.5,156 718.5,156" fill="var(--fig-ink, #E7E1D2)"/>
+    <circle cx="292.3" cy="270" r="6.5" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="425.8" cy="270" r="6.5" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="523.6" cy="270" r="6.5" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="577" cy="270" r="6.5" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="639.3" cy="270" r="6.5" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <circle cx="719.4" cy="270" r="6.5" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <polygon points="292.3,384 298.3,390 292.3,396 286.3,390" fill="var(--fig-accent, #A98BC4)"/>
+    <text x="292.3" y="412" text-anchor="middle" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">8</text>
+    <polygon points="523.6,384 529.6,390 523.6,396 517.6,390" fill="var(--fig-accent, #A98BC4)"/>
+    <text x="523.6" y="412" text-anchor="middle" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">34</text>
+    <polygon points="639.3,384 645.3,390 639.3,396 633.3,390" fill="var(--fig-accent, #A98BC4)"/>
+    <text x="639.3" y="412" text-anchor="middle" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">47</text>
+    <line x1="416.9" y1="390" x2="425.8" y2="390" stroke="var(--fig-accent, #A98BC4)" stroke-width="2.2" stroke-dasharray="5 4"/>
+    <polygon points="416.9,384 422.9,390 416.9,396 410.9,390" fill="var(--fig-accent, #A98BC4)"/>
+    <polygon points="425.8,384 431.8,390 425.8,396 419.8,390" fill="var(--fig-accent, #A98BC4)"/>
+    <text x="421.3" y="412" text-anchor="middle" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">22–23</text>
+    <line x1="230" y1="430" x2="755" y2="430" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <line x1="230" y1="430" x2="230" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="230" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">1</text>
+    <line x1="310.1" y1="430" x2="310.1" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="310.1" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <line x1="399.1" y1="430" x2="399.1" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="399.1" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+    <line x1="488.1" y1="430" x2="488.1" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="488.1" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">30</text>
+    <line x1="577" y1="430" x2="577" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="577" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">40</text>
+    <line x1="666" y1="430" x2="666" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="666" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">50</text>
+    <line x1="755" y1="430" x2="755" y2="434" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="755" y="450" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">60</text>
+    <text x="560" y="450" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">虚构交易日</text>
+  </g>
+</svg>

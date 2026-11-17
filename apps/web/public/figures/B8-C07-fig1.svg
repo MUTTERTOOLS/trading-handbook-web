@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 540" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="840" height="540" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="420" y="32" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">门派 E 的收益结构：高胜率、负期望</text>
+
+    <!-- 坐标系：横轴笔数 1~20，纵轴累计盈亏 −6%~+8% -->
+    <line x1="110" y1="100" x2="110" y2="460" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="110" y1="460" x2="770" y2="460" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="110" y1="100" x2="770" y2="100" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="110" y1="151.4" x2="770" y2="151.4" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="110" y1="202.9" x2="770" y2="202.9" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="110" y1="254.3" x2="770" y2="254.3" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="110" y1="357.1" x2="770" y2="357.1" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="110" y1="408.6" x2="770" y2="408.6" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="110" y1="305.7" x2="770" y2="305.7" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.4" stroke-width="1.2"/>
+    <text x="102" y="104" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">+8</text>
+    <text x="102" y="155" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">+6</text>
+    <text x="102" y="207" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">+4</text>
+    <text x="102" y="258" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">+2</text>
+    <text x="102" y="310" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="102" y="361" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">-2</text>
+    <text x="102" y="413" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">-4</text>
+    <text x="102" y="464" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">-6</text>
+    <text x="70" y="310" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">累计（%）</text>
+    <text x="120" y="482" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">1</text>
+    <text x="254.7" y="482" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">5</text>
+    <text x="389.5" y="482" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <text x="524.2" y="482" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">15</text>
+    <text x="759" y="482" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+    <text x="775" y="482" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">笔数</text>
+
+    <!-- 前 18 笔小赢缓升段（每笔 +0.4%，终点 +7.2%） -->
+    <polyline points="120,295.4 153.7,285.1 187.4,274.9 221.1,264.6 254.7,254.3 288.4,244 322.1,233.7 355.8,223.4 389.5,213.1 423.2,202.9 456.8,192.6 490.5,182.3 524.2,172 557.9,161.7 591.6,151.4 625.3,141.1 658.9,130.9 692.6,120.6" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+
+    <!-- 第 19、20 笔各 −4%：两段陡降（危险标记，语义红） -->
+    <line x1="692.6" y1="120.6" x2="726.3" y2="223.4" stroke="var(--fig-red, #C26A63)" stroke-width="2.4"/>
+    <line x1="726.3" y1="223.4" x2="759" y2="326.3" stroke="var(--fig-red, #C26A63)" stroke-width="2.4"/>
+    <text x="716" y="176" text-anchor="start" font-size="11" fill="var(--fig-red, #C26A63)">−4%</text>
+    <text x="748" y="282" text-anchor="start" font-size="11" fill="var(--fig-red, #C26A63)">−4%</text>
+
+    <!-- 标注 -->
+    <circle cx="692.6" cy="120.6" r="3" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="688" y="106" text-anchor="end" font-size="12" fill="var(--fig-ink, #E7E1D2)">18 笔小赢</text>
+    <circle cx="759" cy="326.3" r="3.5" fill="var(--fig-red, #C26A63)"/>
+    <text x="752" y="352" text-anchor="end" font-size="12.5" fill="var(--fig-yellow, #C9A35B)">胜率 90% 仍亏钱（虚构示意）</text>
+
+    <text x="420" y="515" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：前 18 笔各 +0.4%，第 19、20 笔各 −4%，终点 −0.8%</text>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="800" height="500" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-yellow, #C9A35B)"/>
+    </marker>
+  </defs>
+    <text x="400" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">震荡市——均线缠绕与反复假突破</text>
+    <text x="790" y="32" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">示意（虚构生成数据）</text>
+    <line x1="80" y1="205.2" x2="760" y2="205.2" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="6 4" stroke-opacity="0.7"/>
+    <text x="756" y="199.2" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">箱体上沿 20.60</text>
+    <line x1="80" y1="358.8" x2="760" y2="358.8" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="6 4" stroke-opacity="0.7"/>
+    <text x="756" y="374.8" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">箱体下沿 19.40</text>
+    <line x1="80" y1="90" x2="80" y2="410" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <line x1="75" y1="410" x2="80" y2="410" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="72" y="414" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">19.0</text>
+    <line x1="75" y1="346" x2="80" y2="346" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="72" y="350" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">19.5</text>
+    <line x1="75" y1="282" x2="80" y2="282" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="72" y="286" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">20.0</text>
+    <line x1="75" y1="218" x2="80" y2="218" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="72" y="222" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">20.5</text>
+    <line x1="75" y1="154" x2="80" y2="154" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="72" y="158" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">21.0</text>
+    <line x1="75" y1="90" x2="80" y2="90" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="72" y="94" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">21.5</text>
+    <text x="30" y="84" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">价格（元）</text>
+    <line x1="80" y1="410" x2="760" y2="410" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <line x1="80" y1="410" x2="80" y2="415" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="80" y="430" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">31</text>
+    <line x1="408.3" y1="410" x2="408.3" y2="415" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="408.3" y="430" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">45</text>
+    <line x1="760" y1="410" x2="760" y2="415" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <text x="760" y="430" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">60</text>
+    <text x="560" y="430" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">交易日（图窗显示最后 30 日）</text>
+    <polyline points="80,278.2 103.4,280.7 126.9,280.1 150.3,280.1 173.8,281.7 197.2,280.7 220.7,277.5 244.1,276.6 267.6,275.9 291,275.6 314.5,275.6 337.9,275.3 361.4,273 384.8,268.9 408.3,267.3 431.7,266 455.2,265.4 478.6,267 502.1,270.8 525.5,275 549,276.2 572.4,275 595.9,274.3 619.3,273.7 642.8,271.1 666.2,271.1 689.7,273.7 713.1,276.9 736.6,280.1 760,281" fill="none" stroke="var(--fig-accent, #A98BC4)" stroke-width="1.6"/>
+    <polyline points="80,278.8 103.4,279.7 126.9,279.9 150.3,279.7 173.8,279.7 197.2,279.2 220.7,278.4 244.1,277.7 267.6,277.5 291,277.7 314.5,277.6 337.9,277.1 361.4,276.1 384.8,274.9 408.3,274 431.7,273.6 455.2,273.6 478.6,273.9 502.1,274.7 525.5,276 549,276.9 572.4,277.3 595.9,277.3 619.3,276.9 642.8,276 666.2,275.6 689.7,275.6 713.1,276 736.6,276.9 760,277.4" fill="none" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <polyline points="80,307.6 103.4,333.2 126.9,294.8 150.3,269.2 173.8,282 197.2,256.4 220.7,230.8 244.1,243.6 267.6,269.2 291,294.8 314.5,275.6 337.9,250 361.4,224.4 384.8,205.2 408.3,230.8 431.7,256.4 455.2,282 478.6,301.2 502.1,333.2 525.5,358.8 549,333.2 572.4,307.6 595.9,282 619.3,256.4 642.8,230.8 666.2,256.4 689.7,282 713.1,307.6 736.6,333.2 760,314" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <line x1="220.7" y1="230.8" x2="220.7" y2="154" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.6"/>
+    <circle cx="220.7" cy="154" r="2.5" fill="var(--fig-yellow, #C9A35B)"/>
+    <line x1="238.7" y1="138" x2="225.7" y2="150" stroke="var(--fig-yellow, #C9A35B)" stroke-width="2" marker-end="url(#arr8)"/>
+    <line x1="384.8" y1="205.2" x2="384.8" y2="141.2" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.6"/>
+    <circle cx="384.8" cy="141.2" r="2.5" fill="var(--fig-yellow, #C9A35B)"/>
+    <line x1="402.8" y1="125.2" x2="389.8" y2="137.2" stroke="var(--fig-yellow, #C9A35B)" stroke-width="2" marker-end="url(#arr8)"/>
+    <line x1="619.3" y1="256.4" x2="619.3" y2="147.6" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.6"/>
+    <circle cx="619.3" cy="147.6" r="2.5" fill="var(--fig-yellow, #C9A35B)"/>
+    <line x1="637.3" y1="131.6" x2="624.3" y2="143.6" stroke="var(--fig-yellow, #C9A35B)" stroke-width="2" marker-end="url(#arr8)"/>
+    <line x1="95" y1="452" x2="125" y2="452" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="130" y="456" font-size="12" fill="var(--fig-ink, #E7E1D2)">收盘价</text>
+    <line x1="215" y1="452" x2="245" y2="452" stroke="var(--fig-accent, #A98BC4)" stroke-width="1.6"/>
+    <text x="250" y="456" font-size="12" fill="var(--fig-accent, #A98BC4)">20 日均线</text>
+    <line x1="380" y1="452" x2="410" y2="452" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <text x="415" y="456" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">60 日均线</text>
+    <text x="400" y="482" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">黄色箭头＝三次假突破（第 7、14、24 日盘中冲高 21.00/21.10/21.05，收盘收回箱体内）</text>
+  </g>
+</svg>

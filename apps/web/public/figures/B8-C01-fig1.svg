@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 570" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="570" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">学习线与实盘线：双泳道分工（示意）</text>
+
+    <!-- 上泳道：学习线（开放） -->
+    <rect x="36" y="58" width="576" height="168" rx="10" fill="var(--fig-surface, #161A21)" fill-opacity="0.35" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="7 5"/>
+    <text x="56" y="86" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">学习线（开放）</text>
+
+    <!-- 学习线四框 -->
+    <rect x="56" y="104" width="118" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.3"/>
+    <text x="115" y="131" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">多门派资料</text>
+    <rect x="192" y="104" width="118" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.3"/>
+    <text x="251" y="131" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">拆解卡</text>
+    <rect x="328" y="104" width="118" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.3"/>
+    <text x="387" y="131" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">验证方法</text>
+    <rect x="464" y="104" width="118" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.3"/>
+    <text x="523" y="131" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">影子账户模拟</text>
+    <line x1="174" y1="127" x2="186" y2="127" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M192,127 L185,123.5 L185,130.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <line x1="310" y1="127" x2="322" y2="127" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M328,127 L321,123.5 L321,130.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <line x1="446" y1="127" x2="458" y2="127" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M464,127 L457,123.5 L457,130.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+
+    <!-- 学习线出口 -->
+    <line x1="523" y1="150" x2="523" y2="238" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M523,244 L519.5,237 L526.5,237 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <rect x="290" y="250" width="252" height="32" rx="16" fill="none" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.8" stroke-width="1.2" stroke-dasharray="5 4"/>
+    <text x="416" y="271" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">深拆 2~3 个，4~6 周时间盒内选定</text>
+
+    <!-- 单向闸门 -->
+    <line x1="416" y1="282" x2="416" y2="294" stroke="var(--fig-accent, #B8626E)" stroke-width="1.6"/>
+    <path d="M416,300 L412.5,293 L419.5,293 Z" fill="var(--fig-accent, #B8626E)"/>
+    <rect x="276" y="300" width="280" height="36" rx="6" fill="var(--fig-accent, #B8626E)" fill-opacity="0.10" stroke="var(--fig-accent, #B8626E)" stroke-width="1.8"/>
+    <text x="416" y="323" text-anchor="middle" font-size="13" fill="var(--fig-accent, #B8626E)">九步验证通过＋前向小资金</text>
+
+    <!-- 闸门 → 实盘线（单向） -->
+    <path d="M416,336 L416,348 L104,348 L104,360" fill="none" stroke="var(--fig-accent, #B8626E)" stroke-width="1.6"/>
+    <path d="M104,366 L100.5,359 L107.5,359 Z" fill="var(--fig-accent, #B8626E)"/>
+
+    <!-- 下泳道：实盘线（锁死），闭环 -->
+    <rect x="36" y="366" width="576" height="180" rx="10" fill="var(--fig-surface, #161A21)" fill-opacity="0.35" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.85" stroke-width="2"/>
+    <text x="56" y="394" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">实盘线（锁死）</text>
+
+    <rect x="56" y="410" width="96" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.3"/>
+    <text x="104" y="437" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">单一门派规则</text>
+    <rect x="168" y="410" width="96" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.3"/>
+    <text x="216" y="437" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">盘前快照</text>
+    <rect x="280" y="410" width="96" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.3"/>
+    <text x="328" y="437" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">执行</text>
+    <rect x="392" y="410" width="96" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.3"/>
+    <text x="440" y="437" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">记账</text>
+    <rect x="504" y="410" width="96" height="46" rx="5" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.05" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.3"/>
+    <text x="552" y="437" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">月度复盘</text>
+    <line x1="152" y1="433" x2="162" y2="433" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M168,433 L161,429.5 L161,436.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <line x1="264" y1="433" x2="274" y2="433" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M280,433 L273,429.5 L273,436.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <line x1="376" y1="433" x2="386" y2="433" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M392,433 L385,429.5 L385,436.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <line x1="488" y1="433" x2="498" y2="433" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.3"/>
+    <path d="M504,433 L497,429.5 L497,436.5 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+
+    <!-- 闭环回路 -->
+    <path d="M552,456 L552,506 L104,506 L104,462" fill="none" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.4"/>
+    <path d="M104,456 L100.5,463 L107.5,463 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+
+    <!-- 右侧：分工表缩略 -->
+    <rect x="644" y="58" width="200" height="372" rx="8" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.03" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.3" stroke-width="1.2"/>
+    <text x="744" y="92" text-anchor="middle" font-size="13.5" fill="var(--fig-ink, #E7E1D2)">分工表（缩略）</text>
+    <line x1="660" y1="104" x2="828" y2="104" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.2" stroke-width="1"/>
+    <rect x="658" y="124" width="172" height="76" rx="6" fill="var(--fig-surface, #161A21)" fill-opacity="0.4" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.25" stroke-width="1"/>
+    <text x="744" y="152" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">信号</text>
+    <line x1="744" y1="158" x2="744" y2="170" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <path d="M744,176 L740.5,169 L747.5,169 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <text x="744" y="194" text-anchor="middle" font-size="14" fill="var(--fig-accent, #B8626E)">门派</text>
+    <rect x="658" y="224" width="172" height="76" rx="6" fill="var(--fig-surface, #161A21)" fill-opacity="0.4" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.25" stroke-width="1"/>
+    <text x="744" y="252" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">风险参数</text>
+    <line x1="744" y1="258" x2="744" y2="270" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <path d="M744,276 L740.5,269 L747.5,269 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <text x="744" y="294" text-anchor="middle" font-size="14" fill="var(--fig-accent, #B8626E)">手册</text>
+    <rect x="658" y="324" width="172" height="76" rx="6" fill="var(--fig-surface, #161A21)" fill-opacity="0.4" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.25" stroke-width="1"/>
+    <text x="744" y="352" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">记录</text>
+    <line x1="744" y1="358" x2="744" y2="370" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2"/>
+    <path d="M744,376 L740.5,369 L747.5,369 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    <text x="744" y="394" text-anchor="middle" font-size="14" fill="var(--fig-accent, #B8626E)">手册</text>
+  </g>
+</svg>

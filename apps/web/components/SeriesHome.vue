@@ -22,14 +22,10 @@ interface ThemeWithSeries {
 const { theme } = useData();
 const { series } = theme.value as unknown as ThemeWithSeries;
 
-const CN_NUM: Record<string, string> = {
-  B1: '一', B2: '二', B3: '三', B4: '四',
-  B5: '五', B6: '六', B7: '七', B8: '八',
-};
-
-const volumes = series.volumes.map((volume) => ({
+/** 目录编号（D23）：弃汉字序号，按阅读顺序 01~08（mono + 册色） */
+const volumes = series.volumes.map((volume, index) => ({
   id: volume.id,
-  cn: CN_NUM[volume.id] ?? volume.id,
+  no: String(index + 1).padStart(2, '0'),
   name: volume.title,
   description: volume.description,
   chapters: String(volume.expectedChapters).padStart(2, '0'),
@@ -40,13 +36,13 @@ const volumes = series.volumes.map((volume) => ({
 /** 刊头期号：数据截止月（series.yaml cutoffDate → YYYY-MM） */
 const edition = `INTERACTIVE EDITION · ${series.cutoffDate.slice(0, 7)}`;
 
-/** 读完这套书应具备的能力链（阅读顺序，内容侧既有文案） */
+/** 读完这套书应具备的能力链（阅读顺序，内容侧既有文案；册引用随 D23 改 B 编号） */
 const abilityChain = [
-  { text: '能看懂市场规则', src: '册二' },
-  { text: '能算出每笔最多亏多少、买多少', src: '册三' },
-  { text: '能判断一个方法是有效还是运气', src: '册六' },
-  { text: '能按规则执行并复盘', src: '册七' },
-  { text: '能拆解和选择一个门派', src: '册八' },
+  { text: '能看懂市场规则', src: 'B2' },
+  { text: '能算出每笔最多亏多少、买多少', src: 'B3' },
+  { text: '能判断一个方法是有效还是运气', src: 'B6' },
+  { text: '能按规则执行并复盘', src: 'B7' },
+  { text: '能拆解和选择一个门派', src: 'B8' },
 ];
 </script>
 
@@ -74,23 +70,24 @@ const abilityChain = [
         <h2>丛书目录</h2>
         <span>按阅读顺序 · CATALOGUE</span>
       </div>
-      <a
-        v-for="volume in volumes"
-        :key="volume.id"
-        class="sh-row"
-        :href="volume.href"
-        :style="`--v: var(--v-${volume.theme})`"
-      >
-        <span class="sh-no">{{ volume.cn }}</span>
-        <span class="sh-main">
-          <span class="sh-name">{{ volume.name }}</span>
-          <span class="sh-desc">{{ volume.description }}</span>
-        </span>
-        <span class="sh-meta">
-          <span class="sh-ch-line"><span class="sh-ch">{{ volume.chapters }}</span> 章</span>
-          <span class="sh-id">{{ volume.id }}</span>
-        </span>
-      </a>
+      <div class="sh-cards">
+        <a
+          v-for="volume in volumes"
+          :key="volume.id"
+          class="sh-card"
+          :href="volume.href"
+          :style="`--v: var(--v-${volume.theme})`"
+        >
+          <span class="sh-card-no">{{ volume.no }}</span>
+          <span class="sh-card-body">
+            <span class="sh-card-title-row">
+              <span class="sh-card-name">{{ volume.name }}</span>
+              <span class="sh-card-meta">{{ volume.chapters }} 章 · {{ volume.id }}</span>
+            </span>
+            <span class="sh-card-desc">{{ volume.description }}</span>
+          </span>
+        </a>
+      </div>
     </nav>
 
     <section class="sh-ability">

@@ -67,7 +67,7 @@
   --v-b5: #6fa385; /* 铜绿 */
   --v-b6: #c97b96; /* 胭脂 */
   --v-b7: #d9b86a; /* 秋香 */
-  --v-b8: #a64b55; /* 绛 */
+  --v-b8: #b8626e; /* 绛·提亮变体（与 config ACCENTS.b8 同步，2026-11-17 拍板） */
 
   /* 语义色（书卷矿物：红＝禁止/停手，黄＝警示） */
   --green: #6fa385;
@@ -142,11 +142,12 @@ body { overflow-x: hidden; line-height: 1.85; }
 .VPPage { max-width: 940px; margin: 0 auto; }
 
 /* ============================================
-   首页 · 杂志目录式卷首（D22 方向 A 落地：大字排印）
-   刊头行 → 96px 级衬线 hero → 行式丛书目录（超大汉字序号 +
-   衬线册名 + mono 章数/册号标注）→ 编号能力链 → 语义色规 → 风险注脚。
-   层级以 2px 粗线（刊头/大节）与 1px 暖纸线（行界）划分；
-   无卡片堆、无渐变、无阴影，衬线大标题是唯一"大胆"元素。
+   首页 · 杂志目录式卷首（D22 方向 A 大字排印；D23 目录区卡片化）
+   刊头行 → 96px 级衬线 hero → 卡片化丛书目录（mono 数字编号 01~08 +
+   1px 暖纸线卡 + 3px 册色书脊，桌面 2 列/≤720px 单列）
+   → 编号能力链 → 语义色规 → 风险注脚。
+   层级以 2px 粗线（刊头/大节）与 1px 暖纸线（卡描边/行界）划分；
+   目录卡为本页唯一克制的卡片元素：无彩色卡底、无阴影，衬线大标题仍是唯一"大胆"元素。
    ============================================ */
 .series-home {
   max-width: 924px;
@@ -212,97 +213,92 @@ body { overflow-x: hidden; line-height: 1.85; }
 }
 .sh-stats b { color: var(--text-primary); font-size: 15px; }
 
-/* 杂志目录：超大汉字序号 + 衬线册名 + 右缘 mono 章数/册号 */
-.sh-toc { margin-top: 48px; border-top: 2px solid var(--text-primary); }
-.sh-toc-head {
+/* 卡片化丛书目录（D23，卡片语言照 mockup-B）：细 1px 暖纸线描边 +
+   左缘 3px 册色书脊（--v 由模板逐册注入矿物册色）+ 卡内 mono 编号块。
+   克制纪律：间距 18px、圆角 8px、无阴影、无彩色卡底（深墨面层 --bg-card）；
+   hover：描边染册色 + 轻微上浮；桌面 2 列，≤720px 单列。 */
+.sh-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding-top: 18px;
+}
+.sh-card {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px 18px 22px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.18s, transform 0.18s;
+}
+/* 左缘 3px 册色书脊 */
+.sh-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--v);
+  opacity: 0.85;
+}
+.sh-card:hover {
+  border-color: color-mix(in srgb, var(--v) 45%, transparent);
+  transform: translateY(-2px);
+}
+.sh-card:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--v) 55%, transparent);
+  outline-offset: -1px;
+  border-color: color-mix(in srgb, var(--v) 45%, transparent);
+}
+/* 卡内 mono 编号块：册色 01~08 + 右侧虚线分界 */
+.sh-card-no {
+  display: flex;
+  align-items: center;
+  min-width: 56px;
+  padding-right: 16px;
+  border-right: 1px dashed var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  color: var(--v);
+}
+.sh-card-body { flex: 1; min-width: 0; }
+.sh-card-title-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 14px 0 4px;
+  gap: 6px 10px;
+  flex-wrap: wrap;
 }
-.sh-toc-head h2 {
-  font-family: var(--font-serif);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.4em;
-  color: var(--text-secondary);
-  margin: 0;
-}
-.sh-toc-head span {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
-}
-.sh-row {
-  display: grid;
-  grid-template-columns: 120px minmax(0, 1fr) 220px;
-  gap: 20px;
-  align-items: baseline;
-  padding: 22px 4px;
-  border-bottom: 1px solid var(--border);
-  text-decoration: none;
-  transition: background 0.18s, padding-left 0.18s;
-}
-/* 行 hover（与 D21 一致：底色微亮 + 右移；本版加强：序号/章数染册色、
-   册名下册色短杠生长）。--v 由模板按册注入矿物册色 */
-.sh-row:hover {
-  background: rgba(231, 225, 210, 0.035);
-  padding-left: 14px;
-}
-.sh-row:focus-visible {
-  outline: 1px solid var(--border-accent);
-  outline-offset: -1px;
-  background: rgba(231, 225, 210, 0.035);
-}
-.sh-no {
-  font-family: var(--font-serif);
-  font-weight: 900; /* 同 hero：现按 700 渲染 */
-  font-size: 52px;
-  line-height: 1;
-  letter-spacing: 0;
-  color: var(--text-muted);
-  transition: color 0.18s;
-}
-.sh-row:hover .sh-no { color: var(--v); }
-.sh-main { min-width: 0; }
-.sh-name {
-  display: block;
+.sh-card-name {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 24px;
-  letter-spacing: 2px;
-  line-height: 1.4;
+  font-size: 17.5px;
+  letter-spacing: 1px;
+  line-height: 1.5;
   color: var(--text-primary);
 }
-.sh-name::after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 2px;
-  background: var(--v);
-  margin-top: 8px;
-  transition: width 0.22s;
+.sh-card-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
-.sh-row:hover .sh-name::after { width: 64px; }
-.sh-desc {
+.sh-card-desc {
   display: block;
   margin-top: 8px;
-  font-size: 13.5px;
+  font-size: 13px;
   color: var(--text-secondary);
   line-height: 1.9;
-  max-width: 520px;
 }
-.sh-meta {
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-secondary);
-  line-height: 2;
-}
-.sh-ch { font-size: 20px; color: var(--text-primary); transition: color 0.18s; }
-.sh-row:hover .sh-ch { color: var(--v); }
-.sh-id { display: block; color: var(--text-muted); letter-spacing: 0.2em; }
 
 /* 编号能力链（杂志小节排版：左标题栏 + 右 01~05 序列） */
 .sh-ability {
@@ -400,23 +396,11 @@ body { overflow-x: hidden; line-height: 1.85; }
   .sh-kicker { letter-spacing: 0.25em; }
   .sh-hero { padding: 36px 0 12px; }
   .sh-toc { margin-top: 36px; }
-  .sh-row { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding: 18px 2px; }
-  .sh-row:hover { padding-left: 6px; }
-  .sh-no { font-size: 36px; }
-  .sh-name { font-size: 19px; letter-spacing: 1px; }
-  .sh-desc { font-size: 13px; }
-  /* 章数/册号折行到册名区之下（mockup 直接隐藏；此处保留信息） */
-  .sh-meta {
-    grid-column: 2;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin-top: 2px;
-    text-align: left;
-    line-height: 1.8;
-  }
-  .sh-ch { font-size: 15px; }
-  .sh-id { display: inline; }
+  /* 目录卡单列（D23） */
+  .sh-cards { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-top: 14px; }
+  .sh-card { padding: 16px 16px 16px 20px; gap: 14px; }
+  .sh-card-no { min-width: 48px; padding-right: 12px; font-size: 21px; }
+  .sh-card-name { font-size: 16px; letter-spacing: 0.5px; }
   .sh-ability { grid-template-columns: 1fr; gap: 16px; margin-top: 44px; }
 }
 

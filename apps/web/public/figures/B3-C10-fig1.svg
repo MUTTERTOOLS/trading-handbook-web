@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="760" height="500" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">最大回撤的分布与熔断线（独立示意）</text>
+
+    <!-- 坐标轴 -->
+    <line x1="90" y1="80" x2="90" y2="400" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.2"/>
+    <line x1="90" y1="400" x2="640" y2="400" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.2"/>
+    <!-- y 刻度 -->
+    <text x="82" y="405" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="82" y="298" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">8</text>
+    <text x="82" y="191" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">16</text>
+    <text x="82" y="85" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">24</text>
+    <text x="50" y="240" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)" transform="rotate(-90 50 240)">出现次数（次）</text>
+    <!-- x 刻度 -->
+    <text x="90" y="420" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="200" y="420" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">3</text>
+    <text x="310" y="420" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">6</text>
+    <text x="420" y="420" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">9</text>
+    <text x="530" y="420" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">12</text>
+    <text x="640" y="420" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">15</text>
+    <text x="365" y="448" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">单次模拟的最大回撤（%）</text>
+
+    <!-- 直方柱：0.5~11.5%，峰值 2.5~3.5%，右尾拖长 -->
+    <rect x="94.3" y="320" width="28" height="80" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="131" y="213.3" width="28" height="186.7" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="167.7" y="106.7" width="28" height="293.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="204.3" y="80" width="28" height="320" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="241" y="160" width="28" height="240" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="277.7" y="253.3" width="28" height="146.7" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="314.3" y="320" width="28" height="80" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="351" y="360" width="28" height="40" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="387.7" y="373.3" width="28" height="26.7" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="424.3" y="386.7" width="28" height="13.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="461" y="386.7" width="28" height="13.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <rect x="497.7" y="386.7" width="28" height="13.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.28" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1"/>
+    <text x="200" y="72" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">峰值 2.5%~3.5%</text>
+
+    <!-- 99 分位参考线（点线） -->
+    <line x1="310" y1="80" x2="310" y2="400" stroke="var(--fig-accent, #D99058)" stroke-width="1.5" stroke-dasharray="2 4"/>
+    <text x="304" y="98" text-anchor="end" font-size="11.5" fill="var(--fig-accent, #D99058)">99 分位 ≈ 6%</text>
+
+    <!-- 熔断线（实线，停手语义） -->
+    <line x1="420" y1="80" x2="420" y2="400" stroke="var(--fig-red, #C26A63)" stroke-width="2"/>
+    <text x="420" y="70" text-anchor="middle" font-size="12.5" fill="var(--fig-red, #C26A63)">熔断线 9%</text>
+
+    <!-- 硬上限 H（虚线） -->
+    <line x1="640" y1="80" x2="640" y2="400" stroke="var(--fig-red, #C26A63)" stroke-width="1.6" stroke-dasharray="7 5"/>
+    <text x="640" y="70" text-anchor="end" font-size="12.5" fill="var(--fig-red, #C26A63)">硬上限 H=15%</text>
+
+    <!-- 标注 -->
+    <text x="480" y="170" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">熔断线在 99 分位右侧，正常波动</text>
+    <text x="480" y="190" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">触不到线；触线意味着跑出了分布</text>
+
+    <text x="90" y="474" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">（独立示意：模拟 1,000 次的分布形状）</text>
+  </g>
+</svg>

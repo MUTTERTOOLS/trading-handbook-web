@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="470" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">剔除退市股后，回测虚高 38 个百分点（独立示意）</text>
+
+    <!-- 坐标系 -->
+    <text x="120" y="82" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">十年年化收益（%）</text>
+    <line x1="120" y1="100" x2="120" y2="390" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="390" x2="660" y2="390" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="302" x2="660" y2="302" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="120" y1="214" x2="660" y2="214" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="120" y1="126" x2="660" y2="126" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.15" stroke-width="1"/>
+    <text x="112" y="394" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="112" y="306" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">40</text>
+    <text x="112" y="218" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">80</text>
+    <text x="112" y="130" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">120</text>
+
+    <!-- 两根柱 -->
+    <rect x="205" y="209.6" width="130" height="180.4" fill="var(--fig-accent, #C97B96)" fill-opacity="0.75"/>
+    <rect x="445" y="126" width="130" height="264" fill="var(--fig-accent, #C97B96)" fill-opacity="0.75"/>
+    <text x="270" y="199" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">+82%</text>
+    <text x="510" y="116" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">+120%</text>
+
+    <!-- 虚高差值标注（警示黄） -->
+    <line x1="338" y1="209.6" x2="400" y2="209.6" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="442" y1="126" x2="382" y2="126" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="405" y1="132" x2="405" y2="204" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.4" marker-start="url(#arr-ink)" marker-end="url(#arr-ink)"/>
+    <text x="405" y="112" text-anchor="middle" font-size="13" fill="var(--fig-yellow, #C9A35B)">＋38 个百分点（虚高）</text>
+
+    <!-- 柱下名称 -->
+    <text x="270" y="414" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">全样本（含退市）</text>
+    <text x="510" y="414" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">仅存活样本</text>
+
+    <text x="390" y="450" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">20 家退市平均 -70%、80 家存活平均 +120%（独立示意）</text>
+  </g>
+</svg>

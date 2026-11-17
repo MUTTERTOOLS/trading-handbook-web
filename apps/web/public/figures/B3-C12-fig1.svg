@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 230" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="230" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">熔断流程：四步走</text>
+
+    <!-- ① 触发（警示） -->
+    <rect x="20" y="90" width="150" height="80" rx="6" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.10" stroke="var(--fig-yellow, #C9A35B)" stroke-opacity="0.75" stroke-width="1.6"/>
+    <text x="95" y="126" text-anchor="middle" font-size="15.5" fill="var(--fig-yellow, #C9A35B)">触发</text>
+    <text x="95" y="152" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">回撤触及熔断线</text>
+    <line x1="170" y1="130" x2="206" y2="130" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <!-- ② 停手（停手语义） -->
+    <rect x="210" y="90" width="150" height="80" rx="6" fill="var(--fig-red, #C26A63)" fill-opacity="0.10" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.8" stroke-width="1.8"/>
+    <text x="285" y="135" text-anchor="middle" font-size="15.5" fill="var(--fig-red, #C26A63)">停手</text>
+    <line x1="360" y1="130" x2="396" y2="130" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <!-- ③ 排查 -->
+    <rect x="400" y="90" width="150" height="80" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="475" y="126" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">排查</text>
+    <text x="475" y="152" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">心 → 时 → 策略</text>
+    <line x1="550" y1="130" x2="586" y2="130" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+
+    <!-- ④ 复工 -->
+    <rect x="590" y="90" width="150" height="80" rx="6" fill="var(--fig-accent, #D99058)" fill-opacity="0.10" stroke="var(--fig-accent, #D99058)" stroke-opacity="0.75" stroke-width="1.6"/>
+    <text x="665" y="126" text-anchor="middle" font-size="15.5" fill="var(--fig-accent, #D99058)">复工</text>
+    <text x="665" y="152" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">条件全部通过</text>
+  </g>
+</svg>

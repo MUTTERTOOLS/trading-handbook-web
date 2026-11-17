@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-red, #C26A63)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="620" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">五步决策顺序——不通过就不进入下一步</text>
+
+    <!-- ① -->
+    <rect x="190" y="60" width="260" height="56" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="320" y="93" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">① 看环境（时/风）</text>
+    <line x1="320" y1="116" x2="320" y2="138" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <!-- ② -->
+    <rect x="190" y="140" width="260" height="56" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="320" y="173" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">② 选结构（工具）</text>
+    <line x1="320" y1="196" x2="320" y2="218" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <!-- ③ -->
+    <rect x="190" y="220" width="260" height="56" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="320" y="253" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">③ 算止损与仓位（仓）</text>
+    <!-- 盘前｜盘中 分界 -->
+    <line x1="60" y1="288" x2="740" y2="288" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="6 5"/>
+    <text x="738" y="282" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">盘前｜盘中</text>
+    <text x="738" y="306" text-anchor="end" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">盘后</text>
+    <line x1="320" y1="276" x2="320" y2="298" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <!-- ④ -->
+    <rect x="190" y="300" width="260" height="56" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="320" y="333" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">④ 等触发（价/量）</text>
+    <line x1="320" y1="356" x2="320" y2="378" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <!-- ⑤ -->
+    <rect x="190" y="380" width="260" height="56" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="320" y="413" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">⑤ 盘后对账（心）</text>
+
+    <!-- 右侧 输入→输出 标注 -->
+    <line x1="450" y1="88" x2="462" y2="88" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="466" y="86" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输入：指数与板块状态、事件窗口</text>
+    <text x="466" y="104" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输出：一句环境判断</text>
+    <line x1="450" y1="168" x2="462" y2="168" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="466" y="166" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输入：环境判断、标的池</text>
+    <text x="466" y="184" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输出：买入逻辑＋失效点</text>
+    <line x1="450" y1="248" x2="462" y2="248" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="466" y="246" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输入：买入逻辑、本金、起步参考值</text>
+    <text x="466" y="264" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输出：止损价、股数、1R、两道校验</text>
+    <line x1="450" y1="328" x2="462" y2="328" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="466" y="326" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输入：触发条件</text>
+    <text x="466" y="344" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输出：触发则执行；未触发则不动</text>
+    <line x1="450" y1="408" x2="462" y2="408" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="466" y="406" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输入：成交记录与快照</text>
+    <text x="466" y="424" text-anchor="start" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">输出：书面偏差记录</text>
+
+    <!-- 左侧 菱形"不通过"标记 -->
+    <path d="M150,68 L170,88 L150,108 L130,88 Z" fill="var(--fig-red, #C26A63)" fill-opacity="0.12" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.7" stroke-width="1.4"/>
+    <text x="150" y="92" text-anchor="middle" font-size="9.5" fill="var(--fig-red, #C26A63)">不通过</text>
+    <path d="M150,148 L170,168 L150,188 L130,168 Z" fill="var(--fig-red, #C26A63)" fill-opacity="0.12" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.7" stroke-width="1.4"/>
+    <text x="150" y="172" text-anchor="middle" font-size="9.5" fill="var(--fig-red, #C26A63)">不通过</text>
+    <path d="M150,228 L170,248 L150,268 L130,248 Z" fill="var(--fig-red, #C26A63)" fill-opacity="0.12" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.7" stroke-width="1.4"/>
+    <text x="150" y="252" text-anchor="middle" font-size="9.5" fill="var(--fig-red, #C26A63)">不通过</text>
+    <path d="M150,308 L170,328 L150,348 L130,328 Z" fill="var(--fig-red, #C26A63)" fill-opacity="0.12" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.7" stroke-width="1.4"/>
+    <text x="150" y="332" text-anchor="middle" font-size="9.5" fill="var(--fig-red, #C26A63)">不通过</text>
+    <path d="M150,388 L170,408 L150,428 L130,408 Z" fill="var(--fig-red, #C26A63)" fill-opacity="0.12" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.7" stroke-width="1.4"/>
+    <text x="150" y="412" text-anchor="middle" font-size="9.5" fill="var(--fig-red, #C26A63)">不通过</text>
+
+    <!-- 汇入统一出口 -->
+    <line x1="130" y1="88" x2="112" y2="88" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <line x1="130" y1="168" x2="112" y2="168" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <line x1="130" y1="248" x2="112" y2="248" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <line x1="130" y1="328" x2="112" y2="328" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <line x1="130" y1="408" x2="112" y2="408" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <line x1="112" y1="88" x2="112" y2="508" stroke="var(--fig-red, #C26A63)" stroke-width="1.2"/>
+    <line x1="112" y1="508" x2="112" y2="516" stroke="var(--fig-red, #C26A63)" stroke-width="1.2" marker-end="url(#arr-red)"/>
+
+    <!-- 统一出口框 -->
+    <rect x="60" y="520" width="240" height="56" rx="6" fill="var(--fig-red, #C26A63)" fill-opacity="0.10" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.75" stroke-width="1.8"/>
+    <text x="180" y="553" text-anchor="middle" font-size="14" fill="var(--fig-red, #C26A63)">今天这笔不做（写入记录）</text>
+  </g>
+</svg>

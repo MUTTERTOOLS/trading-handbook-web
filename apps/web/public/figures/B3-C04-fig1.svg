@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 680" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink, #E7E1D2)"/>
+    </marker>
+    <marker id="arr-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-red, #C26A63)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="680" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">六步走（EX-B）</text>
+    <text x="452" y="58" text-anchor="start" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">小明的数字（EX-B）</text>
+
+    <!-- ① -->
+    <rect x="170" y="64" width="260" height="62" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="300" y="89" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">① 定 1R</text>
+    <text x="300" y="111" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">1R = 本金 × 单笔风险比例</text>
+    <line x1="300" y1="126" x2="300" y2="144" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <line x1="430" y1="95" x2="446" y2="95" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="452" y="99" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">小明：1R = 1,000 元</text>
+
+    <!-- ② -->
+    <rect x="170" y="146" width="260" height="62" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="300" y="171" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">② 定止损</text>
+    <text x="300" y="193" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">止损价放在买入逻辑失效点上</text>
+    <line x1="300" y1="208" x2="300" y2="226" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <line x1="430" y1="177" x2="446" y2="177" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="452" y="181" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">止损 9.50 元，每股风险 0.50 元</text>
+
+    <!-- ③ -->
+    <rect x="170" y="228" width="260" height="62" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="300" y="253" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">③ 算股数</text>
+    <text x="300" y="275" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">股数 = 1R ÷ 每股风险</text>
+    <line x1="300" y1="290" x2="300" y2="308" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <line x1="430" y1="252" x2="446" y2="252" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="452" y="256" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">不含滑点 2,000 股</text>
+    <text x="452" y="274" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">含滑点约 1,818 股</text>
+
+    <!-- ④ -->
+    <rect x="170" y="310" width="260" height="62" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="300" y="335" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">④ 取整</text>
+    <text x="300" y="357" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">向下取整到最小交易单位</text>
+    <line x1="300" y1="372" x2="300" y2="390" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <line x1="430" y1="334" x2="446" y2="334" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="452" y="338" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">1,800 股、18,000 元</text>
+    <text x="452" y="356" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">实际最大计划亏损 990 元</text>
+
+    <!-- ⑤ -->
+    <rect x="170" y="392" width="260" height="62" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="300" y="417" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">⑤ 校验单票上限</text>
+    <text x="300" y="439" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">持仓占比 ≤ 20%</text>
+    <line x1="300" y1="454" x2="300" y2="472" stroke="var(--fig-ink, #E7E1D2)" stroke-width="1.8" marker-end="url(#arr-ink)"/>
+    <line x1="430" y1="416" x2="446" y2="416" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="452" y="420" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">18% ≤ 20%，通过</text>
+
+    <!-- ⑥ -->
+    <rect x="170" y="474" width="260" height="62" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.55" stroke-width="1.6"/>
+    <text x="300" y="499" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">⑥ 校验在途总风险</text>
+    <text x="300" y="521" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">全部计划亏损合计 ≤ 5%</text>
+    <line x1="430" y1="498" x2="446" y2="498" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="3 3"/>
+    <text x="452" y="502" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">3.99% ≤ 5%，通过</text>
+
+    <!-- 步骤⑤⑥ 不通过分支 -->
+    <line x1="404" y1="454" x2="530" y2="588" stroke="var(--fig-red, #C26A63)" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arr-red)"/>
+    <text x="448" y="504" text-anchor="start" font-size="11.5" fill="var(--fig-red, #C26A63)">不通过</text>
+    <line x1="420" y1="536" x2="628" y2="588" stroke="var(--fig-red, #C26A63)" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arr-red)"/>
+    <text x="510" y="562" text-anchor="start" font-size="11.5" fill="var(--fig-red, #C26A63)">不通过</text>
+    <rect x="480" y="592" width="220" height="50" rx="6" fill="var(--fig-red, #C26A63)" fill-opacity="0.10" stroke="var(--fig-red, #C26A63)" stroke-opacity="0.75" stroke-width="1.8"/>
+    <text x="590" y="622" text-anchor="middle" font-size="14" fill="var(--fig-red, #C26A63)">放弃 / 缩小 / 等待</text>
+  </g>
+</svg>

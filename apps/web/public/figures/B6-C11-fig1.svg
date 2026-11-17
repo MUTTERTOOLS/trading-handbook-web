@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-ink-sub, #A69E8C)"/>
+    </marker>
+  </defs>
+  <rect width="820" height="500" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="410" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">净值曲线示意（独立示意）</text>
+
+    <!-- 坐标轴 -->
+    <text transform="rotate(-90 46 275)" x="46" y="275" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">净值</text>
+    <line x1="70" y1="430" x2="780" y2="430" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="70" y1="430" x2="70" y2="115" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <text x="62" y="434" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.90</text>
+    <text x="62" y="334" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.00</text>
+    <text x="62" y="234" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.10</text>
+    <text x="62" y="134" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.20</text>
+    <text x="778" y="420" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">时间</text>
+
+    <!-- 熔断线（红＝停手） -->
+    <line x1="70" y1="395" x2="780" y2="395" stroke="var(--fig-red, #C26A63)" stroke-width="1.6" stroke-dasharray="8 5"/>
+    <text x="76" y="417" text-anchor="start" font-size="12.5" fill="var(--fig-red, #C26A63)">熔断线</text>
+
+    <!-- 净值曲线 -->
+    <path d="M80,330 L190,150 L300,360 L400,140 L480,150 L560,190 L640,205" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+
+    <!-- 回撤持续时间（A→C 水平距离） -->
+    <line x1="190" y1="110" x2="400" y2="110" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.4" marker-start="url(#arr-ink)" marker-end="url(#arr-ink)"/>
+    <text x="295" y="98" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">回撤持续时间</text>
+
+    <!-- A、B、C 三点 -->
+    <circle cx="190" cy="150" r="5" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="190" y="136" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">高点 A</text>
+    <circle cx="300" cy="360" r="5" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="300" y="384" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">回撤谷底 B</text>
+    <circle cx="400" cy="140" r="5" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="400" y="126" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">创新高 C</text>
+
+    <!-- 创新高间隔阈值：C 向右延伸 1.5 倍持续时间 -->
+    <line x1="408" y1="140" x2="715" y2="140" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="557" y="132" text-anchor="middle" font-size="12.5" fill="var(--fig-accent, #C97B96)">×1.5</text>
+    <line x1="715" y1="118" x2="715" y2="415" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="6 4"/>
+    <text x="715" y="438" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">创新高间隔阈值</text>
+    <text x="715" y="456" text-anchor="middle" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">＝最长回撤持续时间 × 1.5</text>
+
+    <text x="410" y="486" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">数据虚构，独立示意</text>
+  </g>
+</svg>

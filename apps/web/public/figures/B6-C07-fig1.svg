@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="800" height="480" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="400" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">成本吞噬薄利（独立示意）</text>
+
+    <!-- 坐标系与网格 -->
+    <text x="112" y="74" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">累计收益（%）</text>
+    <line x1="120" y1="85" x2="120" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="380" x2="690" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="90" x2="690" y2="90" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="131.4" x2="690" y2="131.4" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="172.9" x2="690" y2="172.9" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="214.3" x2="690" y2="214.3" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="255.7" x2="690" y2="255.7" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.3" stroke-width="1"/>
+    <line x1="120" y1="297.1" x2="690" y2="297.1" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="338.6" x2="690" y2="338.6" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <text x="112" y="94" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+    <text x="112" y="135.4" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">15</text>
+    <text x="112" y="176.9" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <text x="112" y="218.3" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">5</text>
+    <text x="112" y="259.7" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="112" y="301.1" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">-5</text>
+    <text x="112" y="342.6" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">-10</text>
+    <text x="112" y="384" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">-15</text>
+
+    <!-- 毛利线与净利线之间的阴影（被摩擦吃掉的部分） -->
+    <polygon points="120,255.7 690,131.4 690,214.3" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.15"/>
+    <text x="480" y="205" text-anchor="middle" font-size="13" fill="var(--fig-yellow, #C9A35B)">被摩擦吃掉的部分</text>
+
+    <!-- 三条线 -->
+    <line x1="120" y1="255.7" x2="690" y2="131.4" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2.2"/>
+    <line x1="120" y1="255.7" x2="690" y2="214.3" stroke="var(--fig-accent, #C97B96)" stroke-width="2.2"/>
+    <line x1="120" y1="255.7" x2="690" y2="338.6" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="2" stroke-dasharray="6 4"/>
+
+    <!-- 终点标注 -->
+    <text x="700" y="135" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">+15% 毛利线</text>
+    <text x="700" y="218" text-anchor="start" font-size="12.5" fill="var(--fig-accent, #C97B96)">+5% 净利线</text>
+    <text x="700" y="342" text-anchor="start" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">-10% 成本线</text>
+
+    <!-- 横轴 -->
+    <text x="120" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="234" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <text x="348" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+    <text x="462" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">30</text>
+    <text x="576" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">40</text>
+    <text x="690" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">50</text>
+    <text x="405" y="422" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">交易笔数</text>
+
+    <text x="400" y="452" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">简单累加口径（未复利）：每笔毛利 +0.3%、成本 -0.2%、净利 +0.1%</text>
+  </g>
+</svg>

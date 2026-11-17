@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-accent, #D99058)"/>
+    </marker>
+  </defs>
+  <rect width="760" height="400" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="380" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">资金三层分层示意（数字为独立示意）</text>
+
+    <!-- 入市箭头说明 -->
+    <text x="582" y="108" text-anchor="middle" font-size="11.5" fill="var(--fig-ink-sub, #A69E8C)">入市后才有本金与 1R</text>
+
+    <!-- 顶层：长期闲钱（唯一可入市） -->
+    <rect x="120" y="120" width="440" height="70" rx="6" fill="var(--fig-accent, #D99058)" fill-opacity="0.30" stroke="var(--fig-accent, #D99058)" stroke-opacity="0.8" stroke-width="1.6"/>
+    <text x="340" y="150" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">长期闲钱 30,000 元</text>
+    <text x="340" y="172" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">唯一可入市，5~10 年不用，起步参考值</text>
+    <line x1="560" y1="155" x2="600" y2="155" stroke="var(--fig-accent, #D99058)" stroke-width="2" marker-end="url(#arr-accent)"/>
+    <rect x="604" y="122" width="136" height="66" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.06" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.6" stroke-width="1.6"/>
+    <text x="672" y="160" text-anchor="middle" font-size="14" fill="var(--fig-ink, #E7E1D2)">证券账户</text>
+
+    <!-- 中层：1 年内需求资金 -->
+    <rect x="120" y="204" width="440" height="70" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <text x="340" y="234" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">1 年内需求资金 20,000 元</text>
+    <text x="340" y="256" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">市场外，到期日前不动</text>
+
+    <!-- 底层：生活备用金 -->
+    <rect x="120" y="288" width="440" height="70" rx="6" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.10" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <text x="340" y="318" text-anchor="middle" font-size="14.5" fill="var(--fig-ink, #E7E1D2)">生活备用金 30,000 元</text>
+    <text x="340" y="340" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">市场外，随取随用</text>
+  </g>
+</svg>

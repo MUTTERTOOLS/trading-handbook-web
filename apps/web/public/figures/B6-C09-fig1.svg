@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 495" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arr-acc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--fig-accent, #C97B96)"/>
+    </marker>
+  </defs>
+  <rect width="780" height="495" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="390" y="36" text-anchor="middle" font-size="16" fill="var(--fig-ink, #E7E1D2)">同 20 笔，重排 100 次的最大回撤分布（示意）</text>
+
+    <!-- 坐标系 -->
+    <text x="106" y="80" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">次数</text>
+    <line x1="120" y1="85" x2="120" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="380" x2="720" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="120" y1="283.3" x2="720" y2="283.3" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <line x1="120" y1="186.7" x2="720" y2="186.7" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.12" stroke-width="1"/>
+    <text x="112" y="384" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="112" y="287.3" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+    <text x="112" y="190.7" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">20</text>
+
+    <!-- 直方柱（分箱同正文表：6/18/24/20/14/10/8） -->
+    <rect x="120" y="322" width="38" height="58" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <rect x="196" y="206" width="76" height="174" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <rect x="272" y="148" width="76" height="232" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <rect x="348" y="186.7" width="76" height="193.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <rect x="424" y="244.7" width="76" height="135.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <rect x="500" y="283.3" width="76" height="96.7" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+    <rect x="576" y="302.7" width="114" height="77.3" fill="var(--fig-ink, #E7E1D2)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+
+    <!-- 柱顶次数 -->
+    <text x="139" y="314" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">6</text>
+    <text x="234" y="198" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">18</text>
+    <text x="310" y="140" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">24</text>
+    <text x="386" y="178.7" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">20</text>
+    <text x="462" y="236.7" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">14</text>
+    <text x="538" y="275.3" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">10</text>
+    <text x="633" y="294.7" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">8</text>
+
+    <!-- 分位竖虚线 -->
+    <line x1="576" y1="90" x2="576" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.65" stroke-width="1.2" stroke-dasharray="6 4"/>
+    <line x1="614" y1="90" x2="614" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.65" stroke-width="1.2" stroke-dasharray="6 4"/>
+    <text x="570" y="106" text-anchor="end" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">95% 分位</text>
+    <text x="620" y="106" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">99% 分位（示意）</text>
+
+    <!-- 原顺序单条路径（3R）标注 -->
+    <line x1="158" y1="374" x2="158" y2="386" stroke="var(--fig-accent, #C97B96)" stroke-width="2"/>
+    <line x1="220" y1="430" x2="164" y2="390" stroke="var(--fig-accent, #C97B96)" stroke-width="1.8" marker-end="url(#arr-acc)"/>
+    <text x="228" y="436" text-anchor="start" font-size="12.5" fill="var(--fig-accent, #C97B96)">原顺序单条路径（3R）</text>
+
+    <!-- 分箱标签 -->
+    <text x="139" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">≤3</text>
+    <text x="234" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">4~5</text>
+    <text x="310" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">6~7</text>
+    <text x="386" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">8~9</text>
+    <text x="462" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">10~11</text>
+    <text x="538" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">12~13</text>
+    <text x="633" y="398" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">≥14</text>
+    <text x="430" y="422" text-anchor="middle" font-size="13" fill="var(--fig-ink, #E7E1D2)">最大回撤（R）</text>
+
+    <text x="390" y="478" text-anchor="middle" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">独立示意，读者自跑结果不同</text>
+  </g>
+</svg>

@@ -32,10 +32,13 @@ const volumes = series.volumes.map((volume) => ({
   cn: CN_NUM[volume.id] ?? volume.id,
   name: volume.title,
   description: volume.description,
-  chapters: volume.expectedChapters,
+  chapters: String(volume.expectedChapters).padStart(2, '0'),
   href: `/${volume.slug}.html`,
   theme: volume.theme,
 }));
+
+/** 刊头期号：数据截止月（series.yaml cutoffDate → YYYY-MM） */
+const edition = `INTERACTIVE EDITION · ${series.cutoffDate.slice(0, 7)}`;
 
 /** 读完这套书应具备的能力链（阅读顺序，内容侧既有文案） */
 const abilityChain = [
@@ -49,27 +52,52 @@ const abilityChain = [
 
 <template>
   <div class="series-home">
-    <span class="sh-badge">丛书 · 交互阅读版</span>
-    <h1 class="sh-hero">风险，先于方法</h1>
-    <p class="sh-sub">
-      全书 {{ series.totals.volumes }} 册 {{ series.totals.chapters }} 章 · 全部上线
-    </p>
+    <header class="sh-masthead">
+      <span class="sh-kicker">{{ series.title }}</span>
+      <span class="sh-issue">{{ edition }}</span>
+    </header>
 
-    <nav class="sh-catalog" aria-label="丛书目录">
-      <a v-for="volume in volumes" :key="volume.id" class="sh-row" :href="volume.href">
-        <span class="sh-row-main">
-          <span class="sh-no">册{{ volume.cn }}</span>
-          <span class="sh-name" :class="`mineral-${volume.theme}`">{{ volume.name }}</span>
+    <section class="sh-hero">
+      <h1 class="sh-oversize">风险，<em>先于方法</em></h1>
+      <div class="sh-dek">
+        <p class="sh-lead">
+          {{ series.totals.volumes }} 册、{{ series.totals.chapters }} 章，从市场规则到执行复盘。先建立"会亏多少"的刻度，再谈怎么赚。
+        </p>
+        <p class="sh-stats">
+          <b>{{ series.totals.volumes }}</b> 册 · <b>{{ series.totals.chapters }}</b> 章 · 全部上线
+        </p>
+      </div>
+    </section>
+
+    <nav class="sh-toc" aria-label="丛书目录">
+      <div class="sh-toc-head">
+        <h2>丛书目录</h2>
+        <span>按阅读顺序 · CATALOGUE</span>
+      </div>
+      <a
+        v-for="volume in volumes"
+        :key="volume.id"
+        class="sh-row"
+        :href="volume.href"
+        :style="`--v: var(--v-${volume.theme})`"
+      >
+        <span class="sh-no">{{ volume.cn }}</span>
+        <span class="sh-main">
+          <span class="sh-name">{{ volume.name }}</span>
+          <span class="sh-desc">{{ volume.description }}</span>
         </span>
-        <span class="sh-meta">{{ volume.chapters }} 章 · {{ volume.description }}</span>
+        <span class="sh-meta">
+          <span class="sh-ch-line"><span class="sh-ch">{{ volume.chapters }}</span> 章</span>
+          <span class="sh-id">{{ volume.id }}</span>
+        </span>
       </a>
     </nav>
 
     <section class="sh-ability">
-      <h2 class="sh-section-title">读完这套书，你应当能</h2>
+      <h2 class="sh-ability-title">读完这套书，你应当能<small>WHAT YOU WILL BE ABLE TO DO</small></h2>
       <ol class="sh-ability-list">
         <li v-for="step in abilityChain" :key="step.text">
-          <strong>{{ step.text }}</strong>（{{ step.src }}）
+          <b>{{ step.text }}</b><span>{{ step.src }}</span>
         </li>
       </ol>
     </section>

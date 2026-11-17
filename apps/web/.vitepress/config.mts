@@ -195,7 +195,7 @@ export default defineConfig({
       'link',
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Noto+Serif+SC:wght@500;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap',
       },
     ],
     ['meta', { name: 'theme-color', content: '#0B0E14' }],

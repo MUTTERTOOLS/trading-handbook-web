@@ -222,8 +222,44 @@ function checkContainers(body: string): ContainerIssue[] {
   return issues;
 }
 
-function countNonSpace(source: string): number {
-  return source.replace(/\s/g, '').length;
+/**
+ * 读者可见字符数（契约 §6.3，2026-11-19 修订）：全文非空白字符，剔除读者不可见部分——
+ * 1) frontmatter 块（含 `---` 围栏行）；
+ * 2) `::: figure-spec` 容器整体（开栏行 + 容器体 + 闭栏行，制图说明不进渲染输出）；
+ * 3) `::: interactive <SlotId>` 容器（开栏行 + 闭栏行，容器体必须为空）。
+ * 容器边界解析与 checkContainers 同口径：``` / ~~~ 行切换代码围栏状态，
+ * 围栏外的 `:::` 才参与容器开闭——figure-spec 容器体内嵌套代码围栏
+ * （含围栏中的 `:::` 字样行）不会提前截断容器剔除。
+ */
+function countVisibleChars(source: string): number {
+  // frontmatter 剔除与 parse.ts extractFrontmatter 同一正则（含围栏行）
+  const body = source.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
+  let inCodeFence = false;
+  let inContainer: string | null = null;
+  let visible = 0;
+
+  for (const line of body.split('\n')) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inCodeFence = !inCodeFence;
+      continue;
+    }
+    if (inContainer !== null) {
+      // 容器体：一律不可见；仅围栏外的闭栏 `:::` 结束剔除
+      if (!inCodeFence && /^:::+\s*$/.test(line)) inContainer = null;
+      continue;
+    }
+    if (/^:::+/.test(line)) {
+      const params = line.replace(/^:::+/, '').trim();
+      if (params) {
+        const type = params.split(/\s+/)[0]!;
+        if (type === 'figure-spec' || type === 'interactive') inContainer = type;
+      }
+      // 开栏行与游离闭栏行均非读者可见文本，不计入（未知容器类型由 checkContainers 报错）
+      continue;
+    }
+    visible += line.replace(/\s/g, '').length;
+  }
+  return visible;
 }
 
 function lastIndex(source: string, needle: string, end: number): number {
@@ -284,18 +320,18 @@ function checkChapter(chapter: Chapter, source: string): Issue[] {
     }
   }
 
-  const chars = countNonSpace(source);
+  const chars = countVisibleChars(source);
   if (chars < 2400) {
     issues.push({
       level: 'error',
       chapterId: chapter.id,
-      message: `正文字数过少：${chars}（下限 2400）`,
+      message: `正文字数过少（可见口径）：${chars}（下限 2400）`,
     });
   } else if (chars > 8000) {
     issues.push({
       level: 'warning',
       chapterId: chapter.id,
-      message: `正文字数 ${chars} 超过 8000；如经总编批准请保留，否则考虑拆分`,
+      message: `正文字数（可见口径）${chars} 超过 8000；如经总编批准请保留，否则考虑拆分`,
     });
   }
 

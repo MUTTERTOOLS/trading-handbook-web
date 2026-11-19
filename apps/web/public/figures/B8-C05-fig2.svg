@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 810" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="810" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">门派 C 拆解卡（示意参数，未经验证，不构成推荐）</text>
+
+    <!-- 卡片 -->
+    <rect x="40" y="50" width="800" height="736" rx="10" fill="var(--fig-surface, #161A21)" fill-opacity="0.30" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.2"/>
+    <text x="64" y="80" text-anchor="start" font-size="15" font-weight="600" fill="var(--fig-ink, #E7E1D2)">门派 C · 中线趋势跟踪</text>
+    <text x="816" y="80" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">〔B8-C02〕九字段模板</text>
+    <line x1="40" y1="96" x2="840" y2="96" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.4" stroke-width="1"/>
+
+    <!-- ① 收益来源 -->
+    <text x="64" y="117" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">① 收益来源</text>
+    <text x="64" y="138" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">行为偏差（反应不足形成的动量）。对手盘：反应偏慢的交易者与被迫按规则卖出的资金。</text>
+    <line x1="40" y1="150" x2="840" y2="150" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ② 5+1 调用 -->
+    <text x="64" y="171" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">② 5+1 调用</text>
+    <text x="64" y="192" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价（20 日新高、60 日线）；量（20 日均量 1.2 倍确认）；时（20 日窗口、20 个交易日期限）；</text>
+    <text x="64" y="211" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">风（环境过滤器看基准指数状态，最小化使用）；仓（方法不定仓位，由手册 1R 公式定）；</text>
+    <text x="64" y="230" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">心（按册七流程）；成本 C 计入。核心格：价与量。</text>
+    <line x1="40" y1="242" x2="840" y2="242" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ③ 配平方式 -->
+    <text x="64" y="263" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">③ 配平方式</text>
+    <text x="64" y="284" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">低胜率、高盈亏比、中低频率；位置在〔B3-C08〕曲线的趋势区（示意区间：胜率约</text>
+    <text x="64" y="303" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">35%~45%、盈亏比 2~3 以上），形态近 EX-F。区间数字为位置示意，实际以自己的交易统计为准。</text>
+    <line x1="40" y1="315" x2="840" y2="315" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ④ 风控方式 -->
+    <text x="64" y="336" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">④ 风控方式</text>
+    <text x="64" y="357" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">信号性止损 = 入场价 − 2×ATR(14)（构造见〔B4-C07〕）；仓位按〔B3-C04〕公式反推，</text>
+    <text x="64" y="376" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">单笔风险 0.5%~1%（起步参考值，需个人校准）；环境过滤器：基准指数在 60 日线下方时</text>
+    <text x="64" y="395" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">总风险上限减半（事前规则，〔B7-C05〕）。</text>
+    <line x1="40" y1="407" x2="840" y2="407" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑤ 退出条件 -->
+    <text x="64" y="428" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑤ 退出条件</text>
+    <text x="64" y="449" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">①开仓逻辑被证伪（跟踪止盈）：收盘跌破 20 日低点或 60 日线；③时间止损：持仓超过</text>
+    <text x="64" y="468" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">20 个交易日未达 +0.5R 即退出；②目标止盈为可选扩展（加入须事先写明并单独验证）；⑥⑦为共同条款。</text>
+    <line x1="40" y1="480" x2="840" y2="480" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑥ 证据强度 -->
+    <text x="64" y="501" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑥ 证据强度</text>
+    <text x="64" y="522" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">分两层（见结构⑦）：叙述层 D；翻译成机械规则、未经样本外检验为 B；走完九步清单</text>
+    <text x="64" y="541" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">且样本外通过、成本计入后可升 A。</text>
+    <line x1="40" y1="553" x2="840" y2="553" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑦ 成本与容量 -->
+    <text x="64" y="574" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑦ 成本与容量</text>
+    <text x="64" y="595" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">中低频，费用影响小于高频方法；次日开盘成交假设与滑点假设 0.05%~0.2%（1.6 回测口径）计入；</text>
+    <text x="64" y="614" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">标的限流动性好的宽基/行业 ETF；容量约束按〔B4-C07〕口径，比例数字需核验或标示意。</text>
+    <line x1="40" y1="626" x2="840" y2="626" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑧ 失效条件 -->
+    <text x="64" y="647" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑧ 失效条件</text>
+    <text x="64" y="668" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价格延续倾向消失：基准指数长期处于 60 日线下方（过滤器长期生效）、新高信号频繁立即</text>
+    <text x="64" y="687" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">失败、磨损明显放大；停用判据三要素见〔B6-C11〕。</text>
+    <line x1="40" y1="699" x2="840" y2="699" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑨ 与我的适配 -->
+    <text x="64" y="720" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑨ 与我的适配</text>
+    <text x="64" y="741" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">四问：能否接受连续多次 −1R 不变形；能否接受数周无信号；资金期限是否匹配；</text>
+    <text x="64" y="760" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">回撤承受与熔断线校准是否一致（判定标准见〔B8-C08〕）。</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="42" y="97" width="796" height="52" data-tip="①收益来源——行为偏差（反应不足形成的动量）。对手盘：反应偏慢的交易者与被迫按规则卖出的资金。"/>
+      <rect x="42" y="151" width="796" height="90" data-tip="②5+1 调用——价（20 日新高、60 日线）；量（20 日均量 1.2 倍确认）；时（20 日窗口、20 个交易日期限）；风（环境过滤器，最小化使用）；仓（手册 1R 公式定）；心（册七流程）；成本 C 计入。核心格：价与量。"/>
+      <rect x="42" y="243" width="796" height="71" data-tip="③配平方式——低胜率、高盈亏比、中低频率；位置在〔B3-C08〕曲线的趋势区（示意区间：胜率约 35%~45%、盈亏比 2~3 以上），形态近 EX-F。区间数字为位置示意。"/>
+      <rect x="42" y="316" width="796" height="90" data-tip="④风控方式——信号性止损 = 入场价 − 2×ATR(14)；仓位按〔B3-C04〕公式反推，单笔风险 0.5%~1%（起步参考值）；环境过滤器：基准指数在 60 日线下方时总风险上限减半。"/>
+      <rect x="42" y="408" width="796" height="71" data-tip="⑤退出条件——①跟踪止盈（收盘跌破 20 日低点或 60 日线）；③时间止损（超 20 个交易日未达 +0.5R 即退出）；②目标止盈可选扩展；⑥⑦共同条款。"/>
+      <rect x="42" y="481" width="796" height="71" data-tip="⑥证据强度——分两层：叙述层 D；翻译成机械规则、未经样本外检验为 B；走完九步清单且样本外通过、成本计入后可升 A。"/>
+      <rect x="42" y="554" width="796" height="71" data-tip="⑦成本与容量——中低频，费用影响小于高频方法；滑点假设 0.05%~0.2%（1.6 回测口径）计入；标的限流动性好的宽基/行业 ETF；容量按〔B4-C07〕口径。"/>
+      <rect x="42" y="627" width="796" height="71" data-tip="⑧失效条件——价格延续倾向消失：基准指数长期处于 60 日线下方、新高信号频繁立即失败、磨损明显放大；停用判据三要素见〔B6-C11〕。"/>
+      <rect x="42" y="700" width="796" height="71" data-tip="⑨与我的适配——四问：能否接受连续多次 −1R 不变形；能否接受数周无信号；资金期限是否匹配；回撤承受与熔断线校准是否一致。"/>
+    </g>
+  </g>
+</svg>

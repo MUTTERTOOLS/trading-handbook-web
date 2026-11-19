@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="470" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">买入理由 ↔ 退出理由对应表（示例）</text>
+
+    <!-- 表格：五行三列 -->
+    <rect x="60" y="54" width="760" height="360" rx="4" fill="var(--fig-surface, #161A21)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.5" stroke-width="1"/>
+    <!-- 第 5 行：所有持仓共同条款，淡强调底 -->
+    <rect x="61" y="348" width="758" height="66" fill="var(--fig-accent, #6B9BC9)" fill-opacity="0.07"/>
+    <rect x="60" y="54" width="760" height="30" fill="var(--fig-surface, #161A21)" fill-opacity="0.8"/>
+    <text x="220" y="74" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">买入理由（买入前写下）</text>
+    <text x="480" y="74" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">对应的退出</text>
+    <text x="700" y="74" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">触发语句要点</text>
+    <line x1="380" y1="54" x2="380" y2="414" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="580" y1="54" x2="580" y2="414" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="60" y1="150" x2="820" y2="150" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="216" x2="820" y2="216" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="282" x2="820" y2="282" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="348" x2="820" y2="348" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+
+    <!-- 行 1 -->
+    <text x="76" y="110" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价格站上前低 9.50 元之上，</text>
+    <text x="76" y="132" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">判断能到 11.00 元（EX-B）</text>
+    <text x="396" y="110" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)"><tspan fill="var(--fig-accent, #6B9BC9)">①</tspan> 止损／跟踪止盈</text>
+    <text x="396" y="132" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">＋ <tspan fill="var(--fig-accent, #6B9BC9)">②</tspan> 目标止盈</text>
+    <text x="596" y="110" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">低于 9.50 元或达到 11.00 元</text>
+    <text x="596" y="132" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">卖出（示意）</text>
+    <!-- 行 2 -->
+    <text x="76" y="190" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">预期 20 个交易日内站上 1.20 元</text>
+    <text x="396" y="190" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)"><tspan fill="var(--fig-accent, #6B9BC9)">③</tspan> 时间止损 ＋ <tspan fill="var(--fig-accent, #6B9BC9)">①</tspan></text>
+    <text x="596" y="176" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">到期未站上，卖出；</text>
+    <text x="596" y="198" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">期间跌破逻辑位也卖出</text>
+    <!-- 行 3 -->
+    <text x="76" y="256" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">它当前是候选池中赔率最优的标的</text>
+    <text x="396" y="256" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)"><tspan fill="var(--fig-accent, #6B9BC9)">④</tspan> 机会成本换仓</text>
+    <text x="596" y="242" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">出现赔率更高的新机会</text>
+    <text x="596" y="264" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">且满足量化门槛</text>
+    <!-- 行 4 -->
+    <text x="76" y="322" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">组合需要 70% 的宽基 ETF 配置</text>
+    <text x="396" y="322" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)"><tspan fill="var(--fig-accent, #6B9BC9)">⑤</tspan> 组合再平衡</text>
+    <text x="596" y="322" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">占比超 75% 卖出超配部分</text>
+    <!-- 行 5 -->
+    <text x="76" y="374" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">（所有持仓共同条款）</text>
+    <text x="76" y="396" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">账户级熔断、资金期限匹配</text>
+    <text x="396" y="374" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)"><tspan fill="var(--fig-accent, #6B9BC9)">⑥</tspan> 熔断强制减仓/平仓</text>
+    <text x="396" y="396" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">＋ <tspan fill="var(--fig-accent, #6B9BC9)">⑦</tspan> 账户外现金需求</text>
+    <text x="596" y="374" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">触及熔断线按流程减仓；</text>
+    <text x="596" y="396" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">备用金有缺口卖出补足</text>
+
+    <text x="440" y="446" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">本表在买入当天填写；填不满的行说明买入理由还不清楚，先不买</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="60" y="84" width="760" height="66" data-tip="行 1：判断能到 11.00 元（EX-B）→ ①止损／跟踪止盈＋②目标止盈：低于 9.50 元或达到 11.00 元卖出（示意）"/>
+      <rect x="60" y="150" width="760" height="66" data-tip="行 2：预期 20 个交易日内站上 1.20 元 → ③时间止损＋①：到期未站上卖出，期间跌破逻辑位也卖出"/>
+      <rect x="60" y="216" width="760" height="66" data-tip="行 3：候选池中赔率最优 → ④机会成本换仓：出现赔率更高的新机会且满足量化门槛"/>
+      <rect x="60" y="282" width="760" height="66" data-tip="行 4：组合需要 70% 宽基 ETF 配置 → ⑤组合再平衡：占比超 75% 卖出超配部分"/>
+      <rect x="60" y="348" width="760" height="66" data-tip="行 5：所有持仓共同条款（账户级熔断、资金期限匹配）→ ⑥熔断强制减仓＋⑦现金需求：触线按流程减仓；备用金有缺口卖出补足"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 845" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="845" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">门派 B 拆解卡（示例参数，未经验证，不构成推荐）</text>
+
+    <!-- 卡片 -->
+    <rect x="40" y="50" width="800" height="774" rx="10" fill="var(--fig-surface, #161A21)" fill-opacity="0.30" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.2"/>
+    <text x="64" y="80" text-anchor="start" font-size="15" font-weight="600" fill="var(--fig-ink, #E7E1D2)">门派 B · ETF 网格交易</text>
+    <text x="816" y="80" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">〔B8-C02〕九字段模板</text>
+    <line x1="40" y1="96" x2="840" y2="96" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.4" stroke-width="1"/>
+
+    <!-- ① 收益来源 -->
+    <text x="64" y="117" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">① 收益来源</text>
+    <text x="64" y="138" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">均值回归（对手盘：恐慌或狂热中按市价成交的资金）＋流动性提供（对手盘：</text>
+    <text x="64" y="157" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">需要立即成交、愿意让价的资金）。两格都说得清对手盘，可采信其逻辑。</text>
+    <line x1="40" y1="169" x2="840" y2="169" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ② 5+1 调用 -->
+    <text x="64" y="190" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">② 5+1 调用</text>
+    <text x="64" y="211" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价（区间与档位）；时（区间坐标，格距即分批节奏）；仓（资金池与每格份额即分批仓位）；</text>
+    <text x="64" y="230" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">量、风未用（基础网格不问"为什么跌"，如实写"未用"）；心由手册流程承担；</text>
+    <text x="64" y="249" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">成本 C 必填——低盈亏比方法费用杀伤大。</text>
+    <line x1="40" y1="261" x2="840" y2="261" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ③ 配平方式 -->
+    <text x="64" y="282" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">③ 配平方式</text>
+    <text x="64" y="303" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">高胜率、极低盈亏比、高频率；位置在〔B3-C08〕曲线的高胜率极低赔率区。</text>
+    <text x="64" y="322" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">风险见第六节 EX-E 对照。</text>
+    <line x1="40" y1="334" x2="840" y2="334" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ④ 风控方式 -->
+    <text x="64" y="355" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">④ 风控方式</text>
+    <text x="64" y="376" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">自带分批与区间边界，但没有止损——按〔B8-C02〕规范填"无——由手册补齐"：</text>
+    <text x="64" y="395" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">资金池上限、单票上限校验、跌穿预设处理、熔断线（〔B3-C10〕）。</text>
+    <line x1="40" y1="407" x2="840" y2="407" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑤ 退出条件 -->
+    <text x="64" y="428" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑤ 退出条件</text>
+    <text x="64" y="449" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">①区间跌穿预设处理（主）＋⑥⑦共同条款；可选③时间止损。</text>
+    <text x="64" y="468" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">单格的高抛低吸是网格内部机制，不单独映射七种退出。</text>
+    <line x1="40" y1="480" x2="840" y2="480" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑥ 证据强度 -->
+    <text x="64" y="501" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑥ 证据强度</text>
+    <text x="64" y="522" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">宣传口径（胜率截图、话术、个案）默认 D；写成机械规则、未经样本外检验为 B。</text>
+    <text x="64" y="541" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">两者都不构成上线理由（〔B6-C04〕分级）。</text>
+    <line x1="40" y1="553" x2="840" y2="553" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑦ 成本与容量 -->
+    <text x="64" y="574" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑦ 成本与容量</text>
+    <text x="64" y="595" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">每格利润小，费用占比高；ETF 费用结构与印花税适用性以〔B2-C05〕核验值为准【待核验】。</text>
+    <text x="64" y="614" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">个人资金量通常不构成容量约束，但标的需查日均成交额（口径见〔B4-C07〕）。</text>
+    <line x1="40" y1="626" x2="840" y2="626" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑧ 失效条件 -->
+    <text x="64" y="647" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑧ 失效条件</text>
+    <text x="64" y="668" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">区间假设失效：单边下跌（逐格接货、深套）或单边上涨（逐格卖光、踏空）；</text>
+    <text x="64" y="687" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">均值回归前提消失（趋势市）；</text>
+    <text x="64" y="706" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">同类网格拥挤到改变区间结构（定性描述，暂无法量化）。</text>
+    <line x1="40" y1="718" x2="840" y2="718" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑨ 与我的适配 -->
+    <text x="64" y="739" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑨ 与我的适配</text>
+    <text x="64" y="760" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">四问：能否接受"跌了就买"与自己的恐惧本能相反；能否承受深套的账面浮亏；</text>
+    <text x="64" y="779" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">资金期限是否匹配；纠偏后是否仍把它误当"稳赚"工具（判定标准见〔B8-C08〕）。</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="42" y="97" width="796" height="71" data-tip="①收益来源——均值回归（对手盘：恐慌或狂热中按市价成交的资金）＋流动性提供（对手盘：需要立即成交、愿意让价的资金）。两格都说得清对手盘，可采信其逻辑。"/>
+      <rect x="42" y="170" width="796" height="90" data-tip="②5+1 调用——价（区间与档位）；时（区间坐标，格距即分批节奏）；仓（资金池与每格份额即分批仓位）；量、风未用；心由手册流程承担；成本 C 必填——低盈亏比方法费用杀伤大。"/>
+      <rect x="42" y="262" width="796" height="71" data-tip="③配平方式——高胜率、极低盈亏比、高频率；位置在〔B3-C08〕曲线的高胜率极低赔率区。风险见第六节 EX-E 对照。"/>
+      <rect x="42" y="335" width="796" height="71" data-tip="④风控方式——自带分批与区间边界，但没有止损，按〔B8-C02〕规范填&quot;无——由手册补齐&quot;：资金池上限、单票上限校验、跌穿预设处理、熔断线（〔B3-C10〕）。"/>
+      <rect x="42" y="408" width="796" height="71" data-tip="⑤退出条件——①区间跌穿预设处理（主）＋⑥⑦共同条款；可选③时间止损。单格的高抛低吸是网格内部机制，不单独映射七种退出。"/>
+      <rect x="42" y="481" width="796" height="71" data-tip="⑥证据强度——宣传口径（胜率截图、话术、个案）默认 D；写成机械规则、未经样本外检验为 B。两者都不构成上线理由（〔B6-C04〕分级）。"/>
+      <rect x="42" y="554" width="796" height="71" data-tip="⑦成本与容量——每格利润小，费用占比高；ETF 费用结构与印花税适用性以〔B2-C05〕核验值为准【待核验】；标的需查日均成交额（口径见〔B4-C07〕）。"/>
+      <rect x="42" y="627" width="796" height="90" data-tip="⑧失效条件——区间假设失效：单边下跌（逐格接货、深套）或单边上涨（逐格卖光、踏空）；均值回归前提消失（趋势市）；同类网格拥挤到改变区间结构（定性描述）。"/>
+      <rect x="42" y="719" width="796" height="71" data-tip="⑨与我的适配——四问：能否接受&quot;跌了就买&quot;与恐惧本能相反；能否承受深套浮亏；资金期限是否匹配；纠偏后是否仍把它误当&quot;稳赚&quot;工具（判定标准见〔B8-C08〕）。"/>
+    </g>
+  </g>
+</svg>

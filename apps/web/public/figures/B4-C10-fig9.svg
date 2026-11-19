@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="430" fill="var(--fig-canvas, #0B0E14)"/>
+  <text x="20" y="34" font-size="16" font-weight="600" fill="var(--fig-ink, #E7E1D2)">图八　W 底成立（虚构示意）</text>
+  <text x="860" y="34" text-anchor="end" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">虚构示意</text>
+  <line x1="70" y1="62" x2="70" y2="298" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+  <line x1="70" y1="298" x2="850" y2="298" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+  <text x="64" y="301.5" text-anchor="end" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">9.8</text>
+  <text x="64" y="183.5" text-anchor="end" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">10.35</text>
+  <text x="64" y="65.5" text-anchor="end" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">10.9</text>
+  <text x="109" y="316" text-anchor="middle" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">1</text>
+  <text x="811" y="316" text-anchor="middle" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+  <line x1="70" y1="400" x2="850" y2="400" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
+  <line x1="70" y1="381" x2="850" y2="381" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.8" stroke-dasharray="3 3" stroke-opacity="0.5"/>
+  <text x="64" y="384" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">1.0</text>
+  <text x="64" y="403" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">量比</text>
+  <g data-tip="日1：开10.15 高10.32 低10.05 收10.10 量比0.8">
+    <line x1="109" y1="186.4" x2="109" y2="244.4" stroke="var(--fig-down, #5FA379)" stroke-width="2"/>
+    <rect x="101" y="222.9" width="16" height="10.7" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>
+    <rect x="101" y="384.8" width="16" height="15.2" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="99" y="186.4" width="20" height="57.9" fill="transparent"/>
+  </g>
+  <g data-tip="日2：开10.10 高10.18 低9.90 收9.96 量比0.9">
+    <line x1="187" y1="216.5" x2="187" y2="276.5" stroke="var(--fig-down, #5FA379)" stroke-width="2"/>
+    <rect x="179" y="233.6" width="16" height="30" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>
+    <rect x="179" y="382.9" width="16" height="17.1" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="177" y="216.5" width="20" height="60.1" fill="transparent"/>
+  </g>
+  <g data-tip="日3：开9.96 高10.05 低9.88 收9.98 量比0.7">
+    <line x1="265" y1="244.4" x2="265" y2="280.8" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="257" y="259.4" width="16" height="4.3" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="257" y="386.7" width="16" height="13.3" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="255" y="244.4" width="20" height="36.5" fill="transparent"/>
+  </g>
+  <g data-tip="日4：开9.98 高10.20 低9.95 收10.15 量比0.8">
+    <line x1="343" y1="212.2" x2="343" y2="265.8" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="335" y="222.9" width="16" height="36.5" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="335" y="384.8" width="16" height="15.2" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="333" y="212.2" width="20" height="53.6" fill="transparent"/>
+  </g>
+  <g data-tip="日5：开10.15 高10.35 低10.10 收10.30 量比1.0">
+    <line x1="421" y1="180" x2="421" y2="233.6" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="413" y="190.7" width="16" height="32.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="413" y="381" width="16" height="19" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="411" y="180" width="20" height="53.6" fill="transparent"/>
+  </g>
+  <g data-tip="日6：开10.30 高10.48 低10.26 收10.44 量比1.1">
+    <line x1="499" y1="152.1" x2="499" y2="199.3" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="491" y="160.7" width="16" height="30" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="491" y="379.1" width="16" height="20.9" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="489" y="152.1" width="20" height="47.2" fill="transparent"/>
+  </g>
+  <g data-tip="日7：开10.44 高10.55 低10.38 收10.50 量比1.0">
+    <line x1="577" y1="137.1" x2="577" y2="173.6" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="569" y="147.8" width="16" height="12.9" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="569" y="381" width="16" height="19" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="567" y="137.1" width="20" height="36.5" fill="transparent"/>
+  </g>
+  <g data-tip="日8：开10.50 高10.62 低10.45 收10.58 量比0.9">
+    <line x1="655" y1="122.1" x2="655" y2="158.5" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="647" y="130.7" width="16" height="17.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="647" y="382.9" width="16" height="17.1" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="645" y="122.1" width="20" height="36.5" fill="transparent"/>
+  </g>
+  <g data-tip="日9：开10.58 高10.78 低10.55 收10.72 量比1.5">
+    <line x1="733" y1="87.7" x2="733" y2="137.1" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="725" y="100.6" width="16" height="30" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="725" y="371.5" width="16" height="28.5" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="723" y="87.7" width="20" height="49.3" fill="transparent"/>
+  </g>
+  <g data-tip="日10：开10.72 高10.85 低10.68 收10.80 量比1.2">
+    <line x1="811" y1="72.7" x2="811" y2="109.2" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
+    <rect x="803" y="83.5" width="16" height="17.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
+    <rect x="803" y="377.2" width="16" height="22.8" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
+    <rect x="801" y="72.7" width="20" height="36.5" fill="transparent"/>
+  </g>
+  <text x="440" y="424" text-anchor="middle" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">A股红涨绿跌；海外惯例相反（仅配色惯例不同，数据相同）</text>
+</svg>

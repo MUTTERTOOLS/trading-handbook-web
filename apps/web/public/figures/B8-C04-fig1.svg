@@ -1,92 +1,301 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 560" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
-  <rect width="850" height="560" fill="var(--fig-canvas, #0B0E14)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 1140" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="1140" fill="var(--fig-canvas, #0B0E14)"/>
   <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
-    <text x="425" y="32" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">虚构示意：20 格网格在单边下跌中的逐格买入与浮亏</text>
+    <text x="440" y="30" text-anchor="middle" font-size="15" fill="var(--fig-ink, #E7E1D2)">虚构示意：20 格网格在单边下跌中的逐格买入与浮亏</text>
 
     <!-- 图例 -->
-    <line x1="120" y1="56" x2="150" y2="56" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
-    <text x="156" y="60" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">阶梯下跌路径</text>
-    <circle cx="330" cy="56" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <text x="342" y="60" text-anchor="start" font-size="12" fill="var(--fig-accent, #B8626E)">逐格买入点</text>
+    <line x1="120" y1="52" x2="150" y2="52" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <text x="156" y="56" text-anchor="start" font-size="12" fill="var(--fig-ink, #E7E1D2)">阶梯下跌路径</text>
+    <circle cx="330" cy="52" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <text x="342" y="56" text-anchor="start" font-size="12" fill="var(--fig-accent, #6B9BC9)">逐格买入点</text>
+    <line x1="470" y1="52" x2="500" y2="52" stroke="var(--fig-accent, #6B9BC9)" stroke-width="1.6"/>
+    <text x="506" y="56" text-anchor="start" font-size="12" fill="var(--fig-accent, #6B9BC9)">累计投入（副图）</text>
+    <line x1="660" y1="52" x2="690" y2="52" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.8"/>
+    <text x="696" y="56" text-anchor="start" font-size="12" fill="var(--fig-yellow, #C9A35B)">账面浮亏（副图）</text>
 
-    <!-- 坐标系：纵轴价格 0.85~1.25 -->
-    <line x1="100" y1="80" x2="100" y2="480" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
-    <line x1="100" y1="480" x2="770" y2="480" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
-    <line x1="100" y1="80" x2="770" y2="80" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
-    <line x1="100" y1="130" x2="770" y2="130" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
+    <!-- 主图坐标系：纵轴价格 0.85~1.25 -->
+    <line x1="100" y1="78" x2="100" y2="350" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.4"/>
+    <line x1="100" y1="350" x2="770" y2="350" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.3" stroke-width="1"/>
+    <line x1="100" y1="78" x2="770" y2="78" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
+    <line x1="100" y1="146" x2="770" y2="146" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
     <line x1="100" y1="180" x2="770" y2="180" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
-    <line x1="100" y1="230" x2="770" y2="230" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
-    <line x1="100" y1="280" x2="770" y2="280" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
-    <line x1="100" y1="380" x2="770" y2="380" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
-    <line x1="100" y1="430" x2="770" y2="430" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.25" stroke-width="1"/>
-    <text x="92" y="84" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.25</text>
-    <text x="92" y="134" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.20</text>
-    <text x="92" y="184" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.15</text>
-    <text x="92" y="234" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.10</text>
-    <text x="92" y="284" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.05</text>
-    <text x="92" y="334" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.00</text>
-    <text x="92" y="384" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.95</text>
-    <text x="92" y="434" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.90</text>
-    <text x="92" y="484" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.85</text>
-
-    <!-- 横轴格位 0~21 -->
-    <text x="104" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">0</text>
-    <text x="198.2" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">3</text>
-    <text x="292.4" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">6</text>
-    <text x="386.6" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">9</text>
-    <text x="480.8" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">12</text>
-    <text x="575" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">15</text>
-    <text x="669.2" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">18</text>
-    <text x="763.4" y="502" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">21</text>
-    <text x="786" y="502" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">格位序号</text>
+    <line x1="100" y1="214" x2="770" y2="214" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
+    <line x1="100" y1="282" x2="770" y2="282" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.1" stroke-width="1"/>
+    <text x="92" y="82" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.25</text>
+    <text x="92" y="116" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.20</text>
+    <text x="92" y="150" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.15</text>
+    <text x="92" y="184" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.10</text>
+    <text x="92" y="218" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.05</text>
+    <text x="92" y="252" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">1.00</text>
+    <text x="92" y="286" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.95</text>
+    <text x="92" y="320" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.90</text>
+    <text x="92" y="354" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">0.85</text>
 
     <!-- 上沿 1.20 / 下沿 1.00 虚线 -->
-    <line x1="100" y1="130" x2="770" y2="130" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="7 5"/>
-    <text x="776" y="134" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">上沿 1.20</text>
-    <line x1="100" y1="330" x2="770" y2="330" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="7 5"/>
-    <text x="776" y="334" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">下沿 1.00</text>
+    <line x1="100" y1="112" x2="770" y2="112" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="7 5"/>
+    <text x="776" y="116" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">上沿 1.20</text>
+    <line x1="100" y1="248" x2="770" y2="248" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1.2" stroke-dasharray="7 5"/>
+    <text x="776" y="252" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">下沿 1.00</text>
 
     <!-- 阶梯线：自 1.20 逐格下降至 1.00，再垂直落至 0.90 -->
-    <path d="M104,130 H135.4 V140 H166.8 V150 H198.2 V160 H229.6 V170 H261 V180 H292.4 V190 H323.8 V200 H355.2 V210 H386.6 V220 H418 V230 H449.4 V240 H480.8 V250 H512.2 V260 H543.6 V270 H575 V280 H606.4 V290 H637.8 V300 H669.2 V310 H700.6 V320 H732 V330 H763.4 V430" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
+    <path d="M104,112 H135.4 V118.8 H166.8 V125.6 H198.2 V132.4 H229.6 V139.2 H261 V146 H292.4 V152.8 H323.8 V159.6 H355.2 V166.4 H386.6 V173.2 H418 V180 H449.4 V186.8 H480.8 V193.6 H512.2 V200.4 H543.6 V207.2 H575 V214 H606.4 V220.8 H637.8 V227.6 H669.2 V234.4 H700.6 V241.2 H732 V248 H763.4 V316" fill="none" stroke="var(--fig-ink, #E7E1D2)" stroke-width="2"/>
 
     <!-- 每个台阶的买入点 -->
-    <circle cx="119.7" cy="140" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="151.1" cy="150" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="182.5" cy="160" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="213.9" cy="170" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="245.3" cy="180" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="276.7" cy="190" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="308.1" cy="200" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="339.5" cy="210" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="370.9" cy="220" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="402.3" cy="230" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="433.7" cy="240" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="465.1" cy="250" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="496.5" cy="260" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="527.9" cy="270" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="559.3" cy="280" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="590.7" cy="290" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="622.1" cy="300" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="653.5" cy="310" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="684.9" cy="320" r="3" fill="var(--fig-accent, #B8626E)"/>
-    <circle cx="716.3" cy="330" r="3" fill="var(--fig-accent, #B8626E)"/>
+    <circle cx="119.7" cy="118.8" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="151.1" cy="125.6" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="182.5" cy="132.4" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="213.9" cy="139.2" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="245.3" cy="146" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="276.7" cy="152.8" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="308.1" cy="159.6" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="339.5" cy="166.4" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="370.9" cy="173.2" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="402.3" cy="180" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="433.7" cy="186.8" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="465.1" cy="193.6" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="496.5" cy="200.4" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="527.9" cy="207.2" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="559.3" cy="214" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="590.7" cy="220.8" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="622.1" cy="227.6" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="653.5" cy="234.4" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="684.9" cy="241.2" r="3" fill="var(--fig-accent, #6B9BC9)"/>
+    <circle cx="716.3" cy="248" r="3" fill="var(--fig-accent, #6B9BC9)"/>
 
     <!-- 终点与浮亏标注（警示黄） -->
-    <circle cx="763.4" cy="430" r="3.5" fill="var(--fig-ink, #E7E1D2)"/>
-    <text x="560" y="318" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">浮亏 −1,900 元（−8.7%）</text>
-    <text x="560" y="418" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">浮亏 −3,900 元（−17.8%）</text>
+    <circle cx="763.4" cy="316" r="3.5" fill="var(--fig-ink, #E7E1D2)"/>
+    <text x="545" y="243" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">浮亏 −1,900 元（−8.7%）</text>
+    <text x="545" y="311" text-anchor="middle" font-size="12" fill="var(--fig-yellow, #C9A35B)">浮亏 −3,900 元（−17.8%）</text>
 
-    <text x="425" y="546" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：格距 0.01 元、路径与浮亏均为教学口径，非真实行情</text>
+    <!-- 副图：累计投入阶梯线与账面浮亏曲线（0 轴下方，负值区） -->
+    <text x="100" y="372" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">副图：累计投入与账面浮亏（随格位变化）</text>
+    <line x1="100" y1="376" x2="100" y2="520" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.35" stroke-width="1.2"/>
+    <line x1="100" y1="445" x2="770" y2="445" stroke="var(--fig-ink, #E7E1D2)" stroke-opacity="0.5" stroke-width="1.2"/>
+    <text x="92" y="380" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">22,000</text>
+    <text x="92" y="415" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">11,000</text>
+    <text x="92" y="449" text-anchor="end" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="778" y="449" text-anchor="start" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="778" y="487" text-anchor="start" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">−2,000</text>
+    <text x="778" y="521" text-anchor="start" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">−4,000</text>
+    <path d="M104,445 H135.4 V441.27 H166.8 V437.57 H198.2 V433.9 H229.6 V430.26 H261 V426.65 H292.4 V423.07 H323.8 V419.53 H355.2 V416.02 H386.6 V412.54 H418 V409.09 H449.4 V405.67 H480.8 V402.28 H512.2 V398.92 H543.6 V395.6 H575 V392.31 H606.4 V389.05 H637.8 V385.82 H669.2 V382.62 H700.6 V379.45 H732 V376.31 H763.4" fill="none" stroke="var(--fig-accent, #6B9BC9)" stroke-width="1.6"/>
+    <polyline points="135.4,445 166.8,445.17 198.2,445.52 229.6,446.04 261,446.73 292.4,447.59 323.8,448.62 355.2,449.83 386.6,451.21 418,452.76 449.4,454.49 480.8,456.39 512.2,458.46 543.6,460.69 575,463.11 606.4,465.7 637.8,468.46 669.2,471.39 700.6,474.5 732,477.78 763.4,512.28" fill="none" stroke="var(--fig-yellow, #C9A35B)" stroke-width="1.8"/>
+    <text x="736" y="492" text-anchor="end" font-size="11" fill="var(--fig-yellow, #C9A35B)">−1,900</text>
+    <text x="758" y="517" text-anchor="end" font-size="11" fill="var(--fig-yellow, #C9A35B)">−3,900</text>
+
+    <!-- 横轴格位 0~21（主图副图共用） -->
+    <text x="104" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">0</text>
+    <text x="198.2" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">3</text>
+    <text x="292.4" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">6</text>
+    <text x="386.6" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">9</text>
+    <text x="480.8" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">12</text>
+    <text x="575" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">15</text>
+    <text x="669.2" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">18</text>
+    <text x="763.4" y="540" text-anchor="middle" font-size="11" fill="var(--fig-ink-sub, #A69E8C)">21</text>
+    <text x="786" y="540" text-anchor="start" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">格位序号</text>
+
+    <!-- 图下完整逐格数据表（虚构示意） -->
+    <text x="40" y="566" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">完整逐格数据表（虚构示意）</text>
+    <rect x="40" y="574" width="800" height="528" rx="4" fill="var(--fig-surface, #161A21)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.5" stroke-width="1"/>
+    <rect x="41" y="1054" width="798" height="24" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.07"/>
+    <rect x="41" y="1078" width="798" height="24" fill="var(--fig-yellow, #C9A35B)" fill-opacity="0.07"/>
+    <rect x="40" y="574" width="800" height="24" fill="var(--fig-surface, #161A21)" fill-opacity="0.8"/>
+    <text x="115" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">触发价（元）</text>
+    <text x="240" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">本格投入（元）</text>
+    <text x="342.5" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">累计份额（份）</text>
+    <text x="447.5" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">累计投入（元）</text>
+    <text x="552.5" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">平均成本（元）</text>
+    <text x="670" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">按触发价市值（元）</text>
+    <text x="787.5" y="590" text-anchor="middle" font-size="11.5" fill="var(--fig-ink, #E7E1D2)">账面浮亏（元）</text>
+    <line x1="190" y1="574" x2="190" y2="1102" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="290" y1="574" x2="290" y2="1102" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="395" y1="574" x2="395" y2="1102" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="500" y1="574" x2="500" y2="1102" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="605" y1="574" x2="605" y2="1102" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="735" y1="574" x2="735" y2="1102" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="40" y1="622" x2="840" y2="622" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="646" x2="840" y2="646" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="670" x2="840" y2="670" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="694" x2="840" y2="694" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="718" x2="840" y2="718" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="742" x2="840" y2="742" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="766" x2="840" y2="766" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="790" x2="840" y2="790" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="814" x2="840" y2="814" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="838" x2="840" y2="838" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="862" x2="840" y2="862" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="886" x2="840" y2="886" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="910" x2="840" y2="910" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="934" x2="840" y2="934" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="958" x2="840" y2="958" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="982" x2="840" y2="982" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="1006" x2="840" y2="1006" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="1030" x2="840" y2="1030" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="1054" x2="840" y2="1054" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="40" y1="1078" x2="840" y2="1078" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <g font-size="12" fill="var(--fig-ink, #E7E1D2)">
+      <text x="115" y="614" text-anchor="middle">1.19</text>
+      <text x="240" y="614" text-anchor="middle">1,190</text>
+      <text x="342.5" y="614" text-anchor="middle">1,000</text>
+      <text x="447.5" y="614" text-anchor="middle">1,190</text>
+      <text x="552.5" y="614" text-anchor="middle">1.190</text>
+      <text x="670" y="614" text-anchor="middle">1,190</text>
+      <text x="787.5" y="614" text-anchor="middle">0</text>
+      <text x="115" y="638" text-anchor="middle">1.18</text>
+      <text x="240" y="638" text-anchor="middle">1,180</text>
+      <text x="342.5" y="638" text-anchor="middle">2,000</text>
+      <text x="447.5" y="638" text-anchor="middle">2,370</text>
+      <text x="552.5" y="638" text-anchor="middle">1.185</text>
+      <text x="670" y="638" text-anchor="middle">2,360</text>
+      <text x="787.5" y="638" text-anchor="middle">−10</text>
+      <text x="115" y="662" text-anchor="middle">1.17</text>
+      <text x="240" y="662" text-anchor="middle">1,170</text>
+      <text x="342.5" y="662" text-anchor="middle">3,000</text>
+      <text x="447.5" y="662" text-anchor="middle">3,540</text>
+      <text x="552.5" y="662" text-anchor="middle">1.180</text>
+      <text x="670" y="662" text-anchor="middle">3,510</text>
+      <text x="787.5" y="662" text-anchor="middle">−30</text>
+      <text x="115" y="686" text-anchor="middle">1.16</text>
+      <text x="240" y="686" text-anchor="middle">1,160</text>
+      <text x="342.5" y="686" text-anchor="middle">4,000</text>
+      <text x="447.5" y="686" text-anchor="middle">4,700</text>
+      <text x="552.5" y="686" text-anchor="middle">1.175</text>
+      <text x="670" y="686" text-anchor="middle">4,640</text>
+      <text x="787.5" y="686" text-anchor="middle">−60</text>
+      <text x="115" y="710" text-anchor="middle">1.15</text>
+      <text x="240" y="710" text-anchor="middle">1,150</text>
+      <text x="342.5" y="710" text-anchor="middle">5,000</text>
+      <text x="447.5" y="710" text-anchor="middle">5,850</text>
+      <text x="552.5" y="710" text-anchor="middle">1.170</text>
+      <text x="670" y="710" text-anchor="middle">5,750</text>
+      <text x="787.5" y="710" text-anchor="middle">−100</text>
+      <text x="115" y="734" text-anchor="middle">1.14</text>
+      <text x="240" y="734" text-anchor="middle">1,140</text>
+      <text x="342.5" y="734" text-anchor="middle">6,000</text>
+      <text x="447.5" y="734" text-anchor="middle">6,990</text>
+      <text x="552.5" y="734" text-anchor="middle">1.165</text>
+      <text x="670" y="734" text-anchor="middle">6,840</text>
+      <text x="787.5" y="734" text-anchor="middle">−150</text>
+      <text x="115" y="758" text-anchor="middle">1.13</text>
+      <text x="240" y="758" text-anchor="middle">1,130</text>
+      <text x="342.5" y="758" text-anchor="middle">7,000</text>
+      <text x="447.5" y="758" text-anchor="middle">8,120</text>
+      <text x="552.5" y="758" text-anchor="middle">1.160</text>
+      <text x="670" y="758" text-anchor="middle">7,910</text>
+      <text x="787.5" y="758" text-anchor="middle">−210</text>
+      <text x="115" y="782" text-anchor="middle">1.12</text>
+      <text x="240" y="782" text-anchor="middle">1,120</text>
+      <text x="342.5" y="782" text-anchor="middle">8,000</text>
+      <text x="447.5" y="782" text-anchor="middle">9,240</text>
+      <text x="552.5" y="782" text-anchor="middle">1.155</text>
+      <text x="670" y="782" text-anchor="middle">8,960</text>
+      <text x="787.5" y="782" text-anchor="middle">−280</text>
+      <text x="115" y="806" text-anchor="middle">1.11</text>
+      <text x="240" y="806" text-anchor="middle">1,110</text>
+      <text x="342.5" y="806" text-anchor="middle">9,000</text>
+      <text x="447.5" y="806" text-anchor="middle">10,350</text>
+      <text x="552.5" y="806" text-anchor="middle">1.150</text>
+      <text x="670" y="806" text-anchor="middle">9,990</text>
+      <text x="787.5" y="806" text-anchor="middle">−360</text>
+      <text x="115" y="830" text-anchor="middle">1.10</text>
+      <text x="240" y="830" text-anchor="middle">1,100</text>
+      <text x="342.5" y="830" text-anchor="middle">10,000</text>
+      <text x="447.5" y="830" text-anchor="middle">11,450</text>
+      <text x="552.5" y="830" text-anchor="middle">1.145</text>
+      <text x="670" y="830" text-anchor="middle">11,000</text>
+      <text x="787.5" y="830" text-anchor="middle">−450</text>
+      <text x="115" y="854" text-anchor="middle">1.09</text>
+      <text x="240" y="854" text-anchor="middle">1,090</text>
+      <text x="342.5" y="854" text-anchor="middle">11,000</text>
+      <text x="447.5" y="854" text-anchor="middle">12,540</text>
+      <text x="552.5" y="854" text-anchor="middle">1.140</text>
+      <text x="670" y="854" text-anchor="middle">11,990</text>
+      <text x="787.5" y="854" text-anchor="middle">−550</text>
+      <text x="115" y="878" text-anchor="middle">1.08</text>
+      <text x="240" y="878" text-anchor="middle">1,080</text>
+      <text x="342.5" y="878" text-anchor="middle">12,000</text>
+      <text x="447.5" y="878" text-anchor="middle">13,620</text>
+      <text x="552.5" y="878" text-anchor="middle">1.135</text>
+      <text x="670" y="878" text-anchor="middle">12,960</text>
+      <text x="787.5" y="878" text-anchor="middle">−660</text>
+      <text x="115" y="902" text-anchor="middle">1.07</text>
+      <text x="240" y="902" text-anchor="middle">1,070</text>
+      <text x="342.5" y="902" text-anchor="middle">13,000</text>
+      <text x="447.5" y="902" text-anchor="middle">14,690</text>
+      <text x="552.5" y="902" text-anchor="middle">1.130</text>
+      <text x="670" y="902" text-anchor="middle">13,910</text>
+      <text x="787.5" y="902" text-anchor="middle">−780</text>
+      <text x="115" y="926" text-anchor="middle">1.06</text>
+      <text x="240" y="926" text-anchor="middle">1,060</text>
+      <text x="342.5" y="926" text-anchor="middle">14,000</text>
+      <text x="447.5" y="926" text-anchor="middle">15,750</text>
+      <text x="552.5" y="926" text-anchor="middle">1.125</text>
+      <text x="670" y="926" text-anchor="middle">14,840</text>
+      <text x="787.5" y="926" text-anchor="middle">−910</text>
+      <text x="115" y="950" text-anchor="middle">1.05</text>
+      <text x="240" y="950" text-anchor="middle">1,050</text>
+      <text x="342.5" y="950" text-anchor="middle">15,000</text>
+      <text x="447.5" y="950" text-anchor="middle">16,800</text>
+      <text x="552.5" y="950" text-anchor="middle">1.120</text>
+      <text x="670" y="950" text-anchor="middle">15,750</text>
+      <text x="787.5" y="950" text-anchor="middle">−1,050</text>
+      <text x="115" y="974" text-anchor="middle">1.04</text>
+      <text x="240" y="974" text-anchor="middle">1,040</text>
+      <text x="342.5" y="974" text-anchor="middle">16,000</text>
+      <text x="447.5" y="974" text-anchor="middle">17,840</text>
+      <text x="552.5" y="974" text-anchor="middle">1.115</text>
+      <text x="670" y="974" text-anchor="middle">16,640</text>
+      <text x="787.5" y="974" text-anchor="middle">−1,200</text>
+      <text x="115" y="998" text-anchor="middle">1.03</text>
+      <text x="240" y="998" text-anchor="middle">1,030</text>
+      <text x="342.5" y="998" text-anchor="middle">17,000</text>
+      <text x="447.5" y="998" text-anchor="middle">18,870</text>
+      <text x="552.5" y="998" text-anchor="middle">1.110</text>
+      <text x="670" y="998" text-anchor="middle">17,510</text>
+      <text x="787.5" y="998" text-anchor="middle">−1,360</text>
+      <text x="115" y="1022" text-anchor="middle">1.02</text>
+      <text x="240" y="1022" text-anchor="middle">1,020</text>
+      <text x="342.5" y="1022" text-anchor="middle">18,000</text>
+      <text x="447.5" y="1022" text-anchor="middle">19,890</text>
+      <text x="552.5" y="1022" text-anchor="middle">1.105</text>
+      <text x="670" y="1022" text-anchor="middle">18,360</text>
+      <text x="787.5" y="1022" text-anchor="middle">−1,530</text>
+      <text x="115" y="1046" text-anchor="middle">1.01</text>
+      <text x="240" y="1046" text-anchor="middle">1,010</text>
+      <text x="342.5" y="1046" text-anchor="middle">19,000</text>
+      <text x="447.5" y="1046" text-anchor="middle">20,900</text>
+      <text x="552.5" y="1046" text-anchor="middle">1.100</text>
+      <text x="670" y="1046" text-anchor="middle">19,190</text>
+      <text x="787.5" y="1046" text-anchor="middle">−1,710</text>
+      <text x="115" y="1070" text-anchor="middle">1.00</text>
+      <text x="240" y="1070" text-anchor="middle">1,000</text>
+      <text x="342.5" y="1070" text-anchor="middle">20,000</text>
+      <text x="447.5" y="1070" text-anchor="middle">21,900</text>
+      <text x="552.5" y="1070" text-anchor="middle">1.095</text>
+      <text x="670" y="1070" text-anchor="middle">20,000</text>
+      <text x="787.5" y="1070" text-anchor="middle">−1,900</text>
+      <text x="115" y="1094" text-anchor="middle">0.90（跌穿后，无新买入）</text>
+      <text x="240" y="1094" text-anchor="middle">—</text>
+      <text x="342.5" y="1094" text-anchor="middle">20,000</text>
+      <text x="447.5" y="1094" text-anchor="middle">21,900</text>
+      <text x="552.5" y="1094" text-anchor="middle">1.095</text>
+      <text x="670" y="1094" text-anchor="middle">18,000</text>
+      <text x="787.5" y="1094" text-anchor="middle">−3,900</text>
+    </g>
+
+    <text x="440" y="1126" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">虚构示意：格距 0.01 元、路径与浮亏均为教学口径，非真实行情</text>
 
     <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
     <g fill="transparent" stroke="none">
-      <line x1="100" y1="130" x2="770" y2="130" stroke="transparent" stroke-width="9" data-tip="网格上沿 1.20 元：首格买入位附近"/>
-      <line x1="100" y1="330" x2="770" y2="330" stroke="transparent" stroke-width="9" data-tip="网格下沿 1.00 元：最后一格买入位"/>
-      <circle cx="119.7" cy="140" r="10" data-tip="第 1 格买入：约 1.19 元"/>
-      <circle cx="402.3" cy="230" r="10" data-tip="第 10 格买入：约 1.10 元（每跌 0.01 元买一格）"/>
-      <circle cx="590.7" cy="290" r="10" data-tip="第 16 格买入：约 1.05 元，此时全部持仓浮亏约 −1,900 元（−8.7%）"/>
-      <circle cx="716.3" cy="330" r="10" data-tip="第 20 格买入：1.00 元（下沿，资金用尽）"/>
-      <circle cx="763.4" cy="430" r="11" data-tip="跌破下沿至 0.90 元：20 格全部浮亏 −3,900 元（−17.8%），无钱再补"/>
+      <line x1="100" y1="112" x2="770" y2="112" stroke="transparent" stroke-width="9" data-tip="网格上沿 1.20 元：首格买入位附近"/>
+      <line x1="100" y1="248" x2="770" y2="248" stroke="transparent" stroke-width="9" data-tip="网格下沿 1.00 元：最后一格买入位"/>
+      <circle cx="119.7" cy="118.8" r="10" data-tip="第 1 格买入：约 1.19 元，投入 1,190 元"/>
+      <circle cx="402.3" cy="180" r="10" data-tip="第 10 格买入：约 1.10 元（每跌 0.01 元买一格）"/>
+      <circle cx="559.3" cy="214" r="10" data-tip="第 15 格买入：约 1.05 元，此时全部持仓浮亏 −1,050 元"/>
+      <circle cx="716.3" cy="248" r="10" data-tip="第 20 格买入：1.00 元（下沿，资金用尽）"/>
+      <circle cx="763.4" cy="316" r="11" data-tip="跌破下沿至 0.90 元：20 格全部浮亏 −3,900 元（−17.8%），无钱再补"/>
+      <circle cx="732" cy="376.31" r="10" data-tip="副图·累计投入：第 20 格买入后达 21,900 元（资金池预留 22,000 元以内）"/>
+      <circle cx="732" cy="477.78" r="10" data-tip="副图·账面浮亏：触发价 1.00 元时 −1,900 元（−8.7%）"/>
+      <circle cx="763.4" cy="512.28" r="10" data-tip="副图·账面浮亏：跌穿后 0.90 元时 −3,900 元（−17.8%）"/>
     </g>
   </g>
 </svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 770" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="770" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">门派 A 拆解卡（示例参数，未经验证，不构成推荐）</text>
+
+    <!-- 卡片 -->
+    <rect x="40" y="50" width="800" height="698" rx="10" fill="var(--fig-surface, #161A21)" fill-opacity="0.30" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.2"/>
+    <text x="64" y="80" text-anchor="start" font-size="15" font-weight="600" fill="var(--fig-ink, #E7E1D2)">门派 A · 宽基指数定投</text>
+    <text x="816" y="80" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">〔B8-C02〕九字段模板</text>
+    <line x1="40" y1="96" x2="840" y2="96" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.4" stroke-width="1"/>
+
+    <!-- ① 收益来源 -->
+    <text x="64" y="117" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">① 收益来源</text>
+    <text x="64" y="138" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">风险溢价。对手盘：规避波动、接受较低预期回报的资金。</text>
+    <line x1="40" y1="150" x2="840" y2="150" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ② 5+1 调用 -->
+    <text x="64" y="171" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">② 5+1 调用</text>
+    <text x="64" y="192" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">时（固定日期）；仓（固定金额、长期闲钱）；价与量未用（机械版不做任何判断）；</text>
+    <text x="64" y="211" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">风与心由手册流程承担；成本 C 逐项计入。</text>
+    <line x1="40" y1="223" x2="840" y2="223" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ③ 配平方式 -->
+    <text x="64" y="244" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">③ 配平方式</text>
+    <text x="64" y="265" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">不使用胜率赔率频率框架——没有止损、没有目标价，不存在"单笔"结构；</text>
+    <text x="64" y="284" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">以"期限固定＋频率固定"替代配平。</text>
+    <line x1="40" y1="296" x2="840" y2="296" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ④ 风控方式 -->
+    <text x="64" y="317" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">④ 风控方式</text>
+    <text x="64" y="338" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">手册替代条款（见结构④）：每月投入不超过长期闲钱现金流；零杠杆；</text>
+    <text x="64" y="357" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">资金期限 5~10 年内不用（起步参考口径，〔B3-C11〕）。</text>
+    <line x1="40" y1="369" x2="840" y2="369" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑤ 退出条件 -->
+    <text x="64" y="390" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑤ 退出条件</text>
+    <text x="64" y="411" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">③到期目标、⑤组合再平衡、⑦账户外现金需求为主（映射表见结构⑤）。</text>
+    <line x1="40" y1="423" x2="840" y2="423" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑥ 证据强度 -->
+    <text x="64" y="444" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑥ 证据强度</text>
+    <text x="64" y="465" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">规则机械、无歧义，结构上可走向 A 级；但本章示例参数未经样本外检验，当前填 B。</text>
+    <text x="64" y="484" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">"长期溢价"这一前提无法靠验证消除，只能靠期限与承受力兜底，此点写入⑧。</text>
+    <line x1="40" y1="515" x2="840" y2="515" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑦ 成本与容量 -->
+    <text x="64" y="536" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑦ 成本与容量</text>
+    <text x="64" y="557" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">频率极低，费用影响小，按〔B2-C05〕口径计入；场内外工具费用差异见〔B2-C01〕；</text>
+    <text x="64" y="576" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">对个人资金量，容量几乎不构成约束。</text>
+    <line x1="40" y1="588" x2="840" y2="588" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑧ 失效条件 -->
+    <text x="64" y="609" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑧ 失效条件</text>
+    <text x="64" y="630" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">资金期限被打破（最常见）；预设到期日到达；所投指数对应物的机制发生根本变化</text>
+    <text x="64" y="649" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">（此时重走选择流程，并与〔B8-C11〕的定期检查衔接）。</text>
+    <line x1="40" y1="661" x2="840" y2="661" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑨ 与我的适配 -->
+    <text x="64" y="682" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑨ 与我的适配</text>
+    <text x="64" y="703" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">三问：每月现金流是否稳定；这笔钱 5~10 年内是否确实不用；能否接受长期无反馈与</text>
+    <text x="64" y="722" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">账面浮亏阶段（判定标准见〔B8-C08〕）。</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="42" y="97" width="796" height="52" data-tip="①收益来源——风险溢价。对手盘：规避波动、接受较低预期回报的资金。"/>
+      <rect x="42" y="151" width="796" height="71" data-tip="②5+1 调用——时（固定日期）；仓（固定金额、长期闲钱）；价与量未用（机械版不做任何判断）；风与心由手册流程承担；成本 C 逐项计入。"/>
+      <rect x="42" y="224" width="796" height="71" data-tip="③配平方式——不使用胜率赔率频率框架：没有止损、没有目标价，不存在&quot;单笔&quot;结构；以&quot;期限固定＋频率固定&quot;替代配平。"/>
+      <rect x="42" y="297" width="796" height="71" data-tip="④风控方式——手册替代条款：每月投入不超过长期闲钱现金流；零杠杆；资金期限 5~10 年内不用（起步参考口径）。"/>
+      <rect x="42" y="370" width="796" height="52" data-tip="⑤退出条件——③到期目标、⑤组合再平衡、⑦账户外现金需求为主。"/>
+      <rect x="42" y="424" width="796" height="90" data-tip="⑥证据强度——规则机械、无歧义，结构上可走向 A 级；但本章示例参数未经样本外检验，当前填 B。&quot;长期溢价&quot;前提无法靠验证消除，只能靠期限与承受力兜底，写入⑧。"/>
+      <rect x="42" y="516" width="796" height="71" data-tip="⑦成本与容量——频率极低，费用影响小，按〔B2-C05〕口径计入；对个人资金量，容量几乎不构成约束。"/>
+      <rect x="42" y="589" width="796" height="71" data-tip="⑧失效条件——资金期限被打破（最常见）；预设到期日到达；所投指数对应物的机制发生根本变化（重走选择流程，衔接定期检查）。"/>
+      <rect x="42" y="662" width="796" height="71" data-tip="⑨与我的适配——三问：每月现金流是否稳定；这笔钱 5~10 年内是否确实不用；能否接受长期无反馈与账面浮亏阶段。"/>
+    </g>
+  </g>
+</svg>

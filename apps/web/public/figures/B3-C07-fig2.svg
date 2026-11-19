@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 630" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="630" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">持仓登记表——超限在开仓前就看得见</text>
+
+    <!-- 上面板：持仓登记表（明细），七行八列 -->
+    <text x="60" y="72" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">持仓登记表（明细）</text>
+    <rect x="60" y="82" width="760" height="224" rx="4" fill="var(--fig-surface, #161A21)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.5" stroke-width="1"/>
+    <!-- W 板块 5 行淡警示底 -->
+    <rect x="61" y="110" width="758" height="140" fill="var(--fig-red, #C26A63)" fill-opacity="0.05"/>
+    <rect x="60" y="82" width="760" height="28" fill="var(--fig-surface, #161A21)" fill-opacity="0.8"/>
+    <text x="90" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">序号</text>
+    <text x="170" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">标的</text>
+    <text x="275" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">所属组</text>
+    <text x="370" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">仓位</text>
+    <text x="455" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">入场价</text>
+    <text x="545" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">止损价</text>
+    <text x="635" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">止损距离</text>
+    <text x="750" y="101" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">计划亏损</text>
+    <line x1="120" y1="82" x2="120" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="220" y1="82" x2="220" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="330" y1="82" x2="330" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="410" y1="82" x2="410" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="500" y1="82" x2="500" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="590" y1="82" x2="590" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="680" y1="82" x2="680" y2="306" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="60" y1="138" x2="820" y2="138" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="166" x2="820" y2="166" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="194" x2="820" y2="194" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="222" x2="820" y2="222" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="250" x2="820" y2="250" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="278" x2="820" y2="278" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <g font-size="12" fill="var(--fig-ink, #E7E1D2)">
+      <text x="90" y="128" text-anchor="middle">1</text>
+      <text x="170" y="128" text-anchor="middle">甲股份</text>
+      <text x="275" y="128" text-anchor="middle">W 板块</text>
+      <text x="370" y="128" text-anchor="middle">15%</text>
+      <text x="455" y="128" text-anchor="middle">10.00</text>
+      <text x="545" y="128" text-anchor="middle">9.50</text>
+      <text x="635" y="128" text-anchor="middle">5%</text>
+      <text x="750" y="128" text-anchor="middle">750 元</text>
+      <text x="90" y="156" text-anchor="middle">2</text>
+      <text x="170" y="156" text-anchor="middle">乙股份</text>
+      <text x="275" y="156" text-anchor="middle">W 板块</text>
+      <text x="370" y="156" text-anchor="middle">15%</text>
+      <text x="455" y="156" text-anchor="middle">20.00</text>
+      <text x="545" y="156" text-anchor="middle">19.00</text>
+      <text x="635" y="156" text-anchor="middle">5%</text>
+      <text x="750" y="156" text-anchor="middle">750 元</text>
+      <text x="90" y="184" text-anchor="middle">3</text>
+      <text x="170" y="184" text-anchor="middle">丙股份</text>
+      <text x="275" y="184" text-anchor="middle">W 板块</text>
+      <text x="370" y="184" text-anchor="middle">15%</text>
+      <text x="455" y="184" text-anchor="middle">8.00</text>
+      <text x="545" y="184" text-anchor="middle">7.60</text>
+      <text x="635" y="184" text-anchor="middle">5%</text>
+      <text x="750" y="184" text-anchor="middle">750 元</text>
+      <text x="90" y="212" text-anchor="middle">4</text>
+      <text x="170" y="212" text-anchor="middle">丁股份</text>
+      <text x="275" y="212" text-anchor="middle">W 板块</text>
+      <text x="370" y="212" text-anchor="middle">15%</text>
+      <text x="455" y="212" text-anchor="middle">12.00</text>
+      <text x="545" y="212" text-anchor="middle">11.40</text>
+      <text x="635" y="212" text-anchor="middle">5%</text>
+      <text x="750" y="212" text-anchor="middle">750 元</text>
+      <text x="90" y="240" text-anchor="middle">5</text>
+      <text x="170" y="240" text-anchor="middle">戊股份</text>
+      <text x="275" y="240" text-anchor="middle">W 板块</text>
+      <text x="370" y="240" text-anchor="middle">15%</text>
+      <text x="455" y="240" text-anchor="middle">6.00</text>
+      <text x="545" y="240" text-anchor="middle">5.70</text>
+      <text x="635" y="240" text-anchor="middle">5%</text>
+      <text x="750" y="240" text-anchor="middle">750 元</text>
+      <text x="90" y="268" text-anchor="middle">6</text>
+      <text x="170" y="268" text-anchor="middle">己股份</text>
+      <text x="275" y="268" text-anchor="middle">X 板块</text>
+      <text x="370" y="268" text-anchor="middle">10%</text>
+      <text x="455" y="268" text-anchor="middle">15.00</text>
+      <text x="545" y="268" text-anchor="middle">14.25</text>
+      <text x="635" y="268" text-anchor="middle">5%</text>
+      <text x="750" y="268" text-anchor="middle">500 元</text>
+      <text x="90" y="296" text-anchor="middle">7</text>
+      <text x="170" y="296" text-anchor="middle">庚 ETF</text>
+      <text x="275" y="296" text-anchor="middle">宽基</text>
+      <text x="370" y="296" text-anchor="middle">10%</text>
+      <text x="455" y="296" text-anchor="middle">3.00</text>
+      <text x="545" y="296" text-anchor="middle">2.85</text>
+      <text x="635" y="296" text-anchor="middle">5%</text>
+      <text x="750" y="296" text-anchor="middle">500 元</text>
+    </g>
+
+    <!-- 下面板：组汇总，四行六列 -->
+    <text x="60" y="336" text-anchor="start" font-size="13" fill="var(--fig-ink, #E7E1D2)">组汇总</text>
+    <rect x="60" y="346" width="760" height="140" rx="4" fill="var(--fig-surface, #161A21)" fill-opacity="0.35" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.5" stroke-width="1"/>
+    <rect x="61" y="374" width="758" height="28" fill="var(--fig-red, #C26A63)" fill-opacity="0.05"/>
+    <rect x="61" y="458" width="758" height="28" fill="var(--fig-red, #C26A63)" fill-opacity="0.05"/>
+    <rect x="60" y="346" width="760" height="28" fill="var(--fig-surface, #161A21)" fill-opacity="0.8"/>
+    <text x="110" y="365" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">组</text>
+    <text x="220" y="365" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">成员</text>
+    <text x="340" y="365" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">组合计仓位</text>
+    <text x="460" y="365" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">坏情形幅度</text>
+    <text x="570" y="365" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">组风险</text>
+    <text x="720" y="365" text-anchor="middle" font-size="12" fill="var(--fig-ink, #E7E1D2)">对照 5% 上限</text>
+    <line x1="160" y1="346" x2="160" y2="486" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="280" y1="346" x2="280" y2="486" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="400" y1="346" x2="400" y2="486" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="520" y1="346" x2="520" y2="486" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="620" y1="346" x2="620" y2="486" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.18" stroke-width="1"/>
+    <line x1="60" y1="402" x2="820" y2="402" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="430" x2="820" y2="430" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="60" y1="458" x2="820" y2="458" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.15" stroke-width="1"/>
+    <g font-size="12" fill="var(--fig-ink, #E7E1D2)">
+      <text x="110" y="392" text-anchor="middle">W 板块</text>
+      <text x="220" y="392" text-anchor="middle">甲乙丙丁戊</text>
+      <text x="340" y="392" text-anchor="middle">75%</text>
+      <text x="460" y="392" text-anchor="middle">−8%</text>
+      <text x="570" y="392" text-anchor="middle">6.0%</text>
+      <text x="720" y="392" text-anchor="middle" fill="var(--fig-red, #C26A63)">超限</text>
+      <text x="110" y="420" text-anchor="middle">X 板块</text>
+      <text x="220" y="420" text-anchor="middle">己股份</text>
+      <text x="340" y="420" text-anchor="middle">10%</text>
+      <text x="460" y="420" text-anchor="middle">−8%</text>
+      <text x="570" y="420" text-anchor="middle">0.8%</text>
+      <text x="720" y="420" text-anchor="middle">通过</text>
+      <text x="110" y="448" text-anchor="middle">宽基</text>
+      <text x="220" y="448" text-anchor="middle">庚 ETF</text>
+      <text x="340" y="448" text-anchor="middle">10%</text>
+      <text x="460" y="448" text-anchor="middle">−5%</text>
+      <text x="570" y="448" text-anchor="middle">0.5%</text>
+      <text x="720" y="448" text-anchor="middle">通过</text>
+      <text x="110" y="476" text-anchor="middle">合计</text>
+      <text x="220" y="476" text-anchor="middle">—</text>
+      <text x="340" y="476" text-anchor="middle">敞口 95%</text>
+      <text x="460" y="476" text-anchor="middle">—</text>
+      <text x="570" y="476" text-anchor="middle">7.3%</text>
+      <text x="720" y="476" text-anchor="middle" fill="var(--fig-red, #C26A63)">超限</text>
+    </g>
+
+    <!-- 两口径结论 -->
+    <rect x="60" y="506" width="760" height="72" rx="6" fill="var(--fig-surface, #161A21)" fill-opacity="0.4" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.5" stroke-width="1"/>
+    <text x="78" y="531" text-anchor="start" font-size="12.5" fill="var(--fig-ink-sub, #A69E8C)">计划口径</text>
+    <text x="152" y="531" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">750 × 5 + 500 + 500 = 4,750 元；4,750 ÷ 100,000 = 4.75% ≤ 5%，通过</text>
+    <text x="78" y="560" text-anchor="start" font-size="12.5" fill="var(--fig-red, #C26A63)">合并口径</text>
+    <text x="152" y="560" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">6.0% + 0.8% + 0.5% = 7.3% &gt; 5%，<tspan fill="var(--fig-red, #C26A63)">超限，超出主要来自 W 组</tspan></text>
+
+    <text x="440" y="606" text-anchor="middle" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">数据：EX-O 组合，除 EX-O 数字外为独立示意；5% 为起步参考值，需个人校准</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="60" y="110" width="760" height="28" data-tip="第 1 行 甲股份：W 板块，仓位 15%，入场 10.00 元、止损 9.50 元（距离 5%），计划亏损 750 元"/>
+      <rect x="60" y="138" width="760" height="28" data-tip="第 2 行 乙股份：W 板块，仓位 15%，入场 20.00 元、止损 19.00 元（距离 5%），计划亏损 750 元"/>
+      <rect x="60" y="166" width="760" height="28" data-tip="第 3 行 丙股份：W 板块，仓位 15%，入场 8.00 元、止损 7.60 元（距离 5%），计划亏损 750 元"/>
+      <rect x="60" y="194" width="760" height="28" data-tip="第 4 行 丁股份：W 板块，仓位 15%，入场 12.00 元、止损 11.40 元（距离 5%），计划亏损 750 元"/>
+      <rect x="60" y="222" width="760" height="28" data-tip="第 5 行 戊股份：W 板块，仓位 15%，入场 6.00 元、止损 5.70 元（距离 5%），计划亏损 750 元"/>
+      <rect x="60" y="250" width="760" height="28" data-tip="第 6 行 己股份：X 板块，仓位 10%，入场 15.00 元、止损 14.25 元（距离 5%），计划亏损 500 元"/>
+      <rect x="60" y="278" width="760" height="28" data-tip="第 7 行 庚 ETF：宽基组，仓位 10%，入场 3.00 元、止损 2.85 元（距离 5%），计划亏损 500 元"/>
+      <rect x="60" y="374" width="760" height="28" data-tip="W 板块组：成员甲乙丙丁戊，合计仓位 75%，坏情形 −8%，组风险 6.0%，超出 5% 上限"/>
+      <rect x="60" y="402" width="760" height="28" data-tip="X 板块组：仅己股份，合计仓位 10%，坏情形 −8%，组风险 0.8%，未超上限"/>
+      <rect x="60" y="430" width="760" height="28" data-tip="宽基组：仅庚 ETF，合计仓位 10%，坏情形 −5%，组风险 0.5%，未超上限"/>
+      <rect x="60" y="458" width="760" height="28" data-tip="合计：总敞口 95%，合并口径组风险 7.3%，超限"/>
+      <rect x="60" y="516" width="760" height="26" data-tip="计划口径：五笔计划亏损合计 4,750 元，占本金 4.75%，未超 5% 上限"/>
+      <rect x="60" y="546" width="760" height="26" data-tip="合并口径：三组组风险合计 7.3%，超出 5% 上限，超出主要来自 W 组（6.0%）"/>
+    </g>
+  </g>
+</svg>

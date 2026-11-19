@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 880" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="880" height="880" fill="var(--fig-canvas, #0B0E14)"/>
+  <g font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+    <text x="440" y="34" text-anchor="middle" font-size="15.5" fill="var(--fig-ink, #E7E1D2)">门派 D 拆解卡（示例参数，未经验证，不构成推荐）</text>
+
+    <!-- 卡片 -->
+    <rect x="40" y="50" width="800" height="812" rx="10" fill="var(--fig-surface, #161A21)" fill-opacity="0.30" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.6" stroke-width="1.2"/>
+    <text x="64" y="80" text-anchor="start" font-size="15" font-weight="600" fill="var(--fig-ink, #E7E1D2)">门派 D · 基本面价值波段</text>
+    <text x="816" y="80" text-anchor="end" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">〔B8-C02〕九字段模板</text>
+    <line x1="40" y1="96" x2="840" y2="96" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.4" stroke-width="1"/>
+
+    <!-- ① 收益来源 -->
+    <text x="64" y="117" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">① 收益来源</text>
+    <text x="64" y="138" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">风险溢价（无特定对手盘，承担经营不确定性的正和补偿）＋行为偏差（恐慌过度；</text>
+    <text x="64" y="157" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">对手盘：恐慌中不计成本卖出的资金）。第三格"分析优势"新手默认填"写不出"，</text>
+    <text x="64" y="176" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">除非通过本章第五节的三道检验。</text>
+    <line x1="40" y1="188" x2="840" y2="188" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ② 5+1 调用 -->
+    <text x="64" y="209" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">② 5+1 调用</text>
+    <text x="64" y="230" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">风（宏观、行业、政策，〔B5-C02〕）；时（周期位置与披露时点，〔B5-C05〕〔B5-C07〕）；</text>
+    <text x="64" y="249" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">价（估值与历史分位，〔B5-C05〕）；仓（分散度与单票上限，本章第四节）；量基本未用</text>
+    <text x="64" y="268" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">（如实写"未用"）；心（研究日志与季度复查，〔B5-C08〕）；成本 C（低频不敏感，仍须</text>
+    <text x="64" y="287" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">计入，〔B2-C05〕）。核心格：风、价、仓。</text>
+    <line x1="40" y1="299" x2="840" y2="299" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ③ 配平方式 -->
+    <text x="64" y="320" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">③ 配平方式</text>
+    <text x="64" y="341" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">低频率（以月计）、持仓期长、单笔幅度大；胜率与盈亏比无固定区间，取决于研究质</text>
+    <text x="64" y="360" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">量与买入纪律，须以自己的研究日志统计为准（期望与盈亏平衡口径见〔B1-C03〕〔B3-C08〕）。</text>
+    <text x="64" y="379" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">无法事先给出配平形状，正是它证据强度受限的原因之一。</text>
+    <line x1="40" y1="391" x2="840" y2="391" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ④ 风控方式 -->
+    <text x="64" y="412" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">④ 风控方式</text>
+    <text x="64" y="433" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">无固定价格止损，退出锚定证伪条件（〔B5-C08〕纪律）；仓位由 1R 与计划亏损幅度反推</text>
+    <text x="64" y="452" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">（本章第四节）；分散 5~8 只、跨行业；单票 ≤15%（门派 D 更严口径）；在途总风险 ≤5%；</text>
+    <text x="64" y="471" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">零杠杆；财报窗口期规则（结构④）。</text>
+    <line x1="40" y1="483" x2="840" y2="483" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑤ 退出条件 -->
+    <text x="64" y="504" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑤ 退出条件</text>
+    <text x="64" y="525" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">①逻辑证伪（红旗触发或买入逻辑被推翻，主）；③时间止损（12 个月未兑现重估，示例参数）；</text>
+    <text x="64" y="544" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">②目标止盈可选（须事先写明）；⑥⑦为共同条款。</text>
+    <line x1="40" y1="556" x2="840" y2="556" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑥ 证据强度 -->
+    <text x="64" y="577" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑥ 证据强度</text>
+    <text x="64" y="598" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">自由裁量型方法（核心判断无法完全机械规则化，〔B6-C04〕口径），证据强度上限 C；</text>
+    <text x="64" y="617" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">一页纸研究通常 C 级（〔B5-C08〕）；宣传话术与"大师案例"D。</text>
+    <line x1="40" y1="629" x2="840" y2="629" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑦ 成本与容量 -->
+    <text x="64" y="650" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑦ 成本与容量</text>
+    <text x="64" y="671" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">低频，佣金与印花税影响小但须计入；红利税与持有期相关口径【待核验】（〔B2-C06〕）；</text>
+    <text x="64" y="690" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">个人资金量通常不构成容量约束；流动性差的标的冲击成本不可忽略（〔B4-C07〕口径）。</text>
+    <line x1="40" y1="702" x2="840" y2="702" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑧ 失效条件 -->
+    <text x="64" y="723" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑧ 失效条件</text>
+    <text x="64" y="744" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">恐慌过度前提消失（市场长期有效定价，定性描述）；估值中枢因利率环境剧变而系统性移动</text>
+    <text x="64" y="763" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">（〔B5-C02〕利率→估值传导）；自身研究纪律松动（跳过红旗复查、事后放宽证伪条件）。</text>
+    <text x="64" y="782" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">停用判据三要素见〔B6-C11〕。</text>
+    <line x1="40" y1="794" x2="840" y2="794" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
+    <!-- ⑨ 与我的适配 -->
+    <text x="64" y="815" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑨ 与我的适配</text>
+    <text x="64" y="836" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">四问自查，四问全文见§十一适合清单；判定标准见〔B8-C08〕。</text>
+
+    <!-- 悬浮读数热区（D21）：透明命中块，悬停经 data-tip 显示读数 -->
+    <g fill="transparent" stroke="none">
+      <rect x="42" y="97" width="796" height="90" data-tip="①收益来源——风险溢价（无特定对手盘，承担经营不确定性的正和补偿）＋行为偏差（恐慌过度；对手盘：恐慌中不计成本卖出的资金）。第三格&quot;分析优势&quot;新手默认填&quot;写不出&quot;，除非通过三道检验。"/>
+      <rect x="42" y="189" width="796" height="109" data-tip="②5+1 调用——风（宏观、行业、政策）；时（周期位置与披露时点）；价（估值与历史分位）；仓（分散度与单票上限）；量基本未用；心（研究日志与季度复查）；成本 C 计入。核心格：风、价、仓。"/>
+      <rect x="42" y="300" width="796" height="90" data-tip="③配平方式——低频率（以月计）、持仓期长、单笔幅度大；胜率与盈亏比无固定区间，须以自己的研究日志统计为准。无法事先给出配平形状，正是它证据强度受限的原因之一。"/>
+      <rect x="42" y="392" width="796" height="90" data-tip="④风控方式——无固定价格止损，退出锚定证伪条件；仓位由 1R 与计划亏损幅度反推；分散 5~8 只、跨行业；单票 ≤15%；在途总风险 ≤5%；零杠杆；财报窗口期规则。"/>
+      <rect x="42" y="484" width="796" height="71" data-tip="⑤退出条件——①逻辑证伪（红旗触发或买入逻辑被推翻，主）；③时间止损（12 个月未兑现重估，示例参数）；②目标止盈可选；⑥⑦共同条款。"/>
+      <rect x="42" y="557" width="796" height="71" data-tip="⑥证据强度——自由裁量型方法，证据强度上限 C；一页纸研究通常 C 级；宣传话术与&quot;大师案例&quot;记 D。"/>
+      <rect x="42" y="630" width="796" height="71" data-tip="⑦成本与容量——低频，佣金与印花税影响小但须计入；红利税口径【待核验】；个人资金量通常不构成容量约束；流动性差的标的冲击成本不可忽略。"/>
+      <rect x="42" y="703" width="796" height="90" data-tip="⑧失效条件——恐慌过度前提消失（定性描述）；估值中枢因利率环境剧变而系统性移动；自身研究纪律松动（跳过红旗复查、事后放宽证伪条件）。"/>
+      <rect x="42" y="795" width="796" height="52" data-tip="⑨与我的适配——四问自查，四问全文见§十一适合清单；判定标准见〔B8-C08〕。"/>
+    </g>
+  </g>
+</svg>

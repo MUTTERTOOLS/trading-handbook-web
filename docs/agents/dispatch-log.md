@@ -29,6 +29,7 @@
 | D21 | 11-17 | 渲染 | 交互与视觉增强：figure hover tooltip 机制（283 tip/34 数据图，结构图不加）+ 侧栏分册折叠（collapsed，当前册自动展开）+ 册色适度增强（标题线/图框/侧栏/扉页）+ MACD 间距 + 首页三方向 mockup 存档（项目负责人选 A） | ✅ | 独立复核（check/build 绿、tip 总数与产物验证、SVG 安全扫描、collapsed 勘误确认——1.6.4 无 depth 取值） | 3495464 |
 | D22 | 11-17 | 渲染 | 首页方向 A 大字排印落地（衬线 hero 赭橙强调+汉字序号目录+编号能力链+图例风险区，720px 断点响应式）；遗留热修：fonts URL 补载 Serif 900（编排者执行） | ✅ | 独立复核（改动仅两文件+config 一行、check/build 绿、桌面截图与 mockup 对齐、移动端实测无横向滚动） | 8226983 |
 | D23 | 11-17 | 渲染 | 首页目录卡片化（负责人反馈两点：序号改 01~08 数字、行式列表改卡片——mockup-B 卡片语言：册色书脊+mono 编号+hover 染色上浮）；附带热修：--v-b8 同步提亮值（4e02252 遗漏 custom.css 侧令牌，编排者执行） | ✅ | 独立复核（改动仅两文件、check/build 绿、桌面截图 8 卡 2 列无汉字序号、b8 令牌一致性核验） | c906679 |
+| D24 | 11-19 | 渲染 | GitHub Pages 部署配置（base 经 DEPLOY_BASE 环境切换默认 '/'；buildEnd 跳转页/插件 img 回退/SeriesHome·VolumeIntro 原生 a 链接 base 感知；独立 deploy.yml 仅 main 触发+configure-pages 自动开启）；编排者热修 environment.url 空引用（page_url 输出属 deploy-pages 步） | ✅ | 独立复核（diff 仅 5 文件、check 绿、默认构建跳转页逐字节一致、带 base 构建资源全前缀、内联 SVG 69/69+数据块 69、无前缀残留 html/js 含转义形态双扫 0） | c80a6b5 |
 
 ## 台账外备忘
 

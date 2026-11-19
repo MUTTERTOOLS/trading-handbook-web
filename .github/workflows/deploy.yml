@@ -1,0 +1,64 @@
+# GitHub Pages 部署（D24）：与 ci.yml 职责分离——ci.yml 管全分支门禁（含 PR），
+# 本文件只管 main 分支的发布部署，互不扩展。
+# 目标：https://muttertools.github.io/trading-handbook-web/（owner: MUTTERTOOLS）
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+# Pages 部署的最小权限：读仓库；写 Pages（创建站点/发布）；
+# id-token 供 deploy-pages 以 OIDC 获取短期部署凭证
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一分支同时只允许一个部署：新提交进来时取消进行中的旧部署，防并发写 Pages
+concurrency:
+  group: pages-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # 构建环境与 ci.yml 一致（仓库要求 Node 20.19+ / 22.12+，取活跃 LTS 22）
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # pnpm 版本由根 package.json 的 packageManager（pnpm@12）钉住
+      - name: Enable corepack
+        run: corepack enable pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 部署构建：经 DEPLOY_BASE 切换站点 base（apps/web/.vitepress/config.mts
+      # 读取该环境变量），产物在 apps/web/.vitepress/dist
+      - name: Build with deploy base
+        run: pnpm build
+        env:
+          DEPLOY_BASE: /trading-handbook-web/
+
+      # enablement: true 自动把仓库 Pages source 设为 GitHub Actions（免人工设置）；
+      # 若 GITHUB_TOKEN 权限不足导致自动开启失败，需在仓库
+      # Settings → Pages → Source 手动选 GitHub Actions 后重跑
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/.vitepress/dist
+
+      # id=deployment：environment.url 读的是本步（deploy-pages）的 page_url 输出
+      - id: deployment
+        uses: actions/deploy-pages@v4

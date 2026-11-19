@@ -33,6 +33,14 @@ const PROJECT_ROOT = path.dirname(CONTENT_DIR);
 const PUBLIC_DIR = path.join(PROJECT_ROOT, 'apps', 'web', 'public');
 const FIGURES_DIR = path.join(PUBLIC_DIR, 'figures');
 
+/**
+ * 站点 base：默认 '/'——本地 dev/preview 与常规构建行为完全不变。
+ * GitHub Pages 项目站点挂在 https://muttertools.github.io/trading-handbook-web/
+ * 子路径下，部署构建由 deploy.yml 注入 DEPLOY_BASE=/trading-handbook-web/ 切换
+ * （VitePress CLI 不支持 --base 传参，环境变量是部署期唯一可行的切换通道）。
+ */
+const base = process.env.DEPLOY_BASE || '/';
+
 interface SeriesVolumeYaml {
   id: string;
   slug: string;
@@ -167,6 +175,9 @@ const sidebar: DefaultTheme.SidebarItem[] = series.volumes.map((volume) => ({
 
 export default defineConfig({
   lang: 'zh-CN',
+  // base 由环境变量 DEPLOY_BASE 切换（见上方说明），框架负责给
+  // 页面互链 / CSS/JS 资源 / nav·sidebar 配置链接统一加前缀
+  base,
   title: '新手交易系统化入门丛书',
   description: '8 册 77 章新手交易系统化入门丛书的交互阅读版：书稿为唯一内容源，网页直接渲染 Markdown。',
   // 锁死深色：'dark' 仅设默认深色、导航栏仍渲染切换开关，切浅色后
@@ -181,7 +192,9 @@ export default defineConfig({
   markdown: {
     html: false,
     config(md) {
-      md.use(contentPlugin, { figuresDir: FIGURES_DIR });
+      // base 同步传给插件：成品图内联失败时的 <img> 回退走绝对路径
+      // /figures/…，md 注入的 html 不经框架 base 重写，需在此感知 base
+      md.use(contentPlugin, { figuresDir: FIGURES_DIR, base });
     },
   },
   // 成品图静态目录（VitePress 1.6.4 无顶层 publicDir 选项，经 vite.publicDir 覆盖）
@@ -274,10 +287,13 @@ export default defineConfig({
     ]);
   },
   buildEnd({ outDir }) {
-    // 旧地址跳转页（b1..b8 现在就是真实的分册落地页，无需跳转）
+    // 旧地址跳转页（b1..b8 现在就是真实的分册落地页，无需跳转）。
+    // 目标是站内绝对路径：本文件是裸 HTML 直写（非框架渲染），
+    // meta refresh 与可点击 <a> 都不会被框架补 base 前缀，
+    // Pages 子路径部署下必须自行带 base（base='/' 时与原行为一致）
     const redirects: Record<string, string> = {
-      'b1-map.html': '/b1.html',
-      'risk-math.html': '/b3.html',
+      'b1-map.html': `${base}b1.html`,
+      'risk-math.html': `${base}b3.html`,
     };
     for (const [file, target] of Object.entries(redirects)) {
       fs.writeFileSync(

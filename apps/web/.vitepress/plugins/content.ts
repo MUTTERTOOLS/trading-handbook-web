@@ -29,6 +29,9 @@ import { SLOT_IDS } from '../slots';
 export interface ContentPluginOptions {
   /** 成品图目录（apps/web/public/figures）；缺省时只渲染折叠说明、不注入 */
   figuresDir?: string;
+  /** 站点 base（与 config.mts 同源，缺省 '/'）：内联退化 <img> 的
+   *  /figures/… 绝对路径需感知 base，Pages 子路径部署才不会 404 */
+  base?: string;
 }
 
 interface MdToken {
@@ -187,14 +190,22 @@ const FIGURE_FORBIDDEN_RES: RegExp[] = [
 /** 成品图探测：`<章id>-fig<n>.svg` 存在才注入（契约 §5.2"有图显图，无图只渲染折叠说明"）。
  *  默认构建期内联 SVG 标记（使 var(--fig-*) 随站点主题解析，见 theme/custom.css）；
  *  任一安全校验不过时不内联，退化为 <img src="/figures/…">（原注入通道）并告警。 */
-function figureToken(state: MdState, figuresDir: string, chapterId: string, figNo: number): MdToken | null {
+function figureToken(
+  state: MdState,
+  figuresDir: string,
+  chapterId: string,
+  figNo: number,
+  base: string
+): MdToken | null {
   const key = `${chapterId}-fig${figNo}`;
   const file = path.join(figuresDir, `${key}.svg`);
   if (!fs.existsSync(file)) return null;
   const source = fs.readFileSync(file, 'utf8');
   const asImage = () =>
-    // URL 固定 /figures/<键>.svg：publicDir 指向 apps/web/public（见 config.mts）
-    htmlToken(state, `<img src="/figures/${key}.svg" alt="${escapeHtml(key)}" />`);
+    // URL = <base>figures/<键>.svg：publicDir 指向 apps/web/public（见 config.mts）。
+    // 此 <img> 是构建期注入的裸 html，Vite/VitePress 不会对 JS 字符串里的
+    // URL 重写 base，因此由 config.mts 显式传入（base='/' 时即 /figures/…）
+    htmlToken(state, `<img src="${base}figures/${key}.svg" alt="${escapeHtml(key)}" />`);
   const closeIndex = source.lastIndexOf('</svg>');
   if (closeIndex < 0) {
     console.warn(`[figures] ${key}.svg 缺少 </svg>，不内联，退化为 <img>`);
@@ -214,6 +225,7 @@ function figureToken(state: MdState, figuresDir: string, chapterId: string, figN
 
 interface FigureScan {
   figuresDir?: string;
+  base: string;
   chapterId: string;
   counter: { value: number };
 }
@@ -262,7 +274,7 @@ function transformContainers(state: MdState, tokens: MdToken[], figures: FigureS
       // 编号按章内容器出现顺序从 1 起（契约 §5.2 查找键 <章id>-fig<n>）
       const figNo = ++figures.counter.value;
       if (figures.figuresDir) {
-        const image = figureToken(state, figures.figuresDir, figures.chapterId, figNo);
+        const image = figureToken(state, figures.figuresDir, figures.chapterId, figNo, figures.base);
         if (image) {
           result.push(htmlToken(state, '<figure class="figure-block">'));
           result.push(image);
@@ -494,6 +506,7 @@ function escapeHtml(text: string): string {
 
 export const contentPlugin: ContentPlugin = (md, options = {}) => {
   const figuresDir = options.figuresDir;
+  const base = options.base ?? '/';
   md.block.ruler.before('fence', 'thb_container', containerRule, {
     alt: ['paragraph', 'reference', 'blockquote', 'list'],
   });
@@ -513,6 +526,7 @@ export const contentPlugin: ContentPlugin = (md, options = {}) => {
     const chapterId = typeof fm?.chapter_id === 'string' ? fm.chapter_id : '';
     tokens = transformContainers(state, tokens, {
       figuresDir,
+      base,
       chapterId,
       counter: { value: 0 },
     });

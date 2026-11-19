@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
+import { useData, withBase } from 'vitepress';
 
 interface VolumeMeta {
   id: string;
@@ -22,14 +22,16 @@ interface ThemeWithSeries {
 const { theme } = useData();
 const { series } = theme.value as unknown as ThemeWithSeries;
 
-/** 目录编号（D23）：弃汉字序号，按阅读顺序 01~08（mono + 册色） */
+/** 目录编号（D23）：弃汉字序号，按阅读顺序 01~08（mono + 册色）。
+ *  href 经 withBase 补前缀：这里是原生 <a>（不走主题 VPLink），
+ *  构建期 HTML 与无 JS 场景都要能直出正确的子路径（Pages 部署 base 非根） */
 const volumes = series.volumes.map((volume, index) => ({
   id: volume.id,
   no: String(index + 1).padStart(2, '0'),
   name: volume.title,
   description: volume.description,
   chapters: String(volume.expectedChapters).padStart(2, '0'),
-  href: `/${volume.slug}.html`,
+  href: withBase(`/${volume.slug}.html`),
   theme: volume.theme,
 }));
 

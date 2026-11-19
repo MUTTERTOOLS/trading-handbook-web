@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useData } from 'vitepress';
+import { useData, withBase } from 'vitepress';
 
 interface ChapterMeta {
   no: number;
@@ -34,6 +34,8 @@ const CN_NUM: Record<string, string> = {
   B5: '五', B6: '六', B7: '七', B8: '八',
 };
 const cnNumber = computed(() => CN_NUM[volume.value.id] ?? volume.value.id);
+/* 章目录 href 来自 config（/b{n}/c{nn}.html 绝对路径）：原生 <a> 不经框架
+ * base 重写（客户端路由按 baseURI 解析，缺前缀会跳到根路径 404），这里显式 withBase */
 </script>
 
 <template>
@@ -47,7 +49,7 @@ const cnNumber = computed(() => CN_NUM[volume.value.id] ?? volume.value.id);
         v-for="chapter in volume.chapters"
         :key="chapter.no"
         class="vt-row"
-        :href="chapter.href"
+        :href="withBase(chapter.href)"
       >
         <span class="vt-no tabular">§{{ String(chapter.no).padStart(2, '0') }}</span>
         <span class="vt-name">{{ chapter.title }}</span>

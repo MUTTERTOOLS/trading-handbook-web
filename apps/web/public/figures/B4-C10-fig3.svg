@@ -13,6 +13,10 @@
   <line x1="70" y1="381" x2="850" y2="381" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.8" stroke-dasharray="3 3" stroke-opacity="0.5"/>
   <text x="64" y="384" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">1.0</text>
   <text x="64" y="403" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">量比</text>
+  <g data-tip="60 日线 ≈ 9.85（题干参考位）">
+    <line x1="70" y1="70.4" x2="850" y2="70.4" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-dasharray="6 4" stroke-opacity="0.8"/>
+    <text x="78" y="85" font-size="12" fill="var(--fig-ink-sub, #A69E8C)">60 日线 ≈ 9.85</text>
+  </g>
   <g data-tip="日1：开9.30 高9.42 低9.12 收9.18 量比1.4">
     <line x1="109" y1="142.9" x2="109" y2="193.5" stroke="var(--fig-down, #5FA379)" stroke-width="2"/>
     <rect x="101" y="163.1" width="16" height="20.2" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>

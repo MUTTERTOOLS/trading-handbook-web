@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>F-007 样稿：问答卡片呈现形态（B1 册色）</title>
+<style>
+  :root{
+    --bg:#0B0E14; --ink:#E7E1D2; --ink-sub:#A69E8C; --surface:#161A21;
+    --accent:#6b9bc9; --accent-dim:rgba(107,155,201,0.14);
+    --line:rgba(231,225,210,0.14); --yellow:#C9A35B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.9;}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 24px 80px;}
+  h1{font-family:"Noto Serif SC",serif;font-size:30px;font-weight:900;letter-spacing:0.02em;margin:0 0 6px;}
+  .sub{color:var(--ink-sub);font-size:14px;margin-bottom:36px;}
+  h2{font-family:"Noto Serif SC",serif;font-size:20px;font-weight:700;margin:44px 0 14px;
+     border-left:3px solid var(--accent);border-left-color:var(--accent);padding-left:12px;}
+  .dense{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px 22px;
+         color:var(--ink);text-align:justify;}
+  .dense .tag{display:block;color:var(--ink-sub);font-size:13px;margin-bottom:8px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+        border-radius:6px;padding:0 20px 16px;margin:14px 0;transition:transform .15s ease;}
+  .card:hover{transform:translateY(-2px);}
+  .card .q{font-family:"Noto Serif SC",serif;font-weight:700;font-size:17px;margin:0 -20px 12px;
+           padding:12px 20px 10px;border-bottom:1px solid var(--line);}
+  .card .q .no{color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:13px;
+               margin-right:10px;font-weight:400;}
+  .card .a{color:var(--ink);}
+  .card .a .pair{margin:6px 0 6px 1.2em;}
+  .card .a .pair b{color:var(--accent);font-weight:600;}
+  .verdict{background:var(--accent-dim);border:1px solid var(--line);border-left:3px solid var(--accent);
+           border-radius:6px;padding:14px 20px;margin:14px 0 0;}
+  .verdict .vtag{display:inline-block;font-size:12px;color:var(--accent);border:1px solid var(--accent);
+                 border-radius:999px;padding:0 10px;line-height:1.7;margin-right:10px;vertical-align:2px;}
+  .verdict b{color:var(--accent);}
+  .note{color:var(--ink-sub);font-size:14px;border-top:1px dashed var(--line);margin-top:56px;padding-top:18px;}
+  .note li{margin:6px 0;}
+  code{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>问答卡片：呈现形态提案</h1>
+  <div class="sub">F-007 · 呈现层新形态样稿 · B1 册色（花青） · 深色主题 · 2026-11-19</div>
+
+  <h2>一、现状：密集单段（B1-C04 §四 原样）</h2>
+  <div class="dense">
+    <span class="tag">一段之内：两组"说法"、六次问答、一个结论——扫读时问与答挤在一起</span>
+    拿两个高频说法把筛子过一遍。说法一"跟主力做波段"：一问能答——赚情绪化交易者的钱（行为偏差）；二问能答——贪婪恐惧让对手在差时点成交；三问答不上——"主力资金量大"是他的凭什么，不是我的；用比你强的人当信号源，你自己就是他的对手盘。说法二"赚主力抬轿子的钱"：把主力挪到付钱的位置，一问二问似乎能过，第三问还是躲不掉——凭什么轿子里有你？两个说法都卡在第三问：不采信。
+  </div>
+
+  <h2>二、提案：同一内容，问答卡片化</h2>
+
+  <div class="card">
+    <div class="q"><span class="no">说法 01</span>"跟主力做波段"过得了筛子吗？</div>
+    <div class="a">
+      <div class="pair"><b>一问 · 赚谁的钱？</b>能答——赚情绪化交易者的钱（行为偏差）。</div>
+      <div class="pair"><b>二问 · 对方为什么持续让出？</b>能答——贪婪恐惧让对手在差时点成交。</div>
+      <div class="pair"><b>三问 · 我凭什么比对方强？</b>答不上——"主力资金量大"是他的凭什么，不是我的；用比你强的人当信号源，你自己就是他的对手盘。</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q"><span class="no">说法 02</span>"赚主力抬轿子的钱"能过吗？</div>
+    <div class="a">
+      <div class="pair">把主力挪到付钱的位置，一问二问似乎能过，第三问还是躲不掉——<b>凭什么轿子里有你？</b></div>
+    </div>
+  </div>
+
+  <div class="verdict"><span class="vtag">结论</span>两个说法都卡在第三问——不采信。</div>
+
+  <h2>三、第二处适用：三问演示（B1-C02 §来源三问）</h2>
+
+  <div class="card">
+    <div class="q"><span class="no">演示</span>"跌了这么多，总会涨回来的。"——拿来源三问过一遍</div>
+    <div class="a">
+      <div class="pair"><b>一问 · 赚谁的钱？</b>答不上。它把"价格会回去"当成必然，说不清谁在付钱。</div>
+      <div class="pair"><b>二问 · 对方为什么持续让出？</b>若"跌多了必涨"是稳定规律，早该被大量资金吃掉。</div>
+      <div class="pair"><b>三问 · 我凭什么比对方强？</b>答不上。</div>
+    </div>
+  </div>
+
+  <div class="verdict"><span class="vtag">结论</span>三问全空——不采信。</div>
+
+  <div class="note">
+    <b>设计要点（实现讨论用，非正文内容）：</b>
+    <li>卡片语义 = "一个说法 × 来源三问的逐问对答 + 结论"，卡头为说法名（衬线加重 + mono 序号），卡体为逐问对答（问句关键词册色加重），结论卡用册色淡底收束。</li>
+    <li>配色全部走站点既有令牌（deep bg / ink / ink-sub / surface / 册色 accent），无新色；卡片为<strong>呈现层组件</strong>，正文词汇不动——文稿侧如何表达属契约 §9 立项范围。</li>
+    <li>适用范围（D28 实测）：严格形态全书 2 处（本样稿两处）；通案价值 = 密集散文的呈现升级。</li>
+    <li>移动端：卡片纵向堆叠不变式，无需额外断点。</li>
+  </div>
+</div>
+</body>
+</html>

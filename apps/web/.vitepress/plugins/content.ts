@@ -10,6 +10,10 @@
  *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时构建期内联为默认可见的
  *   `<figure class="figure-block">`（SVG 内 var(--fig-*) 随站点主题解析，
  *   校验不过退化为 <img src>；无成品图整块不渲染）
+ * - `::: qa-cards <卡头题句>` 问答卡片容器（契约 §5.3）：容器体逐行为
+ *   对答行（`序词：内容`）+ 至多一条结论行（`结论：` 开头），整组渲染为
+ *   .qa-group 卡片组（视觉规格 content/editorial/mockup-qa-cards.html）；
+ *   容器体是读者可见内容，不参与字数剔除
  * - 误区组以 `**误区…**` 段落开头，自测题组以 `**题 N.**` 段落开头
  * - 站点框架页（index.md / [volume].md）含 `<SeriesHome />` / `<VolumeIntro />`：
  *   `html:false` 下按普通段落进入 token 流，这里转回 html 标签
@@ -99,7 +103,9 @@ const CHEAT_TITLE_RE = /^\*\*[^*]+\*\*$/;
 const FORMULA_TEST_RE = /[=＝]/;
 const FRAME_COMPONENT_RE = /^<(SeriesHome|VolumeIntro)\s*\/>$/;
 /** 容器类型白名单（契约 §5）；未知类型抛错，不得静默透传 */
-const CONTAINER_TYPES = new Set(['interactive', 'figure-spec']);
+const CONTAINER_TYPES = new Set(['interactive', 'figure-spec', 'qa-cards']);
+/** qa-cards 结论行前缀（契约 §5.3 严格形态：全角冒号；与 check.ts 同口径） */
+const QA_CONCLUSION_PREFIX = '结论：';
 const COLON = 0x3a; // ':'
 
 function envFile(state: MdState): string {
@@ -230,6 +236,61 @@ interface FigureScan {
   counter: { value: number };
 }
 
+/**
+ * 对答行加重切分（契约 §5.3"问句关键词册色加重"的确定性实现）：
+ * - 行内含全角冒号（序词行）：序词＋冒号必在加重段内；其后文字到首个"？"（含）
+ *   也在加重段内；无问号则加重到首个分句标点（，；、。与半角 , ;，含该标点）；
+ *   再无则只加重"序词＋冒号"。
+ * - 行内无全角冒号：加重到首个"？"（含）；无问号则整行不加重（返回 null）。
+ * 边界约定：首个"？"位于冒号之前时按"冒号后无问号"处理（走分句标点兜底）；
+ * 加重规则与 check.ts 的行级校验互不依赖。
+ */
+function splitQaAsk(line: string): { ask: string; rest: string } | null {
+  const colon = line.indexOf('：');
+  if (colon < 0) {
+    const mark = line.indexOf('？');
+    if (mark < 0) return null;
+    return { ask: line.slice(0, mark + 1), rest: line.slice(mark + 1) };
+  }
+  const head = line.slice(0, colon + 1);
+  const body = line.slice(colon + 1);
+  const mark = body.indexOf('？');
+  if (mark >= 0) return { ask: head + body.slice(0, mark + 1), rest: body.slice(mark + 1) };
+  const clause = body.search(/[,，;；、。]/);
+  if (clause >= 0) return { ask: head + body.slice(0, clause + 1), rest: body.slice(clause + 1) };
+  return { ask: head, rest: body };
+}
+
+/**
+ * qa-cards → 问答卡片组（契约 §5.3，视觉规格 content/editorial/mockup-qa-cards.html）：
+ * .qa-group 内一张 .qa-card（衬线卡头 + 对答行 1.2em 缩进 + 问句段 accent 加重）
+ * + 可选 .qa-verdict 结论卡（accent 淡底 + "结论"标签胶囊）。
+ * 相邻多个 qa-cards 容器各输出一个 .qa-group，块级流自然连排（custom.css 收紧相邻间距）。
+ * 全部文本经 escapeHtml；容器体不参与行内 markdown / 交叉引用转换（契约容器体为纯散文行）。
+ */
+function renderQaCards(head: string, answers: string[], verdict: string | null): string {
+  const parts: string[] = ['<div class="qa-group">'];
+  parts.push('<div class="qa-card">');
+  parts.push(`<div class="qa-card-head">${escapeHtml(head)}</div>`);
+  parts.push('<div class="qa-card-body">');
+  for (const answer of answers) {
+    const ask = splitQaAsk(answer);
+    parts.push(
+      ask
+        ? `<div class="qa-pair"><b class="qa-ask">${escapeHtml(ask.ask)}</b>${escapeHtml(ask.rest)}</div>`
+        : `<div class="qa-pair">${escapeHtml(answer)}</div>`
+    );
+  }
+  parts.push('</div></div>');
+  if (verdict !== null) {
+    parts.push(
+      `<div class="qa-verdict"><span class="qa-verdict-tag">结论</span>${escapeHtml(verdict)}</div>`
+    );
+  }
+  parts.push('</div>');
+  return parts.join('');
+}
+
 /** 容器 token → 呈现标记；未知类型 / 未知槽位 / 非法形态抛错（构建期失败） */
 function transformContainers(state: MdState, tokens: MdToken[], figures: FigureScan): MdToken[] {
   const result: MdToken[] = [];
@@ -248,7 +309,7 @@ function transformContainers(state: MdState, tokens: MdToken[], figures: FigureS
       const [type, ...args] = parts;
       if (!CONTAINER_TYPES.has(type!)) {
         throw new Error(
-          `${envFile(state)}：未知容器类型 "${type}"（仅允许 interactive / figure-spec）`
+          `${envFile(state)}：未知容器类型 "${type}"（仅允许 interactive / figure-spec / qa-cards）`
         );
       }
       if (type === 'interactive') {
@@ -263,6 +324,34 @@ function transformContainers(state: MdState, tokens: MdToken[], figures: FigureS
         }
         // 组件标签由槽位注册表（theme/index.ts）按同一 id 注册后解析
         result.push(htmlToken(state, `<${slotId} />`));
+        continue;
+      }
+      // qa-cards（契约 §5.3）：参数行 = 卡头题句（冒号后参数原样拼接）；
+      // 容器体逐行解析为对答行（`序词：内容`）+ 至多一条结论行（`结论：` 开头，
+      // 严格全角冒号形态，与 check.ts 同口径）。内容是读者可见正文（不参与
+      // 字数剔除）；行级校验此处仅兜底（带行号的执法在 check.ts checkContainers）。
+      if (type === 'qa-cards') {
+        const rows: string[] = [];
+        for (const token of open.inner) {
+          if (token.type === 'inline') rows.push(...token.content.split('\n'));
+        }
+        const bodyLines = rows.map((row) => row.replace(/\r/g, '').trim()).filter(Boolean);
+        const answers: string[] = [];
+        let verdict: string | null = null;
+        for (const line of bodyLines) {
+          if (!line.startsWith(QA_CONCLUSION_PREFIX)) {
+            answers.push(line);
+            continue;
+          }
+          if (verdict !== null) {
+            throw new Error(`${envFile(state)}：qa-cards 结论行至多一条（契约 §5.3）`);
+          }
+          verdict = line.slice(QA_CONCLUSION_PREFIX.length).trim();
+        }
+        if (!answers.length) {
+          throw new Error(`${envFile(state)}：qa-cards 容器体至少需要一条对答行（契约 §5.3）`);
+        }
+        result.push(htmlToken(state, renderQaCards(args.join(' ').trim(), answers, verdict)));
         continue;
       }
       // figure-spec（D12 裁决）：成品图默认可见（不再置于折叠块内）；

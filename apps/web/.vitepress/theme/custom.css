@@ -39,6 +39,24 @@
   --fig-down: #2F6B4F;
 }
 
+/* === 问答卡片本地令牌（契约 §5.3 qa-cards，D33 四处同步） ===
+   深色 = 站点书卷令牌别名（--accent/--accent-dim 随册由 config.mts 注入，
+   卡片自动随册换色）；浅色 = 提案值（纸白画布，与 --fig-* 浅色惯例同源），
+   浅色主题启用时生效。accent 本身不取别名，直接用 var(--accent)。 */
+:root,
+:root.dark {
+  --qa-card-bg: var(--bg-card);
+  --qa-card-line: var(--border);
+  --qa-ink: var(--text-primary);
+  --qa-verdict-bg: var(--accent-dim);
+}
+:root:not(.dark) {
+  --qa-card-bg: #ECE6D7;
+  --qa-card-line: rgba(58, 54, 41, 0.16);
+  --qa-ink: #3A3629;
+  --qa-verdict-bg: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
 /* === 设计令牌（书卷纸墨） === */
 :root,
 :root.dark {
@@ -818,6 +836,63 @@ details.quiz summary:hover { background: rgba(231, 225, 210, 0.04); }
 .quiz-question p { margin-bottom: 6px; font-weight: 600; }
 .quiz-question p:last-child { margin-bottom: 0; }
 .quiz-question table { margin: 10px 0; }
+
+/* === 问答卡片（契约 §5.3 ::: qa-cards；视觉规格 content/editorial/mockup-qa-cards.html） ===
+   卡头衬线加重 + 底部分隔线；对答行缩进 1.2em、问句段 accent 加重；
+   结论卡 accent 淡底 + "结论"标签胶囊；卡片 hover 上浮 2px（transform，
+   不加阴影，沿用站点书卷交互语言）。相邻多个 qa-cards 容器各输出一个
+   .qa-group，块级流自然连排（相邻组间距收紧）；移动端纵向堆叠不变式，
+   无额外断点。 */
+.qa-group { margin: 18px 0; }
+.qa-group + .qa-group { margin-top: 14px; }
+.qa-card {
+  background: var(--qa-card-bg);
+  border: 1px solid var(--qa-card-line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 0 20px 16px;
+  transition: transform 0.15s ease;
+}
+.qa-card:hover { transform: translateY(-2px); }
+.qa-card-head {
+  margin: 0 -20px 12px;
+  padding: 12px 20px 10px;
+  border-bottom: 1px solid var(--qa-card-line);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--qa-ink);
+}
+.qa-pair {
+  margin: 6px 0 6px 1.2em;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--qa-ink);
+}
+.qa-pair .qa-ask { color: var(--accent); font-weight: 600; }
+.qa-verdict {
+  background: var(--qa-verdict-bg);
+  border: 1px solid var(--qa-card-line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 14px 20px;
+  margin: 14px 0 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--qa-ink);
+}
+.qa-verdict-tag {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--accent);
+  vertical-align: 2px;
+}
 
 /* === 风险提示组件（RiskNotice 等组件用） === */
 .risk-notice {

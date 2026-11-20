@@ -102,9 +102,10 @@ interface Issue {
 
 /**
  * 容器词汇（契约 §5）：类型白名单 + 槽位冻结清单。
- * 与 apps/web/.vitepress/slots.ts、plugins/content.ts 三处同步，词汇表变更需同时更新。
+ * 与 apps/web/.vitepress/plugins/content.ts、slots.ts 同步，词汇表变更需同时更新；
+ * qa-cards（契约 §5.3）渲染由 plugins/content.ts 直出，不占槽位注册表。
  */
-const CONTAINER_TYPES = ['interactive', 'figure-spec'] as const;
+const CONTAINER_TYPES = ['interactive', 'figure-spec', 'qa-cards'] as const;
 const SLOT_IDS = [
   'ThreeQuestions',
   'ExpectancyExplorer',
@@ -178,7 +179,7 @@ function checkContainers(body: string): ContainerIssue[] {
             message: `同一章同一槽位重复：interactive ${slotId}`,
           });
         }
-      } else if (args.length) {
+      } else if (type === 'figure-spec' && args.length) {
         issues.push({
           level: 'error',
           message: `figure-spec 不接受参数（第 ${i + 1} 行）："${params}"`,
@@ -205,6 +206,28 @@ function checkContainers(body: string): ContainerIssue[] {
           });
         }
       }
+      if (open.type === 'qa-cards') {
+        // qa-cards 容器体（契约 §5.3）：至少一条对答行、结论行至多一条；
+        // 结论行识别与渲染插件同口径（`结论：` 全角冒号严格形态）。
+        const rows = lines
+          .slice(open.line, i)
+          .map((row) => row.trim())
+          .filter(Boolean);
+        const answers = rows.filter((row) => !row.startsWith('结论：'));
+        const verdicts = rows.filter((row) => row.startsWith('结论：'));
+        if (answers.length === 0) {
+          issues.push({
+            level: 'error',
+            message: `qa-cards 容器体至少需要一条对答行（第 ${open.line} 行起的容器）`,
+          });
+        }
+        if (verdicts.length > 1) {
+          issues.push({
+            level: 'error',
+            message: `qa-cards 结论行至多一条，发现 ${verdicts.length} 条（第 ${open.line} 行起的容器）`,
+          });
+        }
+      }
     } else {
       issues.push({
         level: 'error',
@@ -227,6 +250,8 @@ function checkContainers(body: string): ContainerIssue[] {
  * 1) frontmatter 块（含 `---` 围栏行）；
  * 2) `::: figure-spec` 容器整体（开栏行 + 容器体 + 闭栏行，制图说明不进渲染输出）；
  * 3) `::: interactive <SlotId>` 容器（开栏行 + 闭栏行，容器体必须为空）。
+ * `::: qa-cards` 容器体是读者可见内容（契约 §5.3），不剔除：仅开栏行与闭栏行
+ * 作为标记行不计入，容器体（对答行 + 结论行）计入可见字数。
  * 容器边界解析与 checkContainers 同口径：``` / ~~~ 行切换代码围栏状态，
  * 围栏外的 `:::` 才参与容器开闭——figure-spec 容器体内嵌套代码围栏
  * （含围栏中的 `:::` 字样行）不会提前截断容器剔除。

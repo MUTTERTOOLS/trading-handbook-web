@@ -246,22 +246,28 @@ function checkContainers(body: string): ContainerIssue[] {
 }
 
 /**
- * 读者可见字符数（契约 §6.3，2026-11-19 修订）：全文非空白字符，剔除读者不可见部分——
+ * 读者可见字符数（契约 §6.3，2026-11-20 双层口径）：按层分别累计，返回
+ * 主体层 / 选读层两个计数——
+ * - 主体层（main）：延伸与链接节以外的全部读者可见字符；
+ * - 选读层（extra）：围栏外 `## 延伸与链接` 标题行起，至下一个围栏外 `## `
+ *   标题行（即 ⚠️ 风险提示）之前的可见字符，含该标题行本身。
+ * 剔除规则在两层内照常生效：
  * 1) frontmatter 块（含 `---` 围栏行）；
  * 2) `::: figure-spec` 容器整体（开栏行 + 容器体 + 闭栏行，制图说明不进渲染输出）；
  * 3) `::: interactive <SlotId>` 容器（开栏行 + 闭栏行，容器体必须为空）。
- * `::: qa-cards` 容器体是读者可见内容（契约 §5.3），不剔除：仅开栏行与闭栏行
- * 作为标记行不计入，容器体（对答行 + 结论行）计入可见字数。
- * 容器边界解析与 checkContainers 同口径：``` / ~~~ 行切换代码围栏状态，
- * 围栏外的 `:::` 才参与容器开闭——figure-spec 容器体内嵌套代码围栏
- * （含围栏中的 `:::` 字样行）不会提前截断容器剔除。
+ * `::: qa-cards` 容器体是读者可见内容（契约 §5.3），计入其所在层。
+ * 边界解析与 checkContainers 同口径：``` / ~~~ 行切换代码围栏状态，围栏外的
+ * `:::` 与 `## ` 才参与容器开闭 / 层切换——延伸节体内嵌代码围栏或容器
+ * （含围栏中的 `##` 字样行）不会误触层边界。
  */
-function countVisibleChars(source: string): number {
+function countVisibleChars(source: string): { main: number; extra: number } {
   // frontmatter 剔除与 parse.ts extractFrontmatter 同一正则（含围栏行）
   const body = source.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
   let inCodeFence = false;
   let inContainer: string | null = null;
-  let visible = 0;
+  let inExtra = false;
+  let main = 0;
+  let extra = 0;
 
   for (const line of body.split('\n')) {
     if (/^\s*(```|~~~)/.test(line)) {
@@ -282,9 +288,15 @@ function countVisibleChars(source: string): number {
       // 开栏行与游离闭栏行均非读者可见文本，不计入（未知容器类型由 checkContainers 报错）
       continue;
     }
-    visible += line.replace(/\s/g, '').length;
+    // 选读层边界：围栏外 `## 延伸与链接` 进入；下一个围栏外 `## ` 标题行退出
+    if (!inCodeFence && /^##\s/.test(line)) {
+      inExtra = /^##\s+延伸与链接\s*$/.test(line);
+    }
+    const count = line.replace(/\s/g, '').length;
+    if (inExtra) extra += count;
+    else main += count;
   }
-  return visible;
+  return { main, extra };
 }
 
 function lastIndex(source: string, needle: string, end: number): number {
@@ -346,17 +358,24 @@ function checkChapter(chapter: Chapter, source: string): Issue[] {
   }
 
   const chars = countVisibleChars(source);
-  if (chars < 2400) {
+  if (chars.main < 2400) {
     issues.push({
       level: 'error',
       chapterId: chapter.id,
-      message: `正文字数过少（可见口径）：${chars}（下限 2400）`,
+      message: `主体正文字数过少（主体口径）：${chars.main}（下限 2400）`,
     });
-  } else if (chars > 8000) {
+  } else if (chars.main > 8000) {
     issues.push({
       level: 'warning',
       chapterId: chapter.id,
-      message: `正文字数（可见口径）${chars} 超过 8000；如经总编批准请保留，否则考虑拆分`,
+      message: `主体正文字数（主体口径）${chars.main} 超过 8000；如经总编批准请保留，否则考虑拆分`,
+    });
+  }
+  if (chars.extra > 1200) {
+    issues.push({
+      level: 'warning',
+      chapterId: chapter.id,
+      message: `选读层（延伸与链接节）字数 ${chars.extra} 超过软上限 1200；如经总编批准请保留，否则削减或拆条目`,
     });
   }
 

@@ -104,6 +104,12 @@ const FORMULA_TEST_RE = /[=＝]/;
 const FRAME_COMPONENT_RE = /^<(SeriesHome|VolumeIntro)\s*\/>$/;
 /** 容器类型白名单（契约 §5）；未知类型抛错，不得静默透传 */
 const CONTAINER_TYPES = new Set(['interactive', 'figure-spec', 'qa-cards']);
+/** 延伸与链接选读提示条（契约 §6.3 选读层，D39）：构建期注入的 html token，
+ *  仅对本节生效且每次解析各注入一次（幂等）；零 HTML 纪律约束 md 源文件，
+ *  插件注入渲染标记属既有模式（figure-block 同例）。样式见 theme/custom.css .ext-note */
+const EXT_NOTE_HTML =
+  '<div class="ext-note">本节为选读内容——数据锚点与延伸辨析，不影响主线连贯。</div>';
+
 /** qa-cards 结论行前缀（契约 §5.3 严格形态：全角冒号；与 check.ts 同口径） */
 const QA_CONCLUSION_PREFIX = '结论：';
 const COLON = 0x3a; // ':'
@@ -673,6 +679,10 @@ export const contentPlugin: ContentPlugin = (md, options = {}) => {
       if (section.title === '常见误区') body = transformMisconceptions(md, state, body);
       body = transformBlocks(state, body);
       result.push(tokens[section.headingFrom]!, tokens[section.headingFrom + 1]!, tokens[section.headingFrom + 2]!);
+      // 选读提示条（契约 §6.3 选读层）：仅 延伸与链接 节注入，置于节标题与本节容器之间
+      if (section.title === '延伸与链接') {
+        result.push(htmlToken(state, EXT_NOTE_HTML));
+      }
       result.push(htmlToken(state, `<div class="sec" data-section="${escapeHtml(section.title)}">`));
       result.push(...body);
       result.push(htmlToken(state, '</div>'));

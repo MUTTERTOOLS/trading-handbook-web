@@ -1217,3 +1217,18 @@ input[type='range']:focus-visible { box-shadow: 0 0 0 3px var(--accent-dim); }
 /* 本页目录（outline）：hover 项册色点缀（当前项已是 brand=accent） */
 .VPDocAsideOutline .outline-link { transition: color 0.15s; }
 .VPDocAsideOutline .outline-link:hover { color: var(--accent); }
+
+
+/* === 选读提示条（契约 §6.3 选读层，2026-11 D39） ===
+   延伸与链接节标题后的全站统一提示条，由 plugins/content.ts 构建期注入（不进 md 源）。
+   ink-sub 色 + 小号 + 与上下文的留白；颜色复用既有 --fig-ink-sub 深浅双套令牌，
+   随站点深浅主题自动切换，零新色值。 */
+.ext-note {
+  margin: 0.2em 0 1.4em;
+  padding: 0.2em 0 0.2em 0.9em;
+  border-left: 2px solid var(--fig-ink-sub);
+  color: var(--fig-ink-sub);
+  font-size: 0.86em;
+  line-height: 1.7;
+}
+

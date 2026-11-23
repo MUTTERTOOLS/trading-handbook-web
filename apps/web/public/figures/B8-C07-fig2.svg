@@ -46,7 +46,7 @@
     <line x1="40" y1="588" x2="840" y2="588" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
     <!-- ⑧ 失效条件 -->
     <text x="64" y="609" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑧ 失效条件</text>
-    <text x="64" y="630" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">情绪跟风生态变化、涨停与 T+1 等制度参数调整【待核验】、同类参与者拥挤、对异常交易</text>
+    <text x="64" y="630" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">情绪跟风生态变化、涨停与 T+1 等制度参数调整※、同类参与者拥挤、对异常交易</text>
     <text x="64" y="649" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">行为的监管执行收紧（〔B2-C08〕）——任一条改写前提。</text>
     <line x1="40" y1="661" x2="840" y2="661" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
     <!-- ⑨ 与我的适配 -->
@@ -63,7 +63,7 @@
       <rect x="42" y="408" width="796" height="52" data-tip="⑤退出条件——高度依赖盘中反应，与本书七种退出的规则化框架不兼容（结构⑤如实声明）。"/>
       <rect x="42" y="462" width="796" height="52" data-tip="⑥证据强度——晒单、故事、课程话术默认 D（〔B6-C04〕）；且多数宣称无法验证（结构⑦）。"/>
       <rect x="42" y="516" width="796" height="71" data-tip="⑦成本与容量——往返成本随频率放大（EX-P 口径）；个人小资金冲击成本尚可接受，但方法整体有容量天花板（大资金进出涨停股，自身即冲击）。"/>
-      <rect x="42" y="589" width="796" height="71" data-tip="⑧失效条件——情绪跟风生态变化、涨停与 T+1 等制度参数调整【待核验】、同类参与者拥挤、监管执行收紧——任一条改写前提。"/>
+      <rect x="42" y="589" width="796" height="71" data-tip="⑧失效条件——情绪跟风生态变化、涨停与 T+1 等制度参数调整※、同类参与者拥挤、监管执行收紧——任一条改写前提。"/>
       <rect x="42" y="662" width="796" height="71" data-tip="⑨与我的适配——四问在此章答案先行：需全天候盯盘、尾部亏损大、合规边界近、无法按本书框架执行——新手四问全部不通过。结论：不作为新手起步门派。"/>
     </g>
   </g>

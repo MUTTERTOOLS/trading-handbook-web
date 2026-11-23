@@ -4,7 +4,8 @@
  * 输入约定（由 content:check 保证，插件侧再兜底校验，出错即构建失败）：
  * - 章节固定小节 `## 开场问题` / `一句话结论` / `本章学习目标` / `正文` /
  *   `常见误区` / `本章小结` / `自测题` / `速查卡*` / `延伸与链接` / `⚠️ 风险提示`
- * - `〔B?-C??〕` 交叉引用、`【待核验】` 徽标
+ * - `〔B?-C??〕` 交叉引用；`【待核验】` 与变体 `【待核验：说明】` → 上标 ※ 核验
+ *   标记（hover title 提示；D46 起不再渲染"【待核验】"字面文本）
  * - `::: interactive <SlotId>` 空容器（槽位清单见 ../slots.ts，未知类型/槽位抛错）
  * - `::: figure-spec` 容器（制图说明，体内文字不进渲染输出）；成品图
  *   `<章id>-fig<n>.svg`（n 为章内容器出现顺序）存在时构建期内联为默认可见的
@@ -95,7 +96,11 @@ export interface ContentPlugin {
   (md: MdLike, options?: ContentPluginOptions): void;
 }
 
-const XREF_TOKEN_RE = /〔(B[1-8])-(C\d{2})〕|【待核验】/g;
+const XREF_TOKEN_RE = /〔(B[1-8])-(C\d{2})〕|【待核验(?:：([^】]+))?】/g;
+/** 核验标记（D46）：无说明变体的默认 hover 提示文案。
+ *  注意：识别口径只认"【待核验"前缀形态（与 check.ts 计数同源），站点渲染输出
+ *  不含该字面文本——字面仅存在于 md 源与 L2 门禁内部。 */
+const VERIFY_MARK_TITLE = '待核验：示意或未经核验的数字（详见核验表）';
 const QUIZ_RE = /^\*\*题\s*\d+/;
 const MISCONCEPTION_RE = /^\*\*误区/;
 const NOTE_RE = /^\*?\*?(注|表注)[：:]/;
@@ -421,7 +426,8 @@ function transformInline(state: MdState, children: MdToken[]): MdToken[] {
       continue;
     }
     const content = token.content;
-    if (!/〔B[1-8]-C\d{2}〕|【待核验】/.test(content)) {
+    // 快速路径按"【待核验"前缀判断（同时覆盖无说明与带说明两种变体）
+    if (!/〔B[1-8]-C\d{2}〕|【待核验/.test(content)) {
       result.push(token);
       continue;
     }
@@ -441,8 +447,13 @@ function transformInline(state: MdState, children: MdToken[]): MdToken[] {
         open.attrSet('class', 'xref');
         result.push(open, textToken(state, match[0]), new state.Token('link_close', 'a', -1));
       } else {
+        // D46 核验标记去字面化：上标 ※（册色、小号），hover title 提示。
+        // 无说明形态用统一默认文案；变体【待核验：说明】的说明文字是语义内容，
+        // 完整进入 title（escapeHtml 转义引号等属性字符）。
+        const note = (match[3] ?? '').trim();
+        const title = note ? `待核验：${note}` : VERIFY_MARK_TITLE;
         const badge = new state.Token('html_inline', '', 0);
-        badge.content = '<span class="verify-badge">【待核验】</span>';
+        badge.content = `<sup class="verify-mark" title="${escapeHtml(title)}">※</sup>`;
         result.push(badge);
       }
       last = XREF_TOKEN_RE.lastIndex;
@@ -608,7 +619,7 @@ export const contentPlugin: ContentPlugin = (md, options = {}) => {
   md.core.ruler.push('thb_handbook_content', (state) => {
     let tokens = state.tokens;
 
-    // 1. 行内转换：交叉引用 → 链接；【待核验】→ 徽标
+    // 1. 行内转换：交叉引用 → 链接；【待核验】/【待核验：说明】→ 上标 ※ 核验标记
     for (const token of tokens) {
       if (token.type === 'inline' && token.children) {
         token.children = transformInline(state, token.children);

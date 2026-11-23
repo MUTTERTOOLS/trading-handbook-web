@@ -798,21 +798,25 @@ body { overflow-x: hidden; line-height: 1.85; }
 }
 
 /* === 待核验 / 交叉引用 === */
-/* 【待核验】徽标（契约 §4）。F-017-B 降权弱化：去描边、字号 0.88em→0.76em、
- * 黄色降饱和（与次级墨色调和）并叠加极淡黄底（--yellow-dim ≈14% 透明度），
- * 视觉重量明显下降，但黄色系着色 + "【待核验】"字样保留——"这是没核验过的数"
- * 仍一眼可辨。仅动样式，徽标识别与站点计数逻辑不变（plugins/content.ts
- * transformInline 与 tools/content/check.ts 各自独立，不受影响）。
- * 深浅双套：--yellow/--yellow-dim/--text-secondary 均在 :root,.dark 同源定义，
- * 单条规则两套主题同时生效，无需 .dark 例外分支。 */
-.verify-badge {
-  color: color-mix(in srgb, var(--yellow) 68%, var(--text-secondary));
-  background: var(--yellow-dim);
-  border-radius: var(--radius-xs);
-  padding: 0 3px;
-  font-size: 0.76em;
+/* 核验标记（契约 §4，D46 去字面化改版）：正文中的【待核验】不再渲染字面文本，
+ * 改为正文尾随的上标小标记"※"——册色（--accent，随分册）、0.72em 小号、
+ * line-height:0 不撑行高，视觉低调不抢正文；hover 转 --yellow 警示色并弹
+ * title 提示（"待核验：…"，无说明形态为默认文案，变体携带完整说明）。
+ * 核验表表格单元格同用一枚 ※（识别与计数逻辑零变化：plugins/content.ts
+ * transformInline 只改 token→html 转换；tools/content/check.ts 不动）。
+ * 深浅双套：--accent/--yellow 均在 :root,.dark 同源定义，单条规则两套主题
+ * 同时生效，无需 .dark 例外分支；零新色值。 */
+.verify-mark {
+  color: var(--accent);
+  font-size: 0.72em;
+  line-height: 0;
+  margin-left: 1px;
+  vertical-align: super;
+  cursor: help;
+  user-select: none;
   white-space: nowrap;
 }
+.verify-mark:hover { color: var(--yellow); }
 /* accent 降级为线：正文链接墨色文字 + 册色下划线，hover 才转册色 */
 .vp-doc a { color: var(--text-primary); text-decoration: none; font-weight: 500; }
 .vp-doc a:hover { color: var(--accent); text-decoration: none; }

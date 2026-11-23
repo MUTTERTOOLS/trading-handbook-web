@@ -46,7 +46,7 @@
     <line x1="40" y1="629" x2="840" y2="629" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
     <!-- ⑦ 成本与容量 -->
     <text x="64" y="650" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑦ 成本与容量</text>
-    <text x="64" y="671" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">低频，佣金与印花税影响小但须计入；红利税与持有期相关口径【待核验】（〔B2-C06〕）；</text>
+    <text x="64" y="671" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">低频，佣金与印花税影响小但须计入；红利税与持有期相关口径※（〔B2-C06〕）；</text>
     <text x="64" y="690" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">个人资金量通常不构成容量约束；流动性差的标的冲击成本不可忽略（〔B4-C07〕口径）。</text>
     <line x1="40" y1="702" x2="840" y2="702" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
     <!-- ⑧ 失效条件 -->
@@ -67,7 +67,7 @@
       <rect x="42" y="392" width="796" height="90" data-tip="④风控方式——无固定价格止损，退出锚定证伪条件；仓位由 1R 与计划亏损幅度反推；分散 5~8 只、跨行业；单票 ≤15%；在途总风险 ≤5%；零杠杆；财报窗口期规则。"/>
       <rect x="42" y="484" width="796" height="71" data-tip="⑤退出条件——①逻辑证伪（红旗触发或买入逻辑被推翻，主）；③时间止损（12 个月未兑现重估，示例参数）；②目标止盈可选；⑥⑦共同条款。"/>
       <rect x="42" y="557" width="796" height="71" data-tip="⑥证据强度——自由裁量型方法，证据强度上限 C；一页纸研究通常 C 级；宣传话术与&quot;大师案例&quot;记 D。"/>
-      <rect x="42" y="630" width="796" height="71" data-tip="⑦成本与容量——低频，佣金与印花税影响小但须计入；红利税口径【待核验】；个人资金量通常不构成容量约束；流动性差的标的冲击成本不可忽略。"/>
+      <rect x="42" y="630" width="796" height="71" data-tip="⑦成本与容量——低频，佣金与印花税影响小但须计入；红利税口径※；个人资金量通常不构成容量约束；流动性差的标的冲击成本不可忽略。"/>
       <rect x="42" y="703" width="796" height="90" data-tip="⑧失效条件——恐慌过度前提消失（定性描述）；估值中枢因利率环境剧变而系统性移动；自身研究纪律松动（跳过红旗复查、事后放宽证伪条件）。"/>
       <rect x="42" y="795" width="796" height="52" data-tip="⑨与我的适配——四问自查，四问全文见§十一适合清单；判定标准见〔B8-C08〕。"/>
     </g>

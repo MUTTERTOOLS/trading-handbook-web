@@ -42,7 +42,7 @@
     <line x1="40" y1="553" x2="840" y2="553" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
     <!-- ⑦ 成本与容量 -->
     <text x="64" y="574" text-anchor="start" font-size="13" fill="var(--fig-accent, #6B9BC9)">⑦ 成本与容量</text>
-    <text x="64" y="595" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">每格利润小，费用占比高；ETF 费用结构与印花税适用性以〔B2-C05〕核验值为准【待核验】。</text>
+    <text x="64" y="595" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">每格利润小，费用占比高；ETF 费用结构与印花税适用性以〔B2-C05〕核验值为准※。</text>
     <text x="64" y="614" text-anchor="start" font-size="12.5" fill="var(--fig-ink, #E7E1D2)">个人资金量通常不构成容量约束，但标的需查日均成交额（口径见〔B4-C07〕）。</text>
     <line x1="40" y1="626" x2="840" y2="626" stroke="var(--fig-ink-sub, #A69E8C)" stroke-opacity="0.25" stroke-width="1"/>
     <!-- ⑧ 失效条件 -->
@@ -64,7 +64,7 @@
       <rect x="42" y="335" width="796" height="71" data-tip="④风控方式——自带分批与区间边界，但没有止损，按〔B8-C02〕规范填&quot;无——由手册补齐&quot;：资金池上限、单票上限校验、跌穿预设处理、熔断线（〔B3-C10〕）。"/>
       <rect x="42" y="408" width="796" height="71" data-tip="⑤退出条件——①区间跌穿预设处理（主）＋⑥⑦共同条款；可选③时间止损。单格的高抛低吸是网格内部机制，不单独映射七种退出。"/>
       <rect x="42" y="481" width="796" height="71" data-tip="⑥证据强度——宣传口径（胜率截图、话术、个案）默认 D；写成机械规则、未经样本外检验为 B。两者都不构成上线理由（〔B6-C04〕分级）。"/>
-      <rect x="42" y="554" width="796" height="71" data-tip="⑦成本与容量——每格利润小，费用占比高；ETF 费用结构与印花税适用性以〔B2-C05〕核验值为准【待核验】；标的需查日均成交额（口径见〔B4-C07〕）。"/>
+      <rect x="42" y="554" width="796" height="71" data-tip="⑦成本与容量——每格利润小，费用占比高；ETF 费用结构与印花税适用性以〔B2-C05〕核验值为准※；标的需查日均成交额（口径见〔B4-C07〕）。"/>
       <rect x="42" y="627" width="796" height="90" data-tip="⑧失效条件——区间假设失效：单边下跌（逐格接货、深套）或单边上涨（逐格卖光、踏空）；均值回归前提消失（趋势市）；同类网格拥挤到改变区间结构（定性描述）。"/>
       <rect x="42" y="719" width="796" height="71" data-tip="⑨与我的适配——四问：能否接受&quot;跌了就买&quot;与恐惧本能相反；能否承受深套浮亏；资金期限是否匹配；纠偏后是否仍把它误当&quot;稳赚&quot;工具（判定标准见〔B8-C08〕）。"/>
     </g>

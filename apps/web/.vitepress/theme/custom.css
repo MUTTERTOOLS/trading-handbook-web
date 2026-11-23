@@ -475,6 +475,29 @@ body { overflow-x: hidden; line-height: 1.85; }
 .vt-no { font-size: 12.5px; color: var(--accent); font-weight: 600; min-width: 2.6em; }
 .vt-name { font-size: 15px; color: var(--text-primary); line-height: 1.8; }
 .vt-row:hover .vt-name { color: var(--accent); }
+/* 分册扉页 · 规则内容时效说明（F-015①，VolumeIntro 注入）：章目录之后的
+ * 淡色说明块；数据源 config themeConfig.series 的 cutoffDate 与 riskNotice
+ * （与 SeriesHome 同源）。全部引用既有双套令牌（:root,.dark 同源定义，
+ * 深浅双套同时生效），零新色值；虚线描边沿用本页章目录的分隔语言 */
+.vt-sema {
+  margin-top: 22px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+}
+.vt-sema-main {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  margin: 0;
+}
+.vt-sema-main b { color: var(--text-primary); font-weight: 600; font-variant-numeric: tabular-nums; }
+.vt-sema-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.9;
+  margin: 8px 0 0;
+}
 @media (max-width: 640px) {
   .volume-page { padding: 40px 20px 36px; }
 }
@@ -775,12 +798,19 @@ body { overflow-x: hidden; line-height: 1.85; }
 }
 
 /* === 待核验 / 交叉引用 === */
+/* 【待核验】徽标（契约 §4）。F-017-B 降权弱化：去描边、字号 0.88em→0.76em、
+ * 黄色降饱和（与次级墨色调和）并叠加极淡黄底（--yellow-dim ≈14% 透明度），
+ * 视觉重量明显下降，但黄色系着色 + "【待核验】"字样保留——"这是没核验过的数"
+ * 仍一眼可辨。仅动样式，徽标识别与站点计数逻辑不变（plugins/content.ts
+ * transformInline 与 tools/content/check.ts 各自独立，不受影响）。
+ * 深浅双套：--yellow/--yellow-dim/--text-secondary 均在 :root,.dark 同源定义，
+ * 单条规则两套主题同时生效，无需 .dark 例外分支。 */
 .verify-badge {
-  color: var(--yellow);
-  border: 1px solid rgba(201, 163, 91, 0.4);
+  color: color-mix(in srgb, var(--yellow) 68%, var(--text-secondary));
+  background: var(--yellow-dim);
   border-radius: var(--radius-xs);
-  padding: 0 4px;
-  font-size: 0.88em;
+  padding: 0 3px;
+  font-size: 0.76em;
   white-space: nowrap;
 }
 /* accent 降级为线：正文链接墨色文字 + 册色下划线，hover 才转册色 */

@@ -19,6 +19,7 @@ interface VolumeMeta {
 interface ThemeWithSeries {
   series: {
     cutoffDate: string;
+    riskNotice: string;
     volumes: VolumeMeta[];
   };
 }
@@ -55,5 +56,16 @@ const cnNumber = computed(() => CN_NUM[volume.value.id] ?? volume.value.id);
         <span class="vt-name">{{ chapter.title }}</span>
       </a>
     </nav>
+
+    <!-- 本册规则内容时效说明（F-015①）：分册落地页此前零截稿/核验文本；
+         数据源与 SeriesHome 同源（config themeConfig.series 的 cutoffDate 与 riskNotice），
+         置于册名/章目录之后的留白处，淡色小卡 -->
+    <aside class="vt-sema" role="note">
+      <p class="vt-sema-main">
+        本册规则类内容的截稿基准：<b>{{ series.cutoffDate }}</b
+        >。各章章首标注该章截稿日期，核验表说明见各章。
+      </p>
+      <p class="vt-sema-sub">{{ series.riskNotice }}</p>
+    </aside>
   </div>
 </template>

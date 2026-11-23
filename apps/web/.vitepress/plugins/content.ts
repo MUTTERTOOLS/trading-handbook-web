@@ -671,6 +671,9 @@ export const contentPlugin: ContentPlugin = (md, options = {}) => {
       );
     }
 
+    // 注入章头的 token 数（0 或 1）：决定末尾前导内容的回插位置（见步骤 7）
+    const headerCount = result.length;
+
     // 6. 逐节应用语义转换并包上 data-section 容器
     for (const section of sections) {
       let body = tokens.slice(section.bodyFrom, section.to);
@@ -688,10 +691,14 @@ export const contentPlugin: ContentPlugin = (md, options = {}) => {
       result.push(htmlToken(state, '</div>'));
     }
 
-    // 前导内容（章节应有 frontmatter；框架页无 h2 小节，全部原样保留）
+    // 7. 前导内容（章节应有 frontmatter；框架页无 h2 小节，全部原样保留）。
+    //    F-015①′：回插点在注入章头（h1）之后——章首截稿块等前导内容属于
+    //    章标题与正文之间的过渡带，不得出现在章标题之上。仅改插入位置；
+    //    figure 注入与其他前导 token 的内容与相对顺序不变（框架页无章头时
+    //    headerCount = 0，行为与旧 unshift 完全一致）。
     const firstSectionFrom = sections[0]?.headingFrom ?? tokens.length;
     if (firstSectionFrom > 0) {
-      result.unshift(...tokens.slice(0, firstSectionFrom));
+      result.splice(headerCount, 0, ...tokens.slice(0, firstSectionFrom));
     }
 
     state.tokens = result;

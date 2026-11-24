@@ -689,8 +689,10 @@ body { overflow-x: hidden; line-height: 1.85; }
   overflow-x: auto;
   margin: 20px 0;
 }
-.data-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-.table-scroll .data-table { margin: 0; min-width: 560px; }
+/* F-024 侧一（D48）：窄表自然宽＋内容列内居中；max-width 兜底嵌套无滚动容器的表，
+ * 移动端 .table-scroll 内 min-width 仍优先生效（min-width 压过 max-width），横向滚动行为不变 */
+.data-table { width: auto; max-width: 100%; border-collapse: collapse; margin: 20px auto; font-size: 14px; }
+.table-scroll .data-table { margin: 0 auto; min-width: 560px; }
 .data-table th {
   text-align: left;
   padding: 12px 16px;

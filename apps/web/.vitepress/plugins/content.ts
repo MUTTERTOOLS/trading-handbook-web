@@ -82,6 +82,20 @@ interface MdState {
   env: Record<string, unknown>;
 }
 
+/** 渲染器最小结构：只用到按名覆盖规则与属性序列化（F-024 table_open 覆写）。
+ *  rules 的规则值参数用底类型（never[]）声明：本插件 MdToken 是 markdown-it Token
+ *  的子集结构类型，函数类型属性在 strictFunctionTypes 下按逆变检查，
+ *  Token[] ↔ MdToken[] 双向都不相容；never[] 与任何 token 数组双向可赋值，
+ *  使 MarkdownIt 结构兼容 MdLike，实现侧经由 renderAttrs(token: MdToken)
+ *  拿回强类型 token。idx 用 number、剩余参数用 never[] 以兼容五参 RenderRule。 */
+interface MdRendererLike {
+  rules: Record<
+    string,
+    ((tokens: never[], idx: number, ...rest: never[]) => string) | undefined
+  >;
+  renderAttrs(token: MdToken): string;
+}
+
 interface MdLike {
   renderInline(text: string): string;
   core: {
@@ -90,6 +104,7 @@ interface MdLike {
     };
   };
   block: MdBlockRuler;
+  renderer: MdRendererLike;
 }
 
 export interface ContentPlugin {
@@ -714,6 +729,15 @@ export const contentPlugin: ContentPlugin = (md, options = {}) => {
 
     state.tokens = result;
   });
+
+  // table_open 覆写（F-024 侧一，D48）：VitePress 在其内部 markdown 配置里
+  // 硬编码了 table_open 渲染器（固定输出 `<table tabindex="0">`，完全无视
+  // token 属性），transformBlocks 给 table_open 设的 class="data-table" 因此
+  // 从未落进产物。本插件经 config.mts 的 markdown.config 回调注册，晚于
+  // VitePress 自身的规则赋值，此处覆盖使其尊重 token attrs；tabindex="0"
+  // （表格窄屏键盘滚动无障碍）按 VitePress 原行为保留。
+  md.renderer.rules.table_open = (tokens, idx) =>
+    `<table${md.renderer.renderAttrs(tokens[idx]!)} tabindex="0">\n`;
 };
 
 export default contentPlugin;

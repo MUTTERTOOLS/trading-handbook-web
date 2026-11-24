@@ -7,3 +7,10 @@ content/dist/
 apps/web/node_modules/
 apps/web/.vitepress/cache/
 .zcode/
+
+# 生成工程遗物（2026-11-24 退库留盘：考古素材，与 .workbuddy 同待遇；历史提交中永远可找回）
+content/editorial/_meta/
+content/editorial/compiled/
+content/editorial/00_Bible_v1.1.md
+content/editorial/00_总索引.md
+content/editorial/验收报告.md

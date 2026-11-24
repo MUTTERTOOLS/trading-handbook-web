@@ -125,6 +125,51 @@ export function plainText(html: string): string {
     .trim();
 }
 
+/**
+ * 容器可见口径预处理（契约 §6.3，与 check.ts countVisibleChars 同口径）：
+ * - `::: figure-spec` 容器整体剔除（制图说明不进渲染输出）；
+ * - `::: interactive` 容器行剔除（空容器体）；
+ * - `::: qa-cards`／`::: layer-map`／`::: flow-steps` 容器体与参数行计入
+ *   （读者可见内容；参数行计入，`:::` 围栏行与类型词不计）；
+ * - 代码围栏内的 `:::` 不参与容器状态（防嵌套截断，同 check.ts）。
+ * 返回剔除后的正文文本（保留行结构，供后续 md.render 统计可见字数）；
+ * 未知容器类型在此不做剔除（合法性执法在 check.ts checkContainers）。
+ */
+export function visibleBodyText(body: string): string {
+  const out: string[] = [];
+  let inCodeFence = false;
+  let inContainer: 'figure-spec' | 'interactive' | null = null;
+  for (const line of body.split('\n')) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      inCodeFence = !inCodeFence;
+      out.push(line);
+      continue;
+    }
+    if (inContainer !== null) {
+      // 容器体：不可见；仅围栏外的闭栏 `:::` 结束剔除
+      if (!inCodeFence && /^:::+\s*$/.test(line)) inContainer = null;
+      continue;
+    }
+    if (!inCodeFence && /^:::+/.test(line)) {
+      const params = line.replace(/^:::+/, '').trim();
+      if (params) {
+        const type = params.split(/\s+/)[0]!;
+        if (type === 'figure-spec' || type === 'interactive') {
+          inContainer = type;
+          continue;
+        }
+        if (type === 'qa-cards' || type === 'layer-map' || type === 'flow-steps') {
+          const paramText = params.slice(type.length).trim();
+          if (paramText) out.push(paramText); // 参数行计入
+        }
+      }
+      continue; // `:::` 围栏行不计
+    }
+    out.push(line);
+  }
+  return out.join('\n');
+}
+
 function transformHtml(html: string): string {
   return html
     .split(/(<code[\s\S]*?<\/code>)/g)
@@ -535,7 +580,9 @@ export function parseChapter(volume: SeriesVolume, file: string): Chapter {
     }
   }
 
-  const bodyHtml = md.render(body, ctx.env);
+  // 字数统计走容器可见口径（契约 §6.3，D51）：先剔除不可见容器与围栏行
+  // 再渲染统计，使汇编报告字数与门禁口径同源
+  const bodyHtml = md.render(visibleBodyText(body), ctx.env);
   const stats: ChapterStats = {
     chars: plainText(bodyHtml).replace(/\s/g, '').length,
     figures: countBlocks(blocks, (block) => block.type === 'figure'),

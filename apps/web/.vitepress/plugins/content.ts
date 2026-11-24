@@ -15,6 +15,14 @@
  *   对答行（`序词：内容`）+ 至多一条结论行（`结论：` 开头），整组渲染为
  *   .qa-group 卡片组（视觉规格 content/editorial/mockup-qa-cards.html）；
  *   容器体是读者可见内容，不参与字数剔除
+ * - `::: layer-map <图题>` 分层结构图容器（契约 §5.4）：容器体逐行为
+ *   层行（`层 {层名}（{层副名}）：{一句话}`）+ 字段行（`{层名}·{字段名}：{内容}`）
+ *   + 至多一条底座行（`底座：{内容}`），渲染为 .lm 堆叠层组件
+ *   （视觉规格 content/editorial/mockup-diagrams.html 组件一节）
+ * - `::: flow-steps <图题>` 流程步骤图容器（契约 §5.5）：容器体逐行为
+ *   步行（`步 …`，冒号后 输入/→ 输出/｜不通过 段）+ 出口/分界/演示行，
+ *   渲染为 .fw 竖向流程组件（视觉规格同上组件二节）；全部步行无 ｜不通过
+ *   段且无出口行时为无分支线性形态（.fw-linear）
  * - 误区组以 `**误区…**` 段落开头，自测题组以 `**题 N.**` 段落开头
  * - 站点框架页（index.md / [volume].md）含 `<SeriesHome />` / `<VolumeIntro />`：
  *   `html:false` 下按普通段落进入 token 流，这里转回 html 标签
@@ -123,7 +131,13 @@ const CHEAT_TITLE_RE = /^\*\*[^*]+\*\*$/;
 const FORMULA_TEST_RE = /[=＝]/;
 const FRAME_COMPONENT_RE = /^<(SeriesHome|VolumeIntro)\s*\/>$/;
 /** 容器类型白名单（契约 §5）；未知类型抛错，不得静默透传 */
-const CONTAINER_TYPES = new Set(['interactive', 'figure-spec', 'qa-cards']);
+const CONTAINER_TYPES = new Set([
+  'interactive',
+  'figure-spec',
+  'qa-cards',
+  'layer-map',
+  'flow-steps',
+]);
 /** 延伸与链接选读提示条（契约 §6.3 选读层，D39）：构建期注入的 html token，
  *  仅对本节生效且每次解析各注入一次（幂等）；零 HTML 纪律约束 md 源文件，
  *  插件注入渲染标记属既有模式（figure-block 同例）。样式见 theme/custom.css .ext-note */
@@ -317,6 +331,561 @@ function renderQaCards(head: string, answers: string[], verdict: string | null):
   return parts.join('');
 }
 
+/* ------------------------------------------------------------------ *
+ * layer-map（契约 §5.4，视觉规格 content/editorial/mockup-diagrams.html 组件一节）
+ * 行式词汇与 tools/content/check.ts 的 checkLayerMapBody 同口径（容器体逐行
+ * 分类执法在 check.ts 带行号，此处渲染前兜底同规则）。
+ * ------------------------------------------------------------------ */
+/** 层行：`层 {层名}（{层副名}）：{一句话}`——层副名可缺省 */
+const LM_LAYER_RE = /^层\s+(.+?)(?:（(.+?)）)?：\s*(.+)$/;
+/** 字段行：`{层名}·{字段名}：{内容}`——层名须已由层行声明 */
+const LM_FIELD_RE = /^(.+?)·(.+?)：\s*(.+)$/;
+/** 底座行前缀（至多 1 条，契约置于体末；渲染恒在图底，不依赖书写位置） */
+const LM_BASE_PREFIX = '底座：';
+
+interface LayerMapField {
+  name: string;
+  text: string;
+}
+interface LayerMapLayer {
+  name: string;
+  sub: string | null;
+  line: string;
+  fields: LayerMapField[];
+}
+
+/**
+ * layer-map 容器体解析：层行 ≥2、字段行的层名须已由（先行的）层行声明、
+ * 底座行 ≤1、其余一律未知行式抛错（与"未知容器类型必须报错"同级纪律，
+ * 禁止静默透传）。层名重复不在契约校验清单内，但会使字段行挂接歧义，
+ * 此处按渲染完整性兜底报错。
+ */
+function parseLayerMap(lines: string[], file: string): { layers: LayerMapLayer[]; base: string | null } {
+  const layers: LayerMapLayer[] = [];
+  const declared = new Map<string, LayerMapLayer>();
+  let base: string | null = null;
+  for (const line of lines) {
+    if (line.startsWith(LM_BASE_PREFIX)) {
+      if (base !== null) {
+        throw new Error(`${file}：layer-map 底座行至多一条（契约 §5.4）：${line}`);
+      }
+      base = line.slice(LM_BASE_PREFIX.length).trim();
+      if (!base) throw new Error(`${file}：layer-map 底座行内容为空（契约 §5.4）`);
+      continue;
+    }
+    const layerMatch = line.match(LM_LAYER_RE);
+    if (layerMatch) {
+      const layer: LayerMapLayer = {
+        name: layerMatch[1]!.trim(),
+        sub: layerMatch[2]?.trim() || null,
+        line: layerMatch[3]!.trim(),
+        fields: [],
+      };
+      if (declared.has(layer.name)) {
+        throw new Error(`${file}：layer-map 层名重复："${layer.name}"`);
+      }
+      layers.push(layer);
+      declared.set(layer.name, layer);
+      continue;
+    }
+    const fieldMatch = line.match(LM_FIELD_RE);
+    if (fieldMatch) {
+      const owner = declared.get(fieldMatch[1]!.trim());
+      if (!owner) {
+        throw new Error(
+          `${file}：layer-map 字段行的层名"${fieldMatch[1]!.trim()}"未由层行声明（契约 §5.4）：${line}`
+        );
+      }
+      owner.fields.push({ name: fieldMatch[2]!.trim(), text: fieldMatch[3]!.trim() });
+      continue;
+    }
+    throw new Error(`${file}：layer-map 未知行式（契约 §5.4 仅允许 层行／字段行／底座行）：${line}`);
+  }
+  if (layers.length < 2) {
+    throw new Error(`${file}：layer-map 层行至少 2 条，实际 ${layers} 条（契约 §5.4）`);
+  }
+  return { layers, base };
+}
+
+/**
+ * layer-map → 堆叠层组件：默认收起只显层名＋一句话；字段详情随 SSR 全量
+ * 输出（无 JS 时经 :hover／:focus-within 原生可达，键盘 Tab 即展开，交互
+ * 钉住/重播为渐进增强，见 theme/diagramEnhance.ts——降噪不变隐藏）。
+ * 层宽自下而上递增（--lm-i 为自底深度，0 = 最底层）；浮现动画由 SSR 直出
+ * .play 触发（CSS 实现，不依赖 JS），.lm-replay 按钮经客户端委托重启，
+ * prefers-reduced-motion 下由 CSS 关停。
+ */
+function renderLayerMap(title: string, layers: LayerMapLayer[], base: string | null): string {
+  const parts: string[] = ['<div class="lm play">'];
+  parts.push(`<div class="lm-title">${escapeHtml(title)}</div>`);
+  parts.push('<div class="lm-stage">');
+  const n = layers.length;
+  for (let i = 0; i < n; i++) {
+    const layer = layers[i]!;
+    const depth = n - 1 - i; // 自底深度：最底层 0，层宽最大
+    // 浮现次序对齐 mockup：最底层最先，底座随后，再逐层向上（0.05/0.17/0.29/…）
+    const delay = depth === 0 ? '0.05' : (0.17 + depth * 0.12).toFixed(2);
+    parts.push(
+      `<div class="lm-layer" style="--lm-i:${depth};--lm-delay:${delay}s" tabindex="0" role="button" aria-expanded="false">`
+    );
+    parts.push('<div class="lm-bar">');
+    parts.push(`<span class="lm-zi">${escapeHtml(layer.name)}</span>`);
+    if (layer.sub) parts.push(`<span class="lm-sub">${escapeHtml(layer.sub)}</span>`);
+    parts.push(`<span class="lm-line">${escapeHtml(layer.line)}</span>`);
+    if (layer.fields.length) parts.push('<span class="lm-hint">展开</span>');
+    parts.push('</div>');
+    if (layer.fields.length) {
+      parts.push('<div class="lm-detail"><div class="lm-detail-in"><div class="lm-dims">');
+      for (const field of layer.fields) {
+        parts.push(
+          `<div class="dim"><span class="dim-k">${escapeHtml(field.name)}</span>` +
+            `<span class="dim-v">${escapeHtml(field.text)}</span></div>`
+        );
+      }
+      parts.push('</div></div></div>');
+    }
+    parts.push('</div>');
+  }
+  if (base !== null) {
+    parts.push(
+      `<div class="lm-base" style="--lm-delay:0.17s"><span class="bt">底座</span>${escapeHtml(base)}</div>`
+    );
+  }
+  parts.push('</div>');
+  parts.push(
+    '<div class="lm-tools"><button class="lm-replay" type="button">重播浮现动画</button>' +
+      '<span class="lm-tip">悬停或点击层条展开字段详情；点击可钉住，再点收起。</span></div>'
+  );
+  parts.push('</div>');
+  return parts.join('');
+}
+
+/* ------------------------------------------------------------------ *
+ * flow-steps（契约 §5.5，视觉规格 content/editorial/mockup-diagrams.html 组件二节）
+ * 行式词汇与 tools/content/check.ts 的 checkFlowStepsBody 同口径。
+ * ------------------------------------------------------------------ */
+const FS_STEP_RE = /^步\s+(.+)$/;
+const FS_EXIT_PREFIX = '出口：';
+const FS_DIVIDER_PREFIX = '分界：';
+const FS_DEMO_RE = /^演示\s+(.+)$/;
+/** 序号字（①~⑳）与尾部全角括号注记（信息类别 chip） */
+const FS_NO_RE = /^([\u{2460}-\u{2473}]+)/u;
+const FS_TAG_RE = /\s*（([^（）]+)）\s*$/;
+/** 演示路径名中的步引用（跳①②／倒③），派生错误模式角标与分界汇流注记 */
+const FS_DEMO_REF_RE = /(跳|倒)([\u{2460}-\u{2473}]+)/gu;
+/** 分界行子句：`{步范围}之间 {标签}` 或 `{步号}旁 {标签}`（`；`分隔） */
+const FS_DIVIDER_CLAUSE_RE = /^(.+?)(?:之间|旁)\s*(.+)$/;
+const CIRCLED_BASE = 0x2460; // '①'
+
+interface FlowStep {
+  no: string | null;
+  name: string;
+  tag: string | null;
+  input: string | null;
+  output: string | null;
+  fail: string | null;
+  /** 分界"旁"注记挂到该步的小章（如 ⑤旁 盘后） */
+  chips: string[];
+}
+interface FlowDemo {
+  path: string;
+  cost: string;
+  refs: number[];
+}
+interface FlowDivider {
+  /** 界于该步与下一步之间（步序号，1 起） */
+  after: number;
+  label: string;
+  /** 引用跨此分界两步的演示行代价（错误模式注记） */
+  costs: string[];
+}
+interface FlowData {
+  steps: FlowStep[];
+  exit: string | null;
+  demos: FlowDemo[];
+  dividers: FlowDivider[];
+  /** 无法定位的子句原文（整行兜底注记，保证分界内容不丢失） */
+  fallbackDivider: string | null;
+  /** 无分支线性形态：全部步行无 ｜不通过 段且无出口行（契约 §5.5） */
+  linear: boolean;
+}
+
+/**
+ * 步行冒号后段序列解析：按契约顺序 `输入 …` → `→ 输出 …` → `｜不通过 …`
+ * 依次可选、至少一段，段内容非空；无法归段的残文即未知段式抛错。
+ * `｜不通过` 为段尾形态（其后文字整段归不通过处置），不做再扫描。
+ * 与 check.ts 的 checkStepSegments 同口径。
+ */
+function parseStepSegments(restRaw: string, file: string, line: string): {
+  input: string | null;
+  output: string | null;
+  fail: string | null;
+} {
+  const segs: { input: string | null; output: string | null; fail: string | null } = {
+    input: null,
+    output: null,
+    fail: null,
+  };
+  let rest = restRaw;
+  // 输入段（可选）：至 `→`／`｜` 边界
+  if (rest.startsWith('输入')) {
+    rest = rest.slice('输入'.length);
+    const boundary = rest.search(/→|｜/);
+    segs.input = (boundary < 0 ? rest : rest.slice(0, boundary)).trim();
+    rest = boundary < 0 ? '' : rest.slice(boundary);
+    if (!segs.input) {
+      throw new Error(`${file}：flow-steps 步行"输入"段内容为空（契约 §5.5）：${line}`);
+    }
+  }
+  // → 输出段（可选）：至 `｜` 边界
+  if (rest.startsWith('→')) {
+    const head = rest.match(/^→\s*输出/);
+    if (!head) {
+      throw new Error(
+        `${file}：flow-steps 步行未知段式，"→"后应为"输出"（契约 §5.5）：${line}`
+      );
+    }
+    rest = rest.slice(head[0].length);
+    const boundary = rest.search(/｜/);
+    segs.output = (boundary < 0 ? rest : rest.slice(0, boundary)).trim();
+    rest = boundary < 0 ? '' : rest.slice(boundary);
+    if (!segs.output) {
+      throw new Error(`${file}：flow-steps 步行"输出"段内容为空（契约 §5.5）：${line}`);
+    }
+  }
+  // ｜不通过段（可选，段尾即行尾）
+  if (rest.startsWith('｜')) {
+    const head = rest.match(/^｜\s*不通过/);
+    if (!head) {
+      throw new Error(
+        `${file}：flow-steps 步行未知段式，"｜"后应为"不通过"（契约 §5.5）：${line}`
+      );
+    }
+    rest = rest.slice(head[0].length);
+    segs.fail = rest.trim();
+    rest = '';
+    if (!segs.fail) {
+      throw new Error(`${file}：flow-steps 步行"不通过"段内容为空（契约 §5.5）：${line}`);
+    }
+  }
+  if (rest.trim()) {
+    throw new Error(
+      `${file}：flow-steps 步行未知段式（仅允许 输入／→ 输出／｜不通过，按此顺序）：${rest.trim()}`
+    );
+  }
+  if (segs.input === null && segs.output === null && segs.fail === null) {
+    throw new Error(
+      `${file}：flow-steps 步行冒号后至少一段（输入／→ 输出／｜不通过）（契约 §5.5）：${line}`
+    );
+  }
+  return segs;
+}
+
+function demoStepRefs(path: string): number[] {
+  const refs: number[] = [];
+  for (const match of path.matchAll(FS_DEMO_REF_RE)) {
+    for (const ch of match[2]!) {
+      refs.push(ch.charCodeAt(0) - CIRCLED_BASE + 1);
+    }
+  }
+  return refs;
+}
+
+/**
+ * flow-steps 容器体解析：步行 ≥2、含 ｜不通过 段时出口行必填且恰 1 条、
+ * 出口行／分界行各 ≤1、其余未知行式抛错（与 check.ts 同口径）。
+ * 分界行子句 `③④之间 盘前｜盘中` 定位分界章、`⑤旁 盘后` 挂步骤小章；
+ * 无法定位的子句整行保留为兜底注记（内容不丢失）。
+ */
+function parseFlowSteps(lines: string[], file: string): FlowData {
+  const steps: FlowStep[] = [];
+  const demos: FlowDemo[] = [];
+  let exit: string | null = null;
+  let dividerText: string | null = null;
+  let hasFail = false;
+  for (const line of lines) {
+    if (line.startsWith(FS_EXIT_PREFIX)) {
+      if (exit !== null) {
+        throw new Error(`${file}：flow-steps 出口行至多一条（契约 §5.5）：${line}`);
+      }
+      exit = line.slice(FS_EXIT_PREFIX.length).trim();
+      if (!exit) throw new Error(`${file}：flow-steps 出口行内容为空（契约 §5.5）`);
+      continue;
+    }
+    if (line.startsWith(FS_DIVIDER_PREFIX)) {
+      if (dividerText !== null) {
+        throw new Error(`${file}：flow-steps 分界行至多一条（契约 §5.5）：${line}`);
+      }
+      dividerText = line.slice(FS_DIVIDER_PREFIX.length).trim();
+      if (!dividerText) throw new Error(`${file}：flow-steps 分界行内容为空（契约 §5.5）`);
+      continue;
+    }
+    const demoMatch = line.match(FS_DEMO_RE);
+    if (demoMatch) {
+      const colon = demoMatch[1]!.indexOf('：');
+      if (colon < 0) {
+        throw new Error(`${file}：flow-steps 演示行缺"路径名：代价"形态（契约 §5.5）：${line}`);
+      }
+      const path = demoMatch[1]!.slice(0, colon).trim();
+      const cost = demoMatch[1]!.slice(colon + 1).trim();
+      if (!path || !cost) {
+        throw new Error(`${file}：flow-steps 演示行路径名与代价均不可为空（契约 §5.5）：${line}`);
+      }
+      demos.push({ path, cost, refs: demoStepRefs(path) });
+      continue;
+    }
+    const stepMatch = line.match(FS_STEP_RE);
+    if (stepMatch) {
+      const colon = stepMatch[1]!.indexOf('：');
+      if (colon < 0) {
+        throw new Error(
+          `${file}：flow-steps 步行缺冒号段（冒号后至少 输入／→ 输出／｜不通过 一段）（契约 §5.5）：${line}`
+        );
+      }
+      let name = stepMatch[1]!.slice(0, colon).trim();
+      if (!name) {
+        throw new Error(`${file}：flow-steps 步行缺步名（契约 §5.5）：${line}`);
+      }
+      // 步名拆解：尾部（…）注记 → chip；前缀序号字 → 步号
+      let tag: string | null = null;
+      const tagMatch = name.match(FS_TAG_RE);
+      if (tagMatch) {
+        tag = tagMatch[1]!.trim();
+        name = name.slice(0, tagMatch.index).trim();
+      }
+      let no: string | null = null;
+      const noMatch = name.match(FS_NO_RE);
+      if (noMatch) {
+        no = noMatch[1]!;
+        name = name.slice(noMatch[0].length).trim();
+      }
+      const segs = parseStepSegments(stepMatch[1]!.slice(colon + 1), file, line);
+      if (segs.fail !== null) hasFail = true;
+      steps.push({ no, name, tag, input: segs.input, output: segs.output, fail: segs.fail, chips: [] });
+      continue;
+    }
+    throw new Error(
+      `${file}：flow-steps 未知行式（契约 §5.5 仅允许 步行／出口行／分界行／演示行）：${line}`
+    );
+  }
+  if (steps.length < 2) {
+    throw new Error(`${file}：flow-steps 步行至少 2 条，实际 ${steps.length} 条（契约 §5.5）`);
+  }
+  if (hasFail && exit === null) {
+    throw new Error(
+      `${file}：flow-steps 含"｜不通过"段时出口行必填且恰 1 条，实际 0 条（契约 §5.5）`
+    );
+  }
+
+  // 分界子句定位（在步行齐备后解析，便于按步序挂接与汇流注记）
+  const dividers: FlowDivider[] = [];
+  const fallback: string[] = [];
+  if (dividerText !== null) {
+    for (const rawClause of dividerText.split('；')) {
+      const clause = rawClause.trim();
+      if (!clause) continue;
+      const clauseMatch = clause.match(FS_DIVIDER_CLAUSE_RE);
+      const nums = (clause.match(/[\u{2460}-\u{2473}]/gu) ?? [])
+        .map((ch) => ch.charCodeAt(0) - CIRCLED_BASE + 1)
+        .filter((no) => no >= 1 && no <= steps.length);
+      if (!clauseMatch || nums.length === 0) {
+        fallback.push(clause);
+        continue;
+      }
+      if (clauseMatch[0].includes('之间')) {
+        if (nums.length < 2) {
+          fallback.push(clause);
+          continue;
+        }
+        const after = nums[0]!;
+        const label = clauseMatch[2]!.trim();
+        const costs = demos
+          .filter((demo) => nums.every((no) => demo.refs.includes(no)))
+          .map((demo) => `${demo.path}：${demo.cost}`);
+        const existing = dividers.find((divider) => divider.after === after);
+        if (existing) existing.label += `；${label}`;
+        else dividers.push({ after, label, costs });
+      } else {
+        // `N旁 {标签}`：挂为该步小章 chip
+        steps[nums[0]! - 1]!.chips.push(clauseMatch[2]!.trim());
+      }
+    }
+  }
+
+  return {
+    steps,
+    exit,
+    demos,
+    dividers,
+    fallbackDivider: fallback.length ? fallback.join('；') : null,
+    linear: !hasFail && exit === null,
+  };
+}
+
+/** 步盒公共片段：步号＋步名＋（类别注记）＋分界旁注 chips */
+function flowStepHead(step: FlowStep): string {
+  const parts: string[] = [];
+  if (step.no) parts.push(`<span class="no">${escapeHtml(step.no)}</span>`);
+  parts.push(`<span class="nm">${escapeHtml(step.name)}</span>`);
+  if (step.tag) parts.push(`<span class="chip acc">${escapeHtml(step.tag)}</span>`);
+  for (const chip of step.chips) parts.push(`<span class="chip">${escapeHtml(chip)}</span>`);
+  return `<div class="b-top">${parts.join('')}</div>`;
+}
+
+/** 步行"输入→输出"小字（右侧栏与线性形态共用） */
+function flowStepIo(step: FlowStep): string {
+  const segs: string[] = [];
+  if (step.input) segs.push(`<span class="k">输入</span>${escapeHtml(step.input)}`);
+  if (step.output) segs.push(`<span class="k">输出</span>${escapeHtml(step.output)}`);
+  return segs.join('<br>');
+}
+
+/**
+ * flow-steps → 竖向流程组件：分支形态为三列栅格（左轨"不通过"红线汇流
+ * 统一出口框／中列步骤流／右列输入输出）；线性形态（全部步行无 ｜不通过
+ * 段且无出口行）为简洁纵向步骤流。演示行经原生 <details> 开合（无 JS 亦可
+ * 展开，内容不隐藏）；步骤盒点击高亮汇流路径与演示模式切换为渐进增强，
+ * 见 theme/diagramEnhance.ts。全部文本经 escapeHtml。
+ */
+function renderFlowSteps(title: string, data: FlowData): string {
+  const { steps, exit, demos, dividers, fallbackDivider, linear } = data;
+  const n = steps.length;
+  const firstFail = steps.findIndex((step) => step.fail !== null);
+  const hasFail = firstFail >= 0;
+
+  // 演示行派生错误模式角标：跳N → "跳过"、倒N → "倒置"
+  const flags = new Map<number, Set<string>>();
+  for (const demo of demos) {
+    for (const match of demo.path.matchAll(FS_DEMO_REF_RE)) {
+      const flag = match[1] === '跳' ? '跳过' : '倒置';
+      for (const ch of match[2]!) {
+        const no = ch.charCodeAt(0) - CIRCLED_BASE + 1;
+        if (no >= 1 && no <= n) {
+          if (!flags.has(no)) flags.set(no, new Set());
+          flags.get(no)!.add(flag);
+        }
+      }
+    }
+  }
+
+  // 左轨连线状态：首条不通过轨之前的格子无红线，其后（含分界/连接行）红线贯穿
+  const railClass = (ord: number, extra = ''): string => {
+    if (!hasFail || ord < firstFail + 1) return 'rail-off';
+    const classes = ['rail'];
+    if (ord === firstFail + 1) classes.push('r-first');
+    if (extra) classes.push(extra);
+    return classes.join(' ');
+  };
+  const railCell = (ord: number, step: FlowStep | null, extra = ''): string => {
+    const cls = railClass(ord, extra);
+    const inner =
+      step && step.fail
+        ? `<span class="dm"></span><span class="dm-t">不通过</span><span class="dm-x">${escapeHtml(step.fail)}</span>`
+        : '';
+    return `<div class="fcell ${cls}" data-ord="${ord}">${inner}</div>`;
+  };
+
+  const parts: string[] = [`<div class="fw${linear ? ' fw-linear' : ''}">`];
+  parts.push(`<div class="flow-head"><div class="flow-title">${escapeHtml(title)}</div></div>`);
+
+  if (linear) {
+    // 无分支线性形态：纵向步骤流＋墨线下行箭头
+    parts.push('<div class="lw-flow">');
+    for (let i = 0; i < n; i++) {
+      const step = steps[i]!;
+      parts.push('<div class="lw-step">');
+      parts.push(flowStepHead(step));
+      if (step.input || step.output) {
+        parts.push(`<div class="lw-io">${flowStepIo(step)}</div>`);
+      }
+      parts.push('</div>');
+      const divider = dividers.find((candidate) => candidate.after === i + 1);
+      if (divider) parts.push(`<div class="lw-div">${escapeHtml(divider.label)}</div>`);
+    }
+    if (fallbackDivider) parts.push(`<div class="lw-div">${escapeHtml(fallbackDivider)}</div>`);
+    parts.push('</div>');
+    parts.push('</div>');
+    return parts.join('');
+  }
+
+  parts.push('<div class="flow-grid">');
+  for (let i = 0; i < n; i++) {
+    const step = steps[i]!;
+    const ord = i + 1;
+    const extra = ord === n ? 'r-last' : '';
+    parts.push(railCell(ord, step, extra));
+    const flagSet = flags.get(ord);
+    const flagAttr = flagSet ? ` data-flag="${escapeHtml(Array.from(flagSet).join('·'))}"` : '';
+    parts.push(
+      `<div class="fcell box" data-s="${ord}"${flagAttr} tabindex="0" role="button" aria-pressed="false">`
+    );
+    parts.push(flowStepHead(step));
+    parts.push('</div>');
+    if (step.input || step.output) {
+      parts.push(`<div class="fcell io"><span class="io-normal">${flowStepIo(step)}</span></div>`);
+    } else {
+      parts.push('<div class="fcell io"></div>');
+    }
+    // 步间隙：分界行在该位置取代下行连接箭头
+    const divider = dividers.find((candidate) => candidate.after === ord);
+    if (divider && ord < n) {
+      parts.push(railCell(ord + 0.5, null));
+      parts.push(
+        `<div class="fcell divider"><span class="dv-line"></span>` +
+          `<span class="dv-label">${escapeHtml(divider.label)}</span></div>`
+      );
+      const errNote = divider.costs.length
+        ? `<span class="dv-err"><span class="bk"></span>` +
+          `<span class="t">${divider.costs.map((cost) => escapeHtml(cost)).join('<br>')}</span></span>`
+        : '';
+      parts.push(`<div class="fcell io io-d">${errNote}</div>`);
+    } else if (ord < n) {
+      parts.push(railCell(ord + 0.5, null));
+      parts.push('<div class="fcell conn"><span class="down"></span></div>');
+      parts.push('<div class="fcell io io-c"></div>');
+    }
+  }
+  if (fallbackDivider) {
+    parts.push(`<div class="fcell fw-div-note">${escapeHtml(fallbackDivider)}</div>`);
+  }
+  if (exit !== null) {
+    parts.push(
+      `<div class="fcell exit"><div class="t">${escapeHtml(exit)}</div></div><div class="fcell io io-e"></div>`
+    );
+  }
+  parts.push('</div>'); // .flow-grid
+
+  if (demos.length) {
+    parts.push('<details class="fw-demo"><summary>演示错误顺序</summary><div class="fw-demo-body">');
+    for (const demo of demos) {
+      parts.push(
+        `<div class="fw-demo-item"><span class="eb">${escapeHtml(demo.path)}</span>${escapeHtml(demo.cost)}</div>`
+      );
+    }
+    parts.push('</div></details>');
+  }
+  if (hasFail) {
+    parts.push(
+      '<div class="flow-foot">点击任一步：高亮该步及其"不通过"汇流路径（再点一次取消）；"演示错误顺序"切换错误走法注记。</div>'
+    );
+  }
+  parts.push('</div>');
+  return parts.join('');
+}
+
+/** 容器体行收集：容器体内只允许普通段落行（qa-cards 先例），出现列表/
+ *  标题/围栏等块结构即未知内容抛错（不得静默丢弃后当行式漏检）。 */
+function collectContainerLines(inner: MdToken[], file: string, type: string): string[] {
+  const rows: string[] = [];
+  for (const token of inner) {
+    if (token.type === 'inline') rows.push(...token.content.split('\n'));
+    else if (token.type !== 'paragraph_open' && token.type !== 'paragraph_close') {
+      throw new Error(`${file}：${type} 容器体内出现非行式内容（契约 §5.4/§5.5）：${token.type}`);
+    }
+  }
+  return rows.map((row) => row.replace(/\r/g, '').trim()).filter(Boolean);
+}
+
 /** 容器 token → 呈现标记；未知类型 / 未知槽位 / 非法形态抛错（构建期失败） */
 function transformContainers(state: MdState, tokens: MdToken[], figures: FigureScan): MdToken[] {
   const result: MdToken[] = [];
@@ -335,7 +904,7 @@ function transformContainers(state: MdState, tokens: MdToken[], figures: FigureS
       const [type, ...args] = parts;
       if (!CONTAINER_TYPES.has(type!)) {
         throw new Error(
-          `${envFile(state)}：未知容器类型 "${type}"（仅允许 interactive / figure-spec / qa-cards）`
+          `${envFile(state)}：未知容器类型 "${type}"（仅允许 ${Array.from(CONTAINER_TYPES).join(' / ')}）`
         );
       }
       if (type === 'interactive') {
@@ -378,6 +947,32 @@ function transformContainers(state: MdState, tokens: MdToken[], figures: FigureS
           throw new Error(`${envFile(state)}：qa-cards 容器体至少需要一条对答行（契约 §5.3）`);
         }
         result.push(htmlToken(state, renderQaCards(args.join(' ').trim(), answers, verdict)));
+        continue;
+      }
+      // layer-map（契约 §5.4）：参数行 = 图题；容器体逐行为层行/字段行/底座行，
+      // 行级校验在此兜底（带行号的执法在 check.ts checkContainers）。
+      // 内容是读者可见正文（不参与字数剔除）。
+      if (type === 'layer-map') {
+        const file = envFile(state);
+        const bodyLines = collectContainerLines(open.inner, file, type);
+        if (!bodyLines.length) {
+          throw new Error(`${file}：layer-map 容器体不能为空（契约 §5.4）`);
+        }
+        const data = parseLayerMap(bodyLines, file);
+        result.push(htmlToken(state, renderLayerMap(args.join(' ').trim(), data.layers, data.base)));
+        continue;
+      }
+      // flow-steps（契约 §5.5）：参数行 = 图题；容器体逐行为步行/出口行/
+      // 分界行/演示行。演示行数据按正文对照表口径（B3-C03 §三对照表）原样
+      // 进组件，不在此再加工。
+      if (type === 'flow-steps') {
+        const file = envFile(state);
+        const bodyLines = collectContainerLines(open.inner, file, type);
+        if (!bodyLines.length) {
+          throw new Error(`${file}：flow-steps 容器体不能为空（契约 §5.5）`);
+        }
+        const data = parseFlowSteps(bodyLines, file);
+        result.push(htmlToken(state, renderFlowSteps(args.join(' ').trim(), data)));
         continue;
       }
       // figure-spec（D12 裁决）：成品图默认可见（不再置于折叠块内）；

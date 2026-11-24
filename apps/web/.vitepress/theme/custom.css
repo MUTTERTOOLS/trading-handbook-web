@@ -930,6 +930,752 @@ details.quiz summary:hover { background: rgba(231, 225, 210, 0.04); }
   vertical-align: 2px;
 }
 
+/* === 结构图组件家族（契约 §5.4 ::: layer-map / §5.5 ::: flow-steps，D51 四处同步；
+   视觉规格 content/editorial/mockup-diagrams.html 组件一/二节） ===
+   本地令牌深浅双套（qa-cards 同例）：深色 = 站点书卷令牌别名（--accent 随册
+   由 config.mts 注入自动换色），浅色 = 提案值（纸白画布，浅色主题启用时生效）。
+   色规落点：layer-map 仅册色深浅零语义色（分层是结构属性）；flow-steps
+   红＝不通过/停手、黄＝错误顺序警示、正向流转＝墨线，零绿色，遵 §6 图表分级色规。
+   SSR 无 JS 语义：layer-map 字段详情经 :hover/:focus-within 原生可达（键盘 Tab
+   即展开，点击钉住/重播为 JS 渐进增强）；flow-steps 演示列表用原生 <details>
+   开合——降噪不变为隐藏。浮现动画由 SSR 直出 .play 触发（纯 CSS，不依赖 JS）。 */
+:root,
+:root.dark {
+  --dg-card: var(--bg-card);
+  --dg-card-alt: var(--bg-card-alt);
+  --dg-canvas: var(--bg-deep);
+  --dg-ink: var(--text-primary);
+  --dg-ink-sub: var(--text-secondary);
+  --dg-ink-muted: var(--text-muted);
+  --dg-line: var(--border);
+  --dg-line-strong: var(--border-strong);
+  --dg-red: var(--red);
+  --dg-red-dim: var(--red-dim);
+  --dg-yellow: var(--yellow);
+  --dg-yellow-dim: var(--yellow-dim);
+  /* layer-map 层底三档册色深浅（顶层最浅、底层最深，mockup 同源） */
+  --lm1: color-mix(in srgb, var(--accent) 24%, var(--bg-card));
+  --lm2: color-mix(in srgb, var(--accent) 40%, var(--bg-card));
+  --lm3: color-mix(in srgb, var(--accent) 56%, var(--bg-card));
+}
+:root:not(.dark) {
+  --dg-card: #ece6d7;
+  --dg-card-alt: #e6dfce;
+  --dg-canvas: #f5f1e8;
+  --dg-ink: #3a3629;
+  --dg-ink-sub: #746c59;
+  --dg-ink-muted: #8a8271;
+  --dg-line: rgba(58, 54, 41, 0.16);
+  --dg-line-strong: rgba(58, 54, 41, 0.3);
+  --dg-red: #a94f46;
+  --dg-red-dim: rgba(169, 79, 70, 0.12);
+  --dg-yellow: #86682c;
+  --dg-yellow-dim: rgba(134, 104, 44, 0.12);
+  --lm1: color-mix(in srgb, var(--accent) 12%, #ece6d7);
+  --lm2: color-mix(in srgb, var(--accent) 23%, #ece6d7);
+  --lm3: color-mix(in srgb, var(--accent) 36%, #ece6d7);
+}
+
+/* ---- 组件一：layer-map（.lm） ---- */
+.lm {
+  background: var(--dg-card-alt);
+  border: 1px solid var(--dg-line);
+  border-radius: var(--radius);
+  padding: 22px 24px 18px;
+  margin: 20px 0;
+}
+.lm-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dg-ink);
+  margin: 0 0 20px;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+.lm-stage {
+  position: relative;
+}
+/* 阶梯层条：--lm-i 为自底深度（0 = 底层最宽），层宽自下而上递增收窄 */
+.lm-layer {
+  position: relative;
+  margin: 0 auto 10px;
+  width: calc(100% - min(var(--lm-i, 0) * 64px, 38%));
+  background: var(--lm3);
+  cursor: pointer;
+  outline: none;
+  border: 1px solid color-mix(in srgb, var(--accent) 38%, transparent);
+  border-left: 3px solid color-mix(in srgb, var(--accent) 72%, transparent);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.lm-layer:nth-child(1) { background: var(--lm1); }
+.lm-layer:nth-child(2) { background: var(--lm2); }
+.lm-layer:hover,
+.lm-layer:focus-within,
+.lm-layer.open {
+  border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+  transform: translateY(-1px);
+}
+.lm-layer:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 1px;
+}
+.lm-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 13px 18px;
+  flex-wrap: wrap;
+}
+.lm-zi {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dg-ink);
+}
+.lm-sub {
+  border: 1px solid var(--dg-line-strong);
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  color: var(--dg-ink-sub);
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+.lm-line {
+  flex: 1;
+  min-width: 200px;
+  font-size: 13.5px;
+  color: var(--dg-ink);
+}
+.lm-hint {
+  font-size: 11px;
+  color: var(--dg-ink-sub);
+  white-space: nowrap;
+}
+.lm-hint::after {
+  content: ' ▾';
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.lm-layer:hover .lm-hint::after,
+.lm-layer:focus-within .lm-hint::after,
+.lm-layer.open .lm-hint::after {
+  transform: rotate(180deg);
+}
+/* 字段详情：SSR 全量输出，0fr 收起 + hover/键盘聚焦/钉住展开
+   （grid-template-rows 0fr 不被支持的老浏览器按非法值忽略 = 默认展开，安全向） */
+.lm-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s ease;
+}
+.lm-layer:hover .lm-detail,
+.lm-layer:focus-within .lm-detail,
+.lm-layer.open .lm-detail {
+  grid-template-rows: 1fr;
+}
+.lm-detail-in {
+  overflow: hidden;
+  min-height: 0;
+}
+.lm-dims {
+  margin: 0 14px 12px;
+  padding: 2px 16px;
+  border-radius: var(--radius-xs);
+  background: color-mix(in srgb, var(--dg-card) 62%, transparent);
+  border: 1px dashed var(--dg-line);
+}
+.dim {
+  display: flex;
+  gap: 14px;
+  padding: 8px 0;
+  border-top: 1px dashed var(--dg-line);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.dim:first-child {
+  border-top: none;
+}
+.dim-k {
+  flex: 0 0 72px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding-top: 3px;
+  color: color-mix(in srgb, var(--accent) 78%, var(--dg-ink));
+}
+.dim-v {
+  color: var(--dg-ink);
+}
+.lm-base {
+  width: 100%;
+  margin: 4px auto 0;
+  border: 1px dashed var(--dg-line-strong);
+  border-radius: var(--radius-sm);
+  padding: 9px 14px;
+  font-size: 12px;
+  color: var(--dg-ink-sub);
+  text-align: center;
+}
+.lm-base .bt {
+  border: 1px solid var(--dg-line-strong);
+  border-radius: var(--radius-xs);
+  font-size: 10.5px;
+  padding: 0 7px;
+  margin-right: 8px;
+  color: var(--dg-ink-muted);
+}
+.lm-tools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.lm-replay {
+  border: 1px solid var(--dg-line-strong);
+  background: transparent;
+  color: var(--dg-ink-sub);
+  border-radius: var(--radius-xs);
+  padding: 5px 15px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.lm-replay:hover {
+  border-color: var(--dg-ink);
+  color: var(--dg-ink);
+}
+.lm-tip {
+  font-size: 12px;
+  color: var(--dg-ink-muted);
+}
+/* 自下而上浮现动画：SSR 直出 .play 触发，--lm-delay 按层深注入；重播由
+   diagramEnhance 移除再挂回 .play（reflow 重启）实现 */
+@keyframes lm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.lm.play .lm-layer {
+  animation: lm-rise 0.5s var(--lm-delay, 0.05s) both;
+}
+.lm.play .lm-base {
+  animation: lm-rise 0.5s var(--lm-delay, 0.17s) both;
+}
+
+/* ---- 组件二：flow-steps（.fw；分支形态三列栅格 / 线性形态 .fw-linear） ---- */
+.fw {
+  background: var(--dg-card-alt);
+  border: 1px solid var(--dg-line);
+  border-radius: var(--radius);
+  padding: 22px 24px 18px;
+  margin: 20px 0;
+}
+.flow-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.flow-title {
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--dg-ink);
+  line-height: 1.6;
+}
+.flow-grid {
+  display: grid;
+  grid-template-columns: 206px minmax(0, 1fr) 252px;
+  align-items: stretch;
+}
+.fcell {
+  min-width: 0;
+}
+/* 左轨：不通过分支（红虚线汇流总线，红＝停手语义） */
+.rail {
+  position: relative;
+}
+.rail::before {
+  content: '';
+  position: absolute;
+  right: 30px;
+  top: 0;
+  bottom: 0;
+  border-left: 1px dashed color-mix(in srgb, var(--dg-red) 50%, transparent);
+  transition: border-color 0.15s;
+}
+.rail.r-first::before {
+  top: 50%;
+}
+.rail.r-last::after {
+  content: '';
+  position: absolute;
+  right: 26px;
+  bottom: -1px;
+  transform: translateX(50%);
+  border: 5px solid transparent;
+  border-top: 6px solid var(--dg-red);
+}
+.rail.hot::before {
+  border-left-color: color-mix(in srgb, var(--dg-red) 90%, transparent);
+  border-left-style: solid;
+}
+/* 菱形落位 + "不通过"标签 + 处置小字 */
+.dm {
+  position: absolute;
+  right: 25.5px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  transform: translateY(-50%) rotate(45deg);
+  background: var(--dg-canvas);
+  border: 1.5px solid var(--dg-red);
+  transition: background 0.15s;
+}
+.dm-t {
+  position: absolute;
+  right: 46px;
+  top: calc(50% - 17px);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--dg-red) 75%, transparent);
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.dm-x {
+  position: absolute;
+  right: 46px;
+  top: calc(50% + 7px);
+  width: 148px;
+  text-align: right;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--dg-ink-sub);
+}
+.rail.cur .dm {
+  background: var(--dg-red);
+}
+.rail.cur .dm-t {
+  color: var(--dg-red);
+  font-weight: 700;
+}
+.rail.cur .dm-x {
+  color: var(--dg-ink);
+  font-weight: 600;
+}
+/* 中列：步骤盒（册色左缘细线）与正向下行箭头（墨线，不用绿） */
+.box {
+  position: relative;
+  background: var(--dg-card);
+  border: 1px solid var(--dg-line);
+  border-left: 3px solid color-mix(in srgb, var(--accent) 75%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 11px 16px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.box:hover,
+.box:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  transform: translateY(-1px);
+}
+.box:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 1px;
+}
+.box.sel {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--dg-card));
+}
+.b-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.no {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.nm {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dg-ink);
+}
+.chip {
+  border: 1px solid var(--dg-line-strong);
+  border-radius: 999px;
+  font-size: 10.5px;
+  color: var(--dg-ink-sub);
+  padding: 1px 9px;
+  white-space: nowrap;
+}
+.chip.acc {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  color: var(--accent);
+}
+.conn {
+  position: relative;
+  height: 28px;
+}
+.down {
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  bottom: 8px;
+  width: 0;
+  border-left: 2px solid color-mix(in srgb, var(--dg-ink-sub) 60%, transparent);
+}
+.down::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  bottom: -7px;
+  border: 5px solid transparent;
+  border-top: 7px solid color-mix(in srgb, var(--dg-ink-sub) 80%, transparent);
+}
+/* 分界章：步骤间水平虚线 + 标签胶囊 */
+.divider {
+  position: relative;
+  height: 38px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dv-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 1px dashed var(--dg-line-strong);
+}
+.dv-label {
+  position: relative;
+  background: var(--dg-card-alt);
+  padding: 2px 13px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--dg-ink-sub);
+  border: 1px dashed var(--dg-line-strong);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+/* 分界右列逆行回边注记（仅错误演示模式显示，内容由跨分界的演示行派生） */
+.dv-err {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+.fw.fw-errors .io-d .dv-err {
+  display: inline-flex;
+}
+.bk {
+  position: relative;
+  width: 28px;
+  height: 0;
+  border-top: 2px dashed var(--dg-red);
+  flex: 0 0 auto;
+}
+.bk::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -6px;
+  border: 5px solid transparent;
+  border-right: 7px solid var(--dg-red);
+}
+.dv-err .t {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--dg-red);
+}
+.dv-err .t b {
+  font-weight: 700;
+}
+/* 右列：输入→输出小字 */
+.io {
+  padding: 4px 0 4px 18px;
+  font-size: 12px;
+  color: var(--dg-ink-sub);
+  line-height: 1.9;
+  align-self: center;
+}
+.io .k {
+  display: inline-block;
+  border: 1px solid var(--dg-line);
+  border-radius: var(--radius-xs);
+  padding: 0 6px;
+  font-size: 10px;
+  color: var(--dg-ink-muted);
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+/* 错误顺序演示模式：演示行派生的步角标（黄＝警示）与淡染 */
+.fw.fw-errors .box[data-flag] {
+  background: color-mix(in srgb, var(--dg-yellow) 7%, var(--dg-card));
+}
+.fw.fw-errors .box[data-flag]::after {
+  content: attr(data-flag);
+  position: absolute;
+  top: -9px;
+  right: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 7px;
+  border-radius: var(--radius-xs);
+  line-height: 1.7;
+  background: var(--dg-yellow-dim);
+  color: var(--dg-yellow);
+  border: 1px solid color-mix(in srgb, var(--dg-yellow) 45%, transparent);
+}
+/* 统一出口框（红＝停手） */
+.exit {
+  grid-column: 1 / 3;
+  background: var(--dg-red-dim);
+  border: 1px solid color-mix(in srgb, var(--dg-red) 38%, transparent);
+  border-left: 3px solid var(--dg-red);
+  border-radius: var(--radius-sm);
+  padding: 11px 18px;
+  margin-top: 10px;
+  transition: border-color 0.15s;
+}
+.exit .t {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dg-red);
+  line-height: 1.7;
+}
+.exit.hot {
+  border-color: var(--dg-red);
+}
+/* 兜底分界注记（分界子句无法定位步序时的整行保留位） */
+.fw-div-note {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  border-top: 1px dashed var(--dg-line-strong);
+  padding-top: 8px;
+  font-size: 12px;
+  color: var(--dg-ink-sub);
+}
+/* 演示错误顺序：原生 <details> 开合（无 JS 可展开），diagramEnhance 挂
+   .fw-errors 驱动步角标/逆行回边注记 */
+.fw-demo {
+  margin-top: 14px;
+  border: 1px dashed var(--dg-line-strong);
+  border-radius: var(--radius-sm);
+}
+.fw-demo summary {
+  cursor: pointer;
+  padding: 7px 14px;
+  font-size: 12.5px;
+  color: var(--dg-ink-sub);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+.fw-demo summary::-webkit-details-marker {
+  display: none;
+}
+.fw-demo summary::before {
+  content: '▸';
+  color: var(--dg-yellow);
+  transition: transform 0.15s;
+}
+.fw-demo[open] summary::before {
+  transform: rotate(90deg);
+}
+.fw-demo[open] summary {
+  color: var(--dg-yellow);
+  border-bottom: 1px dashed var(--dg-line);
+}
+.fw-demo summary:focus-visible {
+  outline: 1px solid var(--dg-yellow);
+  outline-offset: -1px;
+  border-radius: var(--radius-sm);
+}
+.fw-demo-body {
+  padding: 10px 14px 12px;
+}
+.fw-demo-item {
+  font-size: 12.5px;
+  line-height: 1.9;
+  color: var(--dg-ink-sub);
+  margin: 4px 0;
+}
+.fw-demo-item .eb {
+  display: inline-block;
+  background: var(--dg-yellow-dim);
+  color: var(--dg-yellow);
+  border: 1px solid color-mix(in srgb, var(--dg-yellow) 45%, transparent);
+  border-radius: var(--radius-xs);
+  font-size: 10.5px;
+  padding: 0 7px;
+  margin-right: 8px;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+.flow-foot {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--dg-ink-muted);
+  line-height: 1.8;
+}
+/* 无分支线性形态（契约 §5.5）：纵向步骤流 + 墨线下行箭头，无菱形分支与出口框 */
+.lw-flow {
+  display: flex;
+  flex-direction: column;
+}
+.lw-step {
+  position: relative;
+  background: var(--dg-card);
+  border: 1px solid var(--dg-line);
+  border-left: 3px solid color-mix(in srgb, var(--accent) 75%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+}
+.lw-step + .lw-step {
+  margin-top: 30px;
+}
+.lw-step + .lw-step::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -24px;
+  bottom: calc(100% + 6px);
+  width: 0;
+  border-left: 2px solid color-mix(in srgb, var(--dg-ink-sub) 60%, transparent);
+}
+.lw-step + .lw-step::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 5px);
+  top: -10px;
+  border: 5px solid transparent;
+  border-top: 7px solid color-mix(in srgb, var(--dg-ink-sub) 80%, transparent);
+}
+.lw-io {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--dg-ink-sub);
+  line-height: 1.9;
+}
+.lw-io .k {
+  display: inline-block;
+  border: 1px solid var(--dg-line);
+  border-radius: var(--radius-xs);
+  padding: 0 6px;
+  font-size: 10px;
+  color: var(--dg-ink-muted);
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.lw-div {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--dg-ink-sub);
+}
+.lw-div::before {
+  content: '';
+  display: block;
+  margin-bottom: 6px;
+  border-top: 1px dashed var(--dg-line-strong);
+}
+
+/* ---- 结构图组件响应式与减动效 ---- */
+@media (max-width: 760px) {
+  .lm {
+    padding: 18px 14px 14px;
+  }
+  .lm-layer {
+    width: calc(100% - min(var(--lm-i, 0) * 22px, 14%));
+  }
+  .fw {
+    padding: 18px 14px 14px;
+  }
+  /* 分支形态三列栅格塌缩为纵列：左轨转横向条、右列 io 挂步骤下方 */
+  .flow-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .rail-off {
+    display: none;
+  }
+  .rail {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 20px;
+    padding: 2px 0;
+  }
+  .rail::before,
+  .rail.r-last::after {
+    display: none;
+  }
+  .dm {
+    position: static;
+    transform: rotate(45deg) scale(0.85);
+  }
+  .dm-t {
+    position: static;
+    letter-spacing: 0.1em;
+  }
+  .dm-x {
+    position: static;
+    width: auto;
+    flex: 1;
+    text-align: right;
+    margin-left: auto;
+  }
+  .io {
+    padding: 2px 2px 8px;
+  }
+  .io-c,
+  .io-e {
+    display: none;
+  }
+  .conn {
+    height: 20px;
+  }
+  .divider {
+    height: 32px;
+  }
+  .exit {
+    margin-top: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lm,
+  .lm *,
+  .fw,
+  .fw * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* === 风险提示组件（RiskNotice 等组件用） === */
 .risk-notice {
   background: var(--red-dim);

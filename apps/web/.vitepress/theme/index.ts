@@ -4,6 +4,7 @@ import { SLOT_IDS, type SlotId } from '../slots';
 import SeriesHome from '../../components/SeriesHome.vue';
 import VolumeIntro from '../../components/VolumeIntro.vue';
 import { setupFigureTooltips } from './figureTooltip';
+import { setupDiagramEnhance } from './diagramEnhance';
 import './custom.css';
 
 /**
@@ -34,6 +35,10 @@ export default {
     // 事件委托在 document 上，客户端换页后的新 SVG 无需重新绑定。
     if (typeof window !== 'undefined') {
       setupFigureTooltips();
+      // 结构图组件客户端增强（契约 §5.4/§5.5，D51）：层条钉住/重播、步骤
+      // 高亮汇流路径、演示错误顺序开关联动；纯事件委托，无初始 DOM 改写，
+      // SSR 静态产物本身已内容完整（无 JS 可达）。
+      setupDiagramEnhance();
     }
   },
 };

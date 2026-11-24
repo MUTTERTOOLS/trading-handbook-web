@@ -873,7 +873,7 @@ details.quiz summary:hover { background: rgba(231, 225, 210, 0.04); }
 .quiz-question p:last-child { margin-bottom: 0; }
 .quiz-question table { margin: 10px 0; }
 
-/* === 问答卡片（契约 §5.3 ::: qa-cards；视觉规格 content/editorial/mockup-qa-cards.html） ===
+/* === 问答卡片（契约 §5.3 ::: qa-cards；视觉规格 content/editorial/mockup/mockup-qa-cards.html） ===
    卡头衬线加重 + 底部分隔线；对答行缩进 1.2em、问句段 accent 加重；
    结论卡 accent 淡底 + "结论"标签胶囊；卡片 hover 上浮 2px（transform，
    不加阴影，沿用站点书卷交互语言）。相邻多个 qa-cards 容器各输出一个
@@ -931,7 +931,7 @@ details.quiz summary:hover { background: rgba(231, 225, 210, 0.04); }
 }
 
 /* === 结构图组件家族（契约 §5.4 ::: layer-map / §5.5 ::: flow-steps，D51 四处同步；
-   视觉规格 content/editorial/mockup-diagrams.html 组件一/二节） ===
+   视觉规格 content/editorial/mockup/mockup-diagrams.html 组件一/二节） ===
    本地令牌深浅双套（qa-cards 同例）：深色 = 站点书卷令牌别名（--accent 随册
    由 config.mts 注入自动换色），浅色 = 提案值（纸白画布，浅色主题启用时生效）。
    色规落点：layer-map 仅册色深浅零语义色（分层是结构属性）；flow-steps

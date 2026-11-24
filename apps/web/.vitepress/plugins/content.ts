@@ -13,12 +13,12 @@
  *   校验不过退化为 <img src>；无成品图整块不渲染）
  * - `::: qa-cards <卡头题句>` 问答卡片容器（契约 §5.3）：容器体逐行为
  *   对答行（`序词：内容`）+ 至多一条结论行（`结论：` 开头），整组渲染为
- *   .qa-group 卡片组（视觉规格 content/editorial/mockup-qa-cards.html）；
+ *   .qa-group 卡片组（视觉规格 content/editorial/mockup/mockup-qa-cards.html）；
  *   容器体是读者可见内容，不参与字数剔除
  * - `::: layer-map <图题>` 分层结构图容器（契约 §5.4）：容器体逐行为
  *   层行（`层 {层名}（{层副名}）：{一句话}`）+ 字段行（`{层名}·{字段名}：{内容}`）
  *   + 至多一条底座行（`底座：{内容}`），渲染为 .lm 堆叠层组件
- *   （视觉规格 content/editorial/mockup-diagrams.html 组件一节）
+ *   （视觉规格 content/editorial/mockup/mockup-diagrams.html 组件一节）
  * - `::: flow-steps <图题>` 流程步骤图容器（契约 §5.5）：容器体逐行为
  *   步行（`步 …`，冒号后 输入/→ 输出/｜不通过 段）+ 出口/分界/演示行，
  *   渲染为 .fw 竖向流程组件（视觉规格同上组件二节）；全部步行无 ｜不通过
@@ -302,7 +302,7 @@ function splitQaAsk(line: string): { ask: string; rest: string } | null {
 }
 
 /**
- * qa-cards → 问答卡片组（契约 §5.3，视觉规格 content/editorial/mockup-qa-cards.html）：
+ * qa-cards → 问答卡片组（契约 §5.3，视觉规格 content/editorial/mockup/mockup-qa-cards.html）：
  * .qa-group 内一张 .qa-card（衬线卡头 + 对答行 1.2em 缩进 + 问句段 accent 加重）
  * + 可选 .qa-verdict 结论卡（accent 淡底 + "结论"标签胶囊）。
  * 相邻多个 qa-cards 容器各输出一个 .qa-group，块级流自然连排（custom.css 收紧相邻间距）。
@@ -332,7 +332,7 @@ function renderQaCards(head: string, answers: string[], verdict: string | null):
 }
 
 /* ------------------------------------------------------------------ *
- * layer-map（契约 §5.4，视觉规格 content/editorial/mockup-diagrams.html 组件一节）
+ * layer-map（契约 §5.4，视觉规格 content/editorial/mockup/mockup-diagrams.html 组件一节）
  * 行式词汇与 tools/content/check.ts 的 checkLayerMapBody 同口径（容器体逐行
  * 分类执法在 check.ts 带行号，此处渲染前兜底同规则）。
  * ------------------------------------------------------------------ */
@@ -461,7 +461,7 @@ function renderLayerMap(title: string, layers: LayerMapLayer[], base: string | n
 }
 
 /* ------------------------------------------------------------------ *
- * flow-steps（契约 §5.5，视觉规格 content/editorial/mockup-diagrams.html 组件二节）
+ * flow-steps（契约 §5.5，视觉规格 content/editorial/mockup/mockup-diagrams.html 组件二节）
  * 行式词汇与 tools/content/check.ts 的 checkFlowStepsBody 同口径。
  * ------------------------------------------------------------------ */
 const FS_STEP_RE = /^步\s+(.+)$/;

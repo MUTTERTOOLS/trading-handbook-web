@@ -19,6 +19,70 @@ const TOUCH_SHOW_MS = 3000;
 let tipEl: HTMLDivElement | null = null;
 let touchTimer: ReturnType<typeof setTimeout> | undefined;
 
+/** 行情类成品图逐烛读数的固定语式（B4-C10 等 K 线图 data-tip） */
+const OHLC_RE = /^开([\d.]+) 高([\d.]+) 低([\d.]+) 收([\d.]+) 量比([\d.]+)$/;
+/** 题头（首个全角冒号前的短标签，如"图五·第 7 根"/"日5"）最长字符数 */
+const CAP_MAX = 16;
+
+interface OhlcRow {
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  ratio: string;
+}
+
+function parseTip(text: string): { cap: string | null; body: string; ohlc: OhlcRow | null } {
+  const sep = text.indexOf('：');
+  const cap = sep > 0 && sep <= CAP_MAX ? text.slice(0, sep) : null;
+  const body = cap !== null ? text.slice(sep + 1) : text;
+  const m = OHLC_RE.exec(body);
+  return {
+    cap,
+    body: m ? '' : body,
+    ohlc: m ? { open: m[1], high: m[2], low: m[3], close: m[4], ratio: m[5] } : null,
+  };
+}
+
+/** 结构化渲染（D54 反馈二"hover 信息样式差"）：题头小字 + 正文，
+ *  行情读数拆成 开/高/低/收/量比 对齐网格（mono 数值），其余文本原样。 */
+function renderTip(el: HTMLDivElement, text: string): void {
+  el.textContent = '';
+  const { cap, body, ohlc } = parseTip(text);
+  if (cap !== null) {
+    const capEl = document.createElement('span');
+    capEl.className = 'fig-tip-cap';
+    capEl.textContent = cap;
+    el.appendChild(capEl);
+  }
+  if (ohlc) {
+    const grid = document.createElement('span');
+    grid.className = 'fig-tip-ohlc';
+    const cells: Array<[string, string]> = [
+      ['开', ohlc.open],
+      ['高', ohlc.high],
+      ['低', ohlc.low],
+      ['收', ohlc.close],
+      ['量比', ohlc.ratio],
+    ];
+    for (const [k, v] of cells) {
+      const kEl = document.createElement('span');
+      kEl.className = 'fig-tip-k';
+      kEl.textContent = k;
+      const vEl = document.createElement('span');
+      vEl.className = 'fig-tip-v';
+      vEl.textContent = v;
+      grid.append(kEl, vEl);
+    }
+    el.appendChild(grid);
+  } else {
+    const bodyEl = document.createElement('span');
+    bodyEl.className = 'fig-tip-body';
+    bodyEl.textContent = body;
+    el.appendChild(bodyEl);
+  }
+}
+
 function ensureTip(): HTMLDivElement {
   if (tipEl) return tipEl;
   tipEl = document.createElement('div');
@@ -40,9 +104,14 @@ function placeAt(el: HTMLDivElement, x: number, y: number): void {
   el.style.top = `${Math.max(EDGE_PAD, top)}px`;
 }
 
+let lastTipText: string | null = null;
+
 function showTip(text: string, x: number, y: number): void {
   const el = ensureTip();
-  if (el.textContent !== text) el.textContent = text;
+  if (lastTipText !== text) {
+    renderTip(el, text);
+    lastTipText = text;
+  }
   el.classList.add('show');
   placeAt(el, x, y);
 }
@@ -53,6 +122,7 @@ function hideTip(): void {
     touchTimer = undefined;
   }
   tipEl?.classList.remove('show');
+  lastTipText = null;
 }
 
 function tipTarget(target: EventTarget | null): HTMLElement | null {

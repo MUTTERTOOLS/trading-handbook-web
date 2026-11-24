@@ -556,11 +556,11 @@ function checkChapter(chapter: Chapter, source: string): Issue[] {
       chapterId: chapter.id,
       message: `主体正文字数过少（主体口径）：${chars.main}（下限 2400）`,
     });
-  } else if (chars.main > 8000) {
+  } else if (chars.main > 10000) {
     issues.push({
       level: 'warning',
       chapterId: chapter.id,
-      message: `主体正文字数（主体口径）${chars.main} 超过 8000；如经总编批准请保留，否则考虑拆分`,
+      message: `主体正文字数（主体口径）${chars.main} 超过 10000；如经总编批准请保留，否则考虑拆分`,
     });
   }
   if (chars.extra > 1200) {

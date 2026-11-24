@@ -1,77 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 430" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
-  <rect width="880" height="430" fill="var(--fig-canvas, #0B0E14)"/>
-  <text x="20" y="34" font-size="16" font-weight="600" fill="var(--fig-ink, #E7E1D2)">图五　放量突破（虚构示意）</text>
-  <text x="860" y="34" text-anchor="end" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">虚构示意</text>
-  <line x1="70" y1="62" x2="70" y2="298" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
-  <line x1="70" y1="298" x2="850" y2="298" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
-  <text x="64" y="301.5" text-anchor="end" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">10.4</text>
-  <text x="64" y="183.5" text-anchor="end" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">10.85</text>
-  <text x="64" y="65.5" text-anchor="end" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">11.3</text>
-  <text x="109" y="316" text-anchor="middle" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">1</text>
-  <text x="811" y="316" text-anchor="middle" font-size="10" fill="var(--fig-ink-sub, #A69E8C)">10</text>
-  <line x1="70" y1="400" x2="850" y2="400" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1"/>
-  <line x1="70" y1="381" x2="850" y2="381" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.8" stroke-dasharray="3 3" stroke-opacity="0.5"/>
-  <text x="64" y="384" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">1.0</text>
-  <text x="64" y="403" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">量比</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 396" font-family="'Noto Sans SC','Microsoft YaHei',sans-serif">
+  <rect width="640" height="396" fill="var(--fig-canvas, #0B0E14)"/>
+  <text x="18" y="31" font-size="15" font-weight="600" fill="var(--fig-ink, #E7E1D2)">图五　放量突破</text>
+  <text x="622" y="31" text-anchor="end" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">虚构示意</text>
+  <line x1="56" y1="213.4" x2="610" y2="213.4" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.8" stroke-dasharray="2 5" stroke-opacity="0.22"/>
+  <text x="50" y="216.6" text-anchor="end" font-size="10" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">10.5</text>
+  <line x1="56" y1="118.7" x2="610" y2="118.7" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.8" stroke-dasharray="2 5" stroke-opacity="0.22"/>
+  <text x="50" y="121.9" text-anchor="end" font-size="10" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">11</text>
+  <line x1="56" y1="52" x2="56" y2="246" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="56" y1="246" x2="610" y2="246" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="56" y1="266" x2="56" y2="334" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="56" y1="334" x2="610" y2="334" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="56" y1="317.0" x2="610" y2="317.0" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.7" stroke-opacity="0.18"/>
+  <text x="50" y="320.2" text-anchor="end" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">0.5</text>
+  <line x1="56" y1="300.0" x2="610" y2="300.0" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.9" stroke-dasharray="3 4" stroke-opacity="0.45"/>
+  <text x="50" y="303.2" text-anchor="end" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">1.0</text>
+  <line x1="56" y1="283.0" x2="610" y2="283.0" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.7" stroke-opacity="0.18"/>
+  <text x="50" y="286.2" text-anchor="end" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">1.5</text>
+  <line x1="56" y1="266.0" x2="610" y2="266.0" stroke="var(--fig-ink-sub, #A69E8C)" stroke-width="0.7" stroke-opacity="0.18"/>
+  <text x="50" y="269.2" text-anchor="end" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">2.0</text>
+  <text x="50" y="272" text-anchor="end" font-size="9.5" fill="var(--fig-ink-sub, #A69E8C)">量比</text>
   <g data-tip="日1：开10.50 高10.68 低10.44 收10.62 量比0.8">
-    <line x1="109" y1="224.6" x2="109" y2="287.5" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="101" y="240.3" width="16" height="31.5" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="101" y="384.8" width="16" height="15.2" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="99" y="224.6" width="20" height="62.9" fill="transparent"/>
+    <line x1="83.7" y1="179.3" x2="83.7" y2="224.8" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="66.7" y="190.7" width="34" height="22.7" fill="var(--fig-up, #C26A63)"/>
+    <rect x="66.7" y="306.8" width="34" height="27.2" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="56.0" y="176.3" width="55.4" height="51.5" fill="transparent"/>
   </g>
+  <text x="83.7" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">1</text>
   <g data-tip="日2：开10.62 高10.74 低10.55 收10.70 量比0.9">
-    <line x1="187" y1="208.8" x2="187" y2="258.7" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="179" y="219.3" width="16" height="21" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="179" y="382.9" width="16" height="17.1" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="177" y="208.8" width="20" height="49.8" fill="transparent"/>
+    <line x1="139.1" y1="167.9" x2="139.1" y2="203.9" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="122.1" y="175.5" width="34" height="15.2" fill="var(--fig-up, #C26A63)"/>
+    <rect x="122.1" y="303.4" width="34" height="30.6" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="111.4" y="164.9" width="55.4" height="42.0" fill="transparent"/>
   </g>
+  <text x="139.1" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">2</text>
   <g data-tip="日3：开10.70 高10.79 低10.60 收10.66 量比0.8">
-    <line x1="265" y1="195.7" x2="265" y2="245.6" stroke="var(--fig-down, #5FA379)" stroke-width="2"/>
-    <rect x="257" y="219.3" width="16" height="10.5" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>
-    <rect x="257" y="384.8" width="16" height="15.2" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="255" y="195.7" width="20" height="49.8" fill="transparent"/>
+    <line x1="194.5" y1="158.5" x2="194.5" y2="194.5" stroke="var(--fig-down, #5FA379)" stroke-width="1.4"/>
+    <rect x="177.5" y="175.5" width="34" height="7.6" fill="var(--fig-down, #5FA379)"/>
+    <rect x="177.5" y="306.8" width="34" height="27.2" fill="var(--fig-down, #5FA379)" fill-opacity="0.38"/>
+    <rect x="166.8" y="155.5" width="55.4" height="42.0" fill="transparent"/>
   </g>
+  <text x="194.5" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">3</text>
   <g data-tip="日4：开10.66 高10.75 低10.52 收10.58 量比0.7">
-    <line x1="343" y1="206.2" x2="343" y2="266.5" stroke="var(--fig-down, #5FA379)" stroke-width="2"/>
-    <rect x="335" y="229.8" width="16" height="21" fill="var(--fig-down, #5FA379)" stroke="var(--fig-down, #5FA379)" stroke-width="1"/>
-    <rect x="335" y="386.7" width="16" height="13.3" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="333" y="206.2" width="20" height="60.3" fill="transparent"/>
+    <line x1="249.9" y1="166.1" x2="249.9" y2="209.6" stroke="var(--fig-down, #5FA379)" stroke-width="1.4"/>
+    <rect x="232.9" y="183.1" width="34" height="15.2" fill="var(--fig-down, #5FA379)"/>
+    <rect x="232.9" y="310.2" width="34" height="23.8" fill="var(--fig-down, #5FA379)" fill-opacity="0.38"/>
+    <rect x="222.2" y="163.1" width="55.4" height="49.6" fill="transparent"/>
   </g>
+  <text x="249.9" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">4</text>
   <g data-tip="日5：开10.58 高10.72 低10.55 收10.68 量比0.7">
-    <line x1="421" y1="214.1" x2="421" y2="258.7" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="413" y="224.6" width="16" height="26.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="413" y="386.7" width="16" height="13.3" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="411" y="214.1" width="20" height="44.6" fill="transparent"/>
+    <line x1="305.3" y1="171.7" x2="305.3" y2="203.9" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="288.3" y="179.3" width="34" height="18.9" fill="var(--fig-up, #C26A63)"/>
+    <rect x="288.3" y="310.2" width="34" height="23.8" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="277.6" y="168.7" width="55.4" height="38.2" fill="transparent"/>
   </g>
+  <text x="305.3" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">5</text>
   <g data-tip="日6：开10.68 高10.85 低10.66 收10.78 量比1.3">
-    <line x1="499" y1="180" x2="499" y2="229.8" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="491" y="198.4" width="16" height="26.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="491" y="375.3" width="16" height="24.7" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="489" y="180" width="20" height="49.8" fill="transparent"/>
+    <line x1="360.7" y1="147.1" x2="360.7" y2="183.1" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="343.7" y="160.4" width="34" height="18.9" fill="var(--fig-up, #C26A63)"/>
+    <rect x="343.7" y="289.8" width="34" height="44.2" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="333.0" y="144.1" width="55.4" height="42.0" fill="transparent"/>
   </g>
+  <text x="360.7" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">6</text>
   <g data-tip="日7：开10.82 高11.05 低10.80 收11.00 量比1.9">
-    <line x1="577" y1="127.6" x2="577" y2="193.1" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="569" y="140.7" width="16" height="47.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="569" y="363.9" width="16" height="36.1" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="567" y="127.6" width="20" height="65.6" fill="transparent"/>
+    <line x1="416.1" y1="109.2" x2="416.1" y2="156.6" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="399.1" y="118.7" width="34" height="34.1" fill="var(--fig-up, #C26A63)"/>
+    <rect x="399.1" y="269.4" width="34" height="64.6" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="388.4" y="106.2" width="55.4" height="53.4" fill="transparent"/>
   </g>
+  <text x="416.1" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">7</text>
   <g data-tip="日8：开11.00 高11.15 低10.92 收11.10 量比1.4">
-    <line x1="655" y1="101.3" x2="655" y2="161.6" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="647" y="114.4" width="16" height="26.2" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="647" y="373.4" width="16" height="26.6" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="645" y="101.3" width="20" height="60.3" fill="transparent"/>
+    <line x1="471.5" y1="90.3" x2="471.5" y2="133.8" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="454.5" y="99.7" width="34" height="18.9" fill="var(--fig-up, #C26A63)"/>
+    <rect x="454.5" y="286.4" width="34" height="47.6" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="443.8" y="87.3" width="55.4" height="49.6" fill="transparent"/>
   </g>
+  <text x="471.5" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">8</text>
   <g data-tip="日9：开11.10 高11.20 低11.00 收11.15 量比1.1">
-    <line x1="733" y1="88.2" x2="733" y2="140.7" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="725" y="101.3" width="16" height="13.1" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="725" y="379.1" width="16" height="20.9" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="723" y="88.2" width="20" height="52.4" fill="transparent"/>
+    <line x1="526.9" y1="80.8" x2="526.9" y2="118.7" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="509.9" y="90.3" width="34" height="9.5" fill="var(--fig-up, #C26A63)"/>
+    <rect x="509.9" y="296.6" width="34" height="37.4" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="499.2" y="77.8" width="55.4" height="43.9" fill="transparent"/>
   </g>
+  <text x="526.9" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">9</text>
   <g data-tip="日10：开11.15 高11.24 低11.05 收11.18 量比1.0">
-    <line x1="811" y1="77.7" x2="811" y2="127.6" stroke="var(--fig-up, #C26A63)" stroke-width="2"/>
-    <rect x="803" y="93.5" width="16" height="7.9" fill="var(--fig-up, #C26A63)" stroke="var(--fig-up, #C26A63)" stroke-width="1"/>
-    <rect x="803" y="381" width="16" height="19" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.45"/>
-    <rect x="801" y="77.7" width="20" height="49.8" fill="transparent"/>
+    <line x1="582.3" y1="73.2" x2="582.3" y2="109.2" stroke="var(--fig-up, #C26A63)" stroke-width="1.4"/>
+    <rect x="565.3" y="84.6" width="34" height="5.7" fill="var(--fig-up, #C26A63)"/>
+    <rect x="565.3" y="300.0" width="34" height="34.0" fill="var(--fig-up, #C26A63)" fill-opacity="0.38"/>
+    <rect x="554.6" y="70.2" width="55.4" height="42.0" fill="transparent"/>
   </g>
-  <text x="440" y="424" text-anchor="middle" font-size="10.5" fill="var(--fig-ink-sub, #A69E8C)">A股红涨绿跌；海外惯例相反（仅配色惯例不同，数据相同）</text>
+  <text x="582.3" y="352" text-anchor="middle" font-size="9.5" font-family="'JetBrains Mono','Cascadia Mono',Consolas,monospace" fill="var(--fig-ink-sub, #A69E8C)">10</text>
+  <text x="320" y="382" text-anchor="middle" font-size="10" fill="var(--fig-ink-sub, #A69E8C)" fill-opacity="0.9">A股红涨绿跌；海外惯例相反（仅配色惯例不同，数据相同）</text>
 </svg>

@@ -5,6 +5,7 @@ import SeriesHome from '../../components/SeriesHome.vue';
 import VolumeIntro from '../../components/VolumeIntro.vue';
 import { setupFigureTooltips } from './figureTooltip';
 import { setupDiagramEnhance } from './diagramEnhance';
+import { setupTableEnhance } from './tableEnhance';
 import './custom.css';
 
 /**
@@ -39,6 +40,9 @@ export default {
       // 高亮汇流路径、演示错误顺序开关联动；纯事件委托，无初始 DOM 改写，
       // SSR 静态产物本身已内容完整（无 JS 可达）。
       setupDiagramEnhance();
+      // 宽表增强（D54 反馈一）：溢出检测挂 .is-wide，驱动首列定位等宽表样式；
+      // 窄表不挂类外观不变，无 JS 时表格仍可横向滚动。
+      setupTableEnhance();
     }
   },
 };

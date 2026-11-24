@@ -689,9 +689,13 @@ body { overflow-x: hidden; line-height: 1.85; }
   overflow-x: auto;
   margin: 20px 0;
 }
-/* F-024 侧一（D48）：窄表自然宽＋内容列内居中；max-width 兜底嵌套无滚动容器的表，
- * 移动端 .table-scroll 内 min-width 仍优先生效（min-width 压过 max-width），横向滚动行为不变 */
-.data-table { width: auto; max-width: 100%; border-collapse: collapse; margin: 20px auto; font-size: 14px; }
+/* F-024 侧一（D48）：窄表自然宽＋内容列内居中；移动端 .table-scroll 内
+ * min-width 优先（min-width 压过 max-width），横向滚动行为不变。
+ * D54（反馈一）：撤去 max-width:100% 的硬压——宽表（六列总表等）此前被
+ * 挤进容器竖条换行、字太小难读；现按自然宽度横向滚动，溢出时由
+ * tableEnhance 挂 .is-wide 启用首列定位与放宽的行距列距（见下），窄表
+ * （不溢出）不挂类、外观与 D48 之前完全一致。 */
+.data-table { width: auto; border-collapse: collapse; margin: 20px auto; font-size: 14px; }
 .table-scroll .data-table { margin: 0 auto; min-width: 560px; }
 .data-table th {
   text-align: left;
@@ -716,6 +720,56 @@ body { overflow-x: hidden; line-height: 1.85; }
   margin-top: -8px;
   margin-bottom: 16px !important;
   line-height: 1.7;
+}
+
+/* === 宽表可读性（D54 反馈一，六列九行总表为基准案例） ===
+   仅 .table-scroll.is-wide（tableEnhance 检出横向溢出）生效；深浅双套走
+   本地令牌别名（qa/dg 组件同例）：深色 = 站点书卷令牌，浅色 = 既定提案
+   值（纸白画布），零新色值。首列定位：表头/首列 sticky 左贴，滚动时保留
+   行标签上下文；首列表头与单元格用不透明底色遮住滚过的内容，行 hover
+   用 --dg-ink 派生不透明底（半透明底会透出滚动内容）。 */
+:root,
+:root.dark {
+  --tbl-sticky: var(--bg-deep);
+  --tbl-sticky-head: var(--bg-card-alt);
+}
+:root:not(.dark) {
+  --tbl-sticky: #f5f1e8;
+  --tbl-sticky-head: #ece6d7;
+}
+/* 真宽表（自然需求宽 > 容器）：按 max-content 展开、允许横向滚动——列宽回到
+ * 舒展的单段宽度，不再挤成竖条；单元格 320px 封顶防止超长句把表撑得过长，
+ * 超出部分自然换行；min-width:100% 让轻微溢出的表仍铺满容器。 */
+.table-scroll.is-wide .data-table {
+  width: max-content;
+  max-width: none;
+  min-width: 100%;
+}
+.table-scroll.is-wide .data-table th {
+  white-space: nowrap;
+}
+.table-scroll.is-wide .data-table td {
+  max-width: 320px;
+  padding: 12px 18px;
+  line-height: 1.8;
+}
+.table-scroll.is-wide .data-table th:first-child,
+.table-scroll.is-wide .data-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+.table-scroll.is-wide .data-table th:first-child {
+  background: var(--tbl-sticky-head);
+}
+.table-scroll.is-wide .data-table td:first-child {
+  background: var(--tbl-sticky);
+  border-right: 1px solid var(--dg-line-strong);
+}
+/* 宽表行 hover：整行统一 --dg-ink 3.5% 派生不透明底（贴 --tbl-sticky），
+ * 首列同样生效；深浅双套随 --dg-ink/--tbl-sticky 换算 */
+.table-scroll.is-wide .data-table tr:hover td {
+  background: color-mix(in srgb, var(--dg-ink) 3.5%, var(--tbl-sticky));
 }
 
 /* === 速查卡 === */
@@ -770,27 +824,70 @@ body { overflow-x: hidden; line-height: 1.85; }
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-sm);
 }
-/* 悬浮提示（D21 任务1）：data-tip 统一机制——带提示的元素可悬停读数 */
+/* 悬浮提示（D21 任务1；D54 反馈二重设计排版/留白/对比度/深浅双套）：
+ * data-tip 统一机制——带提示的元素可悬停读数。结构化渲染（figureTooltip.ts）：
+ * 题头（"图五·第 7 根"式短标签）小字次级色；行情读数拆 开/高/低/收/量比
+ * 对齐网格（mono 数值、tabular-nums）；其余文本正文级。深浅双套走本地令牌
+ * 别名（qa/dg 同例）：浅色 = 既定提案值（纸面），零新色值。 */
 .figure-block [data-tip] { cursor: help; }
 .figure-block [data-tip]:hover { filter: brightness(1.25); }
+:root,
+:root.dark {
+  --tip-bg: var(--bg-card-alt);
+  --tip-line: var(--border-strong);
+  --tip-ink: var(--text-primary);
+  --tip-ink-sub: var(--text-secondary);
+}
+:root:not(.dark) {
+  --tip-bg: #ece6d7;
+  --tip-line: rgba(58, 54, 41, 0.3);
+  --tip-ink: #3a3629;
+  --tip-ink-sub: #746c59;
+}
 .fig-tip {
   position: fixed;
   z-index: 999;
-  max-width: min(300px, calc(100vw - 32px));
-  padding: 8px 12px;
-  background: var(--bg-card-alt);
-  border: 1px solid var(--border-strong);
+  max-width: min(340px, calc(100vw - 32px));
+  padding: 9px 14px 10px;
+  background: var(--tip-bg);
+  border: 1px solid var(--tip-line);
   border-radius: var(--radius-sm);
-  color: var(--text-primary);
+  color: var(--tip-ink);
   font-family: var(--font-body);
-  font-size: 12.5px;
-  line-height: 1.7;
+  font-size: 13px;
+  line-height: 1.75;
   letter-spacing: normal;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.12s ease;
 }
 .fig-tip.show { opacity: 1; }
+.fig-tip-cap {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--tip-ink-sub);
+}
+.fig-tip-body { display: block; }
+.fig-tip-ohlc {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  justify-content: start;
+}
+.fig-tip-k {
+  font-size: 11px;
+  color: var(--tip-ink-sub);
+}
+.fig-tip-v {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--tip-ink);
+}
 /* 防退化通道：校验不过（>60KB/脚本/外链/结构缺失）时以 <img> 呈现 */
 .figure-block img {
   display: block;

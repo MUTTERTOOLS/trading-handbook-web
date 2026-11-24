@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="zh-CN" class="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D50 设计静态稿：结构图组件家族（layer-map / flow-steps）</title>
+<!-- ============================================================
+  §9 立项设计样例（D50 · 渲染侧出品，2026-11-24）
+  拟新增容器词汇 ::: layer-map 与 ::: flow-steps —— 本稿为 preview
+  设计静态稿，非站点产物。自包含：零外部依赖、零 CDN、无构建系统，
+  浏览器直接打开即可看。视觉令牌与体例对齐：
+    apps/web/.vitepress/theme/custom.css（书卷纸墨双套）
+    content/editorial/mockup-qa-cards.html（上一组件 mockup 体例）
+  示例内容取自现行正文：B1-C05《道、法、术：三层分工》、
+  B3-C03《先算风险，再找买点：决策顺序铁律》。
+  语义色规（强制）：红＝禁止/停手，黄＝警示，不用红绿暗示盈亏。
+============================================================ -->
+<style>
+  /* ===== 书卷纸墨双套令牌（对齐 custom.css；浅色册色为提案值） ===== */
+  :root, :root.dark{
+    --bg:#0B0E14; --surface:#12151D; --surface-alt:#161A21;
+    --ink:#E7E1D2; --ink-sub:#A69E8C; --ink-muted:#6E6757;
+    --line:rgba(231,225,210,0.12); --line-strong:rgba(231,225,210,0.22);
+    --red:#C26A63; --red-dim:rgba(198,106,99,0.14);
+    --yellow:#C9A35B; --yellow-dim:rgba(201,163,91,0.14);
+    --b1:#6B9BC9; --b3:#D99058;
+    /* layer-map 三层册色深浅（道最深、术最浅） */
+    --lm1:color-mix(in srgb, var(--b1) 24%, var(--surface));
+    --lm2:color-mix(in srgb, var(--b1) 40%, var(--surface));
+    --lm3:color-mix(in srgb, var(--b1) 56%, var(--surface));
+  }
+  :root:not(.dark){
+    --bg:#F5F1E8; --surface:#ECE6D7; --surface-alt:#E6DFCE;
+    --ink:#3A3629; --ink-sub:#746C59; --ink-muted:#8A8271;
+    --line:rgba(58,54,41,0.16); --line-strong:rgba(58,54,41,0.30);
+    --red:#A94F46; --red-dim:rgba(169,79,70,0.12);
+    --yellow:#86682C; --yellow-dim:rgba(134,104,44,0.12);
+    --b1:#33608F; /* 提案：沿用图色板浅色 accent（花青加深） */
+    --b3:#9A6233; /* 提案：赭橙加深至纸面对比安全值 */
+    --lm1:color-mix(in srgb, var(--b1) 12%, var(--surface));
+    --lm2:color-mix(in srgb, var(--b1) 23%, var(--surface));
+    --lm3:color-mix(in srgb, var(--b1) 36%, var(--surface));
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+       font-size:15px;line-height:1.9;}
+  .wrap{max-width:900px;margin:0 auto;padding:44px 22px 90px;}
+  h1{font-family:"Noto Serif SC","Source Han Serif SC","SimSun",serif;
+     font-size:29px;font-weight:900;letter-spacing:.02em;margin:0 0 8px;line-height:1.4;}
+  .sub{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+       color:var(--ink-sub);font-size:13.5px;margin-bottom:22px;
+       border-bottom:2px solid var(--ink);padding-bottom:12px;}
+  .sub .meta{font-family:"JetBrains Mono","Cascadia Mono",Consolas,monospace;font-size:12px;}
+  button.btn{border:1px solid var(--line-strong);background:transparent;color:var(--ink-sub);
+       border-radius:6px;padding:6px 16px;font-family:inherit;font-size:12.5px;cursor:pointer;
+       transition:border-color .15s,color .15s,background .15s;}
+  button.btn:hover{border-color:var(--ink);color:var(--ink);}
+  code{font-family:"JetBrains Mono","Cascadia Mono",Consolas,monospace;font-size:.9em;
+       color:var(--ink);background:var(--surface-alt);border:1px solid var(--line);
+       border-radius:4px;padding:0 5px;white-space:nowrap;}
+  .notice{border:1px dashed var(--line-strong);border-radius:6px;padding:12px 16px;
+       font-size:13px;color:var(--ink-sub);margin:0 0 10px;}
+  .notice b{color:var(--ink);}
+  h2{font-family:"Noto Serif SC","Source Han Serif SC","SimSun",serif;
+     font-size:20px;font-weight:700;margin:52px 0 6px;padding-left:12px;
+     border-left:3px solid var(--line-strong);line-height:1.5;}
+  h2#h-layer{border-left-color:var(--b1);}
+  h2#h-flow{border-left-color:var(--b3);}
+  .comp-sub{color:var(--ink-sub);font-size:13px;margin:0 0 16px;padding-left:15px;}
+  .comp-sub .vol{font-family:"JetBrains Mono",monospace;font-size:11.5px;
+       border:1px solid var(--line-strong);border-radius:999px;padding:1px 10px;margin-left:6px;}
+  .vol.b1{color:var(--b1);border-color:color-mix(in srgb,var(--b1) 45%,transparent);}
+  .vol.b3{color:var(--b3);border-color:color-mix(in srgb,var(--b3) 45%,transparent);}
+
+  /* ===== 一、总览表 ===== */
+  table.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:6px 0 4px;}
+  .tbl th{text-align:left;color:var(--ink-sub);font-weight:600;font-size:12px;
+       letter-spacing:.5px;border-bottom:2px solid var(--line);padding:8px 12px;}
+  .tbl td{border-bottom:1px solid var(--line);padding:9px 12px;color:var(--ink);vertical-align:top;}
+  .arch{font-size:12.5px;color:var(--ink-sub);margin:10px 0 0;}
+  .arch b{color:var(--ink);}
+
+  /* ===== 通用图框 ===== */
+  .diagram{background:var(--surface-alt);border:1px solid var(--line);border-radius:8px;
+       padding:22px 24px 18px;margin-top:16px;}
+  .d-cap{font-size:12px;color:var(--ink-muted);margin:12px 2px 0;}
+  .notes{border-top:1px dashed var(--line-strong);margin-top:22px;padding-top:14px;
+       font-size:12.5px;color:var(--ink-sub);}
+  .notes .nt{font-weight:700;color:var(--ink);display:block;margin-bottom:4px;}
+  .notes li{margin:6px 0;}
+  .notes ul{margin:4px 0;padding-left:20px;}
+
+  /* ===== 组件一：layer-map ===== */
+  .lm-title{text-align:center;font-family:"Noto Serif SC",serif;font-size:16px;
+       font-weight:700;color:var(--ink);margin:0 0 20px;letter-spacing:.05em;}
+  .lm-stage{position:relative;padding-right:72px;}
+  .lm-layer{position:relative;margin:0 auto 10px;cursor:pointer;outline:none;
+       border:1px solid color-mix(in srgb, var(--b1) 38%, transparent);
+       border-left:3px solid color-mix(in srgb, var(--b1) 72%, transparent);
+       border-radius:6px;overflow:hidden;
+       transition:border-color .15s,transform .15s;}
+  .lm-layer:hover,.lm-layer:focus-visible,.lm-layer.open{
+       border-color:color-mix(in srgb, var(--b1) 70%, transparent);
+       transform:translateY(-1px);}
+  .lm-layer:focus-visible{outline:1px solid var(--b1);outline-offset:1px;}
+  .lm-layer.l-shu{width:calc(100% - 128px);background:var(--lm1);}
+  .lm-layer.l-fa{width:calc(100% - 64px);background:var(--lm2);}
+  .lm-layer.l-dao{width:100%;background:var(--lm3);}
+  .lm-bar{display:flex;align-items:baseline;gap:14px;padding:13px 18px;flex-wrap:wrap;}
+  .lm-zi{font-family:"Noto Serif SC",serif;font-size:24px;font-weight:900;
+       line-height:1.2;color:var(--ink);}
+  .lm-sub{border:1px solid var(--line-strong);border-radius:4px;font-size:11px;
+       color:var(--ink-sub);padding:1px 8px;}
+  .lm-line{flex:1;min-width:200px;font-size:13.5px;color:var(--ink);}
+  .lm-hint{font-size:11px;color:var(--ink-sub);white-space:nowrap;}
+  .lm-hint::after{content:' ▾';display:inline-block;transition:transform .2s;}
+  .lm-layer:hover .lm-hint::after,.lm-layer.open .lm-hint::after{transform:rotate(180deg);}
+  .lm-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s ease;}
+  .lm-layer:hover .lm-detail,.lm-layer.open .lm-detail{grid-template-rows:1fr;}
+  .lm-detail-in{overflow:hidden;min-height:0;}
+  .lm-dims{margin:0 14px 12px;padding:2px 16px;border-radius:4px;
+       background:color-mix(in srgb, var(--surface) 62%, transparent);
+       border:1px dashed var(--line);}
+  .dim{display:flex;gap:14px;padding:8px 0;border-top:1px dashed var(--line);
+       font-size:13px;line-height:1.8;}
+  .dim:first-child{border-top:none;}
+  .dim-k{flex:0 0 72px;font-family:"JetBrains Mono",monospace;font-size:11px;
+       padding-top:3px;color:color-mix(in srgb, var(--b1) 78%, var(--ink));}
+  .dim-v{color:var(--ink);}
+  .lm-base{width:100%;margin:4px auto 0;border:1px dashed var(--line-strong);
+       border-radius:6px;padding:9px 14px;font-size:12px;color:var(--ink-sub);
+       text-align:center;}
+  .lm-base .bt{border:1px solid var(--line-strong);border-radius:4px;font-size:10.5px;
+       padding:0 7px;margin-right:8px;color:var(--ink-muted);}
+  /* 右侧"改动成本"纵标（对应 B1-C05 绘图说明） */
+  .lm-cost{position:absolute;right:4px;top:10px;bottom:14px;width:52px;
+       display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .cost-cap{font-size:10.5px;letter-spacing:.2em;color:var(--ink-sub);}
+  .cost-line{flex:1;width:0;border-left:1px dashed var(--line-strong);}
+  .cost-arrow{color:var(--ink-sub);font-size:11px;line-height:1;}
+  .cost-txt{writing-mode:vertical-rl;letter-spacing:.3em;font-size:11px;color:var(--ink-sub);}
+  /* 自下而上浮现动画 */
+  @keyframes lm-rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  .lm.play .l-dao{animation:lm-rise .5s .05s both;}
+  .lm.play .lm-base{animation:lm-rise .5s .17s both;}
+  .lm.play .l-fa{animation:lm-rise .5s .29s both;}
+  .lm.play .l-shu{animation:lm-rise .5s .41s both;}
+  .lm-tools{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap;}
+  .lm-tip{font-size:12px;color:var(--ink-muted);}
+
+  /* ===== 组件二：flow-steps ===== */
+  .flow-head{display:flex;justify-content:space-between;align-items:center;gap:14px;
+       flex-wrap:wrap;margin-bottom:18px;}
+  .flow-title{font-family:"Noto Serif SC",serif;font-size:16.5px;font-weight:700;color:var(--ink);}
+  .flow-title em{font-style:normal;color:var(--b3);}
+  .switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+       font-size:12.5px;color:var(--ink-sub);user-select:none;}
+  .switch input{position:absolute;opacity:0;width:0;height:0;}
+  .switch .sw{width:34px;height:18px;border-radius:999px;border:1px solid var(--line-strong);
+       position:relative;background:var(--surface);transition:.15s;flex:0 0 auto;}
+  .switch .sw::after{content:'';position:absolute;left:2px;top:2px;width:12px;height:12px;
+       border-radius:50%;background:var(--ink-sub);transition:.15s;}
+  .switch input:checked + .sw{background:var(--yellow-dim);border-color:var(--yellow);}
+  .switch input:checked + .sw::after{left:18px;background:var(--yellow);}
+  .switch input:focus-visible + .sw{outline:1px solid var(--yellow);outline-offset:1px;}
+  .flow-grid{display:grid;grid-template-columns:206px minmax(0,1fr) 252px;align-items:stretch;}
+  .fcell{min-width:0;}
+  /* 左轨：不通过分支（红＝停手语义） */
+  .rail{position:relative;}
+  .rail::before{content:'';position:absolute;right:30px;top:0;bottom:0;
+       border-left:1px dashed color-mix(in srgb, var(--red) 50%, transparent);
+       transition:border-color .15s;}
+  .rail.r-first::before{top:50%;}
+  .rail.hot::before{border-left-color:color-mix(in srgb, var(--red) 90%, transparent);
+       border-left-style:solid;}
+  .dm{position:absolute;right:25.5px;top:50%;width:9px;height:9px;
+       transform:translateY(-50%) rotate(45deg);background:var(--bg);
+       border:1.5px solid var(--red);transition:background .15s;}
+  .dm-t{position:absolute;right:46px;top:calc(50% - 17px);font-size:10.5px;
+       letter-spacing:.18em;color:color-mix(in srgb, var(--red) 75%, transparent);
+       white-space:nowrap;transition:color .15s;}
+  .dm-x{position:absolute;right:46px;top:calc(50% + 7px);width:148px;text-align:right;
+       font-size:11.5px;line-height:1.6;color:var(--ink-sub);}
+  .rail.cur .dm{background:var(--red);}
+  .rail.cur .dm-t{color:var(--red);font-weight:700;}
+  .rail.cur .dm-x{color:var(--ink);font-weight:600;}
+  .rail.r-5::after{content:'';position:absolute;right:26px;bottom:-1px;
+       transform:translateX(50%);border:5px solid transparent;
+       border-top:6px solid var(--red);}
+  /* 中列：步骤盒与正向下行箭头（墨线，不用绿） */
+  .box{position:relative;background:var(--surface);border:1px solid var(--line);
+       border-left:3px solid color-mix(in srgb, var(--b3) 75%, transparent);
+       border-radius:6px;padding:11px 16px;cursor:pointer;outline:none;
+       transition:border-color .15s,background .15s,transform .15s;}
+  .box:hover,.box:focus-visible{border-color:color-mix(in srgb, var(--b3) 55%, transparent);
+       transform:translateY(-1px);}
+  .box:focus-visible{outline:1px solid var(--b3);outline-offset:1px;}
+  .box.sel{border-color:var(--b3);
+       background:color-mix(in srgb, var(--b3) 10%, var(--surface));}
+  .b-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .no{font-family:"Noto Serif SC",serif;font-size:15px;font-weight:700;color:var(--b3);}
+  .nm{font-family:"Noto Serif SC",serif;font-size:16px;font-weight:700;color:var(--ink);}
+  .chip{border:1px solid var(--line-strong);border-radius:999px;font-size:10.5px;
+       color:var(--ink-sub);padding:1px 9px;white-space:nowrap;}
+  .chip.acc{border-color:color-mix(in srgb,var(--b3) 50%,transparent);color:var(--b3);}
+  .conn{position:relative;height:28px;}
+  .down{position:absolute;left:50%;top:2px;bottom:8px;width:0;
+       border-left:2px solid color-mix(in srgb, var(--ink-sub) 60%, transparent);}
+  .down::after{content:'';position:absolute;left:-5px;bottom:-7px;
+       border:5px solid transparent;
+       border-top:7px solid color-mix(in srgb, var(--ink-sub) 80%, transparent);}
+  /* ③④ 分界行 */
+  .divider{position:relative;height:38px;align-self:center;display:flex;align-items:center;justify-content:center;}
+  .dv-line{position:absolute;left:0;right:0;top:50%;border-top:1px dashed var(--line-strong);}
+  .dv-label{position:relative;background:var(--bg);padding:2px 13px;font-size:11px;
+       letter-spacing:.25em;color:var(--ink-sub);
+       border:1px dashed var(--line-strong);border-radius:999px;white-space:nowrap;}
+  /* 逆行回边注记：置于分界行右列，随错误模式显示 */
+  .dv-err{display:none;align-items:center;gap:8px;}
+  .flow.errors .io-d .dv-err{display:inline-flex;}
+  .bk{position:relative;width:28px;height:0;border-top:2px dashed var(--red);flex:0 0 auto;}
+  .bk::before{content:'';position:absolute;left:-2px;top:-6px;
+       border:5px solid transparent;border-right:7px solid var(--red);}
+  .dv-err .t{font-size:11.5px;line-height:1.5;color:var(--red);}
+  .dv-err .t b{font-weight:700;}
+  /* 右列：输入→输出 */
+  .io{padding:4px 0 4px 18px;font-size:12px;color:var(--ink-sub);line-height:1.9;align-self:center;}
+  .io .k{display:inline-block;border:1px solid var(--line);border-radius:4px;
+       padding:0 6px;font-size:10px;color:var(--ink-muted);margin-right:6px;vertical-align:1px;}
+  .io-err{display:none;}
+  .flow.errors .io-normal{display:none;}
+  .flow.errors .io-err{display:block;}
+  .eb{display:inline-block;background:var(--yellow-dim);color:var(--yellow);
+       border:1px solid color-mix(in srgb,var(--yellow) 45%,transparent);border-radius:4px;
+       font-size:10.5px;padding:0 7px;margin-right:8px;font-weight:700;vertical-align:1px;}
+  .io-err .bad{color:var(--red);font-weight:700;}
+  /* 错误顺序模式：步骤盒角标与淡染 */
+  .flow.errors .box[data-s="1"],.flow.errors .box[data-s="2"],.flow.errors .box[data-s="5"]{
+       background:color-mix(in srgb, var(--yellow) 7%, var(--surface));}
+  .flow.errors .box[data-s="3"]{
+       background:color-mix(in srgb, var(--yellow) 12%, var(--surface));}
+  .flow.errors .box[data-s="4"]{
+       background:color-mix(in srgb, var(--red) 8%, var(--surface));
+       border-left-color:var(--red);}
+  .flow.errors .box::after{content:attr(data-flag);position:absolute;top:-9px;right:10px;
+       font-size:10px;font-weight:700;padding:0 7px;border-radius:4px;line-height:1.7;
+       background:var(--yellow-dim);color:var(--yellow);
+       border:1px solid color-mix(in srgb,var(--yellow) 45%,transparent);}
+  /* 统一出口框（红＝停手） */
+  .exit{grid-column:1 / 3;background:var(--red-dim);
+       border:1px solid color-mix(in srgb, var(--red) 38%, transparent);
+       border-left:3px solid var(--red);border-radius:6px;padding:11px 18px;
+       margin-top:10px;transition:border-color .15s;}
+  .exit .t{font-size:15px;font-weight:700;color:var(--red);}
+  .exit .s{font-size:11.5px;color:var(--ink-sub);margin-top:2px;}
+  .exit.hot{border-color:var(--red);}
+  .flow-foot{margin-top:14px;font-size:12px;color:var(--ink-muted);}
+
+  /* ===== 四、语法预览 ===== */
+  .syn-duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:16px;}
+  .syn-cap{font-size:12px;color:var(--ink-sub);margin-bottom:8px;}
+  .syn-cap b{color:var(--ink);}
+  pre.md{margin:0;font-family:"JetBrains Mono","Cascadia Mono",Consolas,monospace;
+       font-size:12.5px;line-height:2.0;background:var(--surface-alt);
+       border:1px solid var(--line);border-radius:6px;padding:14px 16px;
+       overflow-x:auto;white-space:pre;color:var(--ink-sub);}
+  pre.md .ka{color:var(--ink);font-weight:700;}
+  .syn.b1 pre.md .kb{color:var(--b1);font-weight:700;}
+  .syn.b3 pre.md .kb{color:var(--b3);font-weight:700;}
+  pre.md .kc{color:var(--ink);font-weight:600;}
+  .syn-note{font-size:11.5px;color:var(--ink-muted);margin-top:6px;}
+  /* 迷你渲染（静态缩略） */
+  .mini{border:1px dashed var(--line-strong);border-radius:6px;padding:14px;}
+  .mini-lm .ml{border-radius:4px;padding:5px 12px;font-size:12px;color:var(--ink);
+       margin:0 auto 6px;border:1px solid color-mix(in srgb,var(--b1) 30%,transparent);}
+  .mini-lm .m-shu{width:calc(100% - 56px);background:var(--lm1);}
+  .mini-lm .m-fa{width:calc(100% - 28px);background:var(--lm2);}
+  .mini-lm .m-dao{width:100%;background:var(--lm3);}
+  .mini-lm .ml-base{border:1px dashed var(--line-strong);border-radius:4px;
+       font-size:10.5px;color:var(--ink-sub);text-align:center;padding:4px 8px;}
+  .mf{position:relative;padding:4px 10px 4px 24px;border:1px solid var(--line);
+       background:var(--surface);border-radius:4px;font-size:12px;color:var(--ink);
+       margin-bottom:6px;}
+  .mf .md-d{position:absolute;left:9px;top:50%;width:6px;height:6px;
+       transform:translateY(-50%) rotate(45deg);border:1px solid var(--red);}
+  .mf .mf-x{float:right;color:var(--ink-sub);font-size:10.5px;}
+  .mf-div{position:relative;text-align:center;font-size:10px;color:var(--ink-sub);
+       margin:4px 0 6px;padding-top:3px;border-top:1px dashed var(--line-strong);}
+  .mf-exit{background:var(--red-dim);border:1px solid color-mix(in srgb,var(--red) 38%,transparent);
+       color:var(--red);font-size:12px;font-weight:700;padding:5px 10px;border-radius:4px;
+       text-align:center;}
+
+  /* ===== 页脚设计要点 ===== */
+  .endnote{border-top:1px solid var(--line-strong);margin-top:56px;padding-top:16px;
+       font-size:12.5px;color:var(--ink-sub);}
+  .endnote b{color:var(--ink);}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:900px){
+    .syn-duo{grid-template-columns:minmax(0,1fr);}
+  }
+  @media (max-width:760px){
+    .wrap{padding:32px 14px 70px;}
+    .lm-stage{padding-right:0;}
+    .lm-cost{display:none;}
+    .l-shu{width:calc(100% - 44px) !important;}
+    .l-fa{width:calc(100% - 22px) !important;}
+    .flow-grid{display:flex;flex-direction:column;}
+    .rail{position:static;display:flex;align-items:center;gap:8px;min-height:20px;padding:2px 0;}
+    .rail::before{display:none;}
+    .dm{position:static;transform:rotate(45deg) scale(.85);}
+    .dm-t{position:static;letter-spacing:.1em;}
+    .dm-x{position:static;width:auto;flex:1;text-align:right;margin-left:auto;}
+    .rail.r-5::after{display:none;}
+    .io{padding:2px 2px 8px;}
+    .io-c,.io-e{display:none;}
+    .conn{height:20px;}
+    .divider{height:32px;}
+    .exit{margin-top:6px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 刊头 ===== -->
+  <h1>结构图组件家族：设计静态稿</h1>
+  <div class="sub">
+    <span>分层结构 <code>::: layer-map</code> · 流程图 <code>::: flow-steps</code>
+      &nbsp;——&nbsp;结构类内容的呈现升级（PPT 感）样例</span>
+    <span style="display:inline-flex;align-items:center;gap:12px;">
+      <span class="meta">D50 · 渲染侧 · 2026-11-24</span>
+      <button class="btn" id="themeBtn" type="button">切换浅色</button>
+    </span>
+  </div>
+
+  <div class="notice">
+    <b>本稿为 §9 立项设计样例（拟新增容器词汇 preview，非站点产物）。</b>
+    架构落点：数据图（K线、曲线）归 SVG 成品图；结构图（分层、流程、分类）归
+    <b>"内容声明数据 → HTML/CSS 组件"</b>（qa-cards 已开先例）。本稿做两种组件的静态样例，
+    用 B1-C05、B3-C03 现行正文真实内容，供负责人定方向；自包含单文件，零外部依赖。
+  </div>
+
+  <!-- ===== 一、总览 ===== -->
+  <h2>一、拟议词汇总览</h2>
+  <table class="tbl">
+    <tr><th>拟议词汇</th><th>形态</th><th>本稿样例</th></tr>
+    <tr>
+      <td><code>::: layer-map</code></td>
+      <td>层行＋字段行＋底座行 → 三堆叠层组件：悬停/点击展开维度、自下而上浮现动画</td>
+      <td>B1-C05 道、法、术（B1 册色·花青）</td>
+    </tr>
+    <tr>
+      <td><code>::: flow-steps</code></td>
+      <td>步行（输入/输出/不通过）＋出口/分界/演示行 → 竖向流程组件：选中高亮汇流路径、错误顺序演示</td>
+      <td>B3-C03 五步决策顺序（B3 册色·赭橙）</td>
+    </tr>
+  </table>
+  <p class="arch">语法形态沿用 qa-cards 的<b>行式风格</b>（数据行＋冒号字段），详见第四节两半对照；
+    语法细节以 §9 立项文为准。</p>
+
+  <!-- ===== 二、组件一：layer-map ===== -->
+  <h2 id="h-layer">二、组件一：分层结构图 <code>::: layer-map</code></h2>
+  <p class="comp-sub">三堆叠层，自上而下＝术／法／道（底层承载上层，与盖房子类比一致）；
+    每层悬停展开四个维度，默认收起只显层名＋一句话；层间用册色深浅区分。
+    <span class="vol b1">B1 册色 · 花青 #6B9BC9</span></p>
+
+  <div class="diagram lm" id="lmap">
+    <div class="lm-title">道、法、术：三层分工——底层承载上层</div>
+    <div class="lm-stage">
+      <div class="lm-layer l-shu" tabindex="0" role="button" aria-expanded="false">
+        <div class="lm-bar">
+          <span class="lm-zi">术</span><span class="lm-sub">工具层</span>
+          <span class="lm-line">回答"看什么"——给规则空格填数的手段</span>
+          <span class="lm-hint">展开</span>
+        </div>
+        <div class="lm-detail"><div class="lm-detail-in"><div class="lm-dims">
+          <div class="dim"><span class="dim-k">回答</span><span class="dim-v">看什么——为规则里的空格产生数字与条件</span></div>
+          <div class="dim"><span class="dim-k">定义</span><span class="dim-v">给规则空格填数的手段：均线、成交量、财务指标</span></div>
+          <div class="dim"><span class="dim-k">产出</span><span class="dim-v">规则里的数字与条件</span></div>
+          <div class="dim"><span class="dim-k">改动成本</span><span class="dim-v">最常换——如换窗帘不换承重；也最容易误导人</span></div>
+        </div></div></div>
+      </div>
+      <div class="lm-layer l-fa" tabindex="0" role="button" aria-expanded="false">
+        <div class="lm-bar">
+          <span class="lm-zi">法</span><span class="lm-sub">规则层</span>
+          <span class="lm-line">回答"怎么做"——把认知写成书面规则</span>
+          <span class="lm-hint">展开</span>
+        </div>
+        <div class="lm-detail"><div class="lm-detail-in"><div class="lm-dims">
+          <div class="dim"><span class="dim-k">回答</span><span class="dim-v">怎么做——何时进、买多少、何时出</span></div>
+          <div class="dim"><span class="dim-k">定义</span><span class="dim-v">把认知写成书面规则：判断可变，条文不能当场变</span></div>
+          <div class="dim"><span class="dim-k">产出</span><span class="dim-v">可执行、可对账的条文</span></div>
+          <div class="dim"><span class="dim-k">改动成本</span><span class="dim-v">中——重改伤筋动骨，须重新验证</span></div>
+        </div></div></div>
+      </div>
+      <div class="lm-layer l-dao" tabindex="0" role="button" aria-expanded="false">
+        <div class="lm-bar">
+          <span class="lm-zi">道</span><span class="lm-sub">认知层</span>
+          <span class="lm-line">回答"该不该做"——钱从哪来、亏得起多少</span>
+          <span class="lm-hint">展开</span>
+        </div>
+        <div class="lm-detail"><div class="lm-detail-in"><div class="lm-dims">
+          <div class="dim"><span class="dim-k">回答</span><span class="dim-v">该不该做——它决定后面两层立不立得住</span></div>
+          <div class="dim"><span class="dim-k">定义</span><span class="dim-v">钱从哪来、我凭什么赚、我亏得起多少</span></div>
+          <div class="dim"><span class="dim-k">产出</span><span class="dim-v">说得清的收益来源＋亏得起的底线</span></div>
+          <div class="dim"><span class="dim-k">改动成本</span><span class="dim-v">最难改——埋在土里的地基，错了要推倒重来</span></div>
+        </div></div></div>
+      </div>
+      <div class="lm-base"><span class="bt">底座</span>册二 市场规则与品种——不属于三层，但三层都建在它上面</div>
+      <div class="lm-cost" aria-hidden="true">
+        <span class="cost-cap">改动成本</span>
+        <span class="cost-line"></span>
+        <span class="cost-arrow">▼</span>
+        <span class="cost-txt">自上而下递增</span>
+      </div>
+    </div>
+    <div class="lm-tools">
+      <button class="btn" id="lmReplay" type="button">重播浮现动画</button>
+      <span class="lm-tip">悬停或点击层条展开四维详情；点击可钉住，再点收起。</span>
+    </div>
+  </div>
+  <div class="d-cap">示例内容：B1-C05《道、法、术：三层分工》（现行正文）。底座注记与右侧"改动成本"纵标取自该章绘图说明。</div>
+
+  <div class="notes">
+    <span class="nt">组件一 · 设计要点（实现讨论用，非正文内容）</span>
+    <ul>
+      <li><b>布局：</b>阶梯金字塔剪影（术 128px 内收 → 道 全宽）＋底座虚线板，呼应"地基在下承载上层"；
+        右侧"改动成本：自上而下递增"纵标为图内注记（对应 B1-C05 绘图说明的右侧箭头），非交互件。</li>
+      <li><b>交互：</b>默认收起；悬停即展开（桌面），点击钉住（触屏/键盘，Enter/Space 可达）；
+        "重播浮现动画"按钮按 道→底座→法→术 次序自下而上浮现（0.5s 内完成），演示 PPT 感。</li>
+      <li><b>色规落点：</b>只用 B1 册色深浅三档（color-mix 派生，随主题换算），不引入红黄绿——
+        改动成本是结构属性，不用语义色渲染。</li>
+      <li><b>双套：</b>深色取站内花青原值；浅色册色为提案值（B1 沿用图色板浅色 accent），
+        终值待浅色主题立项时统一审定。</li>
+    </ul>
+  </div>
+
+  <!-- ===== 三、组件二：flow-steps ===== -->
+  <h2 id="h-flow">三、组件二：流程图 <code>::: flow-steps</code></h2>
+  <p class="comp-sub">竖向五步：步骤号＋名称＋（信息类别）＋右侧"输入→输出"小字＋左侧菱形"不通过"分支线，
+    全部汇入底部统一出口框；③④之间虚线标"盘前｜盘中"分界，⑤旁标"盘后"。
+    <span class="vol b3">B3 册色 · 赭橙 #D99058</span></p>
+
+  <div class="diagram flow" id="flow">
+    <div class="flow-head">
+      <div class="flow-title">五步决策顺序——<em>不通过就不进入下一步</em></div>
+      <label class="switch">
+        <input type="checkbox" id="errToggle">
+        <span class="sw"></span>演示错误顺序
+      </label>
+    </div>
+    <div class="flow-grid">
+      <!-- ① -->
+      <div class="fcell rail r-first" data-ord="1">
+        <span class="dm"></span><span class="dm-t">不通过</span>
+        <span class="dm-x">今天不做</span>
+      </div>
+      <div class="fcell box" data-s="1" data-flag="跳过" tabindex="0" role="button" aria-pressed="false">
+        <div class="b-top"><span class="no">①</span><span class="nm">看环境</span><span class="chip acc">时/风</span></div>
+      </div>
+      <div class="fcell io">
+        <span class="io-normal"><span class="k">输入</span>指数与板块状态、事件窗口<br><span class="k">输出</span>一句环境判断</span>
+        <span class="io-err"><span class="eb">跳①</span>凭"感觉要涨"直接下单——环境判断缺位</span>
+      </div>
+      <div class="fcell rail" data-ord="1.5"></div>
+      <div class="fcell conn"><span class="down"></span></div>
+      <div class="fcell io io-c"></div>
+      <!-- ② -->
+      <div class="fcell rail" data-ord="2">
+        <span class="dm"></span><span class="dm-t">不通过</span>
+        <span class="dm-x">换标的或放弃</span>
+      </div>
+      <div class="fcell box" data-s="2" data-flag="跳过" tabindex="0" role="button" aria-pressed="false">
+        <div class="b-top"><span class="no">②</span><span class="nm">选结构</span><span class="chip acc">工具</span></div>
+      </div>
+      <div class="fcell io">
+        <span class="io-normal"><span class="k">输入</span>环境判断、标的池<br><span class="k">输出</span>买入逻辑＋失效点</span>
+        <span class="io-err"><span class="eb">跳②</span>没有买入逻辑与失效点，止损只能猜</span>
+      </div>
+      <div class="fcell rail" data-ord="2.5"></div>
+      <div class="fcell conn"><span class="down"></span></div>
+      <div class="fcell io io-c"></div>
+      <!-- ③ -->
+      <div class="fcell rail" data-ord="3">
+        <span class="dm"></span><span class="dm-t">不通过</span>
+        <span class="dm-x">缩小、改 ETF 或放弃（〔B3-C04〕）</span>
+      </div>
+      <div class="fcell box" data-s="3" data-flag="倒置" tabindex="0" role="button" aria-pressed="false">
+        <div class="b-top"><span class="no">③</span><span class="nm">算止损与仓位</span><span class="chip acc">仓</span></div>
+      </div>
+      <div class="fcell io">
+        <span class="io-normal"><span class="k">输入</span>买入逻辑、本金、起步参考值<br><span class="k">输出</span>止损价、股数、1R、两道校验</span>
+        <span class="io-err"><span class="eb">倒③</span><span class="bad">止损被仓位倒逼——计划亏损可达 3R（预算 3 倍）</span></span>
+      </div>
+      <!-- ③④ 分界：盘前｜盘中（错误模式下右列挂"逆行加仓"回边注记） -->
+      <div class="fcell rail" data-ord="3.5"></div>
+      <div class="fcell divider">
+        <span class="dv-line"></span>
+        <span class="dv-label">盘前｜盘中</span>
+      </div>
+      <div class="fcell io io-d">
+        <span class="dv-err"><span class="bk"></span>
+          <span class="t"><b>亏了加仓摊低</b>：跳③④——仓位与在途风险击穿上限，且失去止损（示意：仓位 38%、风险 4R）</span></span>
+      </div>
+      <!-- ④ -->
+      <div class="fcell rail" data-ord="4">
+        <span class="dm"></span><span class="dm-t">不通过</span>
+        <span class="dm-x">不追、不提前、不放宽</span>
+      </div>
+      <div class="fcell box" data-s="4" data-flag="跳过" tabindex="0" role="button" aria-pressed="false">
+        <div class="b-top"><span class="no">④</span><span class="nm">等触发</span><span class="chip acc">价/量</span></div>
+      </div>
+      <div class="fcell io">
+        <span class="io-normal"><span class="k">输入</span>触发条件<br><span class="k">输出</span>触发则执行；未触发则不动</span>
+        <span class="io-err"><span class="eb">跳④</span>跳④⑤，伪造一个新②——<span class="bad">亏损上限从 1R 变成未知</span></span>
+      </div>
+      <div class="fcell rail" data-ord="4.5"></div>
+      <div class="fcell conn"><span class="down"></span></div>
+      <div class="fcell io io-c"></div>
+      <!-- ⑤ -->
+      <div class="fcell rail r-5" data-ord="5">
+        <span class="dm"></span><span class="dm-t">不通过</span>
+        <span class="dm-x">次日盘前再修规则</span>
+      </div>
+      <div class="fcell box" data-s="5" data-flag="跳过" tabindex="0" role="button" aria-pressed="false">
+        <div class="b-top"><span class="no">⑤</span><span class="nm">盘后对账</span><span class="chip acc">心</span><span class="chip">盘后</span></div>
+      </div>
+      <div class="fcell io">
+        <span class="io-normal"><span class="k">输入</span>成交记录与快照<br><span class="k">输出</span>书面偏差记录（〔B7-C07〕）</span>
+        <span class="io-err"><span class="eb">跳⑤</span>无书面对账，偏差无从归因</span>
+      </div>
+      <!-- 统一出口 -->
+      <div class="fcell exit">
+        <div class="t">今天这笔不做（写入记录）</div>
+        <div class="s">判断不通过而放弃，也记一句"今天为什么不做"。</div>
+      </div>
+      <div class="fcell io io-e"></div>
+    </div>
+    <div class="flow-foot">点击任一步：高亮该步及其"不通过"汇流路径（红线加实、菱形填实）；再点一次取消。
+      "演示错误顺序"开关按 B3-C03 §三对照表标注三条近路（黄＝警示徽，红＝停手级后果）。</div>
+  </div>
+  <div class="d-cap">示例内容：B3-C03《先算风险，再找买点：决策顺序铁律》（现行正文 §二表与 §三对照表）。</div>
+
+  <div class="notes">
+    <span class="nt">组件二 · 设计要点（实现讨论用，非正文内容）</span>
+    <ul>
+      <li><b>布局：</b>三列栅格——左轨"不通过"分支（红虚线贯穿、菱形落位、处置文字随分支）、
+        中列步骤流（墨色下行箭头）、右列"输入→输出"；③④之间水平虚线挂"盘前｜盘中"章，
+        ⑤旁加"盘后"小章；五条分支汇入底部统一出口框（出口框横跨左轨与中列，红线直落框内）。</li>
+      <li><b>交互：</b>点击步骤＝选中：该步菱形填实、处置文字加重、其下方整段汇流红线加实、
+        出口框描边加亮——直观演示"任一步不通过都落到同一出口"；"演示错误顺序"开关切换后，
+        右列注记换成三条近路的警示徽与后果（对应正文对照表：跳①②倒③／跳④⑤伪造新②／跳③④），
+        ③④分界行右列出现红色逆行回边注记。</li>
+      <li><b>色规落点：</b>红＝不通过/停手（分支线、菱形、出口框、逆行回边）；黄＝错误顺序警示徽；
+        正向流转＝墨线（不用绿，避免盈亏暗示）；步骤盒册色只做左缘细线与编号点缀。</li>
+      <li><b>口径说明（已仲裁 2026-11-24）：</b>以 B3-C03 §三对照表为唯一口径——
+        跳①②倒③／跳④⑤伪造新②／跳③④；派单简写（跳②③／卡④不执行／在③后逆行加仓）不再使用。</li>
+    </ul>
+  </div>
+
+  <!-- ===== 四、语法预览 ===== -->
+  <h2 id="sec-syntax">四、附：内容层语法预览（两半对照）</h2>
+  <p class="comp-sub">左列＝内容层将这样写（拟议 markdown 容器的数据行，qa-cards 同风：数据行＋冒号字段）；
+    右列＝渲染效果缩略（完整交互见上方两个组件）。<b>语法细节以 §9 立项文为准。</b></p>
+
+  <div class="syn-duo syn b1">
+    <div>
+      <div class="syn-cap"><b>layer-map</b> · 拟议写法（10 行数据）</div>
+      <pre class="md"><span class="ka">::: layer-map 道法术：三层分工（底层承载上层）</span>
+<b class="kb">层</b> 术（工具层）：回答"看什么"，给规则空格填数的手段
+<b class="kc">术·定义</b>：均线、成交量、财务指标
+<b class="kc">术·改动成本</b>：最常换，如换窗帘不换承重
+<b class="kb">层</b> 法（规则层）：回答"怎么做"，把认知写成书面规则
+<b class="kc">法·产出</b>：可执行、可对账的条文；判断可变，条文不能当场变
+<b class="kc">法·改动成本</b>：中
+<b class="kb">层</b> 道（认知层）：回答"该不该做"，钱从哪来、亏得起多少
+<b class="kc">道·产出</b>：说得清的收益来源＋亏得起的底线
+<b class="kc">道·改动成本</b>：最难改，埋在土里的地基
+<b class="kb">底座</b>：册二市场规则与品种——不属于三层，但三层都建在它上面
+<span class="ka">:::</span></pre>
+    </div>
+    <div>
+      <div class="syn-cap"><b>渲染效果</b> · 缩略静态版</div>
+      <div class="mini mini-lm">
+        <div class="ml m-shu">术 · 工具层</div>
+        <div class="ml m-fa">法 · 规则层</div>
+        <div class="ml m-dao">道 · 认知层</div>
+        <div class="ml-base">底座：册二市场规则与品种</div>
+      </div>
+      <div class="syn-note">层行定层名与一句话；"层名·字段"行挂到对应层的展开详情；
+        底座行渲染为图内虚线注记。每层字段行 1~4 条，此处节选。</div>
+    </div>
+  </div>
+
+  <div class="syn-duo syn b3">
+    <div>
+      <div class="syn-cap"><b>flow-steps</b> · 拟议写法（10 行数据）</div>
+      <pre class="md"><span class="ka">::: flow-steps 五步决策顺序——不通过就不进入下一步</span>
+<b class="kb">步</b> ①看环境（时/风）：输入 指数与板块状态、事件窗口 → 输出 一句环境判断｜不通过 今天不做
+<b class="kb">步</b> ②选结构（工具）：输入 环境判断、标的池 → 输出 买入逻辑＋失效点｜不通过 换标的或放弃
+<b class="kb">步</b> ③算止损与仓位（仓）：输入 买入逻辑、本金、起步参考值 → 输出 止损价、股数、1R、两道校验｜不通过 缩小、改 ETF 或放弃
+<b class="kb">步</b> ④等触发（价/量）：输入 触发条件 → 输出 触发则执行；未触发则不动｜不通过 不追、不提前、不放宽
+<b class="kb">步</b> ⑤盘后对账（心）：输入 成交记录与快照 → 输出 书面偏差记录｜不通过 次日盘前再修规则
+<b class="kb">出口</b>：今天这笔不做（写入记录）
+<b class="kb">分界</b>：③④之间 盘前｜盘中；⑤旁 盘后
+<b class="kb">演示</b> 跳①②倒③：先买后找止损——止损被仓位倒逼
+<b class="kb">演示</b> 跳④⑤伪造新②：套牢改口长线——亏损上限从 1R 变成未知
+<b class="kb">演示</b> 跳③④：亏了加仓摊低——仓位与在途风险击穿上限，且失去止损
+<span class="ka">:::</span></pre>
+    </div>
+    <div>
+      <div class="syn-cap"><b>渲染效果</b> · 缩略静态版</div>
+      <div class="mini mini-fw">
+        <div class="mf"><span class="md-d"></span>① 看环境<span class="mf-x">今天不做</span></div>
+        <div class="mf"><span class="md-d"></span>② 选结构<span class="mf-x">换标的或放弃</span></div>
+        <div class="mf"><span class="md-d"></span>③ 算止损与仓位<span class="mf-x">缩小、改 ETF 或放弃</span></div>
+        <div class="mf-div">盘前｜盘中</div>
+        <div class="mf"><span class="md-d"></span>④ 等触发<span class="mf-x">不追、不提前、不放宽</span></div>
+        <div class="mf"><span class="md-d"></span>⑤ 盘后对账<span class="mf-x">次日盘前再修规则</span></div>
+        <div class="mf-exit">今天这笔不做（写入记录）</div>
+      </div>
+      <div class="syn-note">步行携带"输入→输出"与"｜不通过"两段；出口/分界行定统一出口与分界章；
+        "演示"行声明错误顺序演示的路径与代价（交互开关的数据源）。</div>
+    </div>
+  </div>
+
+  <!-- ===== 页脚：全局设计要点 ===== -->
+  <div class="endnote">
+    <b>全局设计要点（实现讨论用，非正文内容）：</b>
+    <ul>
+      <li><b>双套主题：</b>同一 DOM，仅根节点切换令牌；浅色册色为提案值，终值待浅色主题立项统一审定。</li>
+      <li><b>零依赖：</b>无 CDN、无构建、无图标库——箭头、菱形、开关、回边全部为 CSS；
+        无任何脚本框架，vanilla JS 约 60 行。</li>
+      <li><b>动效克制：</b>浮现动画 0.5s 内完成并尊重 prefers-reduced-motion；书卷纪律不加重阴影，
+        交互反馈以描边、淡底与 1px 位移表达。</li>
+      <li><b>语义色规落点：</b>layer-map 仅册色深浅（不涉语义色）；flow-steps 红＝不通过/停手、
+        黄＝错误顺序警示、正向流转＝墨线；全稿无绿色，不用红绿暗示盈亏。</li>
+      <li><b>内容口径：</b>两组件全部字段取自 B1-C05、B3-C03 现行正文（含表与绘图说明）；
+        错误顺序演示的跳步口径以 B3-C03 §三对照表为唯一口径（跳①②倒③／跳④⑤伪造新②／跳③④），
+        已经编排者仲裁确认（2026-11-24）。</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  /* 深浅切换 */
+  var root = document.documentElement;
+  var themeBtn = document.getElementById('themeBtn');
+  function syncTheme(){ themeBtn.textContent = root.classList.contains('dark') ? '切换浅色' : '切换深色'; }
+  themeBtn.addEventListener('click', function(){ root.classList.toggle('dark'); syncTheme(); });
+  syncTheme();
+
+  /* 组件一：layer-map */
+  var lm = document.getElementById('lmap');
+  lm.querySelectorAll('.lm-layer').forEach(function(layer){
+    var toggle = function(){
+      var open = layer.classList.toggle('open');
+      layer.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    layer.addEventListener('click', toggle);
+    layer.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+  var replay = document.getElementById('lmReplay');
+  replay.addEventListener('click', function(){
+    lm.classList.remove('play');
+    void lm.offsetWidth; /* 重排以重启动画 */
+    lm.classList.add('play');
+  });
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    lm.classList.add('play');
+  }
+
+  /* 组件二：flow-steps */
+  var flow = document.getElementById('flow');
+  var steps = Array.prototype.slice.call(flow.querySelectorAll('.box'));
+  var rails = Array.prototype.slice.call(flow.querySelectorAll('.rail'));
+  var exitBox = flow.querySelector('.exit');
+  var sel = 0;
+  function applySel(){
+    steps.forEach(function(s){
+      var on = (parseInt(s.getAttribute('data-s'), 10) === sel);
+      s.classList.toggle('sel', on);
+      s.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    rails.forEach(function(r){
+      var ord = parseFloat(r.getAttribute('data-ord'));
+      r.classList.toggle('hot', sel > 0 && ord >= sel);
+      r.classList.toggle('cur', sel > 0 && Math.abs(ord - sel) < 0.001);
+    });
+    exitBox.classList.toggle('hot', sel > 0);
+  }
+  steps.forEach(function(s){
+    var hit = function(){
+      var n = parseInt(s.getAttribute('data-s'), 10);
+      sel = (sel === n) ? 0 : n;
+      applySel();
+    };
+    s.addEventListener('click', hit);
+    s.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hit(); }
+    });
+  });
+  document.getElementById('errToggle').addEventListener('change', function(){
+    flow.classList.toggle('errors', this.checked);
+  });
+})();
+</script>
+</body>
+</html>
